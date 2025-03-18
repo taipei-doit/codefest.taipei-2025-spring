@@ -1,0 +1,308 @@
+{
+    "hero_banner": {
+        "section_title": "2025雙北程式設計節",
+        "apply_date": "5/31.Sat - 6/1.Sun"
+    },
+    "rules": {
+        "section_title": "參賽規則",
+        "description": "顛覆傳統激發創新思維\n創造出更具競爭力的解決方案",
+        "content_title": "概念",
+        "content": "在人工智慧迅速發展的時代，顛覆性創新成為企業脫穎而出的關鍵。透過結合創新思維與先進技術，我們能夠重新定義問題解決的方式，從而創造出更具競爭力的解決方案。\n本屆黑客松以將帶領我們探索如何利用這些新興技術，挑戰傳統思維，推動企業邁向未來的無限可能。\n如有任何疑問，歡迎隨時聯絡我們！",
+        "buttons": [
+            {
+                "name": "Call",
+                "link": ""
+            },
+            {
+                "name": "Line",
+                "link": ""
+            },
+            {
+                "name": "Email",
+                "link": ""
+            }
+        ],
+        "judges": [
+            {
+                "name": "初選",
+                "list": [
+                    {
+                        "id": 0,
+                        "thumbnail": "/images/judge-sample.png",
+                        "name": "評審1",
+                        "corporation": "台北市資訊局",
+                        "position": "專門委員"
+                    },
+                    {
+                        "id": 1,
+                        "thumbnail": "/images/judge-sample.png",
+                        "name": "評審2",
+                        "corporation": "台北市資訊局",
+                        "position": "專門委員"
+                    },
+                    {
+                        "id": 2,
+                        "thumbnail": "/images/judge-sample.png",
+                        "name": "評審3",
+                        "corporation": "台北市資訊局",
+                        "position": "專門委員"
+                    }
+                ]
+            },
+            {
+                "name": "決選",
+                "list": [
+                    {
+                        "id": 0,
+                        "thumbnail": "/images/judge-sample.png",
+                        "name": "決選評審1",
+                        "corporation": "台北市資訊局",
+                        "position": "專門委員"
+                    },
+                    {
+                        "id": 1,
+                        "thumbnail": "/images/judge-sample.png",
+                        "name": "決選評審2",
+                        "corporation": "台北市資訊局",
+                        "position": "專門委員"
+                    },
+                    {
+                        "id": 2,
+                        "thumbnail": "/images/judge-sample.png",
+                        "name": "決選評審3",
+                        "corporation": "台北市資訊局",
+                        "position": "專門委員"
+                    },
+                    {
+                        "id": 3,
+                        "thumbnail": "/images/judge-sample.png",
+                        "name": "決選評審4",
+                        "corporation": "台北市資訊局",
+                        "position": "專門委員"
+                    },
+                    {
+                        "id": 4,
+                        "thumbnail": "/images/judge-sample.png",
+                        "name": "決選評審5",
+                        "corporation": "台北市資訊局",
+                        "position": "專門委員"
+                    }
+                ]
+            }
+        ],
+        "prospectus": {
+            "title": "簡章概要",
+            "image_url": "/images/rules-prospectus.png",
+            "contents": [
+                {
+                    "sub_title": "< 壹、活動背景說明 >",
+                    "sub_content": "臺北市政府資訊局（以下簡稱「主辦單位」）為持續推動臺北市成為服務型政府，並推廣主辦單位開源及資料開放政策，特以「台北通」為經驗，運用開放原始碼方式，舉辦「2024臺北程式設計節城市通微服務大黑客松」（以下簡稱「本競賽」），盼讓數據驅動生活，實踐更好的使用體驗、介面設計，優化市府的服務。"
+                },
+                {
+                    "sub_title": "< 貳、活動目標 >",
+                    "sub_content": "為達到透明開放、科技普惠、建立服務型政府的目標，本競賽以市政服務為概念，廣邀各界高手，在良好基礎上提出創意方案。同時，希望以此競賽作為首發，透過拋磚引玉，逐步將開源技術導入市政服務的一環，期望降低開發成本、提高政府經營效率，以此打造、激盪出跨縣市優質的數位公共服務。"
+                },
+                {
+                    "sub_title": "< 參、參賽方式 >",
+                    "sub_content": "一、參賽資格\n(一) 本競賽以隊伍為單位報名參賽，隊伍成員數量每組5 人為上限。\n(二) 本競賽原則上以本國籍參賽者為主，另有關年齡、身份基本不設限。惟未於報名日年滿18歲之未成年參賽者報名時，須經法定代理人書面同意。\n(三) 參賽隊伍建議應具備以下核心技能：開發工具：Git、Docker、Postman。前端技術能力：HTML、CSS、JavaScript、Vue、其他 package.json 工具。後端技術能力(Java)：Spring Framework、Hibernate、Tomcat。Flutter開發：Flutter、Dart、狀態管理、Flutter Widgets、網路通信。市政知識：了解市政運營，設計應用。"
+                }
+            ]
+        }
+    },
+    "schedule": {
+        "section_title": "重要時程",
+        "count_down": "2025-04-25 00:00:00",
+        "list": [
+            {
+                "id": "apply",
+                "schedule_name": "報名期間 03.31 - 04.25",
+                "schedule_sub_name": "報名期間 03.31 - 04.25",
+                "button": {
+                    "text": "立即報名",
+                    "link": ""
+                },
+                "schedule_headers": [],
+                "schedule": []
+            },
+            {
+                "id": "online",
+                "schedule_name": "線上說明會 03.31",
+                "schedule_sub_name": "114年3月31日",
+                "button": {
+                    "text": "線上說明會",
+                    "link": ""
+                },
+                "schedule_headers": [],
+                "schedule": []
+            },
+            {
+                "id": "workshop",
+                "schedule_name": "工作坊 05.18",
+                "schedule_sub_name": "114年5月18日",
+                "button": {
+                    "text": "",
+                    "link": ""
+                },
+                "schedule_headers": [
+                    {
+                        "name": "時間"
+                    },
+                    {
+                        "name": "議程"
+                    },
+                    {
+                        "name": "主講人"
+                    }
+                ],
+                "schedule": [
+                    {
+                        "time": "09:00-10:00",
+                        "name": "報到",
+                        "presenter": ""
+                    },
+                    {
+                        "time": "10:00-10:35",
+                        "name": "主辦單位致詞暨城市通微服務大黑客松規則說明",
+                        "presenter": "臺北市政府資訊局 趙式隆局長"
+                    },
+                    {
+                        "time": "10:35-10:40",
+                        "name": "政風宣導",
+                        "presenter": "臺北市政府資訊局"
+                    },
+                    {
+                        "time": "10:40-12:00",
+                        "name": "開發技術介紹與項目說明・模擬器練習",
+                        "presenter": "城市通開發團隊"
+                    },
+                    {
+                        "time": "12:00-13:00",
+                        "name": "午餐",
+                        "presenter": ""
+                    },
+                    {
+                        "time": "13:00-14:00",
+                        "name": "城市通模擬器練習",
+                        "presenter": "城市通開發團隊"
+                    },
+                    {
+                        "time": "15:00",
+                        "name": "選手面談",
+                        "presenter": "臺北市政府資訊局"
+                    },
+                    {
+                        "time": "",
+                        "name": "Coding 診療室",
+                        "presenter": "城市通開發團隊"
+                    }
+                ]
+            },
+            {
+                "id": "competition",
+                "schedule_name": "競賽日 05.31 - 06.01",
+                "schedule_sub_name": "114年5月31日~114年6月1日",
+                "button": {
+                    "text": "",
+                    "link": ""
+                },
+                "schedule_headers": [],
+                "schedule": []
+            }
+        ]
+    },
+    "news": {
+        "section_title": "最新消息",
+        "list": [
+            {
+                "id": 1,
+                "date": "2024.09.20",
+                "title": "全台最大校園黑客松 【 2024 新竹 X 銘竹黑客松 】 火熱報名中",
+                "image_url": "",
+                "content": "在人工智慧迅速發展的時代，顛覆性創新成為企業脫穎而出的關鍵。透過結合創新思維與先進技術，我們能夠重新定義問題解決的方式，從而創造出更具競爭力的解決方案。本屆黑客松以將帶領我們探索如何利用這些新興技術，挑戰傳統思維，推動企業邁向未來的無限可能。如有任何疑問，歡迎隨時聯絡我們！在人工智慧迅速發展的時代，顛覆性創新成為企業脫穎而出的關鍵。透過結合創新思維與先進技術，我們能夠重新定義問題解決的方式，從而創造出更具競爭力的解決方案。本屆黑客松以將帶領我們探索如何利用這些新興技術，挑戰傳統思維，推動企業邁向未來的無限可能。如有任何疑問，歡迎隨時聯絡我們！"
+            },
+            {
+                "id": 2,
+                "date": "2024.09.20",
+                "title": "競賽照片回顧｜來看看團隊這兩天一夜熱血畫面",
+                "image_url": "/images/news-sample.png",
+                "content": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facere exercitationem veniam veritatis ratione amet rerum doloribus quisquam corporis, quod at obcaecati iste voluptatem recusandae dicta minus et, animi reprehenderit alias ipsa placeat optio architecto odio. Quaerat optio atque perferendis quia qui nesciunt debitis velit, laborum, earum pariatur cumque ab, eveniet minima suscipit. Beatae fugit temporibus eius porro, nisi culpa rem nostrum cumque laudantium non dolor distinctio molestiae veritatis reprehenderit placeat dolore perspiciatis voluptatum ratione voluptate repellat, similique nobis quidem quis dignissimos. Ratione nemo dignissimos quia perferendis beatae earum fuga rem laboriosam perspiciatis pariatur labore in ex aut, ullam recusandae saepe."
+            },
+            {
+                "id": 3,
+                "date": "2024.09.20",
+                "title": "競賽獲獎團隊｜2024 臺北秋季程式設計節-城市通微服務大黑客松競賽結果",
+                "image_url": "",
+                "content": ""
+            },
+            {
+                "id": 4,
+                "date": "2024.09.20",
+                "title": "最新消息4",
+                "image_url": "",
+                "content": ""
+            }
+        ]
+    },
+    "past": {
+        "section_title": "參賽回顧",
+        "list": [
+            {
+                "id": 0,
+                "date": "2024.09.20",
+                "title": "1[秋季] 2024城市通微服務大黑客松",
+                "thumbnail": "/images/videos/video-sample.png",
+                "video_url": "https://www.youtube.com/watch?v=8_ZaFYZ9BQU"
+            },
+            {
+                "id": 1,
+                "date": "2024.09.20",
+                "title": "2[春季] 2024城市儀表板大黑客松",
+                "thumbnail": "/images/videos/video-sample.png",
+                "video_url": "https://www.youtube.com/watch?v=8_ZaFYZ9BQU"
+            },
+            {
+                "id": 2,
+                "date": "2023.09.20",
+                "title": "3[秋季] 2023城市儀表板大黑客松",
+                "thumbnail": "/images/videos/video-sample.png",
+                "video_url": "https://www.youtube.com/watch?v=8_ZaFYZ9BQU"
+            },
+            {
+                "id": 3,
+                "date": "2023.09.20",
+                "title": "4[春季] 2023城市儀表板大黑客松",
+                "thumbnail": "/images/videos/video-sample.png",
+                "video_url": "https://www.youtube.com/watch?v=8_ZaFYZ9BQU"
+            }
+        ]
+    },
+    "sponsor": {
+        "section_title": "贊助廠商",
+        "list": [
+            {
+                "id": 0,
+                "image_url": "/images/sponsors/sponsor-sample.png"
+            },
+            {
+                "id": 1,
+                "image_url": "/images/sponsors/sponsor-sample2.png"
+            },
+            {
+                "id": 2,
+                "image_url": "/images/sponsors/sponsor-sample.png"
+            },
+            {
+                "id": 3,
+                "image_url": "/images/sponsors/sponsor-sample2.png"
+            },
+            {
+                "id": 4,
+                "image_url": "/images/sponsors/sponsor-sample.png"
+            },
+            {
+                "id": 5,
+                "image_url": "/images/sponsors/sponsor-sample2.png"
+            }
+        ]
+    }
+}

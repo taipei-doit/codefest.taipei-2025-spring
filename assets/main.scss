@@ -1,0 +1,86 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+// 中文字
+@font-face {
+    font-family: "fusion-pixel-10px-monospaced-zh_hant";
+    src: url("@/assets/fonts/fusion-pixel-10px-monospaced-zh_hant.ttf") format("truetype");
+}
+
+// 英數字
+@font-face {
+    font-family: "Px437_IGS_VGA_8x16";
+    src: url("@/assets/fonts/Px437_IGS_VGA_8x16.ttf") format("truetype");
+}
+
+// 中文字
+.font-fusion-pixel {
+    font-family: "fusion-pixel-10px-monospaced-zh_hant", sans-serif;
+}
+
+// 英數字
+.font-px437 {
+    font-family: "Px437_IGS_VGA_8x16", sans-serif;
+}
+
+body {
+    background-color: theme("colors.primary.500");
+}
+
+/** 虛線 */
+.custom-dashed {
+    --dashed-color: white; /* 預設顏色 */
+    background-image: linear-gradient(to right, var(--dashed-color) 50%, transparent 50%);
+    background-size: 14px 1px;
+    background-repeat: repeat-x;
+    background-position: var(--dashed-position, bottom left); /* 預設 bottom */
+}
+
+/* 在 top 顯示虛線 */
+.dashed-top {
+    --dashed-position: top left;
+}
+
+/* 在 bottom 顯示虛線 */
+.dashed-bottom {
+    --dashed-position: bottom left;
+}
+
+/* 黑色虛線 */
+.dashed-black {
+    --dashed-color: black;
+}
+
+/* 按鈕 */
+.icon-btn {
+    @apply relative;
+    @apply border border-white max-w-full;
+    &::after {
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        display: block;
+        width: 24px;
+        height: 24px;
+    }
+    &--arrow::after {
+        content: url("/assets/images/icons/primary-right-arrow.svg");
+    }
+
+    &--download::after {
+        content: url("/assets/images/icons/primary-download.svg");
+    }
+
+    span {
+        @apply flex items-center justify-center h-[63px];
+        @apply m-1 py-2 bg-white font-fusion-pixel text-primary-500;
+    }
+
+    @media (max-width: 1024px) {
+        &::after {
+            right: 12px;
+        }
+    }
+}
