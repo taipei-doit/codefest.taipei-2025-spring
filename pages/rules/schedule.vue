@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { Disclosure, DisclosureButton, DisclosurePanel } from "@headlessui/vue";
+import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/vue';
 
 const { tm } = useI18n();
 
 /** 重要時程 */
 const scheduleList = computed(() => {
-  const data = tm("schedule.list");
+  const data = tm('schedule.list');
   return Array.isArray(data) ? data : Object.values(data); // 轉換 Object 為 Array
 });
 /** 選中的重要時程 */
@@ -45,10 +45,7 @@ const activeSchedule = ref(scheduleList.value[0]);
             <p class="text-xl font-fusion-pixel mb-2">
               {{ tab.schedule_sub_name }}
             </p>
-            <button
-              v-if="tab.button.text"
-              class="icon-btn icon-btn--arrow min-w-60"
-            >
+            <button v-if="tab.button.text" class="icon-btn icon-btn--arrow min-w-60">
               <span>
                 {{ tab.button.text }}
               </span>
@@ -90,5 +87,3 @@ const activeSchedule = ref(scheduleList.value[0]);
     </Disclosure>
   </div>
 </template>
-
-<style scoped lang="postcss"></style>

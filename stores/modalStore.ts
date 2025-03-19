@@ -1,15 +1,15 @@
-import { defineStore } from "pinia";
-import { ref, watch } from "vue";
+import { defineStore } from 'pinia';
+import { ref, watch } from 'vue';
 
-export const useModalStore = defineStore("modalStore", () => {
+export const useModalStore = defineStore('modalStore', () => {
   const isModalOpen = ref(false);
 
   // 監聽 modal 狀態變化，控制 body 滾動
-  watch(isModalOpen, (newVal) => {
+  watch(isModalOpen, newVal => {
     if (newVal) {
-      document.body.style.overflow = "hidden";
+      document.body.style.overflow = 'hidden';
     } else {
-      document.body.style.overflow = "";
+      document.body.style.overflow = '';
     }
   });
 

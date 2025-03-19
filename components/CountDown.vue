@@ -26,8 +26,7 @@ const getTimeLeft = (date: Date) => {
   const now = date.getTime();
   const diff = targetDate - now;
 
-  if (diff <= 0)
-    return { days: "00", hours: "00", minutes: "00", seconds: "00" };
+  if (diff <= 0) return { days: '00', hours: '00', minutes: '00', seconds: '00' };
 
   return {
     days: formatNumber(diff / (1000 * 60 * 60 * 24)),
@@ -39,7 +38,7 @@ const getTimeLeft = (date: Date) => {
 
 // 格式化數字（確保雙位數，例如 "5" -> "05"）
 const formatNumber = (num: number) => {
-  return String(Math.floor(num)).padStart(2, "0");
+  return String(Math.floor(num)).padStart(2, '0');
 };
 
 onMounted(() => {
@@ -58,11 +57,7 @@ onUnmounted(() => {
   <p>
     <!-- 天數 -->
     <span class="mx-1">
-      <span
-        v-for="char in timeLeft?.days"
-        :key="'days' + char"
-        class="countdown-box"
-      >
+      <span v-for="char in timeLeft?.days" :key="'days' + char" class="countdown-box">
         {{ char }}
       </span>
     </span>
@@ -70,11 +65,7 @@ onUnmounted(() => {
 
     <!-- 小時 -->
     <span class="mx-1">
-      <span
-        v-for="char in timeLeft?.hours"
-        :key="'hours' + char"
-        class="countdown-box"
-      >
+      <span v-for="char in timeLeft?.hours" :key="'hours' + char" class="countdown-box">
         {{ char }}
       </span>
     </span>
@@ -82,11 +73,7 @@ onUnmounted(() => {
 
     <!-- 分鐘 -->
     <span class="mx-1">
-      <span
-        v-for="char in timeLeft?.minutes"
-        :key="'minutes' + char"
-        class="countdown-box"
-      >
+      <span v-for="char in timeLeft?.minutes" :key="'minutes' + char" class="countdown-box">
         {{ char }}
       </span>
     </span>
@@ -94,16 +81,10 @@ onUnmounted(() => {
 
     <!-- 秒數 -->
     <span class="mx-1">
-      <span
-        v-for="char in timeLeft?.seconds"
-        :key="'seconds' + char"
-        class="countdown-box"
-      >
+      <span v-for="char in timeLeft?.seconds" :key="'seconds' + char" class="countdown-box">
         {{ char }}
       </span>
     </span>
     <span>秒</span>
   </p>
 </template>
-
-<style scoped lang="postcss"></style>

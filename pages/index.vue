@@ -1,14 +1,14 @@
 <script setup lang="ts">
-import { computed, nextTick, onMounted, onUnmounted, ref } from "vue";
-import { Disclosure, DisclosureButton, DisclosurePanel } from "@headlessui/vue";
-import { Swiper, SwiperSlide } from "swiper/vue";
-import { Navigation, Pagination } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/pagination";
-import type { News } from "~/interfaces/news.interface";
-import type { JudgeList } from "~/interfaces/judge.interface";
-import type { Past } from "~/interfaces/past.interface";
-import type { Sponsor } from "~/interfaces/sponsor.interface";
+import { computed, nextTick, onMounted, onUnmounted, ref } from 'vue';
+import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/vue';
+import { Swiper, SwiperSlide } from 'swiper/vue';
+import { Navigation, Pagination } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/pagination';
+import type { News } from '~/interfaces/news.interface';
+import type { JudgeList } from '~/interfaces/judge.interface';
+import type { Past } from '~/interfaces/past.interface';
+import type { Sponsor } from '~/interfaces/sponsor.interface';
 
 const { tm } = useI18n();
 
@@ -17,13 +17,13 @@ const bannerHeight = ref(`calc(100vh - ${headerHeight.value}px)`);
 
 /** 評審列表 */
 const judgeList = computed<JudgeList[]>(() => {
-  const data = tm("rules.judges");
+  const data = tm('rules.judges');
   return Array.isArray(data) ? data : Object.values(data); // 轉換 Object 為 Array
 });
 
 /** 重要時程 */
 const scheduleList = computed(() => {
-  const data = tm("schedule.list");
+  const data = tm('schedule.list');
   return Array.isArray(data) ? data : Object.values(data); // 轉換 Object 為 Array
 });
 /** 選中的重要時程 */
@@ -31,7 +31,7 @@ const activeSchedule = ref(scheduleList.value[0]);
 
 /** 最新消息列表 */
 const newsList = computed<News[]>(() => {
-  const data = tm("news.list");
+  const data = tm('news.list');
   return Array.isArray(data) ? data : Object.values(data); // 轉換 Object 為 Array
 });
 /** 選中的最新消息 */
@@ -39,7 +39,7 @@ const activeNews = ref<News | null>(null);
 
 /** 參賽回顧 */
 const pastList = computed<Past[]>(() => {
-  const data = tm("past.list");
+  const data = tm('past.list');
   return Array.isArray(data) ? data : Object.values(data); // 轉換 Object 為 Array
 });
 
@@ -54,11 +54,10 @@ const pastSlidesPerPage = 3;
 /**
  * 參賽回顧 - 總頁數
  */
-const pastTotalPages = computed(() =>
-  Math.ceil(pastList.value.length / pastSlidesPerPage)
-);
+const pastTotalPages = computed(() => Math.ceil(pastList.value.length / pastSlidesPerPage));
 
 // 監聽 Swiper 變更時，更新 `pastCurrentPage`
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const onPastSlideChange = (event: any) => {
   // console.log(event);
   if (event) {
@@ -68,14 +67,11 @@ const onPastSlideChange = (event: any) => {
 
 /** 贊助廠商 */
 const sponsorList = computed<Sponsor[]>(() => {
-  const data = tm("sponsor.list");
+  const data = tm('sponsor.list');
   return Array.isArray(data) ? data : Object.values(data); // 轉換 Object 為 Array
 });
 
-const duplicatedSponsorList = computed(() => [
-  ...sponsorList.value,
-  ...sponsorList.value,
-]);
+const duplicatedSponsorList = computed(() => [...sponsorList.value, ...sponsorList.value]);
 
 /** 最新消息 Dialog 是否開啟 */
 const isNewsDialogOpen = ref(false);
@@ -86,31 +82,29 @@ const tabToContentDistance = ref(0);
 const tabHeight = ref(0);
 
 onMounted(() => {
-  const header = document.querySelector("header");
+  const header = document.querySelector('header');
   if (header) {
     headerHeight.value = header.offsetHeight;
     bannerHeight.value = `calc(100vh - ${headerHeight.value}px)`;
   }
 
   calculateDistance();
-  window.addEventListener("resize", calculateDistance);
+  window.addEventListener('resize', calculateDistance);
 });
 
 onUnmounted(() => {
-  window.removeEventListener("resize", calculateDistance);
+  window.removeEventListener('resize', calculateDistance);
 });
 
 const calculateDistance = () => {
   nextTick(() => {
-    const activeTab = document.querySelector(".schedule-tab");
-    const rightContent = document.querySelector(".right-content"); // 右側內容區
+    const activeTab = document.querySelector('.schedule-tab');
+    const rightContent = document.querySelector('.right-content'); // 右側內容區
 
     if (activeTab && rightContent) {
       const tabRect = activeTab.getBoundingClientRect();
       const contentRect = rightContent.getBoundingClientRect();
-      tabToContentDistance.value = parseFloat(
-        (contentRect.left - tabRect.right).toFixed(2)
-      );
+      tabToContentDistance.value = parseFloat((contentRect.left - tabRect.right).toFixed(2));
       tabHeight.value = parseFloat(tabRect.height.toFixed(2));
     }
   });
@@ -120,19 +114,14 @@ const calculateDistance = () => {
 <template>
   <div>
     <!-- 第1幀 - Hero Banner -->
-    <section
-      class="flex flex-col h-full mb-40 lg:p-0 p-5"
-      :style="{ height: bannerHeight }"
-    >
+    <section class="flex flex-col h-full mb-40 lg:p-0 p-5" :style="{ height: bannerHeight }">
       <div class="lg:border-0 border border-white flex flex-1 lg:mb-[120px]">
         <div
           class="lg:border-0 m-1 border border-white text-white flex-1 flex items-center justify-center text-center bg-tp"
         >
           <div class="p-10">
-            <p
-              class="lg:text-2xl text-xl font-fusion-pixel mb-8 text-are-you-ready"
-            >
-              {{ tm("hero_banner.section_title") }}
+            <p class="lg:text-2xl text-xl font-fusion-pixel mb-8 text-are-you-ready">
+              {{ tm('hero_banner.section_title') }}
             </p>
             <img
               src="@/assets/images/hero-banner-title.svg"
@@ -145,12 +134,11 @@ const calculateDistance = () => {
               大黑克松
             </p> -->
             <p class="lg:flex items-center font-fusion-pixel mb-8">
-              <span
-                class="lg:mr-4 lg:text-base text-sm lg:inline block lg:mb-0 mb-2"
+              <span class="lg:mr-4 lg:text-base text-sm lg:inline block lg:mb-0 mb-2"
                 >報名期間</span
               >
               <span class="lg:text-4xl text-2xl lg:inline block">{{
-                tm("hero_banner.apply_date")
+                tm('hero_banner.apply_date')
               }}</span>
             </p>
             <button class="icon-btn icon-btn--arrow min-w-60">
@@ -168,20 +156,14 @@ const calculateDistance = () => {
       <div class="border border-white relative">
         <div class="m-1 border border-white">
           <p class="section-title font-fusion-pixel">
-            {{ tm("rules.section_title") }}
+            {{ tm('rules.section_title') }}
           </p>
-          <div
-            class="font-fusion-pixel text-white p-10 text-center border border-b-white"
-          >
-            <p class="whitespace-pre-wrap">{{ tm("rules.description") }}</p>
+          <div class="font-fusion-pixel text-white p-10 text-center border border-b-white">
+            <p class="whitespace-pre-wrap">{{ tm('rules.description') }}</p>
           </div>
           <div class="grid lg:grid-cols-5 grid-cols-1 border border-b-white">
             <div class="lg:col-span-3 lg:p-10 p-4 lg:border lg:border-r-white">
-              <img
-                src="@/assets/images/img-rules.png"
-                class="w-full lg:block hidden"
-                alt=""
-              />
+              <img src="@/assets/images/img-rules.png" class="w-full lg:block hidden" alt="" />
               <img
                 src="@/assets/images/img-rules-mobile.png"
                 class="w-full lg:hidden block"
@@ -191,15 +173,15 @@ const calculateDistance = () => {
             <div class="lg:col-span-2 lg:p-10 p-4">
               <div class="font-fusion-pixel text-white leading-loose mb-6">
                 <p class="text-xl text-center mb-4">
-                  {{ tm("rules.content_title") }}
+                  {{ tm('rules.content_title') }}
                 </p>
-                <p class="whitespace-pre-wrap">{{ tm("rules.content") }}</p>
+                <p class="whitespace-pre-wrap">{{ tm('rules.content') }}</p>
               </div>
               <div class="flex lg:justify-start justify-between">
                 <button
-                  class="connect-btn mr-4 font-px437"
                   v-for="(btn, index) in tm('rules.buttons')"
                   :key="index"
+                  class="connect-btn mr-4 font-px437"
                 >
                   {{ btn.name }}
                 </button>
@@ -217,17 +199,11 @@ const calculateDistance = () => {
             </div>
 
             <!-- 按鈕區塊 -->
-            <div
-              class="w-full lg:w-auto flex flex-nowrap justify-center lg:justify-end space-x-8"
-            >
-              <button
-                class="icon-btn icon-btn--arrow w-1/2 lg:w-auto lg:min-w-60"
-              >
+            <div class="w-full lg:w-auto flex flex-nowrap justify-center lg:justify-end space-x-8">
+              <button class="icon-btn icon-btn--arrow w-1/2 lg:w-auto lg:min-w-60">
                 <span> 瞭解詳情 </span>
               </button>
-              <button
-                class="icon-btn icon-btn--arrow w-1/2 lg:w-auto lg:min-w-60"
-              >
+              <button class="icon-btn icon-btn--arrow w-1/2 lg:w-auto lg:min-w-60">
                 <span> 立即報名 </span>
               </button>
             </div>
@@ -236,9 +212,7 @@ const calculateDistance = () => {
           <!-- 評審介紹 -->
           <div class="judge border border-t-white">
             <div class="p-10">
-              <p class="font-fusion-pixel text-white text-center">
-                本屆評審介紹
-              </p>
+              <p class="font-fusion-pixel text-white text-center">本屆評審介紹</p>
             </div>
 
             <template v-for="(item, index) in judgeList" :key="index">
@@ -262,25 +236,19 @@ const calculateDistance = () => {
                     <!-- desktop -->
                     <div class="lg:flex hidden">
                       <div
-                        v-for="(judge, index) in item.list"
-                        :key="index"
+                        v-for="judge in item.list"
+                        :key="judge.id"
                         class="w-1/5 p-4 flex-shrink-0"
                       >
                         <div class="judge-box relative">
-                          <img
-                            :src="judge.thumbnail"
-                            class="w-full h-full object-cover"
-                            alt=""
-                          />
+                          <img :src="judge.thumbnail" class="w-full h-full object-cover" alt="" />
                           <p
                             class="px-4 py-2 bg-white font-fusion-pixel absolute -left-3 -bottom-3"
                           >
                             {{ judge.name }}
                           </p>
                         </div>
-                        <div
-                          class="mt-4 text-white text-center font-fusion-pixel"
-                        >
+                        <div class="mt-4 text-white text-center font-fusion-pixel">
                           <p>{{ judge.corporation }}</p>
                           <p>{{ judge.position }}</p>
                         </div>
@@ -292,31 +260,25 @@ const calculateDistance = () => {
                         :modules="[Navigation, Pagination]"
                         :slides-per-view="'auto'"
                         :space-between="20"
-                        :centeredSlides="true"
+                        :centered-slides="true"
                         :loop="false"
                         navigation
                         :pagination="{ type: 'bullets', clickable: true }"
                       >
                         <SwiperSlide
-                          v-for="(judge, index) in item.list"
-                          :key="index"
+                          v-for="judge in item.list"
+                          :key="judge.id"
                           class="swiper-judge-slide"
                         >
                           <div class="judge-box relative">
-                            <img
-                              :src="judge.thumbnail"
-                              class="w-full h-full object-cover"
-                              alt=""
-                            />
+                            <img :src="judge.thumbnail" class="w-full h-full object-cover" alt="" />
                             <p
                               class="px-4 py-2 bg-white font-fusion-pixel absolute -left-3 -bottom-3"
                             >
                               {{ judge.name }}
                             </p>
                           </div>
-                          <div
-                            class="mt-8 text-white text-center font-fusion-pixel"
-                          >
+                          <div class="mt-8 text-white text-center font-fusion-pixel">
                             <p>{{ judge.corporation }}</p>
                             <p>{{ judge.position }}</p>
                           </div>
@@ -339,7 +301,7 @@ const calculateDistance = () => {
       <div class="border border-white relative">
         <div class="m-1 border border-white">
           <p class="section-title font-fusion-pixel">
-            {{ tm("schedule.section_title") }}
+            {{ tm('schedule.section_title') }}
           </p>
           <div
             class="lg:flex block justify-center items-center font-fusion-pixel text-white lg:p-10 p-4 pt-6 text-center border border-b-white"
@@ -370,9 +332,7 @@ const calculateDistance = () => {
                     <div
                       v-if="
                         index === 0 &&
-                        scheduleList.findIndex(
-                          (tab) => tab.id === activeSchedule.id
-                        ) === index
+                        scheduleList.findIndex(tab => tab.id === activeSchedule.id) === index
                       "
                       class="absolute top-1/2 right-[-100%] w-[100%] h-[2px] bg-white"
                     ></div>
@@ -381,9 +341,7 @@ const calculateDistance = () => {
                     <div
                       v-if="
                         index > 0 &&
-                        scheduleList.findIndex(
-                          (tab) => tab.id === activeSchedule.id
-                        ) === index
+                        scheduleList.findIndex(tab => tab.id === activeSchedule.id) === index
                       "
                       class="absolute right-[-20px] top-1/2 h-[2px] bg-white"
                       :style="{
@@ -394,9 +352,7 @@ const calculateDistance = () => {
                     <div
                       v-if="
                         index > 0 &&
-                        scheduleList.findIndex(
-                          (tab) => tab.id === activeSchedule.id
-                        ) === index
+                        scheduleList.findIndex(tab => tab.id === activeSchedule.id) === index
                       "
                       class="absolute w-[2px] bg-white"
                       :style="{
@@ -408,9 +364,7 @@ const calculateDistance = () => {
                     <div
                       v-if="
                         index > 0 &&
-                        scheduleList.findIndex(
-                          (tab) => tab.id === activeSchedule.id
-                        ) === index
+                        scheduleList.findIndex(tab => tab.id === activeSchedule.id) === index
                       "
                       class="absolute h-[2px] bg-white"
                       :style="{
@@ -423,9 +377,7 @@ const calculateDistance = () => {
                 </div>
               </div>
             </div>
-            <div
-              class="col-span-5 bg-primary-300 border border-white z-0 right-content"
-            >
+            <div class="col-span-5 bg-primary-300 border border-white z-0 right-content">
               <!-- 右側內容區 -->
               <div class="flex-1 font-fusion-pixel font-px437 text-white">
                 <div
@@ -433,8 +385,8 @@ const calculateDistance = () => {
                 >
                   <p class="text-xl">{{ activeSchedule.schedule_sub_name }}</p>
                   <button
-                    class="icon-btn icon-btn--arrow min-w-60"
                     v-if="activeSchedule.button.text"
+                    class="icon-btn icon-btn--arrow min-w-60"
                   >
                     <span>
                       {{ activeSchedule.button.text }}
@@ -451,21 +403,16 @@ const calculateDistance = () => {
                     <thead>
                       <tr class="border-white custom-dashed text-left">
                         <th
-                          class="p-2"
-                          v-for="(
-                            header, index
-                          ) in activeSchedule.schedule_headers"
+                          v-for="(header, index) in activeSchedule.schedule_headers"
                           :key="index"
+                          class="p-2"
                         >
                           {{ header.name }}
                         </th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr
-                        v-for="(item, index) in activeSchedule.schedule"
-                        :key="index"
-                      >
+                      <tr v-for="(item, index) in activeSchedule.schedule" :key="index">
                         <td class="p-2">{{ item.time }}</td>
                         <td class="p-2">{{ item.name }}</td>
                         <td class="p-2">{{ item.presenter }}</td>
@@ -480,8 +427,8 @@ const calculateDistance = () => {
           <!-- mobile -->
           <div class="lg:hidden">
             <Disclosure
-              v-slot="{ open }"
               v-for="(tab, index) in scheduleList"
+              v-slot="{ open }"
               :key="index"
               :default-open="activeSchedule.id === tab.id"
             >
@@ -510,10 +457,7 @@ const calculateDistance = () => {
                     <p class="text-xl font-fusion-pixel mb-2">
                       {{ tab.schedule_sub_name }}
                     </p>
-                    <button
-                      class="icon-btn icon-btn--arrow min-w-60"
-                      v-if="tab.button.text"
-                    >
+                    <button v-if="tab.button.text" class="icon-btn icon-btn--arrow min-w-60">
                       <span>
                         {{ tab.button.text }}
                       </span>
@@ -529,16 +473,16 @@ const calculateDistance = () => {
                       <thead>
                         <tr class="border-white custom-dashed text-left">
                           <th
+                            v-for="(header, headerIndex) in tab.schedule_headers"
+                            :key="headerIndex"
                             class="p-2"
-                            v-for="(header, index) in tab.schedule_headers"
-                            :key="index"
                           >
                             {{ header.name }}
                           </th>
                         </tr>
                       </thead>
                       <tbody>
-                        <tr v-for="(item, index) in tab.schedule" :key="index">
+                        <tr v-for="(item, itemIndex) in tab.schedule" :key="itemIndex">
                           <td class="p-2">{{ item.time }}</td>
                           <td class="p-2">{{ item.name }}</td>
                           <td class="p-2">{{ item.presenter }}</td>
@@ -547,9 +491,7 @@ const calculateDistance = () => {
                     </table>
                     <div v-show="tab.id === 'competition'">競賽日</div>
                   </div>
-                  <p
-                    class="custom-dashed dashed-top p-4 text-center scroll-arrow"
-                  >
+                  <p class="custom-dashed dashed-top p-4 text-center scroll-arrow">
                     向右滑看更多資訊
                   </p>
                 </div>
@@ -571,9 +513,7 @@ const calculateDistance = () => {
               <p class="section-title font-fusion-pixel">最新消息</p>
 
               <div class="lg:px-10 lg:py-14 p-4 pt-10 border border-b-white">
-                <div
-                  class="space-y-6 text-white font-fusion-pixel h-[347px] pr-4 overflow-auto"
-                >
+                <div class="space-y-6 text-white font-fusion-pixel h-[347px] pr-4 overflow-auto">
                   <a
                     v-for="news in newsList"
                     :key="news.id"
@@ -591,22 +531,16 @@ const calculateDistance = () => {
                   </a>
                 </div>
               </div>
-              <div
-                class="hidden lg:flex justify-between items-center p-10 bg-primary-300 m-1"
-              >
+              <div class="hidden lg:flex justify-between items-center p-10 bg-primary-300 m-1">
                 <!-- 文字區塊 (lg 以上才顯示) -->
                 <div class="flex-1">
-                  <p class="font-px437 text-white typing-container">
-                    READ MORE：⭡⭣
-                  </p>
+                  <p class="font-px437 text-white typing-container">READ MORE：⭡⭣</p>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div
-          class="lg:col-span-2 p-10 lg:flex hidden items-center justify-center"
-        >
+        <div class="lg:col-span-2 p-10 lg:flex hidden items-center justify-center">
           <img src="@/assets/images/img-news.png" alt="" />
         </div>
       </div>
@@ -634,7 +568,7 @@ const calculateDistance = () => {
                   nextEl: '.swiper-button-next', // 下一則
                   prevEl: '.swiper-button-prev', // 上一則
                 }"
-                @slideChange="onPastSlideChange"
+                @slide-change="onPastSlideChange"
               >
                 <SwiperSlide v-for="(group, index) in pastList" :key="index">
                   <div :key="group.id">
@@ -646,9 +580,7 @@ const calculateDistance = () => {
                           alt=""
                         />
                         <!-- 播放按鈕 -->
-                        <div
-                          class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-                        >
+                        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
                           <div
                             class="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-[0_0_6px]"
                           >
@@ -656,9 +588,7 @@ const calculateDistance = () => {
                           </div>
                         </div>
                       </div>
-                      <div
-                        class="flex justify-between items-center mt-2 text-lg text-white"
-                      >
+                      <div class="flex justify-between items-center mt-2 text-lg text-white">
                         <span>{{ group.title }}</span>
                         <span>→</span>
                       </div>
@@ -669,11 +599,7 @@ const calculateDistance = () => {
             </div>
             <!-- mobile -->
             <div class="lg:hidden block">
-              <div
-                v-for="(group, index) in pastList.slice(0, 3)"
-                :key="index"
-                class="mb-8"
-              >
+              <div v-for="(group, index) in pastList.slice(0, 3)" :key="index" class="mb-8">
                 <a :href="group.video_url" target="_blank">
                   <div class="video-box relative">
                     <img
@@ -682,9 +608,7 @@ const calculateDistance = () => {
                       alt=""
                     />
                     <!-- 播放按鈕 -->
-                    <div
-                      class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-                    >
+                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
                       <div
                         class="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-[0_0_6px]"
                       >
@@ -692,9 +616,7 @@ const calculateDistance = () => {
                       </div>
                     </div>
                   </div>
-                  <div
-                    class="flex justify-between items-center mt-2 text-lg text-white"
-                  >
+                  <div class="flex justify-between items-center mt-2 text-lg text-white">
                     <span>{{ group.title }}</span>
                     <span>→</span>
                   </div>
@@ -702,14 +624,9 @@ const calculateDistance = () => {
               </div>
             </div>
           </div>
-          <div
-            class="hidden lg:block py-4 px-10 border border-b-white"
-            v-if="pastTotalPages > 1"
-          >
+          <div v-if="pastTotalPages > 1" class="hidden lg:block py-4 px-10 border border-b-white">
             <!-- 分頁控制 -->
-            <div
-              class="flex justify-end items-center space-x-2 text-white font-px437"
-            >
+            <div class="flex justify-end items-center space-x-2 text-white font-px437">
               <button class="swiper-button-prev">
                 <img
                   src="@/assets/images/icons/white-down-arrow.svg"
@@ -718,9 +635,7 @@ const calculateDistance = () => {
                   class="rotate-90"
                 />
               </button>
-              <span
-                >&nbsp;{{ pastCurrentPage }} / {{ pastTotalPages }}&nbsp;</span
-              >
+              <span>&nbsp;{{ pastCurrentPage }} / {{ pastTotalPages }}&nbsp;</span>
               <button class="swiper-button-next">
                 <img
                   src="@/assets/images/icons/white-down-arrow.svg"
@@ -731,20 +646,14 @@ const calculateDistance = () => {
               </button>
             </div>
           </div>
-          <div
-            class="flex justify-between items-center p-10 bg-primary-300 m-1"
-          >
+          <div class="flex justify-between items-center p-10 bg-primary-300 m-1">
             <!-- 文字區塊 (lg 以上才顯示) -->
             <div class="hidden lg:block flex-1">
-              <p class="font-px437 text-white typing-container">
-                READ MORE COMPETITIONS：VIEW⭢
-              </p>
+              <p class="font-px437 text-white typing-container">READ MORE COMPETITIONS：VIEW⭢</p>
             </div>
 
             <!-- 按鈕區塊 -->
-            <div
-              class="w-full lg:w-auto flex flex-nowrap justify-center lg:justify-end space-x-8"
-            >
+            <div class="w-full lg:w-auto flex flex-nowrap justify-center lg:justify-end space-x-8">
               <button class="icon-btn icon-btn--arrow min-w-60">
                 <span> 查看更多 </span>
               </button>
@@ -772,11 +681,7 @@ const calculateDistance = () => {
                     class="max-w-[200px] p-4 flex-shrink-0 mr-10"
                   >
                     <a href="#" target="_blank" class="group block">
-                      <img
-                        :src="sponsor.image_url"
-                        alt=""
-                        class="w-full h-auto"
-                      />
+                      <img :src="sponsor.image_url" alt="" class="w-full h-auto" />
                     </a>
                   </div>
                 </div>
@@ -791,11 +696,7 @@ const calculateDistance = () => {
                       class="max-w-[200px] p-4 flex-shrink-0 mr-10"
                     >
                       <a href="#" target="_blank" class="group block">
-                        <img
-                          :src="sponsor.image_url"
-                          alt=""
-                          class="w-full h-auto"
-                        />
+                        <img :src="sponsor.image_url" alt="" class="w-full h-auto" />
                       </a>
                     </div>
                   </div>
@@ -807,7 +708,7 @@ const calculateDistance = () => {
       </div>
     </section>
     <NewsDialog
-      :isOpen="isNewsDialogOpen"
+      :is-open="isNewsDialogOpen"
       :active-news="activeNews"
       @close="
         activeNews = null;
@@ -821,7 +722,7 @@ const calculateDistance = () => {
 .text-are-you-ready {
   @apply relative;
   &::before {
-    content: url("@/assets/images/are-you-ready.svg");
+    content: url('@/assets/images/are-you-ready.svg');
     position: absolute;
     top: -50px;
     left: 40px;
@@ -835,7 +736,7 @@ const calculateDistance = () => {
 .bg-tp {
   @apply relative;
   &::before {
-    content: url("@/assets/images/hero-banner-tpe.svg");
+    content: url('@/assets/images/hero-banner-tpe.svg');
     background-repeat: no-repeat;
     position: absolute;
     left: 0;
@@ -843,7 +744,7 @@ const calculateDistance = () => {
   }
 
   &::after {
-    content: url("@/assets/images/hero-banner-ntpc.svg");
+    content: url('@/assets/images/hero-banner-ntpc.svg');
     background-repeat: no-repeat;
     position: absolute;
     right: 0;
@@ -857,7 +758,7 @@ const calculateDistance = () => {
   }
 
   .bg-tp {
-    background-image: url("@/assets/images/hero-banner-tp.svg");
+    background-image: url('@/assets/images/hero-banner-tp.svg');
     background-position: bottom;
     background-repeat: no-repeat;
     background-size: contain;
@@ -880,7 +781,7 @@ const calculateDistance = () => {
   font-size: 20px; /* 文字大小 */
 
   &::after {
-    content: "";
+    content: '';
     display: inline-block;
     width: 4px;
     height: 1em;
@@ -967,13 +868,13 @@ const calculateDistance = () => {
   gap: 10px; /* 圖示與文字間距 */
 
   &::before {
-    content: url("@/assets/images/icons/scroll-left.svg");
+    content: url('@/assets/images/icons/scroll-left.svg');
     width: 30px;
     height: 30px;
   }
 
   &::after {
-    content: url("@/assets/images/icons/scroll-right.svg");
+    content: url('@/assets/images/icons/scroll-right.svg');
     width: 30px;
     height: 30px;
   }
@@ -988,7 +889,7 @@ const calculateDistance = () => {
 .right-arrow {
   @apply relative block w-full pr-8;
   &::after {
-    content: url("@/assets/images/icons/white-right-arrow.svg");
+    content: url('@/assets/images/icons/white-right-arrow.svg');
     position: absolute;
     right: 0;
   }

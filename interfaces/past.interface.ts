@@ -12,4 +12,3 @@ export interface Past {
   /** 回顧影片連結 */
   video_url: string;
 }
-

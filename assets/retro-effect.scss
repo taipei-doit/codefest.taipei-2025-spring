@@ -55,74 +55,74 @@ $scan-opacity: 0.75;
 
 // apply CRT animation: @include scan-crt($scan-crt);
 @mixin scan-crt($scan-crt) {
-    @if $scan-crt == true {
-        animation: scanlines 2s steps($scan-fps) infinite;
-    } @else {
-        animation: none;
-    }
+  @if $scan-crt == true {
+    animation: scanlines 2s steps($scan-fps) infinite;
+  } @else {
+    animation: none;
+  }
 }
 
 // apply moving scanline animation: @include scan-moving($scan-moving-line);
 @mixin scan-moving($scan-moving-line) {
-    @if $scan-moving-line == true {
-        animation: scanline 12s linear infinite;
-    } @else {
-        animation: none;
-    }
+  @if $scan-moving-line == true {
+    animation: scanline 12s linear infinite;
+  } @else {
+    animation: none;
+  }
 }
 
 /* CSS .scanlines CLASS */
 
 .scanlines {
-    position: relative;
-    overflow: hidden; // only to animate the unique scanline
+  position: relative;
+  overflow: hidden; // only to animate the unique scanline
 
-    &:before,
-    &:after {
-        display: block;
-        pointer-events: none;
-        content: "";
-        position: absolute;
-    }
+  &:before,
+  &:after {
+    display: block;
+    pointer-events: none;
+    content: '';
+    position: absolute;
+  }
 
-    // unique scanline travelling on the screen
-    &:before {
-        width: 100%;
-        height: $scan-width * 1; // 增加 scanline 高度
-        z-index: $scan-z-index + 1;
-        background: $scan-color;
-        opacity: $scan-opacity;
-        @include scan-moving($scan-moving-line);
-    }
+  // unique scanline travelling on the screen
+  &:before {
+    width: 100%;
+    height: $scan-width * 1; // 增加 scanline 高度
+    z-index: $scan-z-index + 1;
+    background: $scan-color;
+    opacity: $scan-opacity;
+    @include scan-moving($scan-moving-line);
+  }
 
-    // the scanlines, so!
-    &:after {
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        z-index: $scan-z-index;
-        background: linear-gradient(to bottom, transparent 50%, $scan-color 51%);
-        background-size: 100% $scan-width * 2; // 增加背景大小
-        @include scan-crt($scan-crt);
-    }
+  // the scanlines, so!
+  &:after {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: $scan-z-index;
+    background: linear-gradient(to bottom, transparent 50%, $scan-color 51%);
+    background-size: 100% $scan-width * 2; // 增加背景大小
+    @include scan-crt($scan-crt);
+  }
 }
 
 /* ANIMATE UNIQUE SCANLINE */
 @keyframes scanline {
-    0% {
-        transform: translate3d(0, 200%, 0);
-    }
-    100% {
-        transform: translate3d(0, -200%, 0);
-    }
+  0% {
+    transform: translate3d(0, 200%, 0);
+  }
+  100% {
+    transform: translate3d(0, -200%, 0);
+  }
 }
 
 @keyframes scanlines {
-    0% {
-        background-position: 0 50%;
-    }
-    100% {
-        background-position: 0 0%;
-    }
+  0% {
+    background-position: 0 50%;
+  }
+  100% {
+    background-position: 0 0%;
+  }
 }

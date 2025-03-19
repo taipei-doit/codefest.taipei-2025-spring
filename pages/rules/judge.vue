@@ -1,16 +1,16 @@
 <script setup lang="ts">
-import { Disclosure, DisclosureButton, DisclosurePanel } from "@headlessui/vue";
-import type { JudgeList } from "~/interfaces/judge.interface";
-import { Swiper, SwiperSlide } from "swiper/vue";
-import { Navigation, Pagination } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/pagination";
+import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/vue';
+import type { JudgeList } from '~/interfaces/judge.interface';
+import { Swiper, SwiperSlide } from 'swiper/vue';
+import { Navigation, Pagination } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/pagination';
 
 const { tm } = useI18n();
 
 /** 評審列表 */
 const judgeList = computed<JudgeList[]>(() => {
-  const data = tm("rules.judges");
+  const data = tm('rules.judges');
   return Array.isArray(data) ? data : Object.values(data); // 轉換 Object 為 Array
 });
 </script>
@@ -41,17 +41,9 @@ const judgeList = computed<JudgeList[]>(() => {
           <div class="relative w-full py-10 pb-4 lg:py-10">
             <!-- desktop -->
             <div class="lg:flex hidden">
-              <div
-                v-for="(judge, index) in item.list"
-                :key="index"
-                class="w-1/5 p-4 flex-shrink-0"
-              >
+              <div v-for="judge in item.list" :key="judge.id" class="w-1/5 p-4 flex-shrink-0">
                 <div class="judge-box relative">
-                  <img
-                    :src="judge.thumbnail"
-                    class="w-full h-full object-cover"
-                    alt=""
-                  />
+                  <img :src="judge.thumbnail" class="w-full h-full object-cover" alt="" />
                   <p
                     class="px-4 py-2 bg-white text-black font-fusion-pixel absolute -left-3 -bottom-3"
                   >
@@ -70,22 +62,14 @@ const judgeList = computed<JudgeList[]>(() => {
                 :modules="[Navigation, Pagination]"
                 :slides-per-view="'auto'"
                 :space-between="20"
-                :centeredSlides="true"
+                :centered-slides="true"
                 :loop="false"
                 navigation
                 :pagination="{ type: 'bullets', clickable: true }"
               >
-                <SwiperSlide
-                  v-for="(judge, index) in item.list"
-                  :key="index"
-                  class="swiper-judge-slide"
-                >
+                <SwiperSlide v-for="judge in item.list" :key="judge.id" class="swiper-judge-slide">
                   <div class="judge-box relative">
-                    <img
-                      :src="judge.thumbnail"
-                      class="w-full h-full object-cover"
-                      alt=""
-                    />
+                    <img :src="judge.thumbnail" class="w-full h-full object-cover" alt="" />
                     <p
                       class="px-4 py-2 bg-white text-black font-fusion-pixel absolute -left-3 -bottom-3"
                     >
@@ -105,5 +89,3 @@ const judgeList = computed<JudgeList[]>(() => {
     </template>
   </div>
 </template>
-
-<style scoped lang="postcss"></style>

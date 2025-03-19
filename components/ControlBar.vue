@@ -16,9 +16,7 @@ const showApplyBtn = computed(() => route.path.startsWith(ROUTE_PATHS.RULES));
   >
     <div class="lg:block hidden border border-white bg-primary-500 w-full">
       <div class="m-1 flex border border-white h-[96px]">
-        <div
-          class="container mx-auto p-3 text-xl flex justify-between items-center"
-        >
+        <div class="container mx-auto p-3 text-xl flex justify-between items-center">
           <div class="flex">
             <p class="text-white font-fusion-pixel mr-10">⭠⭡⭢⭣：Select Item</p>
             <p class="text-white font-fusion-pixel mr-10">Enter：Open Link</p>
@@ -28,10 +26,7 @@ const showApplyBtn = computed(() => route.path.startsWith(ROUTE_PATHS.RULES));
         </div>
       </div>
     </div>
-    <button
-      v-if="showApplyBtn"
-      class="icon-btn icon-btn--arrow w-auto min-w-60 lg:ml-4 mx-auto"
-    >
+    <button v-if="showApplyBtn" class="icon-btn icon-btn--arrow w-auto min-w-60 lg:ml-4 mx-auto">
       <span> 立即報名 </span>
     </button>
   </div>

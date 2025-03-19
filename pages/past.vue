@@ -1,11 +1,7 @@
 <script setup lang="ts">
-const { tm } = useI18n();
+// const { tm } = useI18n();
 </script>
 
 <template>
-  <div>
-  
-  </div>
+  <div></div>
 </template>
-
-<style scoped lang="postcss"></style>

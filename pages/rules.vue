@@ -4,35 +4,33 @@ const route = useRoute();
 
 const tabList = [
   {
-    id: "rules",
-    name: "參賽規則",
+    id: 'rules',
+    name: '參賽規則',
     path: `${ROUTE_PATHS.RULES}`,
   },
   {
-    id: "schedule",
-    name: "重要時程",
+    id: 'schedule',
+    name: '重要時程',
     path: `${ROUTE_PATHS.RULES}${ROUTE_PATHS.SCHEDULE}`,
   },
   {
-    id: "judge",
-    name: "本屆評審",
+    id: 'judge',
+    name: '本屆評審',
     path: `${ROUTE_PATHS.RULES}/judge`,
   },
   {
-    id: "faq",
-    name: "FAQ",
+    id: 'faq',
+    name: 'FAQ',
     path: `${ROUTE_PATHS.RULES}/faq`,
   },
 ];
 
-const activeTab = computed(
-  () => tabList.find((tab) => tab.path === route.path) || tabList[0]
-);
+const activeTab = computed(() => tabList.find(tab => tab.path === route.path) || tabList[0]);
 
 const tabItems = ref<HTMLElement[]>([]);
 
 const scrollToTab = (index: number) => {
-  const scrollContainer = document.querySelector(".scroll-container"); // 取得 `overflow-x-auto` 的 div
+  const scrollContainer = document.querySelector('.scroll-container'); // 取得 `overflow-x-auto` 的 div
 
   if (scrollContainer) {
     const scrollLeft =
@@ -42,15 +40,13 @@ const scrollToTab = (index: number) => {
 
     scrollContainer.scrollTo({
       left: scrollLeft,
-      behavior: "smooth",
+      behavior: 'smooth',
     });
   }
 };
 
 onMounted(() => {
-  const currentTabIdx = tabList.findIndex(
-    (tab) => tab.id === activeTab.value.id
-  );
+  const currentTabIdx = tabList.findIndex(tab => tab.id === activeTab.value.id);
   scrollToTab(currentTabIdx);
 });
 </script>
@@ -61,7 +57,7 @@ onMounted(() => {
       <div class="border border-white relative">
         <div class="m-1 border border-white">
           <p class="section-title font-fusion-pixel">
-            {{ tm("rules.section_title") }}
+            {{ tm('rules.section_title') }}
           </p>
           <div
             class="lg:flex block justify-center items-center font-fusion-pixel text-white lg:p-10 px-2 py-6 text-center border border-b-white"
@@ -75,7 +71,7 @@ onMounted(() => {
               <div class="flex">
                 <div class="relative flex flex-col">
                   <NuxtLink
-                    v-for="(tab, index) in tabList"
+                    v-for="tab in tabList"
                     :key="tab.id"
                     :to="tab.path"
                     class="tab-item relative min-w-[220px] w-full p-6 border border-white text-xl text-center cursor-pointer font-fusion-pixel mb-4"
@@ -98,13 +94,11 @@ onMounted(() => {
                 <NuxtLink
                   v-for="(tab, index) in tabList"
                   :key="tab.id"
-                  :to="tab.path"
                   ref="tabItems"
+                  :to="tab.path"
                   class="mobile-tab-item"
                   :class="[
-                    activeTab?.id === tab.id
-                      ? 'border-b-2 border-white'
-                      : 'border-none',
+                    activeTab?.id === tab.id ? 'border-b-2 border-white' : 'border-none',
                     'whitespace-nowrap text-white font-fusion-pixel px-4 py-2 text-lg',
                   ]"
                   :aria-current="activeTab?.id === tab.id ? 'page' : undefined"
@@ -130,5 +124,3 @@ onMounted(() => {
     </section>
   </div>
 </template>
-
-<style scoped lang="postcss"></style>
