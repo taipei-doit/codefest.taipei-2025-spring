@@ -64,7 +64,7 @@ onMounted(() => {
             {{ tm("rules.section_title") }}
           </p>
           <div
-            class="lg:flex block justify-center items-center font-fusion-pixel text-white lg:p-10 p-4 pt-6 text-center border border-b-white"
+            class="lg:flex block justify-center items-center font-fusion-pixel text-white lg:p-10 px-2 py-6 text-center border border-b-white"
           >
             <p class="mb-4 lg:mb-0">報名截止倒數</p>
             <CountDown :target-date="new Date(tm('schedule.count_down'))" />
@@ -92,7 +92,7 @@ onMounted(() => {
             </div>
             <!-- Mobile 上方 Tabs -->
             <div
-              class="scroll-container lg:hidden border-b border-white py-4 px-12 w-[95%] overflow-x-auto test"
+              class="scroll-container lg:hidden border-b border-white py-4 px-12 overflow-x-auto"
             >
               <nav class="flex space-x-3" aria-label="Tabs">
                 <NuxtLink
@@ -112,6 +112,7 @@ onMounted(() => {
                 >
                   {{ tab.name }}
                 </NuxtLink>
+                <div class="w-2 h-2 shrink-0"></div>
               </nav>
             </div>
 
