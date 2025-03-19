@@ -124,7 +124,7 @@ const calculateDistance = () => {
       class="flex flex-col h-full mb-40 lg:p-0 p-5"
       :style="{ height: bannerHeight }"
     >
-      <div class="lg:border-0 border border-white flex flex-1 lg:mb-[70px]">
+      <div class="lg:border-0 border border-white flex flex-1 lg:mb-[120px]">
         <div
           class="lg:border-0 m-1 border border-white text-white flex-1 flex items-center justify-center text-center bg-tp"
         >
