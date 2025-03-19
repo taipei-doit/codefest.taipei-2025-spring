@@ -17,14 +17,14 @@ const judgeList = computed<JudgeList[]>(() => {
 
 <template>
   <div class="judge">
-    <div class="p-10">
+    <div class="lg:block hidden p-10">
       <p class="font-fusion-pixel text-white text-center">本屆評審介紹</p>
     </div>
 
     <template v-for="(item, index) in judgeList" :key="index">
       <Disclosure v-slot="{ open }" :default-open="true">
         <DisclosureButton
-          class="w-full flex items-center justify-between p-2 border border-t-white border-b-white"
+          class="w-full flex items-center justify-between p-2 border border-t-white border-b-white bg-primary-300"
         >
           <p class="text-white text-center font-fusion-pixel mx-auto">
             {{ item.name }}
