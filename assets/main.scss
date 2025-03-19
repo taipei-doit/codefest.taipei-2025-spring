@@ -84,3 +84,17 @@ body {
         }
     }
 }
+
+.judge .swiper {
+    padding-bottom: 50px;
+
+    .swiper-pagination-bullet {
+        background: theme("colors.secondary.500") !important;
+        opacity: 1;
+        width: 12px;
+        height: 12px;
+    }
+    .swiper-pagination-bullet-active {
+        background: white !important;
+    }
+}

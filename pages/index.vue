@@ -234,7 +234,7 @@ const calculateDistance = () => {
           </div>
 
           <!-- 評審介紹 -->
-          <div class="border border-t-white">
+          <div class="judge border border-t-white">
             <div class="p-10">
               <p class="font-fusion-pixel text-white text-center">
                 本屆評審介紹
@@ -991,20 +991,6 @@ const calculateDistance = () => {
     content: url("@/assets/images/icons/white-right-arrow.svg");
     position: absolute;
     right: 0;
-  }
-}
-
-#rules .swiper {
-  padding-bottom: 50px;
-
-  .swiper-pagination-bullet {
-    background: theme("colors.secondary.500") !important;
-    opacity: 1;
-    width: 12px;
-    height: 12px;
-  }
-  .swiper-pagination-bullet-active {
-    background: white !important;
   }
 }
 </style>
