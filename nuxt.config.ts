@@ -5,9 +5,7 @@ export default defineNuxtConfig({
 
   modules: [
     "@nuxt/eslint",
-    "@nuxt/icon",
-    "@nuxt/test-utils",
-    "@nuxt/image",
+    "@nuxtjs/stylelint-module",
     "@pinia/nuxt",
     "@nuxtjs/tailwindcss",
     "@nuxtjs/i18n",
