@@ -6,12 +6,12 @@ const props = defineProps<{
 const route = useRoute();
 
 // 只有在參賽規則頁時顯示 ControlBar
-const showApplyBtn = computed(() => route.path === ROUTE_PATHS.RULES);
+const showApplyBtn = computed(() => route.path.startsWith(ROUTE_PATHS.RULES));
 </script>
 
 <template>
   <div
-    class="flex p-5 z-50"
+    class="flex p-5 z-50 border-t border-b border-white lg:border-none bg-primary-300 lg:bg-primary-500"
     :class="props.isAboveFooter ? '' : 'fixed bottom-0 left-0 right-0'"
   >
     <div class="lg:block hidden border border-white bg-primary-500 w-full">
@@ -30,7 +30,7 @@ const showApplyBtn = computed(() => route.path === ROUTE_PATHS.RULES);
     </div>
     <button
       v-if="showApplyBtn"
-      class="icon-btn icon-btn--arrow lg:w-auto w-full lg:min-w-60 lg:ml-4"
+      class="icon-btn icon-btn--arrow w-auto min-w-60 lg:ml-4 mx-auto"
     >
       <span> 立即報名 </span>
     </button>
@@ -38,10 +38,12 @@ const showApplyBtn = computed(() => route.path === ROUTE_PATHS.RULES);
 </template>
 
 <style scoped lang="postcss">
-.icon-btn {
-  min-width: 263px;
-  span {
-    height: 96px;
+@media (min-width: 1024px) {
+  .icon-btn {
+    min-width: 263px;
+    span {
+      height: 96px;
+    }
   }
 }
 </style>
