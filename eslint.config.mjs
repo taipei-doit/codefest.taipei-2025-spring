@@ -1,11 +1,15 @@
 // @ts-check
 import withNuxt from './.nuxt/eslint.config.mjs'
+import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
 
 export default withNuxt([
   {
+    files: ['**/*.ts', '**/*.js', '**/*.vue'],
     rules: {
-      // 讓 ESLint 兼容 Prettier，不報錯 HTML 自閉合標籤
-      "vue/html-self-closing": "off"
-    }
+      "eol-last": "error",
+      "linebreak-style": "error",
+      "semi": ["error", "always"],
+    },
+    ...eslintPluginPrettierRecommended
   }
 ]);

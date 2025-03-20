@@ -7,14 +7,13 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "lint:js": "eslint . --fix",
+    "lint:style": "stylelint **/*.{scss,vue}"
   },
   "dependencies": {
     "@headlessui/vue": "^1.7.23",
     "@nuxt/eslint": "^1.2.0",
-    "@nuxt/icon": "^1.11.0",
-    "@nuxt/image": "^1.9.0",
-    "@nuxt/test-utils": "^3.17.2",
     "@nuxtjs/i18n": "^9.3.1",
     "@pinia/nuxt": "^0.10.1",
     "eslint": "^9.22.0",
@@ -24,7 +23,16 @@
     "vue-router": "^4.5.0"
   },
   "devDependencies": {
+    "@nuxtjs/stylelint-module": "^5.2.0",
     "@nuxtjs/tailwindcss": "^6.13.2",
-    "sass-embedded": "^1.79.4"
+    "eslint-config-prettier": "^10.1.1",
+    "eslint-plugin-prettier": "^5.2.3",
+    "postcss-html": "^1.8.0",
+    "postcss-scss": "^4.0.9",
+    "prettier": "^3.5.3",
+    "sass-embedded": "^1.79.4",
+    "stylelint": "^16.16.0",
+    "stylelint-config-recommended-scss": "^14.1.0",
+    "stylelint-config-recommended-vue": "^1.6.0"
   }
 }

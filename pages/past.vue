@@ -165,5 +165,3 @@ const isWinningTeamDialogOpen = ref(false);
     />
   </div>
 </template>
-
-<style scoped lang="postcss"></style>

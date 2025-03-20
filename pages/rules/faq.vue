@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { Disclosure, DisclosureButton, DisclosurePanel } from "@headlessui/vue";
+import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/vue';
 
 const { tm } = useI18n();
 
 /** 重要時程 */
 const faqList = computed(() => {
-  const data = tm("faq.list");
+  const data = tm('faq.list');
   return Array.isArray(data) ? data : Object.values(data); // 轉換 Object 為 Array
 });
 </script>
@@ -14,7 +14,7 @@ const faqList = computed(() => {
   <div>
     <div class="lg:block hidden p-10">
       <p class="font-fusion-pixel text-white text-center">
-        {{ tm("faq.section_title") }}
+        {{ tm('faq.section_title') }}
       </p>
     </div>
 
@@ -55,5 +55,3 @@ const faqList = computed(() => {
     </template>
   </div>
 </template>
-
-<style scoped lang="postcss"></style>

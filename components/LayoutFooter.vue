@@ -19,14 +19,12 @@
               />
             </div>
             <div class="lg:block hidden mt-auto font-fusion-pixel">
-              <a href="" class="lg:block text-center mb-2"
-                >政府網站資料開放宣告</a
-              >
+              <a href="" class="lg:block text-center mb-2">政府網站資料開放宣告</a>
               <a href="" class="lg:block text-center">隱私權及資訊安全政策</a>
             </div>
           </div>
           <div class="lg:col-span-3 p-4 flex flex-col border border-r-white">
-            <Navbar
+            <LayoutNavbar
               type="footer"
               nav-class="lg:flex mb-6 lg:mb-0 text-white font-fusion-pixel"
             />
@@ -38,39 +36,21 @@
           </div>
           <div class="lg:col-span-1 p-4 border border-r-white">
             <p class="mb-3 font-px437">Connect with us......</p>
-            <div
-              class="grid lg:grid-flow-row grid-flow-col lg:grid-cols-1 grid-rows-2"
-            >
+            <div class="grid lg:grid-flow-row grid-flow-col lg:grid-cols-1 grid-rows-2">
               <div class="flex items-center mb-3">
-                <img
-                  src="@/assets/images/icons/arrow_icon.svg"
-                  class="mr-2"
-                  alt=""
-                />
+                <img src="@/assets/images/icons/arrow_icon.svg" class="mr-2" alt="" />
                 <button class="connect-btn font-px437">GITHUB</button>
               </div>
               <div class="flex items-center mb-3">
-                <img
-                  src="@/assets/images/icons/arrow_icon.svg"
-                  class="mr-2"
-                  alt=""
-                />
+                <img src="@/assets/images/icons/arrow_icon.svg" class="mr-2" alt="" />
                 <button class="connect-btn font-px437">YOUTUBE</button>
               </div>
               <div class="flex items-center mb-3">
-                <img
-                  src="@/assets/images/icons/arrow_icon.svg"
-                  class="mr-2"
-                  alt=""
-                />
+                <img src="@/assets/images/icons/arrow_icon.svg" class="mr-2" alt="" />
                 <button class="connect-btn font-px437">LINE</button>
               </div>
               <div class="flex items-center mb-3">
-                <img
-                  src="@/assets/images/icons/arrow_icon.svg"
-                  class="mr-2"
-                  alt=""
-                />
+                <img src="@/assets/images/icons/arrow_icon.svg" class="mr-2" alt="" />
                 <button class="connect-btn font-px437">EMAIL</button>
               </div>
             </div>

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const props = defineProps<{
-  type: "header" | "mobile-header" | "footer";
+  type: 'header' | 'mobile-header' | 'footer';
   navClass: string;
 }>();
 
@@ -8,10 +8,10 @@ const props = defineProps<{
 const navItemClass = computed(() => {
   return (
     {
-      header: "header-nav-item",
-      "mobile-header": "mobile-header-nav-item",
-      footer: "footer-nav-item",
-    }[props.type] || ""
+      header: 'header-nav-item',
+      'mobile-header': 'mobile-header-nav-item',
+      footer: 'footer-nav-item',
+    }[props.type] || ''
   );
 });
 </script>
@@ -23,9 +23,7 @@ const navItemClass = computed(() => {
         <NuxtLink :to="ROUTE_PATHS.RULES">參賽規則</NuxtLink>
       </li>
       <li :class="navItemClass">
-        <NuxtLink :to="`${ROUTE_PATHS.RULES}${ROUTE_PATHS.SCHEDULE}`"
-          >重要時程</NuxtLink
-        >
+        <NuxtLink :to="`${ROUTE_PATHS.RULES}${ROUTE_PATHS.SCHEDULE}`">重要時程</NuxtLink>
       </li>
       <li :class="navItemClass">
         <NuxtLink :to="ROUTE_PATHS.PAST">參賽回顧</NuxtLink>

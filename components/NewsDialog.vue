@@ -1,18 +1,13 @@
 <script setup lang="ts">
-import {
-  Dialog,
-  DialogPanel,
-  DialogTitle,
-  DialogDescription,
-} from "@headlessui/vue";
-import type { News } from "~/interfaces/news.interface";
+import { Dialog, DialogPanel, DialogTitle, DialogDescription } from '@headlessui/vue';
+import type { News } from '~/interfaces/news.interface';
 
 defineProps<{
   isOpen: boolean;
   activeNews?: News | null;
 }>();
 
-const emit = defineEmits(["close"]);
+const emit = defineEmits(['close']);
 </script>
 
 <template>
@@ -32,17 +27,11 @@ const emit = defineEmits(["close"]);
             <img src="@/assets/images/icons/btn-close.svg" alt="" />
           </button>
           <p class="text-primary-500 text-lg mb-2">{{ activeNews?.date }}</p>
-          <DialogTitle
-            class="text-primary-500 text-2xl pb-4 mb-4 custom-dashed dashed-black"
-            >{{ activeNews?.title }}</DialogTitle
-          >
+          <DialogTitle class="text-primary-500 text-2xl pb-4 mb-4 custom-dashed dashed-black">{{
+            activeNews?.title
+          }}</DialogTitle>
           <DialogDescription class="text-lg leading-8">
-            <img
-              v-if="activeNews?.image_url"
-              :src="activeNews?.image_url"
-              alt=""
-              class="mb-4"
-            />
+            <img v-if="activeNews?.image_url" :src="activeNews?.image_url" alt="" class="mb-4" />
             {{ activeNews?.content }}
           </DialogDescription>
         </DialogPanel>
@@ -50,5 +39,3 @@ const emit = defineEmits(["close"]);
     </div>
   </Dialog>
 </template>
-
-<style scoped lang="postcss"></style>

@@ -7,7 +7,7 @@ const isAboveFooter = ref(false);
 const updateScroll = () => {
   scrollY.value = window.scrollY; // 取得目前的滾動位置
 
-  const footer = document.getElementById("footer");
+  const footer = document.getElementById('footer');
   if (footer) {
     footerTop.value = footer.getBoundingClientRect().top + window.scrollY; // 計算 Footer 頂部的 scrollY
   }
@@ -20,26 +20,24 @@ const updateScroll = () => {
 };
 
 onMounted(() => {
-  window.addEventListener("scroll", updateScroll);
+  window.addEventListener('scroll', updateScroll);
   updateScroll(); // 初始化
 });
 
 onUnmounted(() => {
-  window.removeEventListener("scroll", updateScroll);
+  window.removeEventListener('scroll', updateScroll);
 });
 </script>
 
 <template>
   <div>
-    <Header
+    <LayoutHeader
       id="header"
       class="lg:h-[100px] h-[80px] fixed top-0 left-0 right-0 w-full z-50 transition-all duration-300"
     />
     <NuxtPage class="lg:mt-[100px] mt-[80px]" />
     <!-- control bar -->
     <ControlBar :is-above-footer="isAboveFooter" />
-    <Footer id="footer" :class="isAboveFooter ? 'mt-4' : 'mt-[162px]'" />
+    <LayoutFooter id="footer" :class="isAboveFooter ? 'mt-4' : 'mt-[162px]'" />
   </div>
 </template>
-
-<style lang="postcss"></style>

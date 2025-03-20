@@ -1,7 +1,6 @@
 <script setup lang="ts">
-import { ref } from "vue";
-import { useModalStore } from "@/stores/modalStore";
-import Navbar from "./Navbar.vue";
+import { ref } from 'vue';
+import { useModalStore } from '@/stores/modalStore';
 
 const modalStore = useModalStore();
 
@@ -21,15 +20,13 @@ function closeNav() {
 <template>
   <header class="bg-black p-5 pb-0">
     <div class="border border-white h-full flex flex-col">
-      <div
-        class="m-1 border border-white flex-1 flex justify-between items-center lg:px-10"
-      >
+      <div class="m-1 border border-white flex-1 flex justify-between items-center lg:px-10">
         <NuxtLink to="/" class="px-4 flex">
           <img src="@/assets/images/logos/logo-icon-tpe.svg" alt="" />
           <img src="@/assets/images/logos/logo-icon-ntpc.svg" alt="" />
         </NuxtLink>
         <!-- web -->
-        <Navbar
+        <LayoutNavbar
           class="hidden lg:block"
           type="header"
           nav-class="flex text-white font-fusion-pixel"
@@ -48,22 +45,15 @@ function closeNav() {
                 <div class="flex-1 m-1 border border-white py-10 text-center">
                   <a href="" class="inline-flex p-8">
                     <img src="@/assets/images/logos/logo-icon-tpe.svg" alt="" />
-                    <img
-                      src="@/assets/images/logos/logo-icon-ntpc.svg"
-                      alt=""
-                    />
+                    <img src="@/assets/images/logos/logo-icon-ntpc.svg" alt="" />
                     />
                   </a>
-                  <Navbar
+                  <LayoutNavbar
                     type="mobile-header"
                     nav-class="text-white font-fusion-pixel text-center"
                   />
                   <button type="button" class="p-8" @click="closeNav">
-                    <img
-                      src="@/assets/images/icons/close.png"
-                      width="24"
-                      alt=""
-                    />
+                    <img src="@/assets/images/icons/close.png" width="24" alt="" />
                   </button>
                 </div>
               </div>
