@@ -12,7 +12,10 @@ const showApplyBtn = computed(() => route.path.startsWith(ROUTE_PATHS.RULES));
 <template>
   <div
     class="flex p-5 z-50 border-t border-b border-white lg:border-none bg-primary-300 lg:bg-primary-500"
-    :class="props.isAboveFooter ? '' : 'fixed bottom-0 left-0 right-0'"
+    :class="[
+      props.isAboveFooter ? '' : 'fixed bottom-0 left-0 right-0',
+      showApplyBtn ? '' : 'lg:block hidden',
+    ]"
   >
     <div class="lg:block hidden border border-white bg-primary-500 w-full">
       <div class="m-1 flex border border-white h-[96px]">

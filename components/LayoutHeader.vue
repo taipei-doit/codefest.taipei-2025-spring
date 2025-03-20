@@ -21,9 +21,9 @@ function closeNav() {
   <header class="bg-black p-5 pb-0">
     <div class="border border-white h-full flex flex-col">
       <div class="m-1 border border-white flex-1 flex justify-between items-center lg:px-10">
-        <NuxtLink to="/" class="px-4 flex">
-          <img src="@/assets/images/logos/logo-icon-tpe.svg" alt="" />
-          <img src="@/assets/images/logos/logo-icon-ntpc.svg" alt="" />
+        <NuxtLink to="/" class="px-4 flex space-x-2">
+          <img src="/images/logos/logo-icon-ntpc.svg" width="30" alt="" />
+          <img src="/images/logos/logo-icon-tpe.svg" width="30" alt="" />
         </NuxtLink>
         <!-- web -->
         <LayoutNavbar
@@ -43,9 +43,9 @@ function closeNav() {
             >
               <div class="border border-white flex-1 flex flex-col">
                 <div class="flex-1 m-1 border border-white py-10 text-center">
-                  <a href="" class="inline-flex p-8">
-                    <img src="@/assets/images/logos/logo-icon-tpe.svg" alt="" />
-                    <img src="@/assets/images/logos/logo-icon-ntpc.svg" alt="" />
+                  <a href="" class="inline-flex p-8 space-x-2">
+                    <img src="/images/logos/logo-icon-ntpc.svg" width="30" alt="" />
+                    <img src="/images/logos/logo-icon-tpe.svg" width="30" alt="" />
                     />
                   </a>
                   <LayoutNavbar
