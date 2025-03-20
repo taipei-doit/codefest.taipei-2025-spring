@@ -1,14 +1,14 @@
 <script setup lang="ts">
-import { computed, nextTick, onMounted, onUnmounted, ref } from "vue";
-import { Disclosure, DisclosureButton, DisclosurePanel } from "@headlessui/vue";
-import { Swiper, SwiperSlide } from "swiper/vue";
-import { Navigation, Pagination } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/pagination";
-import type { News } from "~/interfaces/news.interface";
-import type { JudgeList } from "~/interfaces/judge.interface";
-import type { PastVideo } from "~/interfaces/past.interface";
-import type { Sponsor } from "~/interfaces/sponsor.interface";
+import { computed, nextTick, onMounted, onUnmounted, ref } from 'vue';
+import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/vue';
+import { Swiper, SwiperSlide } from 'swiper/vue';
+import { Navigation, Pagination } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/pagination';
+import type { News } from '~/interfaces/news.interface';
+import type { JudgeList } from '~/interfaces/judge.interface';
+import type { PastVideo } from '~/interfaces/past.interface';
+import type { Sponsor } from '~/interfaces/sponsor.interface';
 
 const { tm } = useI18n();
 
@@ -39,7 +39,7 @@ const activeNews = ref<News | null>(null);
 
 /** 影音回顧 */
 const videoList = computed<PastVideo[]>(() => {
-  const data = tm("past.videos.list");
+  const data = tm('past.videos.list');
   return Array.isArray(data) ? data : Object.values(data); // 轉換 Object 為 Array
 });
 
@@ -55,9 +55,7 @@ const pastSlidesPerPage = 3;
  * 參賽回顧 - 總頁數
  */
 
-const pastTotalPages = computed(() =>
-  Math.ceil(videoList.value.length / pastSlidesPerPage)
-);
+const pastTotalPages = computed(() => Math.ceil(videoList.value.length / pastSlidesPerPage));
 
 // 監聽 Swiper 變更時，更新 `pastCurrentPage`
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -203,9 +201,12 @@ const calculateDistance = () => {
 
             <!-- 按鈕區塊 -->
             <div class="w-full lg:w-auto flex flex-nowrap justify-center lg:justify-end space-x-8">
-              <button class="icon-btn icon-btn--arrow w-1/2 lg:w-auto lg:min-w-60">
+              <NuxtLink
+                :to="ROUTE_PATHS.RULES"
+                class="icon-btn icon-btn--arrow w-1/2 lg:w-auto lg:min-w-60 text-center block"
+              >
                 <span> 瞭解詳情 </span>
-              </button>
+              </NuxtLink>
               <button class="icon-btn icon-btn--arrow w-1/2 lg:w-auto lg:min-w-60">
                 <span> 立即報名 </span>
               </button>
@@ -583,20 +584,18 @@ const calculateDistance = () => {
                           alt=""
                         />
                         <!-- 播放按鈕 -->
-                        <div
-                          class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-                        >
-                          <img
-                            src="@/assets/images/icons/play.png"
-                            width="40"
-                            alt="play_btn"
-                          />
+                        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+                          <img src="@/assets/images/icons/play.png" width="40" alt="play_btn" />
                         </div>
                       </div>
                       <div class="flex justify-between items-center mt-2 text-lg text-white">
                         <span>{{ group.title }}</span>
                         <span>
-                          <img src="@/assets/images/icons/white-right-arrow.svg" width="24" alt="">
+                          <img
+                            src="@/assets/images/icons/white-right-arrow.svg"
+                            width="24"
+                            alt=""
+                          />
                         </span>
                       </div>
                     </a>
@@ -606,11 +605,7 @@ const calculateDistance = () => {
             </div>
             <!-- mobile -->
             <div class="lg:hidden block">
-              <div
-                v-for="(group, index) in videoList.slice(0, 3)"
-                :key="index"
-                class="mb-8"
-              >
+              <div v-for="(group, index) in videoList.slice(0, 3)" :key="index" class="mb-8">
                 <a :href="group.video_url" target="_blank">
                   <div class="video-box relative">
                     <img
@@ -637,9 +632,7 @@ const calculateDistance = () => {
           </div>
           <div v-if="pastTotalPages > 1" class="hidden lg:block py-4 px-10 border border-b-white">
             <!-- 分頁控制 -->
-            <div
-              class="flex justify-end items-center space-x-2 text-white font-px437"
-            >
+            <div class="flex justify-end items-center space-x-2 text-white font-px437">
               <button class="past-swiper-button-prev">
                 <img
                   src="@/assets/images/icons/white-down-arrow.svg"
@@ -648,9 +641,7 @@ const calculateDistance = () => {
                   class="rotate-90"
                 />
               </button>
-              <span
-                >&nbsp;{{ pastCurrentPage }} / {{ pastTotalPages }}&nbsp;</span
-              >
+              <span>&nbsp;{{ pastCurrentPage }} / {{ pastTotalPages }}&nbsp;</span>
               <button class="past-swiper-button-next">
                 <img
                   src="@/assets/images/icons/white-down-arrow.svg"
@@ -669,9 +660,9 @@ const calculateDistance = () => {
 
             <!-- 按鈕區塊 -->
             <div class="w-full lg:w-auto flex flex-nowrap justify-center lg:justify-end space-x-8">
-              <button class="icon-btn icon-btn--arrow min-w-60">
+              <NuxtLink :to="ROUTE_PATHS.PAST" class="icon-btn icon-btn--arrow min-w-60">
                 <span> 查看更多 </span>
-              </button>
+              </NuxtLink>
             </div>
           </div>
         </div>
