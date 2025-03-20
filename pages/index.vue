@@ -121,6 +121,19 @@ const calculateDistance = () => {
           class="lg:border-0 m-1 border border-white text-white flex-1 flex items-center justify-center text-center bg-tp"
         >
           <div class="p-10">
+            <!-- desktop noise -->
+            <img
+              class="md:block hidden img-noise"
+              src="@/assets/images/hero-banner-noise.svg"
+              alt="noise"
+            />
+            <!-- mobile noise -->
+            <img
+              class="md:hidden block img-noise"
+              src="@/assets/images/hero-banner-noise-mobile.svg"
+              alt="noise"
+            />
+            <!-- title -->
             <p class="lg:text-2xl text-xl font-fusion-pixel mb-8 text-are-you-ready">
               {{ tm('hero_banner.section_title') }}
             </p>
@@ -768,6 +781,27 @@ const calculateDistance = () => {
     background-position: bottom;
     background-repeat: no-repeat;
     background-size: contain;
+  }
+}
+
+.img-noise {
+  @apply absolute left-1/2 -translate-x-1/2 top-16 max-w-[90%] w-full;
+  animation: move-img-noise 1s infinite steps(1);
+
+  @media (max-width: 1024px) {
+    @apply top-1/2 -translate-y-1/2;
+  }
+}
+
+@keyframes move-img-noise {
+  0% {
+    left: 50%;
+  }
+  50% {
+    left: calc(50% + 5px);
+  }
+  100% {
+    left: 50%;
   }
 }
 
