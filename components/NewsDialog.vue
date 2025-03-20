@@ -16,7 +16,7 @@ const emit = defineEmits(["close"]);
 </script>
 
 <template>
-  <Dialog :open="isOpen" @close="emit('close')" class="relative z-50">
+  <Dialog :open="isOpen" class="relative z-50" @close="emit('close')">
     <!-- The backdrop, rendered as a fixed sibling to the panel container -->
     <div class="fixed inset-0 bg-black/85" aria-hidden="true" />
 
