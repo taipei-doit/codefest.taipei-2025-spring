@@ -245,36 +245,59 @@
     },
     "past": {
         "section_title": "參賽回顧",
-        "list": [
-            {
-                "id": 0,
-                "date": "2024.09.20",
-                "title": "1[秋季] 2024城市通微服務大黑客松",
-                "thumbnail": "/images/videos/video-sample.png",
-                "video_url": "https://www.youtube.com/watch?v=8_ZaFYZ9BQU"
-            },
-            {
-                "id": 1,
-                "date": "2024.09.20",
-                "title": "2[春季] 2024城市儀表板大黑客松",
-                "thumbnail": "/images/videos/video-sample.png",
-                "video_url": "https://www.youtube.com/watch?v=8_ZaFYZ9BQU"
-            },
-            {
-                "id": 2,
-                "date": "2023.09.20",
-                "title": "3[秋季] 2023城市儀表板大黑客松",
-                "thumbnail": "/images/videos/video-sample.png",
-                "video_url": "https://www.youtube.com/watch?v=8_ZaFYZ9BQU"
-            },
-            {
-                "id": 3,
-                "date": "2023.09.20",
-                "title": "4[春季] 2023城市儀表板大黑客松",
-                "thumbnail": "/images/videos/video-sample.png",
-                "video_url": "https://www.youtube.com/watch?v=8_ZaFYZ9BQU"
-            }
-        ]
+        "description": "收錄獲獎團隊及影音回顧",
+        "winning_teams": {
+            "title": "獲獎團隊",
+            "list": [
+                {
+                    "id": 0,
+                    "ranking": "[春季] 第一名 |",
+                    "team_name": "綠擘者聯盟",
+                    "thumbnail": "/images/news-sample.png",
+                    "team_members": "吳典叡(臺大電機系學會-資訊部長)、陳柏叡(臺大電機系學會-資訊部長)、許富盈(臺大電機系學會-行銷部長)、李冠儀(臺大電機系學會-會長)、何式斌(臺大財金畢業)",
+                    "description": "建築減碳健診隊團隊開發高互動性的災害應變儀表板，讓民眾能辨識哪些地方為風險熱區進而提前預警迴避，並透過通報推播系統讓民眾能及時且主動地通報災害與 收到即時推播、立刻了解身邊的災害狀況和身邊擁有的應變設施，最小化災害造成的損失。",
+                    "image_list": [
+                        "/images/news-sample.png",
+                        "https://swiperjs.com/demos/images/nature-1.jpg",
+                        "https://swiperjs.com/demos/images/nature-2.jpg",
+                        "https://swiperjs.com/demos/images/nature-3.jpg"
+                    ]
+                }
+            ]
+        },
+        "videos": {
+            "title": "影音回顧",
+            "list": [
+                {
+                    "id": 0,
+                    "date": "2024.09.20",
+                    "title": "1[秋季] 2024城市通微服務大黑客松",
+                    "thumbnail": "/images/videos/video-sample.png",
+                    "video_url": "https://www.youtube.com/watch?v=8_ZaFYZ9BQU"
+                },
+                {
+                    "id": 1,
+                    "date": "2024.09.20",
+                    "title": "2[春季] 2024城市儀表板大黑客松",
+                    "thumbnail": "/images/videos/video-sample.png",
+                    "video_url": "https://www.youtube.com/watch?v=8_ZaFYZ9BQU"
+                },
+                {
+                    "id": 2,
+                    "date": "2023.09.20",
+                    "title": "3[秋季] 2023城市儀表板大黑客松",
+                    "thumbnail": "/images/videos/video-sample.png",
+                    "video_url": "https://www.youtube.com/watch?v=8_ZaFYZ9BQU"
+                },
+                {
+                    "id": 3,
+                    "date": "2023.09.20",
+                    "title": "4[春季] 2023城市儀表板大黑客松",
+                    "thumbnail": "/images/videos/video-sample.png",
+                    "video_url": "https://www.youtube.com/watch?v=8_ZaFYZ9BQU"
+                }
+            ]
+        }
     },
     "sponsor": {
         "section_title": "贊助廠商",

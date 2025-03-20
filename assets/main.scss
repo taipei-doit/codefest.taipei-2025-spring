@@ -98,3 +98,11 @@ body {
         background: white !important;
     }
 }
+
+.judge-box {
+    @apply border-4 border-white aspect-square;
+}
+
+.video-box {
+    @apply border-4 border-white aspect-video;
+}

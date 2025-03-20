@@ -88,3 +88,9 @@ onUnmounted(() => {
     <span>秒</span>
   </p>
 </template>
+<style scoped lang="postcss">
+/* 倒數計時數字的白色方塊 */
+.countdown-box {
+  @apply bg-white text-primary-500 font-bold px-2 py-1 text-xl border border-black;
+}
+</style>

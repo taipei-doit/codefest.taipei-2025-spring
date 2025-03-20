@@ -1,14 +1,14 @@
 <script setup lang="ts">
-import { computed, nextTick, onMounted, onUnmounted, ref } from 'vue';
-import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/vue';
-import { Swiper, SwiperSlide } from 'swiper/vue';
-import { Navigation, Pagination } from 'swiper/modules';
-import 'swiper/css';
-import 'swiper/css/pagination';
-import type { News } from '~/interfaces/news.interface';
-import type { JudgeList } from '~/interfaces/judge.interface';
-import type { Past } from '~/interfaces/past.interface';
-import type { Sponsor } from '~/interfaces/sponsor.interface';
+import { computed, nextTick, onMounted, onUnmounted, ref } from "vue";
+import { Disclosure, DisclosureButton, DisclosurePanel } from "@headlessui/vue";
+import { Swiper, SwiperSlide } from "swiper/vue";
+import { Navigation, Pagination } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/pagination";
+import type { News } from "~/interfaces/news.interface";
+import type { JudgeList } from "~/interfaces/judge.interface";
+import type { PastVideo } from "~/interfaces/past.interface";
+import type { Sponsor } from "~/interfaces/sponsor.interface";
 
 const { tm } = useI18n();
 
@@ -37,9 +37,9 @@ const newsList = computed<News[]>(() => {
 /** 選中的最新消息 */
 const activeNews = ref<News | null>(null);
 
-/** 參賽回顧 */
-const pastList = computed<Past[]>(() => {
-  const data = tm('past.list');
+/** 影音回顧 */
+const videoList = computed<PastVideo[]>(() => {
+  const data = tm("past.videos.list");
   return Array.isArray(data) ? data : Object.values(data); // 轉換 Object 為 Array
 });
 
@@ -54,7 +54,10 @@ const pastSlidesPerPage = 3;
 /**
  * 參賽回顧 - 總頁數
  */
-const pastTotalPages = computed(() => Math.ceil(pastList.value.length / pastSlidesPerPage));
+
+const pastTotalPages = computed(() =>
+  Math.ceil(videoList.value.length / pastSlidesPerPage)
+);
 
 // 監聽 Swiper 變更時，更新 `pastCurrentPage`
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -565,12 +568,12 @@ const calculateDistance = () => {
                 :loop="false"
                 :direction="'horizontal'"
                 :navigation="{
-                  nextEl: '.swiper-button-next', // 下一則
-                  prevEl: '.swiper-button-prev', // 上一則
+                  nextEl: '.past-swiper-button-next', // 下一則
+                  prevEl: '.past-swiper-button-prev', // 上一則
                 }"
                 @slide-change="onPastSlideChange"
               >
-                <SwiperSlide v-for="(group, index) in pastList" :key="index">
+                <SwiperSlide v-for="(group, index) in videoList" :key="index">
                   <div :key="group.id">
                     <a :href="group.video_url" target="_blank">
                       <div class="video-box relative">
@@ -580,17 +583,21 @@ const calculateDistance = () => {
                           alt=""
                         />
                         <!-- 播放按鈕 -->
-                        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                          <div
-                            class="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-[0_0_6px]"
-                          >
-                            <span class="text-black text-4xl font-bold">▶</span>
-                          </div>
+                        <div
+                          class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+                        >
+                          <img
+                            src="@/assets/images/icons/play.png"
+                            width="40"
+                            alt="play_btn"
+                          />
                         </div>
                       </div>
                       <div class="flex justify-between items-center mt-2 text-lg text-white">
                         <span>{{ group.title }}</span>
-                        <span>→</span>
+                        <span>
+                          <img src="@/assets/images/icons/white-right-arrow.svg" width="24" alt="">
+                        </span>
                       </div>
                     </a>
                   </div>
@@ -599,7 +606,11 @@ const calculateDistance = () => {
             </div>
             <!-- mobile -->
             <div class="lg:hidden block">
-              <div v-for="(group, index) in pastList.slice(0, 3)" :key="index" class="mb-8">
+              <div
+                v-for="(group, index) in videoList.slice(0, 3)"
+                :key="index"
+                class="mb-8"
+              >
                 <a :href="group.video_url" target="_blank">
                   <div class="video-box relative">
                     <img
@@ -626,8 +637,10 @@ const calculateDistance = () => {
           </div>
           <div v-if="pastTotalPages > 1" class="hidden lg:block py-4 px-10 border border-b-white">
             <!-- 分頁控制 -->
-            <div class="flex justify-end items-center space-x-2 text-white font-px437">
-              <button class="swiper-button-prev">
+            <div
+              class="flex justify-end items-center space-x-2 text-white font-px437"
+            >
+              <button class="past-swiper-button-prev">
                 <img
                   src="@/assets/images/icons/white-down-arrow.svg"
                   alt="arrow"
@@ -635,8 +648,10 @@ const calculateDistance = () => {
                   class="rotate-90"
                 />
               </button>
-              <span>&nbsp;{{ pastCurrentPage }} / {{ pastTotalPages }}&nbsp;</span>
-              <button class="swiper-button-next">
+              <span
+                >&nbsp;{{ pastCurrentPage }} / {{ pastTotalPages }}&nbsp;</span
+              >
+              <button class="past-swiper-button-next">
                 <img
                   src="@/assets/images/icons/white-down-arrow.svg"
                   alt="arrow"
@@ -795,19 +810,6 @@ const calculateDistance = () => {
   50% {
     opacity: 0;
   }
-}
-
-.judge-box {
-  @apply border-4 border-white aspect-square;
-}
-
-.video-box {
-  @apply border-4 border-white aspect-video;
-}
-
-/* 倒數計時數字的白色方塊 */
-.countdown-box {
-  @apply bg-white text-primary-500 font-bold px-2 py-1 text-xl border border-black;
 }
 
 /** 輪播 */

@@ -21,10 +21,13 @@ const faqList = computed(() => {
     <template v-for="(item, index) in faqList" :key="index">
       <Disclosure v-slot="{ open }" :default-open="index === 0">
         <DisclosureButton
-          class="w-full h-[64px] flex items-center justify-between py-3 lg:px-10 px-3 border border-t-white border-b-white lg:last:mb-40"
+          class="w-full h-16 flex items-center justify-between py-3 lg:px-10 px-3 border border-t-white border-b-white lg:last:mb-40"
           :class="{ 'bg-primary-50': open }"
         >
-          <p class="text-left font-fusion-pixel" :class="open ? 'text-primary-500' : 'text-white'">
+          <p
+            class="text-left text-lg font-fusion-pixel"
+            :class="open ? 'text-primary-500' : 'text-white'"
+          >
             {{ item.title }}
           </p>
           <img

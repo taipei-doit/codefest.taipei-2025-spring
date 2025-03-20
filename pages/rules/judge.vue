@@ -24,9 +24,9 @@ const judgeList = computed<JudgeList[]>(() => {
     <template v-for="(item, index) in judgeList" :key="index">
       <Disclosure v-slot="{ open }" :default-open="true">
         <DisclosureButton
-          class="w-full flex items-center justify-between p-2 border border-t-white border-b-white bg-primary-300"
+          class="w-full h-16 flex items-center justify-between p-2 border border-t-white border-b-white bg-primary-300"
         >
-          <p class="text-white text-center font-fusion-pixel mx-auto">
+          <p class="text-white text-lg text-center font-fusion-pixel mx-auto">
             {{ item.name }}
           </p>
           <img
