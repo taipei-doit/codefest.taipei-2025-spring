@@ -115,7 +115,7 @@ const calculateDistance = () => {
 <template>
   <div>
     <!-- 第1幀 - Hero Banner -->
-    <section class="flex flex-col h-full mb-40 lg:p-0 p-5" :style="{ height: bannerHeight }">
+    <section class="flex flex-col h-full lg:p-0 p-5" :style="{ height: bannerHeight }">
       <div class="lg:border-0 border border-white flex flex-1 lg:mb-[120px]">
         <div
           class="lg:border-0 m-1 border border-white text-white flex-1 flex items-center justify-center text-center bg-tp"
@@ -161,12 +161,14 @@ const calculateDistance = () => {
           </div>
         </div>
       </div>
+      <SectionDecoration class="lg:absolute lg:bottom-0 lg:block hidden" />
     </section>
+    <SectionDecoration class="lg:hidden" />
     <!-- 第2幀 - 參賽規則 -->
     <div class="lg:flex justify-end hidden">
       <SectionNav active-nav-name="rules" />
     </div>
-    <section id="rules" class="p-5 mb-40">
+    <section id="rules" class="p-5">
       <div class="border border-white relative">
         <div class="m-1 border border-white">
           <p class="section-title font-fusion-pixel">
@@ -310,11 +312,12 @@ const calculateDistance = () => {
         </div>
       </div>
     </section>
+    <SectionDecoration direction="right" />
     <!-- 第3幀 - 重要時程 -->
     <div class="lg:flex justify-start hidden">
       <SectionNav active-nav-name="schedule" />
     </div>
-    <section id="schedule" class="p-5 mb-40">
+    <section id="schedule" class="p-5">
       <div class="border border-white relative">
         <div class="m-1 border border-white">
           <p class="section-title font-fusion-pixel">
@@ -518,11 +521,12 @@ const calculateDistance = () => {
         </div>
       </div>
     </section>
+    <SectionDecoration />
     <!-- 第4幀 - 最新消息 -->
     <div class="lg:flex justify-end hidden">
       <SectionNav active-nav-name="news" />
     </div>
-    <section id="news" class="p-5 mb-40">
+    <section id="news" class="p-5">
       <div class="grid grid-cols-5">
         <div class="lg:col-span-3 col-span-5">
           <div class="border border-white relative">
@@ -562,11 +566,12 @@ const calculateDistance = () => {
         </div>
       </div>
     </section>
+    <SectionDecoration direction="right" />
     <!-- 第5幀 - 參賽回顧 -->
     <div class="lg:flex justify-start hidden">
       <SectionNav active-nav-name="past" />
     </div>
-    <section id="past" class="p-5 mb-40">
+    <section id="past" class="p-5">
       <div class="border border-white relative">
         <div class="m-1 border border-white">
           <p class="section-title font-fusion-pixel">參賽回顧</p>
@@ -681,6 +686,7 @@ const calculateDistance = () => {
         </div>
       </div>
     </section>
+    <SectionDecoration />
     <!-- 第6幀 - 贊助廠商 -->
     <div class="lg:flex justify-end hidden">
       <SectionNav active-nav-name="sponsor" />
