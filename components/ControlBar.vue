@@ -1,11 +1,15 @@
 <script setup lang="ts">
+import { useDialogStore } from '~/stores/dialogStore';
+
 const props = defineProps<{
   isAboveFooter: boolean;
 }>();
 
+const dialogStore = useDialogStore();
+
 const route = useRoute();
 
-// 只有在參賽規則頁時顯示 ControlBar
+// 只有在參賽規則頁時顯示報名按鈕
 const showApplyBtn = computed(() => route.path.startsWith(ROUTE_PATHS.RULES));
 </script>
 
@@ -29,7 +33,11 @@ const showApplyBtn = computed(() => route.path.startsWith(ROUTE_PATHS.RULES));
         </div>
       </div>
     </div>
-    <button v-if="showApplyBtn" class="icon-btn icon-btn--arrow w-auto min-w-60 lg:ml-4 mx-auto">
+    <button
+      v-if="showApplyBtn"
+      @click="dialogStore.isApplyDialogOpen = true"
+      class="icon-btn icon-btn--arrow w-auto min-w-60 lg:ml-4 mx-auto"
+    >
       <span> 立即報名 </span>
     </button>
   </div>

@@ -1,4 +1,8 @@
 <script setup lang="ts">
+import { useDialogStore } from '~/stores/dialogStore';
+
+const dialogStore = useDialogStore();
+
 const footerTop = ref(0);
 const scrollY = ref(0);
 
@@ -39,5 +43,11 @@ onUnmounted(() => {
     <!-- control bar -->
     <ControlBar :is-above-footer="isAboveFooter" />
     <LayoutFooter id="footer" :class="isAboveFooter ? 'mt-4' : 'mt-[162px]'" />
+
+    <!-- 報名表單 -->
+    <ApplyDialog
+      :is-open="dialogStore.isApplyDialogOpen"
+      @close="dialogStore.isApplyDialogOpen = false"
+    />
   </div>
 </template>

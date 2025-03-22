@@ -9,9 +9,11 @@ import type { News } from '~/interfaces/news.interface';
 import type { JudgeList } from '~/interfaces/judge.interface';
 import type { PastVideo } from '~/interfaces/past.interface';
 import type { Sponsor } from '~/interfaces/sponsor.interface';
+import { useDialogStore } from '~/stores/dialogStore';
+
+const dialogStore = useDialogStore();
 
 const { tm } = useI18n();
-
 const headerHeight = ref(0);
 const bannerHeight = ref(`calc(100vh - ${headerHeight.value}px)`);
 
@@ -73,9 +75,6 @@ const sponsorList = computed<Sponsor[]>(() => {
 });
 
 const duplicatedSponsorList = computed(() => [...sponsorList.value, ...sponsorList.value]);
-
-/** 最新消息 Dialog 是否開啟 */
-const isNewsDialogOpen = ref(false);
 
 // 存放距離
 const tabToContentDistance = ref(0);
@@ -155,9 +154,14 @@ const calculateDistance = () => {
                 tm('hero_banner.apply_date')
               }}</span>
             </p>
-            <button class="icon-btn icon-btn--arrow min-w-60">
-              <span> 立即報名 </span>
-            </button>
+            <div class="flex justify-center">
+              <button
+                @click="dialogStore.isApplyDialogOpen = true"
+                class="icon-btn icon-btn--arrow min-w-60"
+              >
+                <span> 立即報名 </span>
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -222,7 +226,10 @@ const calculateDistance = () => {
               >
                 <span> 瞭解詳情 </span>
               </NuxtLink>
-              <button class="icon-btn icon-btn--arrow w-1/2 lg:w-auto lg:min-w-60">
+              <button
+                @click="dialogStore.isApplyDialogOpen = true"
+                class="icon-btn icon-btn--arrow min-w-60"
+              >
                 <span> 立即報名 </span>
               </button>
             </div>
@@ -542,7 +549,7 @@ const calculateDistance = () => {
                     class="block border border-white p-4 transition hover:text-primary-300"
                     @click="
                       activeNews = news;
-                      isNewsDialogOpen = true;
+                      dialogStore.isNewsDialogOpen = true;
                     "
                   >
                     <p class="text-lg mb-2">{{ news.date }}</p>
@@ -733,11 +740,11 @@ const calculateDistance = () => {
       </div>
     </section>
     <NewsDialog
-      :is-open="isNewsDialogOpen"
+      :is-open="dialogStore.isNewsDialogOpen"
       :active-news="activeNews"
       @close="
         activeNews = null;
-        isNewsDialogOpen = false;
+        dialogStore.isNewsDialogOpen = false;
       "
     />
   </div>

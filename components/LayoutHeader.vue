@@ -1,19 +1,19 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { useModalStore } from '@/stores/modalStore';
+import { useDialogStore } from '~/stores/dialogStore';
 
-const modalStore = useModalStore();
+const dialogStore = useDialogStore();
 
 const mobileMenuOpen = ref(false);
 
 function openNav() {
   mobileMenuOpen.value = true;
-  modalStore.isModalOpen = true;
+  dialogStore.isMobileMenuDialogOpen = true;
 }
 
 function closeNav() {
   mobileMenuOpen.value = false;
-  modalStore.isModalOpen = false;
+  dialogStore.isMobileMenuDialogOpen = false;
 }
 </script>
 
@@ -35,32 +35,32 @@ function closeNav() {
         <button type="button" class="lg:hidden z-30 px-4 py-2" @click="openNav">
           <img src="@/assets/images/icons/menu.png" width="24" alt="" />
         </button>
-        <!-- moblie nav modal -->
-        <Transition name="fade">
-          <div v-if="mobileMenuOpen" class="modal-open">
-            <div
-              class="fixed top-0 bottom-0 left-0 right-0 z-30 w-full overflow-y-auto bg-black bg-opacity-80 flex flex-col p-4 transition-all duration-500"
-            >
-              <div class="border border-white flex-1 flex flex-col">
-                <div class="flex-1 m-1 border border-white py-10 text-center">
-                  <a href="" class="inline-flex p-8 space-x-2">
-                    <img src="/images/logos/logo-icon-ntpc.svg" width="30" alt="" />
-                    <img src="/images/logos/logo-icon-tpe.svg" width="30" alt="" />
-                    />
-                  </a>
-                  <LayoutNavbar
-                    type="mobile-header"
-                    nav-class="text-white font-fusion-pixel text-center"
+      </div>
+      <!-- moblie nav modal -->
+      <Transition name="fade">
+        <div v-if="mobileMenuOpen" class="modal-open">
+          <div
+            class="fixed top-0 bottom-0 left-0 right-0 z-30 w-full overflow-y-auto bg-black bg-opacity-80 flex flex-col p-4 transition-all duration-500"
+          >
+            <div class="border border-white flex-1 flex flex-col">
+              <div class="flex-1 m-1 border border-white py-10 text-center">
+                <a href="" class="inline-flex p-8 space-x-2">
+                  <img src="/images/logos/logo-icon-ntpc.svg" width="30" alt="" />
+                  <img src="/images/logos/logo-icon-tpe.svg" width="30" alt="" />
                   />
-                  <button type="button" class="p-8" @click="closeNav">
-                    <img src="@/assets/images/icons/close.png" width="24" alt="" />
-                  </button>
-                </div>
+                </a>
+                <LayoutNavbar
+                  type="mobile-header"
+                  nav-class="text-white font-fusion-pixel text-center"
+                />
+                <button type="button" class="p-8" @click="closeNav">
+                  <img src="@/assets/images/icons/close.png" width="24" alt="" />
+                </button>
               </div>
             </div>
           </div>
-        </Transition>
-      </div>
+        </div>
+      </Transition>
     </div>
   </header>
 </template>
