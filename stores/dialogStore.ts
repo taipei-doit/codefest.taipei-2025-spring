@@ -2,15 +2,24 @@ import { defineStore } from 'pinia';
 import { ref, watch } from 'vue';
 
 export const useDialogStore = defineStore('dialogStore', () => {
-  const isMobileMenuDialogOpen = ref(false);
-  const isApplyDialogOpen = ref(false);
-  const isNewsDialogOpen = ref(false);
+  const activeDialog = ref<null | 'apply' | 'news' | 'mobileMenu' | 'winningTeam'>(null);
 
-  // 監聽 modal 狀態變化，控制 body 滾動
-  watch([isMobileMenuDialogOpen, isApplyDialogOpen, isNewsDialogOpen], ([mobile, apply, news]) => {
-    const hasAnyOpen = mobile || apply || news;
-    document.body.style.overflow = hasAnyOpen ? 'hidden' : '';
+  // 控制 body scroll
+  watch(activeDialog, val => {
+    document.body.style.overflow = val ? 'hidden' : '';
   });
 
-  return { isMobileMenuDialogOpen, isApplyDialogOpen, isNewsDialogOpen };
+  const openDialog = (name: typeof activeDialog.value) => {
+    activeDialog.value = name;
+  };
+
+  const closeDialog = () => {
+    activeDialog.value = null;
+  };
+
+  return {
+    activeDialog,
+    openDialog,
+    closeDialog,
+  };
 });

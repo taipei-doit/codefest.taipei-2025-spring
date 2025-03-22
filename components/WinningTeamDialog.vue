@@ -1,26 +1,21 @@
 <script setup lang="ts">
-import {
-  Dialog,
-  DialogPanel,
-  DialogTitle,
-  DialogDescription,
-} from "@headlessui/vue";
-import type { PastWinningTeam } from "~/interfaces/past.interface";
-import { Swiper, SwiperSlide } from "swiper/vue";
+import { Dialog, DialogPanel, DialogTitle, DialogDescription } from '@headlessui/vue';
+import type { PastWinningTeam } from '~/interfaces/past.interface';
+import { Swiper, SwiperSlide } from 'swiper/vue';
 // Import Swiper styles
-import "swiper/css";
-import "swiper/css/free-mode";
-import "swiper/css/navigation";
-import "swiper/css/thumbs";
+import 'swiper/css';
+import 'swiper/css/free-mode';
+import 'swiper/css/navigation';
+import 'swiper/css/thumbs';
 // import required modules
-import { FreeMode, Navigation, Thumbs } from "swiper/modules";
+import { FreeMode, Navigation, Thumbs } from 'swiper/modules';
 
 const props = defineProps<{
   isOpen: boolean;
   activeWinningTeam?: PastWinningTeam | null;
 }>();
 
-const emit = defineEmits(["close"]);
+const emit = defineEmits(['close']);
 
 const thumbsSwiper = ref(null);
 
@@ -47,17 +42,12 @@ const setThumbsSwiper = (swiper: any) => {
           </button>
           <div class="grid lg:grid-cols-5 grid-cols-1 lg:space-x-8">
             <div class="col-span-3">
-              <DialogTitle
-                class="lg:hidden block text-primary-500 lg:mb-12 mb-6"
-              >
+              <DialogTitle class="lg:hidden block text-primary-500 lg:mb-12 mb-6">
                 <p class="mb-4">{{ props.activeWinningTeam?.ranking }}</p>
                 <p class="text-2xl">{{ props.activeWinningTeam?.team_name }}</p>
               </DialogTitle>
               <!-- 單圖模式 -->
-              <div
-                v-if="!props.activeWinningTeam?.image_list.length"
-                class="aspect-video"
-              >
+              <div v-if="!props.activeWinningTeam?.image_list.length" class="aspect-video">
                 <img
                   :src="props.activeWinningTeam?.thumbnail"
                   class="w-full h-full object-cover lg:mb-0 mb-6"
@@ -79,16 +69,11 @@ const setThumbsSwiper = (swiper: any) => {
                     class="mb-4"
                   >
                     <SwiperSlide
-                      v-for="(item, index) in props.activeWinningTeam
-                        ?.image_list"
+                      v-for="(item, index) in props.activeWinningTeam?.image_list"
                       :key="index"
                     >
                       <div class="aspect-video">
-                        <img
-                          :src="item"
-                          class="w-full h-full object-cover"
-                          alt=""
-                        />
+                        <img :src="item" class="w-full h-full object-cover" alt="" />
                       </div>
                     </SwiperSlide>
                   </Swiper>
@@ -126,11 +111,7 @@ const setThumbsSwiper = (swiper: any) => {
                     class="thumb-slide"
                   >
                     <div class="aspect-square cursor-pointer">
-                      <img
-                        :src="item"
-                        class="w-full h-full object-cover"
-                        alt=""
-                      />
+                      <img :src="item" class="w-full h-full object-cover" alt="" />
                     </div>
                   </SwiperSlide>
                 </Swiper>
@@ -171,10 +152,6 @@ const setThumbsSwiper = (swiper: any) => {
 
 .team-swiper-button-next {
   @apply right-0;
-}
-
-.thumbs-swiper .swiper-wrapper {
-  /* @apply justify-end; */
 }
 
 .thumb-slide {

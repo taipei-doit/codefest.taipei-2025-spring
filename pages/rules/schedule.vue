@@ -3,13 +3,13 @@ import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/vue';
 
 const { tm } = useI18n();
 
+const dialogStore = useDialogStore();
+
 /** 重要時程 */
 const scheduleList = computed(() => {
   const data = tm('schedule.list');
   return Array.isArray(data) ? data : Object.values(data); // 轉換 Object 為 Array
 });
-/** 選中的重要時程 */
-const activeSchedule = ref(scheduleList.value[0]);
 </script>
 
 <template>
@@ -18,7 +18,7 @@ const activeSchedule = ref(scheduleList.value[0]);
       v-for="(tab, index) in scheduleList"
       :key="index"
       v-slot="{ open }"
-      :default-open="activeSchedule.id === tab.id"
+      :default-open="index === 0"
     >
       <DisclosureButton
         class="w-full flex items-center justify-between p-6 border border-t-white border-b-white"
@@ -41,15 +41,43 @@ const activeSchedule = ref(scheduleList.value[0]);
       <DisclosurePanel class="bg-primary-300">
         <!-- 右側內容區 -->
         <div class="flex-1 font-fusion-pixel font-px437 text-white">
-          <div class="text-center p-4 border border-b-white lg:flex items-center justify-between">
+          <div
+            class="text-center p-4 border border-b-white flex lg:flex-row flex-col items-center justify-between"
+          >
             <p class="text-xl font-fusion-pixel mb-2">
               {{ tab.schedule_sub_name }}
             </p>
-            <button v-if="tab.button.text" class="icon-btn icon-btn--arrow min-w-60">
-              <span>
-                {{ tab.button.text }}
-              </span>
-            </button>
+            <!-- 按鈕（根據類型顯示）-->
+            <template v-if="tab.button?.text">
+              <!-- 外部連結 -->
+              <a
+                v-if="tab.button.type === 'outside_link'"
+                :href="tab.button.link"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="icon-btn icon-btn--arrow min-w-60"
+              >
+                <span>{{ tab.button.text }}</span>
+              </a>
+
+              <!-- Nuxt 內部跳轉 -->
+              <NuxtLink
+                v-else-if="tab.button.type === 'route'"
+                :to="tab.button.link"
+                class="icon-btn icon-btn--arrow min-w-60"
+              >
+                <span>{{ tab.button.text }}</span>
+              </NuxtLink>
+
+              <!-- 開啟 Dialog -->
+              <button
+                v-else-if="tab.button.type === 'dialog'"
+                @click="dialogStore.openDialog(tab.button.link)"
+                class="icon-btn icon-btn--arrow min-w-60"
+              >
+                <span>{{ tab.button.text }}</span>
+              </button>
+            </template>
           </div>
           <div class="p-4 w-full overflow-auto">
             <div v-show="tab.id === 'apply'">報名期間</div>

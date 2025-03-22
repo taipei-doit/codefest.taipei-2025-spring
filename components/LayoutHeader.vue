@@ -3,18 +3,7 @@ import { ref } from 'vue';
 import { useDialogStore } from '~/stores/dialogStore';
 
 const dialogStore = useDialogStore();
-
-const mobileMenuOpen = ref(false);
-
-function openNav() {
-  mobileMenuOpen.value = true;
-  dialogStore.isMobileMenuDialogOpen = true;
-}
-
-function closeNav() {
-  mobileMenuOpen.value = false;
-  dialogStore.isMobileMenuDialogOpen = false;
-}
+const { activeDialog } = storeToRefs(dialogStore);
 </script>
 
 <template>
@@ -32,13 +21,17 @@ function closeNav() {
           nav-class="flex text-white font-fusion-pixel"
         />
         <!-- mobile hamburger -->
-        <button type="button" class="lg:hidden z-30 px-4 py-2" @click="openNav">
+        <button
+          type="button"
+          class="lg:hidden z-30 px-4 py-2"
+          @click="dialogStore.openDialog('mobileMenu')"
+        >
           <img src="@/assets/images/icons/menu.png" width="24" alt="" />
         </button>
       </div>
       <!-- moblie nav modal -->
       <Transition name="fade">
-        <div v-if="mobileMenuOpen" class="modal-open">
+        <div v-if="activeDialog === 'mobileMenu'" class="modal-open">
           <div
             class="fixed top-0 bottom-0 left-0 right-0 z-30 w-full overflow-y-auto bg-black bg-opacity-80 flex flex-col p-4 transition-all duration-500"
           >
@@ -53,7 +46,7 @@ function closeNav() {
                   type="mobile-header"
                   nav-class="text-white font-fusion-pixel text-center"
                 />
-                <button type="button" class="p-8" @click="closeNav">
+                <button type="button" class="p-8" @click="dialogStore.closeDialog()">
                   <img src="@/assets/images/icons/close.png" width="24" alt="" />
                 </button>
               </div>

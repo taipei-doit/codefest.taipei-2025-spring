@@ -12,6 +12,7 @@ import type { Sponsor } from '~/interfaces/sponsor.interface';
 import { useDialogStore } from '~/stores/dialogStore';
 
 const dialogStore = useDialogStore();
+const { activeDialog } = storeToRefs(dialogStore);
 
 const { tm } = useI18n();
 const headerHeight = ref(0);
@@ -156,7 +157,7 @@ const calculateDistance = () => {
             </p>
             <div class="flex justify-center">
               <button
-                @click="dialogStore.isApplyDialogOpen = true"
+                @click="dialogStore.openDialog('apply')"
                 class="icon-btn icon-btn--arrow min-w-60"
               >
                 <span> 立即報名 </span>
@@ -227,7 +228,7 @@ const calculateDistance = () => {
                 <span> 瞭解詳情 </span>
               </NuxtLink>
               <button
-                @click="dialogStore.isApplyDialogOpen = true"
+                @click="dialogStore.openDialog('apply')"
                 class="icon-btn icon-btn--arrow w-1/2 lg:w-auto lg:min-w-60"
               >
                 <span> 立即報名 </span>
@@ -411,14 +412,37 @@ const calculateDistance = () => {
                   class="flex justify-between items-center p-4 border border-b-white min-h-[83px]"
                 >
                   <p class="text-xl">{{ activeSchedule.schedule_sub_name }}</p>
-                  <button
-                    v-if="activeSchedule.button.text"
-                    class="icon-btn icon-btn--arrow min-w-60"
-                  >
-                    <span>
-                      {{ activeSchedule.button.text }}
-                    </span>
-                  </button>
+                  <!-- 按鈕（根據類型顯示）-->
+                  <template v-if="activeSchedule.button?.text">
+                    <!-- 外部連結 -->
+                    <a
+                      v-if="activeSchedule.button.type === 'outside_link'"
+                      :href="activeSchedule.button.link"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="icon-btn icon-btn--arrow min-w-60"
+                    >
+                      <span>{{ activeSchedule.button.text }}</span>
+                    </a>
+
+                    <!-- Nuxt 內部跳轉 -->
+                    <NuxtLink
+                      v-else-if="activeSchedule.button.type === 'route'"
+                      :to="activeSchedule.button.link"
+                      class="icon-btn icon-btn--arrow min-w-60"
+                    >
+                      <span>{{ activeSchedule.button.text }}</span>
+                    </NuxtLink>
+
+                    <!-- 開啟 Dialog -->
+                    <button
+                      v-else-if="activeSchedule.button.type === 'dialog'"
+                      @click="dialogStore.openDialog(activeSchedule.button.link)"
+                      class="icon-btn icon-btn--arrow min-w-60"
+                    >
+                      <span>{{ activeSchedule.button.text }}</span>
+                    </button>
+                  </template>
                 </div>
                 <div class="p-4 w-full overflow-auto">
                   <div v-show="activeSchedule.id === 'apply'">報名期間</div>
@@ -480,15 +504,41 @@ const calculateDistance = () => {
               <DisclosurePanel class="bg-primary-300">
                 <!-- 右側內容區 -->
                 <div class="flex-1 font-fusion-pixel font-px437 text-white">
-                  <div class="text-center p-4 border border-b-white">
+                  <div class="flex flex-col text-center p-4 border border-b-white">
                     <p class="text-xl font-fusion-pixel mb-2">
                       {{ tab.schedule_sub_name }}
                     </p>
-                    <button v-if="tab.button.text" class="icon-btn icon-btn--arrow min-w-60">
-                      <span>
-                        {{ tab.button.text }}
-                      </span>
-                    </button>
+                    <!-- 按鈕（根據類型顯示）-->
+                    <template v-if="tab.button?.text">
+                      <!-- 外部連結 -->
+                      <a
+                        v-if="tab.button.type === 'outside_link'"
+                        :href="tab.button.link"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="icon-btn icon-btn--arrow min-w-60"
+                      >
+                        <span>{{ tab.button.text }}</span>
+                      </a>
+
+                      <!-- Nuxt 內部跳轉 -->
+                      <NuxtLink
+                        v-else-if="tab.button.type === 'route'"
+                        :to="tab.button.link"
+                        class="icon-btn icon-btn--arrow min-w-60"
+                      >
+                        <span>{{ tab.button.text }}</span>
+                      </NuxtLink>
+
+                      <!-- 開啟 Dialog -->
+                      <button
+                        v-else-if="tab.button.type === 'dialog'"
+                        @click="dialogStore.openDialog(tab.button.link)"
+                        class="icon-btn icon-btn--arrow min-w-60"
+                      >
+                        <span>{{ tab.button.text }}</span>
+                      </button>
+                    </template>
                   </div>
                   <div class="p-4 w-full overflow-auto">
                     <div v-show="tab.id === 'apply'">報名期間</div>
@@ -549,7 +599,7 @@ const calculateDistance = () => {
                     class="block border border-white p-4 transition hover:text-primary-300"
                     @click="
                       activeNews = news;
-                      dialogStore.isNewsDialogOpen = true;
+                      dialogStore.openDialog('news');
                     "
                   >
                     <p class="text-lg mb-2">{{ news.date }}</p>
@@ -740,11 +790,11 @@ const calculateDistance = () => {
       </div>
     </section>
     <NewsDialog
-      :is-open="dialogStore.isNewsDialogOpen"
+      :is-open="activeDialog === 'news'"
       :active-news="activeNews"
       @close="
         activeNews = null;
-        dialogStore.isNewsDialogOpen = false;
+        dialogStore.closeDialog();
       "
     />
   </div>

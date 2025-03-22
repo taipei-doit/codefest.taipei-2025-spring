@@ -119,7 +119,8 @@
                 "schedule_sub_name": "報名期間 03.31 - 04.25",
                 "button": {
                     "text": "立即報名",
-                    "link": ""
+                    "link": "apply",
+                    "type": "dialog"
                 },
                 "schedule_headers": [],
                 "schedule": []
@@ -130,7 +131,8 @@
                 "schedule_sub_name": "114年3月31日",
                 "button": {
                     "text": "線上說明會",
-                    "link": ""
+                    "link": "",
+                    "type": "outside_link"
                 },
                 "schedule_headers": [],
                 "schedule": []
@@ -141,7 +143,8 @@
                 "schedule_sub_name": "114年5月18日",
                 "button": {
                     "text": "",
-                    "link": ""
+                    "link": "",
+                    "type": ""
                 },
                 "schedule_headers": [
                     {
@@ -203,7 +206,8 @@
                 "schedule_sub_name": "114年5月31日~114年6月1日",
                 "button": {
                     "text": "",
-                    "link": ""
+                    "link": "",
+                    "type": ""
                 },
                 "schedule_headers": [],
                 "schedule": []

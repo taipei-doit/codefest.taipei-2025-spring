@@ -35,7 +35,7 @@ const showApplyBtn = computed(() => route.path.startsWith(ROUTE_PATHS.RULES));
     </div>
     <button
       v-if="showApplyBtn"
-      @click="dialogStore.isApplyDialogOpen = true"
+      @click="dialogStore.openDialog('apply')"
       class="icon-btn icon-btn--arrow w-auto min-w-60 lg:ml-4 mx-auto"
     >
       <span> 立即報名 </span>

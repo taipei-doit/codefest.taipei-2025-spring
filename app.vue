@@ -2,6 +2,7 @@
 import { useDialogStore } from '~/stores/dialogStore';
 
 const dialogStore = useDialogStore();
+const { activeDialog } = storeToRefs(dialogStore);
 
 const footerTop = ref(0);
 const scrollY = ref(0);
@@ -45,9 +46,6 @@ onUnmounted(() => {
     <LayoutFooter id="footer" :class="isAboveFooter ? 'mt-4' : 'mt-[162px]'" />
 
     <!-- 報名表單 -->
-    <ApplyDialog
-      :is-open="dialogStore.isApplyDialogOpen"
-      @close="dialogStore.isApplyDialogOpen = false"
-    />
+    <ApplyDialog :is-open="activeDialog === 'apply'" @close="dialogStore.closeDialog()" />
   </div>
 </template>

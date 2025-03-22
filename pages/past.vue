@@ -1,13 +1,15 @@
 <script setup lang="ts">
-import { Disclosure, DisclosureButton, DisclosurePanel } from "@headlessui/vue";
-import WinningTeamDialog from "~/components/WinningTeamDialog.vue";
-import type { PastVideo, PastWinningTeam } from "~/interfaces/past.interface";
+import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/vue';
+import WinningTeamDialog from '~/components/WinningTeamDialog.vue';
+import type { PastVideo, PastWinningTeam } from '~/interfaces/past.interface';
 
 const { tm } = useI18n();
+const dialogStore = useDialogStore();
+const { activeDialog } = storeToRefs(dialogStore);
 
 /** 獲獎團隊 */
 const winningTeamList = computed<PastWinningTeam[]>(() => {
-  const data = tm("past.winning_teams.list");
+  const data = tm('past.winning_teams.list');
   return Array.isArray(data) ? data : Object.values(data); // 轉換 Object 為 Array
 });
 /** 選中的獲獎團隊 */
@@ -15,12 +17,9 @@ const activeWinningTeam = ref<PastWinningTeam | null>(null);
 
 /** 影音回顧 */
 const videoList = computed<PastVideo[]>(() => {
-  const data = tm("past.videos.list");
+  const data = tm('past.videos.list');
   return Array.isArray(data) ? data : Object.values(data); // 轉換 Object 為 Array
 });
-
-/** 獲獎團隊 Dialog 是否開啟 */
-const isWinningTeamDialogOpen = ref(false);
 </script>
 
 <template>
@@ -29,22 +28,20 @@ const isWinningTeamDialogOpen = ref(false);
       <div class="border border-white relative">
         <div class="m-1 border border-white">
           <p class="section-title font-fusion-pixel">
-            {{ tm("past.section_title") }}
+            {{ tm('past.section_title') }}
           </p>
           <div
             class="lg:flex block justify-center items-center font-fusion-pixel text-white lg:p-10 px-2 py-6 text-center border border-b-white"
           >
-            <p class="text-2xl">{{ tm("past.description") }}</p>
+            <p class="text-2xl">{{ tm('past.description') }}</p>
           </div>
           <!-- 獲獎團隊 -->
           <Disclosure v-slot="{ open }" :default-open="true">
             <DisclosureButton
               class="w-full h-16 flex items-center justify-between p-2 border border-t-white border-b-white bg-primary-300"
             >
-              <p
-                class="text-white text-lg text-center font-fusion-pixel mx-auto"
-              >
-                {{ tm("past.winning_teams.title") }}
+              <p class="text-white text-lg text-center font-fusion-pixel mx-auto">
+                {{ tm('past.winning_teams.title') }}
               </p>
               <img
                 src="@/assets/images/icons/white-down-arrow.svg"
@@ -62,7 +59,7 @@ const isWinningTeamDialogOpen = ref(false);
                       href="javascript:void(0)"
                       @click="
                         activeWinningTeam = group;
-                        isWinningTeamDialogOpen = true;
+                        dialogStore.openDialog('winningTeam');
                       "
                     >
                       <div class="video-box relative">
@@ -73,9 +70,9 @@ const isWinningTeamDialogOpen = ref(false);
                         />
                       </div>
                       <div
-                        class="lg:blck flex items-center mt-2 lg:text-lg text-base text-white font-fusion-pixel"
+                        class="lg:block flex items-center mt-2 lg:text-lg text-base text-white font-fusion-pixel"
                       >
-                        <p>{{ group.ranking }}</p>
+                        <p class="mr-2 lg:mr-0">{{ group.ranking }}</p>
                         <p class="flex justify-between items-center">
                           <span>{{ group.team_name }}</span>
                           <img
@@ -97,10 +94,8 @@ const isWinningTeamDialogOpen = ref(false);
             <DisclosureButton
               class="w-full h-16 flex items-center justify-between p-2 border border-t-white border-b-white bg-primary-300"
             >
-              <p
-                class="text-white text-lg text-center font-fusion-pixel mx-auto"
-              >
-                {{ tm("past.videos.title") }}
+              <p class="text-white text-lg text-center font-fusion-pixel mx-auto">
+                {{ tm('past.videos.title') }}
               </p>
               <img
                 src="@/assets/images/icons/white-down-arrow.svg"
@@ -122,14 +117,8 @@ const isWinningTeamDialogOpen = ref(false);
                           alt=""
                         />
                         <!-- 播放按鈕 -->
-                        <div
-                          class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-                        >
-                          <img
-                            src="@/assets/images/icons/play.png"
-                            width="40"
-                            alt="play_btn"
-                          />
+                        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+                          <img src="@/assets/images/icons/play.png" width="40" alt="play_btn" />
                         </div>
                       </div>
                       <div
@@ -156,11 +145,11 @@ const isWinningTeamDialogOpen = ref(false);
     </section>
 
     <WinningTeamDialog
-      :is-open="isWinningTeamDialogOpen"
+      :is-open="activeDialog === 'winningTeam'"
       :active-winning-team="activeWinningTeam"
       @close="
         activeWinningTeam = null;
-        isWinningTeamDialogOpen = false;
+        dialogStore.closeDialog();
       "
     />
   </div>
