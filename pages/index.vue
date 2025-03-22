@@ -228,7 +228,7 @@ const calculateDistance = () => {
               </NuxtLink>
               <button
                 @click="dialogStore.isApplyDialogOpen = true"
-                class="icon-btn icon-btn--arrow min-w-60"
+                class="icon-btn icon-btn--arrow w-1/2 lg:w-auto lg:min-w-60"
               >
                 <span> 立即報名 </span>
               </button>
