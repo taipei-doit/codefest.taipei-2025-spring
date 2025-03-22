@@ -346,7 +346,7 @@ const calculateDistance = () => {
                   <div
                     v-for="(tab, index) in scheduleList"
                     :key="tab.id"
-                    class="schedule-tab relative p-6 border border-white text-xl text-center cursor-pointer font-fusion-pixel mb-4"
+                    class="schedule-tab relative p-6 border border-white text-xl text-center cursor-pointer font-fusion-pixel mb-4 hover:bg-primary-50 hover:text-primary-500"
                     :class="
                       activeSchedule.id === tab.id
                         ? 'bg-primary-50 text-primary-500 border-0 shadow-[4px_4px_0px_black]'
@@ -596,7 +596,7 @@ const calculateDistance = () => {
                     v-for="news in newsList"
                     :key="news.id"
                     href="javascript:void(0)"
-                    class="block border border-white p-4 transition hover:text-primary-300"
+                    class="block border border-white p-4 transition hover:bg-primary-50 hover:text-primary-500"
                     @click="
                       activeNews = news;
                       dialogStore.openDialog('news');
