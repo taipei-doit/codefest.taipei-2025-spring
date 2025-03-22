@@ -4,6 +4,8 @@ const props = defineProps<{
   navClass: string;
 }>();
 
+const { tm } = useI18n();
+
 // 計算不同類型的 nav-item class
 const navItemClass = computed(() => {
   return (
@@ -27,6 +29,9 @@ const navItemClass = computed(() => {
       </li>
       <li :class="navItemClass">
         <NuxtLink :to="ROUTE_PATHS.PAST">參賽回顧</NuxtLink>
+      </li>
+      <li :class="navItemClass">
+        <a :href="tm('past_url')" target="_blank">歷屆紀錄</a>
       </li>
     </ul>
   </nav>
