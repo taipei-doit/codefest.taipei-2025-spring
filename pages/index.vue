@@ -580,50 +580,52 @@ const calculateDistance = () => {
     </section>
     <SectionDecoration />
     <!-- 第4幀 - 最新消息 -->
-    <div class="lg:flex justify-end hidden">
-      <SectionNav active-nav-name="news" />
-    </div>
-    <section id="news" class="p-5">
-      <div class="grid grid-cols-5">
-        <div class="lg:col-span-3 col-span-5">
-          <div class="border border-white relative">
-            <div class="m-1 border border-white">
-              <p class="section-title font-fusion-pixel">最新消息</p>
+    <template v-if="newsList.length">
+      <div class="lg:flex justify-end hidden">
+        <SectionNav active-nav-name="news" />
+      </div>
+      <section id="news" class="p-5">
+        <div class="grid grid-cols-5">
+          <div class="lg:col-span-3 col-span-5">
+            <div class="border border-white relative">
+              <div class="m-1 border border-white">
+                <p class="section-title font-fusion-pixel">最新消息</p>
 
-              <div class="lg:px-10 lg:py-14 p-4 pt-10 border border-b-white">
-                <div class="space-y-6 text-white font-fusion-pixel h-[347px] pr-4 overflow-auto">
-                  <a
-                    v-for="news in newsList"
-                    :key="news.id"
-                    href="javascript:void(0)"
-                    class="block border border-white p-4 transition hover:bg-primary-50 hover:text-primary-500"
-                    @click="
-                      activeNews = news;
-                      dialogStore.openDialog('news');
-                    "
-                  >
-                    <p class="text-lg mb-2">{{ news.date }}</p>
-                    <p class="text-xl text-ellipsis right-arrow">
-                      {{ news.title }}
-                    </p>
-                  </a>
+                <div class="lg:px-10 lg:py-14 p-4 pt-10 border border-b-white">
+                  <div class="space-y-6 text-white font-fusion-pixel h-[347px] pr-4 overflow-auto">
+                    <a
+                      v-for="news in newsList"
+                      :key="news.id"
+                      href="javascript:void(0)"
+                      class="block border border-white p-4 transition hover:bg-primary-50 hover:text-primary-500"
+                      @click="
+                        activeNews = news;
+                        dialogStore.openDialog('news');
+                      "
+                    >
+                      <p class="text-lg mb-2">{{ news.date }}</p>
+                      <p class="text-xl text-ellipsis right-arrow">
+                        {{ news.title }}
+                      </p>
+                    </a>
+                  </div>
                 </div>
-              </div>
-              <div class="hidden lg:flex justify-between items-center p-10 bg-primary-300 m-1">
-                <!-- 文字區塊 (lg 以上才顯示) -->
-                <div class="flex-1">
-                  <p class="font-px437 text-white typing-container">READ MORE：⭡⭣</p>
+                <div class="hidden lg:flex justify-between items-center p-10 bg-primary-300 m-1">
+                  <!-- 文字區塊 (lg 以上才顯示) -->
+                  <div class="flex-1">
+                    <p class="font-px437 text-white typing-container">READ MORE：⭡⭣</p>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
+          <div class="lg:col-span-2 p-10 lg:flex hidden items-center justify-center">
+            <img src="@/assets/images/img-news.png" alt="" />
+          </div>
         </div>
-        <div class="lg:col-span-2 p-10 lg:flex hidden items-center justify-center">
-          <img src="@/assets/images/img-news.png" alt="" />
-        </div>
-      </div>
-    </section>
-    <SectionDecoration direction="right" />
+      </section>
+      <SectionDecoration direction="right" />
+    </template>
     <!-- 第5幀 - 參賽回顧 -->
     <div class="lg:flex justify-start hidden">
       <SectionNav active-nav-name="past" />
