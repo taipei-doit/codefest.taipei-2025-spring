@@ -35,6 +35,9 @@ coverage
 
 # Nuxt build files
 .nuxt/
+.output/
+public/uat/
+public/prod/
 
 # lint
 .stylelintcache

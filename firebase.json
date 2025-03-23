@@ -1,0 +1,19 @@
+{
+  "hosting": [
+    {
+      "site": "tuic-taipei-hackathon-demo",
+      "public": "public/uat",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    }
+  ]
+}

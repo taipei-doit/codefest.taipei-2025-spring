@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "nuxt build",
+    "build:uat": "sh build-uat.sh",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
@@ -17,6 +17,7 @@
     "@nuxtjs/i18n": "^9.3.1",
     "@pinia/nuxt": "^0.10.1",
     "eslint": "^9.22.0",
+    "firebase": "^11.5.0",
     "nuxt": "^3.16.0",
     "swiper": "^11.2.5",
     "vue": "^3.5.13",
