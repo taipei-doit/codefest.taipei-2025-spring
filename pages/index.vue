@@ -16,7 +16,7 @@ const { activeDialog } = storeToRefs(dialogStore);
 
 const { tm } = useI18n();
 const headerHeight = ref(0);
-const bannerHeight = ref(`calc(100vh - ${headerHeight.value}px)`);
+const bannerHeight = ref('100vh');
 
 /** 評審列表 */
 const judgeList = computed<JudgeList[]>(() => {
@@ -86,7 +86,7 @@ onMounted(() => {
   const header = document.querySelector('header');
   if (header) {
     headerHeight.value = header.offsetHeight;
-    bannerHeight.value = `calc(100vh - ${headerHeight.value}px)`;
+    bannerHeight.value = `calc(${window.innerHeight}px - ${headerHeight.value}px)`;
   }
 
   calculateDistance();
