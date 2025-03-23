@@ -37,11 +37,15 @@ const { activeDialog } = storeToRefs(dialogStore);
           >
             <div class="border border-white flex-1 flex flex-col">
               <div class="flex-1 m-1 border border-white py-10 text-center">
-                <a href="" class="inline-flex p-8 space-x-2">
+                <NuxtLink
+                  to="/"
+                  class="inline-flex p-8 space-x-2"
+                  @click="dialogStore.closeDialog()"
+                >
                   <img src="/images/logos/logo-icon-ntpc.svg" width="30" alt="" />
                   <img src="/images/logos/logo-icon-tpe.svg" width="30" alt="" />
                   />
-                </a>
+                </NuxtLink>
                 <LayoutNavbar
                   type="mobile-header"
                   nav-class="text-white font-fusion-pixel text-center"
