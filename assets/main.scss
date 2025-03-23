@@ -28,6 +28,10 @@ body {
     background-color: theme("colors.primary.500");
 }
 
+.container {
+    max-width: 1440px;
+}
+
 /** 虛線 */
 .custom-dashed {
     --dashed-color: white; /* 預設顏色 */

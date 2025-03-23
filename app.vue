@@ -35,17 +35,17 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div>
+  <div class="container mx-auto">
     <LayoutHeader
       id="header"
       class="lg:h-[100px] h-[80px] fixed top-0 left-0 right-0 w-full z-50 transition-all duration-300"
     />
     <NuxtPage class="lg:mt-[100px] mt-[80px]" />
-    <!-- control bar -->
-    <ControlBar :is-above-footer="isAboveFooter" />
-    <LayoutFooter id="footer" :class="isAboveFooter ? 'mt-4' : 'mt-[162px]'" />
-
-    <!-- 報名表單 -->
-    <ApplyDialog :is-open="activeDialog === 'apply'" @close="dialogStore.closeDialog()" />
   </div>
+  <!-- control bar -->
+  <ControlBar :is-above-footer="isAboveFooter" />
+  <LayoutFooter id="footer" :class="isAboveFooter ? 'mt-4' : 'mt-[162px]'" />
+
+  <!-- 報名表單 -->
+  <ApplyDialog :is-open="activeDialog === 'apply'" @close="dialogStore.closeDialog()" />
 </template>

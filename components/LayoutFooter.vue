@@ -2,7 +2,7 @@
 
 <template>
   <footer class="bg-black p-5 pt-0 font-fusion-pixel">
-    <div class="border border-white">
+    <div class="container mx-auto border border-white">
       <div class="m-1 border border-white">
         <div class="grid lg:grid-cols-5 grid-cols-1 text-white">
           <div class="lg:col-span-1 p-4 flex flex-col border border-r-white">

@@ -8,7 +8,7 @@ const { activeDialog } = storeToRefs(dialogStore);
 
 <template>
   <header class="bg-black p-5 pb-0">
-    <div class="border border-white h-full flex flex-col">
+    <div class="container mx-auto border border-white h-full flex flex-col">
       <div class="m-1 border border-white flex-1 flex justify-between items-center lg:px-10">
         <NuxtLink to="/" class="px-4 flex space-x-2">
           <img src="/images/logos/logo-icon-ntpc.svg" width="30" alt="" />

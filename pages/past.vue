@@ -24,7 +24,7 @@ const videoList = computed<PastVideo[]>(() => {
 
 <template>
   <div>
-    <section class="p-5 pt-10">
+    <section class="2xl:px-0 p-5 pt-10">
       <div class="border border-white relative">
         <div class="m-1 border border-white">
           <p class="section-title font-fusion-pixel">

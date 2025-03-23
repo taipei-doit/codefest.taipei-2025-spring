@@ -173,7 +173,7 @@ const calculateDistance = () => {
     <div class="lg:flex justify-end hidden">
       <SectionNav active-nav-name="rules" />
     </div>
-    <section id="rules" class="p-5">
+    <section id="rules" class="2xl:p-0 p-5">
       <div class="border border-white relative">
         <div class="m-1 border border-white">
           <p class="section-title font-fusion-pixel">
@@ -325,7 +325,7 @@ const calculateDistance = () => {
     <div class="lg:flex justify-start hidden">
       <SectionNav active-nav-name="schedule" />
     </div>
-    <section id="schedule" class="p-5">
+    <section id="schedule" class="2xl:p-0 p-5">
       <div class="border border-white relative">
         <div class="m-1 border border-white">
           <p class="section-title font-fusion-pixel">
@@ -584,7 +584,7 @@ const calculateDistance = () => {
       <div class="lg:flex justify-end hidden">
         <SectionNav active-nav-name="news" />
       </div>
-      <section id="news" class="p-5">
+      <section id="news" class="2xl:p-0 p-5">
         <div class="grid grid-cols-5">
           <div class="lg:col-span-3 col-span-5">
             <div class="border border-white relative">
@@ -630,7 +630,7 @@ const calculateDistance = () => {
     <div class="lg:flex justify-start hidden">
       <SectionNav active-nav-name="past" />
     </div>
-    <section id="past" class="p-5">
+    <section id="past" class="2xl:p-0 p-5">
       <div class="border border-white relative">
         <div class="m-1 border border-white">
           <p class="section-title font-fusion-pixel">參賽回顧</p>
@@ -750,7 +750,7 @@ const calculateDistance = () => {
     <div class="lg:flex justify-end hidden">
       <SectionNav active-nav-name="sponsor" />
     </div>
-    <section id="sponsor" class="p-5">
+    <section id="sponsor" class="2xl:p-0 p-5">
       <div class="border border-white relative">
         <div class="m-1 border border-white">
           <p class="section-title font-fusion-pixel">贊助廠商</p>

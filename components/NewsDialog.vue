@@ -42,6 +42,6 @@ const emit = defineEmits(['close']);
           <div class="h-6"></div>
         </DialogDescription>
       </DialogPanel>
-    </div> </Dialog
-  >Ｆ
+    </div>
+  </Dialog>
 </template>

@@ -32,5 +32,3 @@ const props = withDefaults(
     />
   </div>
 </template>
-
-<style scoped lang="postcss"></style>
