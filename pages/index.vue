@@ -184,16 +184,39 @@ const calculateDistance = () => {
           </div>
           <div class="grid lg:grid-cols-5 grid-cols-1 border border-b-white">
             <div class="lg:col-span-3 lg:p-10 p-4 lg:border lg:border-r-white">
-              <img src="@/assets/images/img-rules.png" class="w-full lg:block hidden" alt="" />
-              <img
-                src="@/assets/images/img-rules-mobile.png"
-                class="w-full lg:hidden block"
-                alt=""
-              />
+              <div class="relative">
+                <!-- desktop 背景圖 -->
+                <img
+                  src="@/assets/images/img-rules-bg.png"
+                  class="lg:w-2/3 w-[95%] lg:block hidden"
+                  alt="背景圖"
+                />
+                <!-- desktop image -->
+                <img
+                  src="@/assets/images/img-rules.webp"
+                  class="absolute top-[12%] left-[12%] right-0 lg:block hidden"
+                  :style="{ width: 'calc(100% - 12%)' }"
+                  alt="程式儀表板大黑克松宣傳圖"
+                />
+                <!-- mobile 背景圖 -->
+                <img
+                  src="@/assets/images/img-rules-bg-mobile.png"
+                  class="lg:w-2/3 w-[95%] lg:hidden block"
+                  alt="背景圖"
+                />
+                <!-- mobile image -->
+                <img
+                  src="@/assets/images/img-rules-mobile.png"
+                  class="absolute top-[10%] left-[16%] lg:hidden block"
+                  :style="{ width: 'calc(100% - 16%)' }"
+                  alt="程式儀表板大黑克松宣傳圖"
+                />
+              </div>
             </div>
+
             <div class="lg:col-span-2 lg:p-10 p-4">
               <div class="font-fusion-pixel text-white leading-loose mb-6">
-                <p class="text-xl text-center mb-4">
+                <p class="text-xl text-center my-4">
                   {{ tm('rules.content_title') }}
                 </p>
                 <p class="whitespace-pre-wrap">{{ tm('rules.content') }}</p>
