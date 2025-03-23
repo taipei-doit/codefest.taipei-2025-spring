@@ -33,14 +33,14 @@ const videoList = computed<PastVideo[]>(() => {
           <div
             class="lg:flex block justify-center items-center font-fusion-pixel text-white lg:p-10 px-2 py-6 text-center border border-b-white"
           >
-            <p class="text-2xl">{{ tm('past.description') }}</p>
+            <p class="lg:text-2xl text-lg">{{ tm('past.description') }}</p>
           </div>
           <!-- 獲獎團隊 -->
           <Disclosure v-slot="{ open }" :default-open="true">
             <DisclosureButton
               class="w-full h-16 flex items-center justify-between p-2 border border-t-white border-b-white bg-primary-300"
             >
-              <p class="text-white text-lg text-center font-fusion-pixel mx-auto">
+              <p class="font-fusion-pixel text-white text-lg text-center mx-auto">
                 {{ tm('past.winning_teams.title') }}
               </p>
               <img
@@ -69,9 +69,7 @@ const videoList = computed<PastVideo[]>(() => {
                           alt=""
                         />
                       </div>
-                      <div
-                        class="lg:block flex items-center mt-2 lg:text-lg text-base text-white font-fusion-pixel"
-                      >
+                      <div class="lg:block flex items-center mt-2 lg:text-lg text-base text-white">
                         <p class="mr-2 lg:mr-0">{{ group.ranking }}</p>
                         <p class="flex justify-between items-center">
                           <span>{{ group.team_name }}</span>
@@ -94,7 +92,7 @@ const videoList = computed<PastVideo[]>(() => {
             <DisclosureButton
               class="w-full h-16 flex items-center justify-between p-2 border border-t-white border-b-white bg-primary-300"
             >
-              <p class="text-white text-lg text-center font-fusion-pixel mx-auto">
+              <p class="font-fusion-pixel text-white text-lg text-center mx-auto">
                 {{ tm('past.videos.title') }}
               </p>
               <img
@@ -124,7 +122,7 @@ const videoList = computed<PastVideo[]>(() => {
                       <div
                         class="flex justify-between items-center mt-2 lg:text-lg text-base text-white"
                       >
-                        <span class="font-fusion-pixel">{{ group.title }}</span>
+                        <span>{{ group.title }}</span>
                         <span>
                           <img
                             src="@/assets/images/icons/white-right-arrow.svg"

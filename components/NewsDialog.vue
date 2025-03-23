@@ -19,7 +19,7 @@ const emit = defineEmits(['close']);
     <div class="fixed inset-0 w-screen h-screen p-4">
       <!-- DialogPanel：最大寬 862px + 高度撐滿 -->
       <DialogPanel
-        class="bg-white w-full h-full max-w-[862px] mx-auto font-fusion-pixel flex flex-col relative"
+        class="bg-white w-full h-full max-w-[862px] mx-auto flex flex-col relative"
       >
         <!-- 關閉按鈕固定右上 -->
         <button class="absolute top-4 right-4 z-10" @click="emit('close')">

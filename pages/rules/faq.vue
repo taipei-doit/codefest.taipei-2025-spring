@@ -13,7 +13,7 @@ const faqList = computed(() => {
 <template>
   <div>
     <div class="lg:block hidden p-10">
-      <p class="font-fusion-pixel text-white text-center">
+      <p class="font-fusion-pixel text-2xl text-white text-center">
         {{ tm('faq.section_title') }}
       </p>
     </div>
@@ -25,7 +25,7 @@ const faqList = computed(() => {
           :class="{ 'bg-primary-50': open }"
         >
           <p
-            class="text-left text-lg font-fusion-pixel"
+            class="text-left text-lg"
             :class="open ? 'text-primary-500' : 'text-white'"
           >
             {{ item.title }}
@@ -46,7 +46,7 @@ const faqList = computed(() => {
         </DisclosureButton>
         <DisclosurePanel>
           <div
-            class="relative w-full py-4 lg:px-10 px-3 font-fusion-pixel border-b border-white bg-primary-300"
+            class="relative w-full py-4 lg:px-10 px-3 border-b border-white bg-primary-300"
           >
             {{ item.content }}
           </div>

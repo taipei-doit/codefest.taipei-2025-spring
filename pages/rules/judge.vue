@@ -18,7 +18,7 @@ const judgeList = computed<JudgeList[]>(() => {
 <template>
   <div class="judge">
     <div class="lg:block hidden p-10">
-      <p class="font-fusion-pixel text-white text-center">本屆評審介紹</p>
+      <p class="font-fusion-pixel text-2xl text-white text-center">本屆評審介紹</p>
     </div>
 
     <template v-for="(item, index) in judgeList" :key="index">
@@ -45,12 +45,12 @@ const judgeList = computed<JudgeList[]>(() => {
                 <div class="judge-box relative">
                   <img :src="judge.thumbnail" class="w-full h-full object-cover" alt="" />
                   <p
-                    class="px-4 py-2 bg-white text-black font-fusion-pixel absolute -left-3 -bottom-3"
+                    class="px-4 py-2 bg-white text-black absolute -left-3 -bottom-3"
                   >
                     {{ judge.name }}
                   </p>
                 </div>
-                <div class="mt-4 text-white text-center font-fusion-pixel">
+                <div class="mt-4 text-white text-center">
                   <p>{{ judge.corporation }}</p>
                   <p>{{ judge.position }}</p>
                 </div>
@@ -71,12 +71,12 @@ const judgeList = computed<JudgeList[]>(() => {
                   <div class="judge-box relative">
                     <img :src="judge.thumbnail" class="w-full h-full object-cover" alt="" />
                     <p
-                      class="px-4 py-2 bg-white text-black font-fusion-pixel absolute -left-3 -bottom-3"
+                      class="px-4 py-2 bg-white text-black absolute -left-3 -bottom-3"
                     >
                       {{ judge.name }}
                     </p>
                   </div>
-                  <div class="mt-8 text-white text-center font-fusion-pixel">
+                  <div class="mt-8 text-white text-center">
                     <p>{{ judge.corporation }}</p>
                     <p>{{ judge.position }}</p>
                   </div>

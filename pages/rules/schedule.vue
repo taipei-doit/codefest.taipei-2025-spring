@@ -25,7 +25,7 @@ const scheduleList = computed(() => {
         :class="{ 'bg-primary-50 lg:bg-primary-500': open }"
       >
         <p
-          class="text-center font-fusion-pixel mx-auto"
+          class="text-center mx-auto"
           :class="open ? 'text-primary-500 lg:text-white' : 'text-white'"
         >
           {{ tab.schedule_name }}
@@ -40,11 +40,11 @@ const scheduleList = computed(() => {
       </DisclosureButton>
       <DisclosurePanel class="bg-primary-300">
         <!-- 右側內容區 -->
-        <div class="flex-1 font-fusion-pixel font-px437 text-white">
+        <div class="flex-1 font-px437 text-white">
           <div
             class="text-center p-4 border border-b-white flex lg:flex-row flex-col items-center justify-between"
           >
-            <p class="text-xl font-fusion-pixel mb-2">
+            <p class="text-xl mb-2">
               {{ tab.schedule_sub_name }}
             </p>
             <!-- 按鈕（根據類型顯示）-->
@@ -84,7 +84,7 @@ const scheduleList = computed(() => {
             <div v-show="tab.id === 'online'">線上說明會</div>
             <table
               v-show="tab.id === 'workshop'"
-              class="w-full min-w-max border-collapse text-white font-fusion-pixel"
+              class="w-full min-w-max border-collapse text-white"
             >
               <thead>
                 <tr class="border-white custom-dashed text-left">

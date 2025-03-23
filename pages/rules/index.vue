@@ -41,7 +41,7 @@ const prospectusContents = computed(() => {
       </div>
     </div>
     <div class="lg:p-10 p-4 border-b border-white bg-primary-300">
-      <div class="font-fusion-pixel text-white leading-loose mb-6">
+      <div class="text-white leading-loose mb-6">
         <p class="text-xl text-center mb-4">
           {{ tm('rules.content_title') }}
         </p>
@@ -53,12 +53,12 @@ const prospectusContents = computed(() => {
         <button class="icon-btn icon-btn--download w-1/2 lg:w-auto lg:min-w-60">
           <span> 下載簡章 </span>
         </button>
-        <button class="icon-btn icon-btn--arrow w-1/2 lg:w-auto lg:min-w-60">
+        <!-- <button class="icon-btn icon-btn--arrow w-1/2 lg:w-auto lg:min-w-60">
           <span> 查看詳情 </span>
-        </button>
+        </button> -->
       </div>
     </div>
-    <div class="lg:p-10 p-4 border-b border-white font-fusion-pixel">
+    <div class="lg:p-10 p-4 border-b border-white">
       <p class="text-2xl text-center mb-8">
         {{ tm('rules.prospectus.title') }}
       </p>
@@ -67,7 +67,7 @@ const prospectusContents = computed(() => {
         <p>{{ content.sub_content }}</p>
       </div>
       <div class="overflow-x-auto">
-        <img :src="tm('rules.prospectus.image_url')" class="w-[800px]" alt="" />
+        <img :src="tm('rules.prospectus.image_url')" class="w-[800px] lg:w-full max-w-none" alt="" />
       </div>
       <p class="lg:!hidden p-4 text-center scroll-arrow">向右滑看更多資訊</p>
     </div>

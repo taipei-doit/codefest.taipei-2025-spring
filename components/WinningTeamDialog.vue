@@ -35,7 +35,7 @@ const setThumbsSwiper = (swiper: any) => {
       <div class="flex min-h-full items-center justify-center p-4">
         <!-- The actual dialog panel -->
         <DialogPanel
-          class="bg-white relative w-full max-w-[1147px] min-h-[684px] lg:p-10 px-4 py-10 font-fusion-pixel"
+          class="bg-white relative w-full max-w-[1147px] min-h-[684px] lg:p-10 px-4 py-10"
         >
           <button class="absolute top-0 right-0" @click="emit('close')">
             <img src="@/assets/images/icons/btn-close.svg" alt="" />

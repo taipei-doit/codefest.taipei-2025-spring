@@ -179,7 +179,7 @@ const calculateDistance = () => {
           <p class="section-title font-fusion-pixel">
             {{ tm('rules.section_title') }}
           </p>
-          <div class="font-fusion-pixel text-white p-10 text-center border border-b-white">
+          <div class="text-white p-10 text-center border border-b-white">
             <p class="whitespace-pre-wrap">{{ tm('rules.description') }}</p>
           </div>
           <div class="grid lg:grid-cols-5 grid-cols-1 border border-b-white">
@@ -215,7 +215,7 @@ const calculateDistance = () => {
             </div>
 
             <div class="lg:col-span-2 lg:p-10 p-4">
-              <div class="font-fusion-pixel text-white leading-loose mb-6">
+              <div class="text-white leading-loose mb-6">
                 <p class="text-xl text-center my-4">
                   {{ tm('rules.content_title') }}
                 </p>
@@ -262,7 +262,7 @@ const calculateDistance = () => {
           <!-- 評審介紹 -->
           <div class="judge border border-t-white">
             <div class="p-10">
-              <p class="font-fusion-pixel text-white text-center">本屆評審介紹</p>
+              <p class="font-fusion-pixel text-2xl text-white text-center">本屆評審介紹</p>
             </div>
 
             <template v-for="(item, index) in judgeList" :key="index">
@@ -292,13 +292,11 @@ const calculateDistance = () => {
                       >
                         <div class="judge-box relative">
                           <img :src="judge.thumbnail" class="w-full h-full object-cover" alt="" />
-                          <p
-                            class="px-4 py-2 bg-white font-fusion-pixel absolute -left-3 -bottom-3"
-                          >
+                          <p class="px-4 py-2 bg-white absolute -left-3 -bottom-3">
                             {{ judge.name }}
                           </p>
                         </div>
-                        <div class="mt-4 text-white text-center font-fusion-pixel">
+                        <div class="mt-4 text-white text-center">
                           <p>{{ judge.corporation }}</p>
                           <p>{{ judge.position }}</p>
                         </div>
@@ -322,13 +320,11 @@ const calculateDistance = () => {
                         >
                           <div class="judge-box relative">
                             <img :src="judge.thumbnail" class="w-full h-full object-cover" alt="" />
-                            <p
-                              class="px-4 py-2 bg-white font-fusion-pixel absolute -left-3 -bottom-3"
-                            >
+                            <p class="px-4 py-2 bg-white absolute -left-3 -bottom-3">
                               {{ judge.name }}
                             </p>
                           </div>
-                          <div class="mt-8 text-white text-center font-fusion-pixel">
+                          <div class="mt-8 text-white text-center">
                             <p>{{ judge.corporation }}</p>
                             <p>{{ judge.position }}</p>
                           </div>
@@ -355,7 +351,7 @@ const calculateDistance = () => {
             {{ tm('schedule.section_title') }}
           </p>
           <div
-            class="lg:flex block justify-center items-center font-fusion-pixel text-white lg:p-10 p-4 pt-6 text-center border border-b-white"
+            class="lg:flex block justify-center items-center font-fusion-pixel text-white lg:p-10 px-2 py-4 pt-6 text-center border border-b-white"
           >
             <p class="mb-4 lg:mb-0">報名截止倒數</p>
             <CountDown :target-date="new Date(tm('schedule.count_down'))" />
@@ -369,7 +365,7 @@ const calculateDistance = () => {
                   <div
                     v-for="(tab, index) in scheduleList"
                     :key="tab.id"
-                    class="schedule-tab relative p-6 border border-white text-xl text-center cursor-pointer font-fusion-pixel mb-4 hover:bg-primary-50 hover:text-primary-500"
+                    class="schedule-tab relative p-6 border border-white text-xl text-center cursor-pointer mb-4 hover:bg-primary-50 hover:text-primary-500"
                     :class="
                       activeSchedule.id === tab.id
                         ? 'bg-primary-50 text-primary-500 border-0 shadow-[4px_4px_0px_black]'
@@ -430,7 +426,7 @@ const calculateDistance = () => {
             </div>
             <div class="col-span-5 bg-primary-300 border border-white z-0 right-content">
               <!-- 右側內容區 -->
-              <div class="flex-1 font-fusion-pixel font-px437 text-white">
+              <div class="flex-1 font-px437 text-white">
                 <div
                   class="flex justify-between items-center p-4 border border-b-white min-h-[83px]"
                 >
@@ -472,7 +468,7 @@ const calculateDistance = () => {
                   <div v-show="activeSchedule.id === 'online'">線上說明會</div>
                   <table
                     v-show="activeSchedule.id === 'workshop'"
-                    class="w-full min-w-max border-collapse text-white font-fusion-pixel"
+                    class="w-full min-w-max border-collapse text-white"
                   >
                     <thead>
                       <tr class="border-white custom-dashed text-left">
@@ -510,10 +506,7 @@ const calculateDistance = () => {
                 class="w-full flex items-center justify-between p-6 border border-t-white border-b-white"
                 :class="{ 'bg-primary-50': open }"
               >
-                <p
-                  class="text-center font-fusion-pixel mx-auto"
-                  :class="open ? 'text-primary-500' : 'text-white'"
-                >
+                <p class="text-center mx-auto" :class="open ? 'text-primary-500' : 'text-white'">
                   {{ tab.schedule_name }}
                 </p>
                 <img
@@ -526,9 +519,9 @@ const calculateDistance = () => {
               </DisclosureButton>
               <DisclosurePanel class="bg-primary-300">
                 <!-- 右側內容區 -->
-                <div class="flex-1 font-fusion-pixel font-px437 text-white">
+                <div class="flex-1 font-px437 text-white">
                   <div class="flex flex-col text-center p-4 border border-b-white">
-                    <p class="text-xl font-fusion-pixel mb-2">
+                    <p class="text-xl mb-2">
                       {{ tab.schedule_sub_name }}
                     </p>
                     <!-- 按鈕（根據類型顯示）-->
@@ -568,7 +561,7 @@ const calculateDistance = () => {
                     <div v-show="tab.id === 'online'">線上說明會</div>
                     <table
                       v-show="tab.id === 'workshop'"
-                      class="w-full min-w-max border-collapse text-white font-fusion-pixel"
+                      class="w-full min-w-max border-collapse text-white"
                     >
                       <thead>
                         <tr class="border-white custom-dashed text-left">
@@ -615,7 +608,7 @@ const calculateDistance = () => {
                 <p class="section-title font-fusion-pixel">最新消息</p>
 
                 <div class="lg:px-10 lg:py-14 p-4 pt-10 border border-b-white">
-                  <div class="space-y-6 text-white font-fusion-pixel h-[347px] pr-4 overflow-auto">
+                  <div class="space-y-6 text-white h-[347px] pr-4 overflow-auto">
                     <a
                       v-for="news in newsList"
                       :key="news.id"
@@ -657,7 +650,7 @@ const calculateDistance = () => {
       <div class="border border-white relative">
         <div class="m-1 border border-white">
           <p class="section-title font-fusion-pixel">參賽回顧</p>
-          <div class="p-10 border border-b-white">
+          <div class="lg:p-10 p-6 border border-b-white">
             <!-- 影片列表 -->
             <!-- pc swiper -->
             <div class="hidden lg:block">
