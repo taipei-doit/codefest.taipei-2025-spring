@@ -83,19 +83,33 @@ const tabToContentDistance = ref(0);
 const tabHeight = ref(0);
 
 onMounted(() => {
-  const header = document.querySelector('header');
-  if (header) {
-    headerHeight.value = header.offsetHeight;
-    bannerHeight.value = `calc(${window.innerHeight}px - ${headerHeight.value}px)`;
-  }
-
+  calculateBannerHeight();
   calculateDistance();
-  window.addEventListener('resize', calculateDistance);
+
+  window.addEventListener('resize', () => {
+    calculateBannerHeight();
+    calculateDistance();
+  });
 });
 
 onUnmounted(() => {
-  window.removeEventListener('resize', calculateDistance);
+  window.removeEventListener('resize', () => {
+    calculateBannerHeight();
+    calculateDistance();
+  });
 });
+
+const calculateBannerHeight = () => {
+  const header = document.querySelector('header');
+  const controlbar = document.querySelector('.controlbar');
+  if (header && controlbar) {
+    const headerRect = header.getBoundingClientRect();
+    const controlbarRect = controlbar.getBoundingClientRect();
+    headerHeight.value = headerRect.height;
+    const availableHeight = window.innerHeight - headerRect.height - controlbarRect.height + 20;
+    bannerHeight.value = `${availableHeight}px`;
+  }
+};
 
 const calculateDistance = () => {
   nextTick(() => {
@@ -115,12 +129,15 @@ const calculateDistance = () => {
 <template>
   <div>
     <!-- 第1幀 - Hero Banner -->
-    <section class="flex flex-col h-full lg:p-0 p-5" :style="{ height: bannerHeight }">
-      <div class="lg:border-0 border border-white flex flex-1 lg:mb-[120px]">
+    <section
+      class="flex flex-col h-full lg:p-0 p-5  relative"
+      :style="{ minHeight: bannerHeight }"
+    >
+      <div class="lg:border-0 border border-white flex flex-1">
         <div
           class="lg:border-0 m-1 border border-white text-white flex-1 flex items-center justify-center text-center bg-tp"
         >
-          <div class="p-10">
+          <div class="p-10 flex flex-col justify-around h-full max-h-[500px]">
             <!-- desktop noise -->
             <img
               class="md:block hidden img-noise"
@@ -134,20 +151,20 @@ const calculateDistance = () => {
               alt="noise"
             />
             <!-- title -->
-            <p class="lg:text-2xl text-xl font-fusion-pixel mb-8 text-are-you-ready">
+            <p class="lg:text-2xl text-xl font-fusion-pixel text-are-you-ready mt-6">
               {{ tm('hero_banner.section_title') }}
             </p>
             <img
               src="@/assets/images/hero-banner-title.svg"
-              class="mb-8 mx-auto"
+              class="mx-auto"
               alt="城市儀表板大黑克松"
             />
-            <!-- <p class="text-7xl mb-8">
+            <!-- <p class="text-7xl">
               城市儀表板
               <br />
               大黑克松
             </p> -->
-            <p class="lg:flex items-center font-fusion-pixel mb-8">
+            <p class="lg:flex items-center font-fusion-pixel">
               <span class="lg:mr-4 lg:text-base text-sm lg:inline block lg:mb-0 mb-2"
                 >報名期間</span
               >
@@ -166,8 +183,8 @@ const calculateDistance = () => {
           </div>
         </div>
       </div>
-      <SectionDecoration class="lg:absolute lg:bottom-0 lg:block hidden" />
     </section>
+    <SectionDecoration class="lg:block hidden" />
     <SectionDecoration class="lg:hidden" />
     <!-- 第2幀 - 參賽規則 -->
     <div class="lg:flex justify-end hidden">
@@ -216,7 +233,7 @@ const calculateDistance = () => {
 
             <div class="lg:col-span-2 lg:p-10 p-4">
               <div class="text-white leading-loose mb-6">
-                <p class="text-xl text-center my-4">
+                <p class="text-xl text-center my-4 font-roboto">
                   {{ tm('rules.content_title') }}
                 </p>
                 <p class="whitespace-pre-wrap">{{ tm('rules.content') }}</p>

@@ -15,7 +15,7 @@ const showApplyBtn = computed(() => route.path.startsWith(ROUTE_PATHS.RULES));
 
 <template>
   <div
-    class="container mx-auto flex 2xl:px-0 p-5 border-t border-b border-white lg:border-none bg-primary-300 lg:bg-primary-500"
+    class="controlbar container mx-auto flex 2xl:px-0 p-5 border-t border-b border-white lg:border-none bg-primary-300 lg:bg-primary-500"
     :class="[
       props.isAboveFooter ? '' : 'fixed bottom-0 left-0 right-0',
       showApplyBtn ? '' : 'lg:block hidden',
