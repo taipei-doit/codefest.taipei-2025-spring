@@ -327,7 +327,6 @@ const calculateDistance = () => {
                         :space-between="20"
                         :centered-slides="true"
                         :loop="false"
-                        navigation
                         :pagination="{ type: 'bullets', clickable: true }"
                       >
                         <SwiperSlide
