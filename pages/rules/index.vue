@@ -20,7 +20,7 @@ const prospectusContents = computed(() => {
         />
         <!-- desktop image -->
         <img
-          src="@/assets/images/img-rules.webp"
+          src="@/assets/images/img-rules.jpg"
           class="absolute top-[12%] left-[12%] right-0 lg:block hidden"
           :style="{ width: 'calc(100% - 12%)' }"
           alt="程式儀表板大黑克松宣傳圖"
@@ -33,7 +33,7 @@ const prospectusContents = computed(() => {
         />
         <!-- mobile image -->
         <img
-          src="@/assets/images/img-rules-mobile.png"
+          src="@/assets/images/img-rules-mobile.jpg"
           class="absolute top-[10%] left-[16%] lg:hidden block"
           :style="{ width: 'calc(100% - 16%)' }"
           alt="程式儀表板大黑克松宣傳圖"
