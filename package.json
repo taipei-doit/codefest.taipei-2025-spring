@@ -3,9 +3,10 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "dev": "nuxt dev --host 0.0.0.0",
     "build:uat": "sh build-uat.sh",
-    "dev": "nuxt dev",
     "generate": "nuxt generate",
+    "deploy:uat": "firebase deploy --only hosting:tuic-taipei-hackathon-demo",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "lint:js": "eslint . --fix",
