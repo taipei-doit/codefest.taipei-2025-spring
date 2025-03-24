@@ -378,7 +378,7 @@ const calculateDistance = () => {
             <div class="col-span-2">
               <div class="flex">
                 <!-- 左側 Tabs -->
-                <div class="relative flex flex-col">
+                <div class="relative flex flex-col font-fusion-pixel">
                   <div
                     v-for="(tab, index) in scheduleList"
                     :key="tab.id"
@@ -443,7 +443,7 @@ const calculateDistance = () => {
             </div>
             <div class="col-span-5 bg-primary-300 border border-white z-0 right-content">
               <!-- 右側內容區 -->
-              <div class="flex-1 font-px437 text-white">
+              <div class="flex-1 text-white">
                 <div
                   class="flex justify-between items-center p-4 border border-b-white min-h-[83px]"
                 >
@@ -536,7 +536,7 @@ const calculateDistance = () => {
               </DisclosureButton>
               <DisclosurePanel class="bg-primary-300">
                 <!-- 右側內容區 -->
-                <div class="flex-1 font-px437 text-white">
+                <div class="flex-1 text-white">
                   <div class="flex flex-col text-center p-4 border border-b-white">
                     <p class="text-xl mb-2">
                       {{ tab.schedule_sub_name }}

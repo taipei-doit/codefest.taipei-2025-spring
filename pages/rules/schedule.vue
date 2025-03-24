@@ -40,7 +40,7 @@ const scheduleList = computed(() => {
       </DisclosureButton>
       <DisclosurePanel class="bg-primary-300">
         <!-- 右側內容區 -->
-        <div class="flex-1 font-px437 text-white">
+        <div class="flex-1 text-white">
           <div
             class="text-center p-4 border border-b-white flex lg:flex-row flex-col items-center justify-between"
           >

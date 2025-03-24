@@ -112,7 +112,7 @@ onMounted(() => {
 
             <!-- 右側內容區 -->
             <div class="flex-1">
-              <div class="flex-1 font-fusion-pixel font-px437 text-white">
+              <div class="flex-1 text-white">
                 <div class="w-full overflow-auto">
                   <NuxtPage />
                 </div>
