@@ -24,10 +24,7 @@ const faqList = computed(() => {
           class="w-full h-16 flex items-center justify-between py-3 lg:px-10 px-3 border border-t-white border-b-white lg:last:mb-40"
           :class="{ 'bg-primary-50': open }"
         >
-          <p
-            class="text-left text-lg"
-            :class="open ? 'text-primary-500' : 'text-white'"
-          >
+          <p class="text-left text-lg" :class="open ? 'text-primary-500' : 'text-white'">
             {{ item.title }}
           </p>
           <img
@@ -47,9 +44,8 @@ const faqList = computed(() => {
         <DisclosurePanel>
           <div
             class="relative w-full py-4 lg:px-10 px-3 border-b border-white bg-primary-300"
-          >
-            {{ item.content }}
-          </div>
+            v-html="item.content"
+          ></div>
         </DisclosurePanel>
       </Disclosure>
     </template>
