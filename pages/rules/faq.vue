@@ -3,11 +3,13 @@ import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/vue';
 
 const { tm } = useI18n();
 
-/** 重要時程 */
+/** FAQ */
 const faqList = computed(() => {
   const data = tm('faq.list');
   return Array.isArray(data) ? data : Object.values(data); // 轉換 Object 為 Array
 });
+
+const activeTab = ref(0);
 </script>
 
 <template>
@@ -18,14 +20,30 @@ const faqList = computed(() => {
       </p>
     </div>
 
-    <template v-for="(item, index) in faqList" :key="index">
+    <div class="flex">
+      <div
+        v-for="(item, index) in faqList"
+        :key="index"
+        @click="activeTab = index"
+        class="w-1/2 cursor-pointer transition-colors text-center p-5 border border-white"
+        :class="
+          activeTab === index
+            ? 'bg-primary-50 text-primary-500 font-bold'
+            : 'bg-primary-500 text-white'
+        "
+      >
+        {{ item.type }}
+      </div>
+    </div>
+
+    <template v-for="(item, index) in faqList[activeTab]?.list" :key="index">
       <Disclosure v-slot="{ open }" :default-open="index === 0">
         <DisclosureButton
-          class="w-full h-16 flex items-center justify-between py-3 lg:px-10 px-3 border border-t-white border-b-white lg:last:mb-40"
+          class="w-full min-h-16 flex items-center justify-between lg:px-10 p-3 pr-8 border border-t-white border-b-white lg:last:mb-40"
           :class="{ 'bg-primary-50': open }"
         >
           <p class="text-left text-lg" :class="open ? 'text-primary-500' : 'text-white'">
-            {{ item.title }}
+            {{ index + 1 }}. {{ item.title }}
           </p>
           <img
             v-if="open"
