@@ -233,7 +233,7 @@ const calculateDistance = () => {
 
             <div class="lg:col-span-2 lg:p-10 p-4">
               <div class="text-white leading-loose mb-6">
-                <p class="text-xl text-center my-4 font-roboto">
+                <p class="text-xl text-center my-4">
                   {{ tm('rules.content_title') }}
                 </p>
                 <p class="whitespace-pre-wrap">{{ tm('rules.content') }}</p>

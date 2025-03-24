@@ -9,7 +9,7 @@ export default {
   theme: {
     fontFamily: {
       sans: [
-        'Roboto', // 首選 Roboto
+        'Noto Sans TC', // 首選 Noto Sans TC
         'SF Pro Display', // SF Pro Display
         'ui-sans-serif', // 系統無襯線字體
         'system-ui', // 系統字體
