@@ -36,7 +36,7 @@ const activeTab = ref(0);
       </div>
     </div>
 
-    <template v-for="(item, index) in faqList[activeTab]?.list" :key="index">
+    <template v-for="(item, index) in faqList[activeTab]?.list" :key="`${activeTab}-${index}`">
       <Disclosure v-slot="{ open }" :default-open="index === 0">
         <DisclosureButton
           class="w-full min-h-16 flex items-center justify-between lg:px-10 p-3 pr-8 border border-t-white border-b-white lg:last:mb-40"
