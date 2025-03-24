@@ -40,14 +40,12 @@ const activeTab = ref(0);
       <Disclosure v-slot="{ open }" :default-open="index === 0">
         <DisclosureButton
           class="w-full min-h-16 flex items-center justify-between lg:px-10 p-3 pr-8 border border-t-white border-b-white lg:last:mb-40"
-          :class="{ 'bg-primary-50': open }"
+          :class="{ 'bg-primary-300': open }"
         >
-          <p class="text-left text-lg" :class="open ? 'text-primary-500' : 'text-white'">
-            {{ index + 1 }}. {{ item.title }}
-          </p>
+          <p class="text-left text-lg text-white">{{ index + 1 }}. {{ item.title }}</p>
           <img
             v-if="open"
-            src="@/assets/images/icons/primary-minus.svg"
+            src="@/assets/images/icons/white-minus.svg"
             alt="plus"
             class="absolute right-5 lg:w-[40px] w-[20px]"
           />
