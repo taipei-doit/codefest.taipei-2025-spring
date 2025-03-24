@@ -9,8 +9,8 @@ export default {
   theme: {
     fontFamily: {
       sans: [
-        'SF Pro Display', // 首選 SF Pro Display
-        'Roboto', // 次選 Roboto
+        'Roboto', // 首選 Roboto
+        'SF Pro Display', // SF Pro Display
         'ui-sans-serif', // 系統無襯線字體
         'system-ui', // 系統字體
         '-apple-system', // Apple 平台系統字體
