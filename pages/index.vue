@@ -129,10 +129,7 @@ const calculateDistance = () => {
 <template>
   <div>
     <!-- 第1幀 - Hero Banner -->
-    <section
-      class="flex flex-col h-full lg:p-0 p-5  relative"
-      :style="{ minHeight: bannerHeight }"
-    >
+    <section class="flex flex-col h-full lg:p-0 p-5 relative" :style="{ minHeight: bannerHeight }">
       <div class="lg:border-0 border border-white flex flex-1">
         <div
           class="lg:border-0 m-1 border border-white text-white flex-1 flex items-center justify-center text-center bg-tp"
@@ -811,9 +808,9 @@ const calculateDistance = () => {
                       :key="sponsor.id"
                       class="max-w-[200px] p-4 flex-shrink-0 mr-10"
                     >
-                      <a href="#" target="_blank" class="group block">
+                      <div class="group block">
                         <img :src="sponsor.image_url" alt="" class="w-full h-auto" />
-                      </a>
+                      </div>
                     </div>
                   </div>
                 </div>
