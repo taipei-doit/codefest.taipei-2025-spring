@@ -69,7 +69,7 @@ const onPastSlideChange = (event: any) => {
   }
 };
 
-/** 贊助廠商 */
+/** 贊助單位 */
 const sponsorList = computed<Sponsor[]>(() => {
   const data = tm('sponsor.list');
   return Array.isArray(data) ? data : Object.values(data); // 轉換 Object 為 Array
@@ -778,14 +778,14 @@ const calculateDistance = () => {
       </div>
     </section>
     <SectionDecoration />
-    <!-- 第6幀 - 贊助廠商 -->
+    <!-- 第6幀 - 贊助單位 -->
     <div class="lg:flex justify-end hidden">
       <SectionNav active-nav-name="sponsor" />
     </div>
     <section id="sponsor" class="2xl:p-0 p-5">
       <div class="border border-white relative">
         <div class="m-1 border border-white">
-          <p class="section-title font-fusion-pixel">贊助廠商</p>
+          <p class="section-title font-fusion-pixel">贊助單位</p>
           <div class="p-10 border border-b-white">
             <!-- 輪播效果 -->
             <div class="relative w-full overflow-hidden">
@@ -796,9 +796,9 @@ const calculateDistance = () => {
                     :key="sponsor.id"
                     class="max-w-[200px] p-4 flex-shrink-0 mr-10"
                   >
-                    <a href="#" target="_blank" class="group block">
+                    <div class="group block">
                       <img :src="sponsor.image_url" alt="" class="w-full h-auto" />
-                    </a>
+                    </div>
                   </div>
                 </div>
               </div>

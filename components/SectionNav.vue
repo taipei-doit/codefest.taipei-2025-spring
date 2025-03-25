@@ -30,7 +30,7 @@ const sectionNav = ref([
   },
   {
     name: 'sponsor',
-    zhName: '贊助廠商',
+    zhName: '贊助單位',
     icon_url: '/images/icons/icon-sponsor.svg',
     is_selected: false,
   },
