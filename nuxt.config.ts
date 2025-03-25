@@ -3,6 +3,9 @@ export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   devtools: { enabled: true },
 
+  app: {
+  baseURL: '/2025spring/',
+  },
   modules: [
     '@nuxt/eslint',
     '@nuxtjs/stylelint-module',
