@@ -2,36 +2,37 @@
 const props = defineProps<{
   activeNavName: unknown;
 }>();
+const runtimeConfig = useRuntimeConfig();
 
 const sectionNav = ref([
   {
     name: 'rules',
     zhName: '參賽規則',
-    icon_url: '/images/icons/icon-rules.svg',
+    icon_url: `${runtimeConfig.app.baseURL}images/icons/icon-rules.svg`,
     is_selected: false,
   },
   {
     name: 'schedule',
     zhName: '重要時程',
-    icon_url: '/images/icons/icon-schedule.svg',
+    icon_url: `${runtimeConfig.app.baseURL}images/icons/icon-schedule.svg`,
     is_selected: false,
   },
   {
     name: 'news',
     zhName: '最新消息',
-    icon_url: '/images/icons/icon-news.svg',
+    icon_url: `${runtimeConfig.app.baseURL}images/icons/icon-news.svg`,
     is_selected: false,
   },
   {
     name: 'past',
     zhName: '參賽回顧',
-    icon_url: '/images/icons/icon-past.svg',
+    icon_url: `${runtimeConfig.app.baseURL}images/icons/icon-past.svg`,
     is_selected: false,
   },
   {
     name: 'sponsor',
     zhName: '贊助單位',
-    icon_url: '/images/icons/icon-sponsor.svg',
+    icon_url: `${runtimeConfig.app.baseURL}images/icons/icon-sponsor.svg`,
     is_selected: false,
   },
 ]);

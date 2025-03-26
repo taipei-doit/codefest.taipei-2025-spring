@@ -15,6 +15,8 @@ const dialogStore = useDialogStore();
 const { activeDialog } = storeToRefs(dialogStore);
 
 const { tm } = useI18n();
+const runtimeConfig = useRuntimeConfig();
+
 const headerHeight = ref(0);
 const bannerHeight = ref('100vh');
 
@@ -332,7 +334,11 @@ const calculateDistance = () => {
                           class="swiper-judge-slide"
                         >
                           <div class="judge-box relative">
-                            <img :src="judge.thumbnail" class="w-full h-full object-cover" alt="" />
+                            <img
+                              :src="runtimeConfig.app.baseURL + judge.thumbnail"
+                              class="w-full h-full object-cover"
+                              alt=""
+                            />
                             <p class="px-4 py-2 bg-white absolute -left-3 -bottom-3">
                               {{ judge.name }}
                             </p>
@@ -794,7 +800,11 @@ const calculateDistance = () => {
                     class="max-w-[200px] p-4 flex-shrink-0 mr-10"
                   >
                     <div class="group block">
-                      <img :src="sponsor.image_url" alt="" class="w-full h-auto" />
+                      <img
+                        :src="runtimeConfig.app.baseURL + sponsor.image_url"
+                        alt=""
+                        class="w-full h-auto"
+                      />
                     </div>
                   </div>
                 </div>
@@ -809,7 +819,11 @@ const calculateDistance = () => {
                       class="max-w-[200px] p-4 flex-shrink-0 mr-10"
                     >
                       <div class="group block">
-                        <img :src="sponsor.image_url" alt="" class="w-full h-auto" />
+                        <img
+                          :src="runtimeConfig.app.baseURL + sponsor.image_url"
+                          alt=""
+                          class="w-full h-auto"
+                        />
                       </div>
                     </div>
                   </div>

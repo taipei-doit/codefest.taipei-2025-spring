@@ -28,21 +28,21 @@
                 "list": [
                     {
                         "id": 0,
-                        "thumbnail": "/images/judge-sample.png",
+                        "thumbnail": "images/judge-sample.png",
                         "name": "評審1",
                         "corporation": "台北市資訊局",
                         "position": "專門委員"
                     },
                     {
                         "id": 1,
-                        "thumbnail": "/images/judge-sample.png",
+                        "thumbnail": "images/judge-sample.png",
                         "name": "評審2",
                         "corporation": "台北市資訊局",
                         "position": "專門委員"
                     },
                     {
                         "id": 2,
-                        "thumbnail": "/images/judge-sample.png",
+                        "thumbnail": "images/judge-sample.png",
                         "name": "評審3",
                         "corporation": "台北市資訊局",
                         "position": "專門委員"
@@ -54,35 +54,35 @@
                 "list": [
                     {
                         "id": 0,
-                        "thumbnail": "/images/judge-sample.png",
+                        "thumbnail": "images/judge-sample.png",
                         "name": "決選評審1",
                         "corporation": "台北市資訊局",
                         "position": "專門委員"
                     },
                     {
                         "id": 1,
-                        "thumbnail": "/images/judge-sample.png",
+                        "thumbnail": "images/judge-sample.png",
                         "name": "決選評審2",
                         "corporation": "台北市資訊局",
                         "position": "專門委員"
                     },
                     {
                         "id": 2,
-                        "thumbnail": "/images/judge-sample.png",
+                        "thumbnail": "images/judge-sample.png",
                         "name": "決選評審3",
                         "corporation": "台北市資訊局",
                         "position": "專門委員"
                     },
                     {
                         "id": 3,
-                        "thumbnail": "/images/judge-sample.png",
+                        "thumbnail": "images/judge-sample.png",
                         "name": "決選評審4",
                         "corporation": "台北市資訊局",
                         "position": "專門委員"
                     },
                     {
                         "id": 4,
-                        "thumbnail": "/images/judge-sample.png",
+                        "thumbnail": "images/judge-sample.png",
                         "name": "決選評審5",
                         "corporation": "台北市資訊局",
                         "position": "專門委員"
@@ -92,7 +92,7 @@
         ],
         "prospectus": {
             "title": "簡章概要",
-            "image_url": "/images/rules-prospectus.png",
+            "image_url": "images/rules-prospectus.png",
             "contents": [
                 {
                     "sub_title": "< 壹、活動背景說明 >",
@@ -216,7 +216,7 @@
                 "id": 2,
                 "date": "2024.09.20",
                 "title": "競賽照片回顧｜來看看團隊這兩天一夜熱血畫面",
-                "image_url": "/images/news-sample.png",
+                "image_url": "images/news-sample.png",
                 "content": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facere exercitationem veniam veritatis ratione amet rerum doloribus quisquam corporis, quod at obcaecati iste voluptatem recusandae dicta minus et, animi reprehenderit alias ipsa placeat optio architecto odio. Quaerat optio atque perferendis quia qui nesciunt debitis velit, laborum, earum pariatur cumque ab, eveniet minima suscipit. Beatae fugit temporibus eius porro, nisi culpa rem nostrum cumque laudantium non dolor distinctio molestiae veritatis reprehenderit placeat dolore perspiciatis voluptatum ratione voluptate repellat, similique nobis quidem quis dignissimos. Ratione nemo dignissimos quia perferendis beatae earum fuga rem laboriosam perspiciatis pariatur labore in ex aut, ullam recusandae saepe."
             },
             {
@@ -245,11 +245,11 @@
                     "id": 0,
                     "ranking": "[春季] 第一名 |",
                     "team_name": "綠擘者聯盟",
-                    "thumbnail": "/images/news-sample.png",
+                    "thumbnail": "images/news-sample.png",
                     "team_members": "吳典叡(臺大電機系學會-資訊部長)、陳柏叡(臺大電機系學會-資訊部長)、許富盈(臺大電機系學會-行銷部長)、李冠儀(臺大電機系學會-會長)、何式斌(臺大財金畢業)",
                     "description": "建築減碳健診隊團隊開發高互動性的災害應變儀表板，讓民眾能辨識哪些地方為風險熱區進而提前預警迴避，並透過通報推播系統讓民眾能及時且主動地通報災害與 收到即時推播、立刻了解身邊的災害狀況和身邊擁有的應變設施，最小化災害造成的損失。",
                     "image_list": [
-                        "/images/news-sample.png",
+                        "images/news-sample.png",
                         "https://swiperjs.com/demos/images/nature-1.jpg",
                         "https://swiperjs.com/demos/images/nature-2.jpg",
                         "https://swiperjs.com/demos/images/nature-3.jpg"
@@ -264,28 +264,28 @@
                     "id": 0,
                     "date": "2024.09.20",
                     "title": "1[秋季] 2024城市通微服務大黑客松",
-                    "thumbnail": "/images/videos/video-sample.png",
+                    "thumbnail": "images/videos/video-sample.png",
                     "video_url": "https://www.youtube.com/watch?v=8_ZaFYZ9BQU"
                 },
                 {
                     "id": 1,
                     "date": "2024.09.20",
                     "title": "2[春季] 2024城市儀表板大黑客松",
-                    "thumbnail": "/images/videos/video-sample.png",
+                    "thumbnail": "images/videos/video-sample.png",
                     "video_url": "https://www.youtube.com/watch?v=8_ZaFYZ9BQU"
                 },
                 {
                     "id": 2,
                     "date": "2023.09.20",
                     "title": "3[秋季] 2023城市儀表板大黑客松",
-                    "thumbnail": "/images/videos/video-sample.png",
+                    "thumbnail": "images/videos/video-sample.png",
                     "video_url": "https://www.youtube.com/watch?v=8_ZaFYZ9BQU"
                 },
                 {
                     "id": 3,
                     "date": "2023.09.20",
                     "title": "4[春季] 2023城市儀表板大黑客松",
-                    "thumbnail": "/images/videos/video-sample.png",
+                    "thumbnail": "images/videos/video-sample.png",
                     "video_url": "https://www.youtube.com/watch?v=8_ZaFYZ9BQU"
                 }
             ]
@@ -296,27 +296,27 @@
         "list": [
             {
                 "id": 0,
-                "image_url": "/images/sponsors/sponsor-sample.png"
+                "image_url": "images/sponsors/sponsor-sample.png"
             },
             {
                 "id": 1,
-                "image_url": "/images/sponsors/sponsor-sample2.png"
+                "image_url": "images/sponsors/sponsor-sample2.png"
             },
             {
                 "id": 2,
-                "image_url": "/images/sponsors/sponsor-sample.png"
+                "image_url": "images/sponsors/sponsor-sample.png"
             },
             {
                 "id": 3,
-                "image_url": "/images/sponsors/sponsor-sample2.png"
+                "image_url": "images/sponsors/sponsor-sample2.png"
             },
             {
                 "id": 4,
-                "image_url": "/images/sponsors/sponsor-sample.png"
+                "image_url": "images/sponsors/sponsor-sample.png"
             },
             {
                 "id": 5,
-                "image_url": "/images/sponsors/sponsor-sample2.png"
+                "image_url": "images/sponsors/sponsor-sample2.png"
             }
         ]
     },

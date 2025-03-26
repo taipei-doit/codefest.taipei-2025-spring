@@ -7,6 +7,7 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 
 const { tm } = useI18n();
+const runtimeConfig = useRuntimeConfig();
 
 /** 評審列表 */
 const judgeList = computed<JudgeList[]>(() => {
@@ -43,10 +44,12 @@ const judgeList = computed<JudgeList[]>(() => {
             <div class="lg:flex hidden">
               <div v-for="judge in item.list" :key="judge.id" class="w-1/5 p-4 flex-shrink-0">
                 <div class="judge-box relative">
-                  <img :src="judge.thumbnail" class="w-full h-full object-cover" alt="" />
-                  <p
-                    class="px-4 py-2 bg-white text-black absolute -left-3 -bottom-3"
-                  >
+                  <img
+                    :src="runtimeConfig.app.baseURL + judge.thumbnail"
+                    class="w-full h-full object-cover"
+                    alt=""
+                  />
+                  <p class="px-4 py-2 bg-white text-black absolute -left-3 -bottom-3">
                     {{ judge.name }}
                   </p>
                 </div>
@@ -59,20 +62,17 @@ const judgeList = computed<JudgeList[]>(() => {
             <!-- mobile Swiper -->
             <div class="lg:hidden">
               <Swiper
-                :modules="[Navigation, Pagination]"
+                :modules="[Pagination]"
                 :slides-per-view="'auto'"
                 :space-between="20"
                 :centered-slides="true"
                 :loop="false"
-                navigation
                 :pagination="{ type: 'bullets', clickable: true }"
               >
                 <SwiperSlide v-for="judge in item.list" :key="judge.id" class="swiper-judge-slide">
                   <div class="judge-box relative">
                     <img :src="judge.thumbnail" class="w-full h-full object-cover" alt="" />
-                    <p
-                      class="px-4 py-2 bg-white text-black absolute -left-3 -bottom-3"
-                    >
+                    <p class="px-4 py-2 bg-white text-black absolute -left-3 -bottom-3">
                       {{ judge.name }}
                     </p>
                   </div>

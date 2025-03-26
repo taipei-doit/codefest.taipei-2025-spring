@@ -6,6 +6,7 @@ import type { PastVideo, PastWinningTeam } from '~/interfaces/past.interface';
 const { tm } = useI18n();
 const dialogStore = useDialogStore();
 const { activeDialog } = storeToRefs(dialogStore);
+const runtimeConfig = useRuntimeConfig();
 
 /** 獲獎團隊 */
 const winningTeamList = computed<PastWinningTeam[]>(() => {
@@ -64,7 +65,7 @@ const videoList = computed<PastVideo[]>(() => {
                     >
                       <div class="video-box relative">
                         <img
-                          :src="group.thumbnail"
+                          :src="runtimeConfig.app.baseURL + group.thumbnail"
                           class="w-full h-full object-cover transition-all duration-300 group-hover:brightness-75"
                           alt=""
                         />
@@ -110,7 +111,7 @@ const videoList = computed<PastVideo[]>(() => {
                     <a :href="group.video_url" target="_blank">
                       <div class="video-box relative">
                         <img
-                          :src="group.thumbnail"
+                          :src="runtimeConfig.app.baseURL + group.thumbnail"
                           class="w-full h-full object-cover transition-all duration-300 group-hover:brightness-75"
                           alt=""
                         />
