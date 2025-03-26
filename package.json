@@ -5,9 +5,7 @@
   "scripts": {
     "dev": "nuxt dev --host 0.0.0.0",
     "build": "nuxt build",
-    "generate": "nuxt generate --dotenv .env.prod && mv .output/public public/prod",
-    "deploy": "firebase deploy --only hosting:2025spring",
-    "deploy:uat-test": "firebase deploy --only hosting:tuic-taipei-hackathon-demo",
+    "generate": "nuxt generate && mv .output/public public/prod",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "lint:js": "eslint . --fix",
