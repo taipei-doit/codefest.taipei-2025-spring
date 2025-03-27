@@ -17,61 +17,42 @@ function moveFocus(dir: 'up' | 'down' | 'left' | 'right') {
   const current = registry.get(currentId);
   if (!current) return;
 
-  const candidates: { id: string; dist: number; dx: number; dy: number; entry: typeof current }[] =
-    [];
-
-  for (const [id, entry] of registry.entries()) {
-    if (id === currentId) continue;
-
-    const dx = entry.x - current.x;
-    const dy = entry.y - current.y;
-
-    let isValid = false;
-
-    switch (dir) {
-      case 'up':
-        isValid = dy < 0;
-        break;
-      case 'down':
-        isValid = dy > 0;
-        break;
-      case 'left':
-        isValid = dx < 0 && entry.y === current.y;
-        break;
-      case 'right':
-        isValid = dx > 0 && entry.y === current.y;
-        break;
-    }
-
-    if (!isValid) continue;
-
-    const dist = dx * dx + dy * dy;
-    candidates.push({ id, dist, dx, dy, entry });
-  }
+  const candidates = [...registry.entries()]
+    .filter(([id]) => id !== currentId)
+    .map(([id, entry]) => {
+      const dx = entry.x - current.x;
+      const dy = entry.y - current.y;
+      const dist = dx * dx + dy * dy;
+      return { id, entry, dx, dy, dist };
+    })
+    .filter(({ dx, dy, entry }) => {
+      switch (dir) {
+        case 'up':
+          return dy < 0;
+        case 'down':
+          return dy > 0;
+        case 'left':
+          return dx < 0 && entry.y === current.y;
+        case 'right':
+          return dx > 0 && entry.y === current.y;
+      }
+    });
 
   if (candidates.length === 0) return;
 
-  let filtered: typeof candidates = [];
-
+  // 上下鍵：優先找 y 軸最近，然後再比較 x 差距
   if (dir === 'up' || dir === 'down') {
-    const targetY = candidates.reduce((prev, curr) => {
-      return Math.abs(curr.entry.y - current.y) < Math.abs(prev.entry.y - current.y) ? curr : prev;
-    }).entry.y;
-    filtered = candidates.filter(c => c.entry.y === targetY);
-
-    // 向下時回到該列最左側（x最小）
-    if (dir === 'down') {
-      const minX = Math.min(...filtered.map(f => f.entry.x));
-      filtered = filtered.filter(f => f.entry.x === minX);
-    }
+    candidates.sort((a, b) => {
+      const dyDiff = Math.abs(a.entry.y - current.y) - Math.abs(b.entry.y - current.y);
+      if (dyDiff !== 0) return dyDiff;
+      return Math.abs(a.entry.x - current.x) - Math.abs(b.entry.x - current.x);
+    });
   } else {
-    const targetX = candidates.reduce((prev, curr) => {
-      return Math.abs(curr.entry.x - current.x) < Math.abs(prev.entry.x - current.x) ? curr : prev;
-    }).entry.x;
-    filtered = candidates.filter(c => c.entry.x === targetX);
+    // 左右鍵：只在同一 y 軸，找 x 軸最近的
+    candidates.sort((a, b) => Math.abs(a.entry.x - current.x) - Math.abs(b.entry.x - current.x));
   }
 
-  const best = filtered.sort((a, b) => a.dist - b.dist)[0];
+  const best = candidates[0];
   if (best) focusElement(best.id);
 }
 

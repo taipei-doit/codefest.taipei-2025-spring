@@ -50,7 +50,14 @@ const prospectusContents = computed(() => {
         </p>
       </div>
       <div class="w-full lg:w-auto flex flex-nowrap justify-center lg:justify-end space-x-8">
-        <button class="icon-btn icon-btn--download w-1/2 lg:w-auto lg:min-w-60">
+        <button
+          v-kb-focus="{
+            id: `rules-button-2-2`,
+            x: 2,
+            y: 2,
+          }"
+          class="icon-btn icon-btn--download w-1/2 lg:w-auto lg:min-w-60"
+        >
           <span> 下載簡章 </span>
         </button>
         <!-- <button class="icon-btn icon-btn--arrow w-1/2 lg:w-auto lg:min-w-60">
@@ -67,7 +74,11 @@ const prospectusContents = computed(() => {
         <p>{{ content.sub_content }}</p>
       </div>
       <div class="overflow-x-auto">
-        <img :src="tm('rules.prospectus.image_url')" class="w-[800px] lg:w-full max-w-none" alt="" />
+        <img
+          :src="tm('rules.prospectus.image_url')"
+          class="w-[800px] lg:w-full max-w-none"
+          alt=""
+        />
       </div>
       <p class="lg:!hidden p-4 text-center scroll-arrow">向右滑看更多資訊</p>
     </div>

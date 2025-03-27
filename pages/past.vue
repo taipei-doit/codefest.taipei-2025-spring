@@ -39,6 +39,11 @@ const videoList = computed<PastVideo[]>(() => {
           <!-- 獲獎團隊 -->
           <Disclosure v-slot="{ open }" :default-open="true">
             <DisclosureButton
+              v-kb-focus="{
+                id: `past-button-1-2`,
+                x: 1,
+                y: 2,
+              }"
               class="w-full h-16 flex items-center justify-between p-2 border border-t-white border-b-white bg-primary-300"
             >
               <p class="font-fusion-pixel text-white text-lg text-center mx-auto">
@@ -55,7 +60,15 @@ const videoList = computed<PastVideo[]>(() => {
             <DisclosurePanel>
               <div class="lg:p-12 p-6 border-b border-white">
                 <div class="grid lg:grid-cols-3 grid-cols-1 gap-8">
-                  <div v-for="(group, index) in winningTeamList" :key="index">
+                  <div
+                    v-for="(group, index) in winningTeamList"
+                    :key="index"
+                    v-kb-focus="{
+                      id: `past-team-${index + 1}-${index + 3}`,
+                      x: index + 1,
+                      y: index + 3,
+                    }"
+                  >
                     <div :key="group.id">
                       <a
                         href="javascript:void(0)"
@@ -119,6 +132,11 @@ const videoList = computed<PastVideo[]>(() => {
           <!-- 影音回顧 -->
           <Disclosure v-slot="{ open }" :default-open="true">
             <DisclosureButton
+              v-kb-focus="{
+                id: `past-button-1-30`,
+                x: 1,
+                y: 30,
+              }"
               class="w-full h-16 flex items-center justify-between p-2 border border-t-white border-b-white bg-primary-300"
             >
               <p class="font-fusion-pixel text-white text-lg text-center mx-auto">
@@ -135,7 +153,15 @@ const videoList = computed<PastVideo[]>(() => {
             <DisclosurePanel>
               <div class="lg:p-12 p-6 border-b border-white">
                 <div class="grid lg:grid-cols-3 grid-cols-1 gap-8">
-                  <div v-for="(group, index) in videoList" :key="index">
+                  <div
+                    v-for="(group, index) in videoList"
+                    :key="index"
+                    v-kb-focus="{
+                      id: `past-video-${index + 1}-${index + 31}`,
+                      x: index + 1,
+                      y: index + 31,
+                    }"
+                  >
                     <div :key="group.id">
                       <a :href="group.video_url" target="_blank">
                         <div class="video-box relative">

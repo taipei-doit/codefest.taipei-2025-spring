@@ -87,7 +87,7 @@ onMounted(() => {
         <a
           v-kb-focus="{
             id: `section-${index + 1}-${focusY}`,
-            x: index + 1, // 顯示順序就是 x 軸
+            x: index + 1,
             y: focusY, // 傳進來或 props 傳入：目前是第幾個 section
           }"
           href="javascript:void(0)"

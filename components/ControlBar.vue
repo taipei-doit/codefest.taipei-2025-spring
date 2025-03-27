@@ -35,8 +35,13 @@ const showApplyBtn = computed(() => route.path.startsWith(ROUTE_PATHS.RULES));
     </div>
     <button
       v-if="showApplyBtn"
-      @click="dialogStore.openDialog('apply')"
+      v-kb-focus="{
+        id: `rules-apply-1-6`,
+        x: 1,
+        y: 6,
+      }"
       class="icon-btn icon-btn--arrow w-auto min-w-60 lg:ml-4 mx-auto"
+      @click="dialogStore.openDialog('apply')"
     >
       <span> 立即報名 </span>
     </button>

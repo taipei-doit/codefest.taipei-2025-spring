@@ -22,24 +22,10 @@ const connectBtns = computed(() => {
               <span class="text-center lg:text-left lg:mb-4">臺北市政府資訊局</span>
             </div>
             <div class="lg:block hidden mt-auto text-center">
-              <a
-                v-kb-focus="{
-                  id: `footer-1-50`,
-                  x: 1,
-                  y: 50,
-                }"
-                href=""
-                class="lg:block mb-2"
+              <a v-kb-focus="{ id: 'footer-1-50', x: 1, y: 50, z: 1 }" href="" class="lg:block mb-2"
                 >政府網站資料開放宣告</a
               >
-              <a
-                v-kb-focus="{
-                  id: `footer-1-51`,
-                  x: 1,
-                  y: 51,
-                }"
-                href=""
-                class="lg:block"
+              <a v-kb-focus="{ id: 'footer-1-51', x: 1, y: 51, z: 1 }" href="" class="lg:block"
                 >隱私權及資訊安全政策</a
               >
             </div>
@@ -62,6 +48,7 @@ const connectBtns = computed(() => {
                   id: `footer-6-${index + 56}`,
                   x: 1,
                   y: index + 56,
+                  z: 3,
                 }"
                 class="flex items-center mb-3"
               >

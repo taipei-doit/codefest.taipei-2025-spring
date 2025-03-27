@@ -19,7 +19,7 @@ const tabList = [
     id: 'judge',
     name: '本屆評審',
     path: `${ROUTE_PATHS.RULES}/judge`,
-    available: tm('judge').available,
+    available: tm('rules.judges').available,
   },
   {
     id: 'faq',
@@ -74,19 +74,25 @@ onMounted(() => {
             <div class="lg:block hidden p-4 border-r border-white">
               <div class="flex">
                 <div class="relative flex flex-col">
-                  <template v-for="tab in tabList" :key="tab.id">
-                    <NuxtLink
-                      v-if="tab.available"
-                      :to="tab.path"
-                      class="tab-item relative min-w-[220px] w-full p-6 border border-white text-xl text-center cursor-pointer font-fusion-pixel mb-4"
-                      :class="
-                        activeTab?.id === tab.id
-                          ? 'bg-primary-50 text-primary-500 border-0 shadow-[4px_4px_0px_black]'
-                          : 'text-white'
-                      "
-                    >
-                      {{ tab.name }}
-                    </NuxtLink>
+                  <template v-for="(tab, index) in tabList" :key="tab.id">
+                    <template v-if="tab.available">
+                      <NuxtLink
+                        v-kb-focus="{
+                          id: `rules-tab-1-${index + 2}`,
+                          x: 1,
+                          y: index + 2,
+                        }"
+                        :to="tab.path"
+                        class="tab-item relative min-w-[220px] w-full p-6 border border-white text-xl text-center cursor-pointer font-fusion-pixel mb-4"
+                        :class="
+                          activeTab?.id === tab.id
+                            ? 'bg-primary-50 text-primary-500 border-0 shadow-[4px_4px_0px_black]'
+                            : 'text-white'
+                        "
+                      >
+                        {{ tab.name }}
+                      </NuxtLink>
+                    </template>
                   </template>
                 </div>
               </div>

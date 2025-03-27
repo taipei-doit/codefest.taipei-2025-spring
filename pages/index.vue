@@ -245,7 +245,7 @@ const calculateDistance = () => {
                     :key="index"
                     v-kb-focus="{
                       id: `index-rules-${index + 1}-4`,
-                      x: index + 1, // 顯示順序就是 x 軸
+                      x: index + 1,
                       y: 4,
                     }"
                     class="connect-btn mr-4 font-px437"
@@ -272,7 +272,7 @@ const calculateDistance = () => {
                 <NuxtLink
                   v-kb-focus="{
                     id: `index-rules-button-1-5`,
-                    x: 1, // 顯示順序就是 x 軸
+                    x: 1,
                     y: 5,
                   }"
                   :to="ROUTE_PATHS.RULES"
@@ -283,7 +283,7 @@ const calculateDistance = () => {
                 <button
                   v-kb-focus="{
                     id: `index-rules-button-2-5`,
-                    x: 2, // 顯示順序就是 x 軸
+                    x: 2,
                     y: 5,
                   }"
                   class="icon-btn icon-btn--arrow w-1/2 lg:w-auto lg:min-w-60"
@@ -306,7 +306,7 @@ const calculateDistance = () => {
                     <DisclosureButton
                       v-kb-focus="{
                         id: `index-rules-judge-1-${index + 6}`,
-                        x: 1, // 顯示順序就是 x 軸
+                        x: 1,
                         y: index + 6,
                       }"
                       class="w-full flex items-center justify-between p-2 border border-t-white border-b-white"
@@ -418,7 +418,7 @@ const calculateDistance = () => {
                       :key="tab.id"
                       v-kb-focus="{
                         id: `index-schedule-tab-1-${9 + index}`,
-                        x: 1, // 顯示順序就是 x 軸
+                        x: 1,
                         y: 9 + index,
                       }"
                       class="schedule-tab relative p-6 border border-white text-xl text-center cursor-pointer mb-4 hover:bg-primary-50 hover:text-primary-500"
@@ -494,7 +494,7 @@ const calculateDistance = () => {
                         v-if="activeSchedule.button.type === 'outside_link'"
                         v-kb-focus="{
                           id: `index-schedule-button-1-${9 + scheduleList.findIndex(tab => tab.id === activeSchedule.id)}`,
-                          x: 2, // 顯示順序就是 x 軸
+                          x: 2,
                           y: 9 + scheduleList.findIndex(tab => tab.id === activeSchedule.id),
                         }"
                         :href="activeSchedule.button.link"
@@ -510,7 +510,7 @@ const calculateDistance = () => {
                         v-else-if="activeSchedule.button.type === 'route'"
                         v-kb-focus="{
                           id: `index-schedule-button-1-${9 + scheduleList.findIndex(tab => tab.id === activeSchedule.id)}`,
-                          x: 2, // 顯示順序就是 x 軸
+                          x: 2,
                           y: 9 + scheduleList.findIndex(tab => tab.id === activeSchedule.id),
                         }"
                         :to="activeSchedule.button.link"
@@ -524,7 +524,7 @@ const calculateDistance = () => {
                         v-else-if="activeSchedule.button.type === 'dialog'"
                         v-kb-focus="{
                           id: `index-schedule-button-1-${9 + scheduleList.findIndex(tab => tab.id === activeSchedule.id)}`,
-                          x: 2, // 顯示順序就是 x 軸
+                          x: 2,
                           y: 9 + scheduleList.findIndex(tab => tab.id === activeSchedule.id),
                         }"
                         class="icon-btn icon-btn--arrow min-w-60"
@@ -686,7 +686,7 @@ const calculateDistance = () => {
                       :key="index"
                       v-kb-focus="{
                         id: `index-news-1-${21 + index}`,
-                        x: 1, // 顯示順序就是 x 軸
+                        x: 1,
                         y: 21 + index,
                       }"
                       href="javascript:void(0)"
@@ -750,7 +750,7 @@ const calculateDistance = () => {
                       <a
                         v-kb-focus="{
                           id: `index-video-${index + 1}-31`,
-                          x: index + 1, // 顯示順序就是 x 軸
+                          x: index + 1,
                           y: 31,
                         }"
                         :href="group.video_url"

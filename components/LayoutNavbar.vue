@@ -27,8 +27,9 @@ const navItemClass = computed(() => {
         <NuxtLink
           v-kb-focus="{
             id: `${props.type}-nav-2-${props.type === 'header' ? 1 : 52}`,
-            x: props.type === 'header' ? 2 : 1,
+            x: 2,
             y: props.type === 'header' ? 1 : 52,
+            z: 2,
           }"
           :to="ROUTE_PATHS.RULES"
           @click="dialogStore.closeDialog()"
@@ -38,9 +39,10 @@ const navItemClass = computed(() => {
       <li :class="navItemClass">
         <NuxtLink
           v-kb-focus="{
-            id: `${props.type}-nav-3-${props.type === 'header' ? 1 : 53}`,
-            x: props.type === 'header' ? 3 : 1,
-            y: props.type === 'header' ? 1 : 53,
+            id: `${props.type}-nav-3-${props.type === 'header' ? 1 : 52}`,
+            x: 3,
+            y: props.type === 'header' ? 1 : 52,
+            z: 2,
           }"
           :to="`${ROUTE_PATHS.RULES}${ROUTE_PATHS.SCHEDULE}`"
           @click="dialogStore.closeDialog()"
@@ -50,9 +52,10 @@ const navItemClass = computed(() => {
       <li :class="navItemClass">
         <NuxtLink
           v-kb-focus="{
-            id: `${props.type}-nav-4-${props.type === 'header' ? 1 : 54}`,
-            x: props.type === 'header' ? 4 : 1,
-            y: props.type === 'header' ? 1 : 54,
+            id: `${props.type}-nav-4-${props.type === 'header' ? 1 : 52}`,
+            x: 4,
+            y: props.type === 'header' ? 1 : 52,
+            z: 2,
           }"
           :to="ROUTE_PATHS.PAST"
           @click="dialogStore.closeDialog()"
@@ -62,9 +65,10 @@ const navItemClass = computed(() => {
       <li :class="navItemClass">
         <a
           v-kb-focus="{
-            id: `${props.type}-nav-5-${props.type === 'header' ? 1 : 55}`,
-            x: props.type === 'header' ? 5 : 1,
-            y: props.type === 'header' ? 1 : 55,
+            id: `${props.type}-nav-5-${props.type === 'header' ? 1 : 52}`,
+            x: 5,
+            y: props.type === 'header' ? 1 : 52,
+            z: 2,
           }"
           :href="tm('past_url')"
           target="_blank"
