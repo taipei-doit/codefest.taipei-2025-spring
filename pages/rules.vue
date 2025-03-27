@@ -96,21 +96,22 @@ onMounted(() => {
               class="scroll-container lg:hidden border-b border-white py-4 px-12 overflow-x-auto"
             >
               <nav class="flex space-x-3" aria-label="Tabs">
-                <NuxtLink
-                  v-for="(tab, index) in tabList"
-                  :key="tab.id"
-                  ref="tabItems"
-                  :to="tab.path"
-                  class="mobile-tab-item"
-                  :class="[
-                    activeTab?.id === tab.id ? 'border-b-2 border-white' : 'border-none',
-                    'whitespace-nowrap text-white font-fusion-pixel px-4 py-2 text-lg',
-                  ]"
-                  :aria-current="activeTab?.id === tab.id ? 'page' : undefined"
-                  @click="scrollToTab(index)"
-                >
-                  {{ tab.name }}
-                </NuxtLink>
+                <template v-for="(tab, index) in tabList" :key="tab.id">
+                  <NuxtLink
+                    v-if="tab.available"
+                    ref="tabItems"
+                    :to="tab.path"
+                    class="mobile-tab-item"
+                    :class="[
+                      activeTab?.id === tab.id ? 'border-b-2 border-white' : 'border-none',
+                      'whitespace-nowrap text-white font-fusion-pixel px-4 py-2 text-lg',
+                    ]"
+                    :aria-current="activeTab?.id === tab.id ? 'page' : undefined"
+                    @click="scrollToTab(index)"
+                  >
+                    {{ tab.name }}
+                  </NuxtLink>
+                </template>
                 <div class="w-2 h-2 shrink-0"></div>
               </nav>
             </div>
