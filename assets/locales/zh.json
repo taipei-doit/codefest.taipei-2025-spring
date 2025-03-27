@@ -1,13 +1,14 @@
 {
     "hero_banner": {
         "section_title": "2025雙北程式設計節",
-        "apply_date": "5/31.Sat - 6/1.Sun"
+        "apply_date": "3/31 Mon - 4/30 Wed"
     },
     "rules": {
+        "available": true,
         "section_title": "參賽規則",
-        "description": "顛覆傳統激發創新思維\n創造出更具競爭力的解決方案",
+        "description": "\"The power of open source is the power of the people.\"\n— Philippe Kahn（軟體企業家、開源運動支持者）\n（開源的力量就是人民的力量。）",
         "content_title": "概念",
-        "content": "在人工智慧迅速發展的時代，顛覆性創新成為企業脫穎而出的關鍵。透過結合創新思維與先進技術，我們能夠重新定義問題解決的方式，從而創造出更具競爭力的解決方案。\n本屆黑客松以將帶領我們探索如何利用這些新興技術，挑戰傳統思維，推動企業邁向未來的無限可能。\n如有任何疑問，歡迎隨時聯絡我們！",
+        "content": "在智慧城市與數據驅動時代，創新技術成為推動城市發展與提升市政服務的關鍵。2025這一屆獨特的雙北黑客松將帶領我們探索如何運用開源技術與數據可視化，挑戰傳統思維，實現跨縣市合作，共同創造出更具競爭力的智慧解決方案。\n透過結合創新設計與先進技術，我們期望進一步優化市政服務，推動雙北邁向智慧城市的未來。如有任何疑問，歡迎隨時聯絡我們！\n心動了嗎？ 趕快報名！",
         "buttons": [
             {
                 "name": "Call",
@@ -22,74 +23,77 @@
                 "link": ""
             }
         ],
-        "judges": [
-            {
-                "name": "初選",
-                "list": [
-                    {
-                        "id": 0,
-                        "thumbnail": "images/judge-sample.png",
-                        "name": "評審1",
-                        "corporation": "台北市資訊局",
-                        "position": "專門委員"
-                    },
-                    {
-                        "id": 1,
-                        "thumbnail": "images/judge-sample.png",
-                        "name": "評審2",
-                        "corporation": "台北市資訊局",
-                        "position": "專門委員"
-                    },
-                    {
-                        "id": 2,
-                        "thumbnail": "images/judge-sample.png",
-                        "name": "評審3",
-                        "corporation": "台北市資訊局",
-                        "position": "專門委員"
-                    }
-                ]
-            },
-            {
-                "name": "決選",
-                "list": [
-                    {
-                        "id": 0,
-                        "thumbnail": "images/judge-sample.png",
-                        "name": "決選評審1",
-                        "corporation": "台北市資訊局",
-                        "position": "專門委員"
-                    },
-                    {
-                        "id": 1,
-                        "thumbnail": "images/judge-sample.png",
-                        "name": "決選評審2",
-                        "corporation": "台北市資訊局",
-                        "position": "專門委員"
-                    },
-                    {
-                        "id": 2,
-                        "thumbnail": "images/judge-sample.png",
-                        "name": "決選評審3",
-                        "corporation": "台北市資訊局",
-                        "position": "專門委員"
-                    },
-                    {
-                        "id": 3,
-                        "thumbnail": "images/judge-sample.png",
-                        "name": "決選評審4",
-                        "corporation": "台北市資訊局",
-                        "position": "專門委員"
-                    },
-                    {
-                        "id": 4,
-                        "thumbnail": "images/judge-sample.png",
-                        "name": "決選評審5",
-                        "corporation": "台北市資訊局",
-                        "position": "專門委員"
-                    }
-                ]
-            }
-        ],
+        "judges": {
+            "available": false,
+            "list": [
+                {
+                    "name": "初選",
+                    "list": [
+                        {
+                            "id": 0,
+                            "thumbnail": "images/judge-sample.png",
+                            "name": "評審1",
+                            "corporation": "台北市資訊局",
+                            "position": "專門委員"
+                        },
+                        {
+                            "id": 1,
+                            "thumbnail": "images/judge-sample.png",
+                            "name": "評審2",
+                            "corporation": "台北市資訊局",
+                            "position": "專門委員"
+                        },
+                        {
+                            "id": 2,
+                            "thumbnail": "images/judge-sample.png",
+                            "name": "評審3",
+                            "corporation": "台北市資訊局",
+                            "position": "專門委員"
+                        }
+                    ]
+                },
+                {
+                    "name": "決選",
+                    "list": [
+                        {
+                            "id": 0,
+                            "thumbnail": "images/judge-sample.png",
+                            "name": "決選評審1",
+                            "corporation": "台北市資訊局",
+                            "position": "專門委員"
+                        },
+                        {
+                            "id": 1,
+                            "thumbnail": "images/judge-sample.png",
+                            "name": "決選評審2",
+                            "corporation": "台北市資訊局",
+                            "position": "專門委員"
+                        },
+                        {
+                            "id": 2,
+                            "thumbnail": "images/judge-sample.png",
+                            "name": "決選評審3",
+                            "corporation": "台北市資訊局",
+                            "position": "專門委員"
+                        },
+                        {
+                            "id": 3,
+                            "thumbnail": "images/judge-sample.png",
+                            "name": "決選評審4",
+                            "corporation": "台北市資訊局",
+                            "position": "專門委員"
+                        },
+                        {
+                            "id": 4,
+                            "thumbnail": "images/judge-sample.png",
+                            "name": "決選評審5",
+                            "corporation": "台北市資訊局",
+                            "position": "專門委員"
+                        }
+                    ]
+                }
+            ]
+        },
         "prospectus": {
             "title": "簡章概要",
             "image_url": "images/rules-prospectus.png",
@@ -110,6 +114,7 @@
         }
     },
     "schedule": {
+        "available": true,
         "section_title": "重要時程",
         "count_down": "2025-04-25 00:00:00",
         "list": [
@@ -203,6 +208,7 @@
         ]
     },
     "news": {
+        "available": true,
         "section_title": "最新消息",
         "list": [
             {
@@ -236,6 +242,7 @@
         ]
     },
     "past": {
+        "available": false,
         "section_title": "參賽回顧",
         "description": "收錄獲獎團隊及影音回顧",
         "winning_teams": {
@@ -292,6 +299,7 @@
         }
     },
     "sponsor": {
+        "available": true,
         "section_title": "贊助單位",
         "list": [
             {

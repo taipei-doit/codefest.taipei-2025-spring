@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { ref } from 'vue';
 import { useDialogStore } from '~/stores/dialogStore';
 
 const dialogStore = useDialogStore();

@@ -1,8 +1,9 @@
 <script setup lang="ts">
 const props = defineProps<{
-  activeNavName: unknown;
+  activeNavName: string;
 }>();
 const runtimeConfig = useRuntimeConfig();
+const { tm } = useI18n();
 
 const sectionNav = ref([
   {
@@ -10,30 +11,35 @@ const sectionNav = ref([
     zhName: '參賽規則',
     icon_url: `${runtimeConfig.app.baseURL}images/icons/icon-rules.svg`,
     is_selected: false,
+    available: tm('rules').available,
   },
   {
     name: 'schedule',
     zhName: '重要時程',
     icon_url: `${runtimeConfig.app.baseURL}images/icons/icon-schedule.svg`,
     is_selected: false,
+    available: tm('schedule').available,
   },
   {
     name: 'news',
     zhName: '最新消息',
     icon_url: `${runtimeConfig.app.baseURL}images/icons/icon-news.svg`,
     is_selected: false,
+    available: tm('news').available,
   },
   {
     name: 'past',
     zhName: '參賽回顧',
     icon_url: `${runtimeConfig.app.baseURL}images/icons/icon-past.svg`,
     is_selected: false,
+    available: tm('past').available,
   },
   {
     name: 'sponsor',
     zhName: '贊助單位',
     icon_url: `${runtimeConfig.app.baseURL}images/icons/icon-sponsor.svg`,
     is_selected: false,
+    available: tm('sponsor').available,
   },
 ]);
 
@@ -76,7 +82,12 @@ onMounted(() => {
   <div class="flex items-end p-4">
     <span class="text-white font-fusion-pixel text-xl mr-4">{{ props.activeNavName }}</span>
     <div v-for="(item, index) in sectionNav" :key="index" class="flex items-center">
-      <a href="javascript:void(0)" class="mr-1 transition-all" @click="scrollToSection(item.name)">
+      <a
+        v-if="item.available"
+        href="javascript:void(0)"
+        class="mr-1 transition-all"
+        @click="scrollToSection(item.name)"
+      >
         <img
           :src="item.icon_url"
           class="transition-transform duration-300"
