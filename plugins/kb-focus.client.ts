@@ -1,15 +1,7 @@
 import { defineNuxtPlugin } from '#app';
 
 let currentId: string | null = null;
-const registry: Map<
-  string,
-  {
-    el: HTMLElement;
-    id: string;
-    x: number;
-    y: number;
-  }
-> = new Map();
+const registry: Map<string, { el: HTMLElement; id: string; x: number; y: number }> = new Map();
 
 function focusElement(id: string | null) {
   if (!id || !registry.has(id)) return;
@@ -44,10 +36,10 @@ function moveFocus(dir: 'up' | 'down' | 'left' | 'right') {
         isValid = dy > 0;
         break;
       case 'left':
-        isValid = dx < 0;
+        isValid = dx < 0 && entry.y === current.y;
         break;
       case 'right':
-        isValid = dx > 0;
+        isValid = dx > 0 && entry.y === current.y;
         break;
     }
 
@@ -62,23 +54,24 @@ function moveFocus(dir: 'up' | 'down' | 'left' | 'right') {
   let filtered: typeof candidates = [];
 
   if (dir === 'up' || dir === 'down') {
-    // 找出 y 軸最接近的目標列（允許跳號）
     const targetY = candidates.reduce((prev, curr) => {
       return Math.abs(curr.entry.y - current.y) < Math.abs(prev.entry.y - current.y) ? curr : prev;
     }).entry.y;
-
     filtered = candidates.filter(c => c.entry.y === targetY);
+
+    // 向下時回到該列最左側（x最小）
+    if (dir === 'down') {
+      const minX = Math.min(...filtered.map(f => f.entry.x));
+      filtered = filtered.filter(f => f.entry.x === minX);
+    }
   } else {
-    // x 軸邏輯同上
     const targetX = candidates.reduce((prev, curr) => {
       return Math.abs(curr.entry.x - current.x) < Math.abs(prev.entry.x - current.x) ? curr : prev;
     }).entry.x;
-
     filtered = candidates.filter(c => c.entry.x === targetX);
   }
 
   const best = filtered.sort((a, b) => a.dist - b.dist)[0];
-
   if (best) focusElement(best.id);
 }
 

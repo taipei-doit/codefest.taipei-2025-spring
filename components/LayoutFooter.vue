@@ -59,9 +59,9 @@ const connectBtns = computed(() => {
                 v-for="(btn, index) in connectBtns"
                 :key="index"
                 v-kb-focus="{
-                  id: `footer-6-${index + 53}`,
-                  x: 6,
-                  y: index + 53,
+                  id: `footer-6-${index + 56}`,
+                  x: 1,
+                  y: index + 56,
                 }"
                 class="flex items-center mb-3"
               >
