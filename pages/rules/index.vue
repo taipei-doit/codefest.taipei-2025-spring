@@ -64,10 +64,14 @@ const prospectusContents = computed(() => {
       </p>
       <div v-for="(content, index) in prospectusContents" :key="index" class="mb-8">
         <p>{{ content.sub_title }}</p>
-        <p>{{ content.sub_content }}</p>
+        <p class="whitespace-pre-wrap">{{ content.sub_content }}</p>
       </div>
       <div class="overflow-x-auto">
-        <img :src="tm('rules.prospectus.image_url')" class="w-[800px] lg:w-full max-w-none" alt="" />
+        <img
+          :src="tm('rules.prospectus.image_url')"
+          class="w-[800px] lg:w-full max-w-none"
+          alt=""
+        />
       </div>
       <p class="lg:!hidden p-4 text-center scroll-arrow">向右滑看更多資訊</p>
     </div>

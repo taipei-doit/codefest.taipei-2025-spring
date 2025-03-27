@@ -80,10 +80,9 @@ const scheduleList = computed(() => {
             </template>
           </div>
           <div class="p-4 w-full overflow-auto">
-            <div v-show="tab.id === 'apply'">報名期間</div>
-            <div v-show="tab.id === 'online'">線上說明會</div>
+            <div v-show="tab.id === 'workshop'">敬請期待！</div>
             <table
-              v-show="tab.id === 'workshop'"
+              v-show="tab.id === 'online' || tab.id === 'competition'"
               class="w-full min-w-max border-collapse text-white"
             >
               <thead>
@@ -99,13 +98,12 @@ const scheduleList = computed(() => {
               </thead>
               <tbody>
                 <tr v-for="(item, subIndex) in tab.schedule" :key="subIndex">
-                  <td class="p-2">{{ item.time }}</td>
-                  <td class="p-2">{{ item.name }}</td>
-                  <td class="p-2">{{ item.presenter }}</td>
+                  <td class="p-2 whitespace-pre-wrap">{{ item.col1 }}</td>
+                  <td class="p-2 whitespace-pre-wrap">{{ item.col2 }}</td>
+                  <td class="p-2 whitespace-pre-wrap">{{ item.col3 }}</td>
                 </tr>
               </tbody>
             </table>
-            <div v-show="tab.id === 'competition'">競賽日</div>
           </div>
           <p class="lg:!hidden custom-dashed dashed-top p-4 text-center scroll-arrow">
             向右滑看更多資訊

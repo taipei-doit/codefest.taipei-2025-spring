@@ -1,4 +1,12 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const { tm } = useI18n();
+
+/** 聯絡資訊 */
+const contactBtns = computed(() => {
+  const data = tm('contact.buttons');
+  return Array.isArray(data) ? data : Object.values(data); // 轉換 Object 為 Array
+});
+</script>
 
 <template>
   <footer class="bg-black p-5 pt-0 font-fusion-pixel">
@@ -21,29 +29,17 @@
           <div class="lg:col-span-3 p-4 flex flex-col border border-r-white">
             <LayoutNavbar type="footer" nav-class="lg:flex mb-6 lg:mb-0 text-white" />
             <div class="mt-auto">
-              <p>110204 臺北市信義區市府路1號</p>
-              <p>LINE @xxxxx</p>
-              <p>服務時間：週一至週五 09:00-17:00</p>
+              <p>{{ tm('contact.address') }}</p>
+              <p>LINE {{ tm('contact.line_id') }}</p>
+              <p>服務時間：{{ tm('contact.office_hours') }}</p>
             </div>
           </div>
-          <div class="lg:col-span-1 p-4 border border-r-white">
-            <p class="mb-3 font-px437">Connect with us......</p>
+          <div class="lg:col-span-1 p-4 border border-r-white font-px437">
+            <p class="mb-3">Connect with us......</p>
             <div class="grid lg:grid-flow-row grid-flow-col lg:grid-cols-1 grid-rows-2">
-              <div class="flex items-center mb-3">
+              <div v-for="(btn, index) in contactBtns" :key="index" class="flex items-center mb-3">
                 <img src="@/assets/images/icons/arrow_icon.svg" class="mr-2" alt="" />
-                <button class="connect-btn font-px437">GITHUB</button>
-              </div>
-              <div class="flex items-center mb-3">
-                <img src="@/assets/images/icons/arrow_icon.svg" class="mr-2" alt="" />
-                <button class="connect-btn font-px437">YOUTUBE</button>
-              </div>
-              <div class="flex items-center mb-3">
-                <img src="@/assets/images/icons/arrow_icon.svg" class="mr-2" alt="" />
-                <button class="connect-btn font-px437">LINE</button>
-              </div>
-              <div class="flex items-center mb-3">
-                <img src="@/assets/images/icons/arrow_icon.svg" class="mr-2" alt="" />
-                <button class="connect-btn font-px437">EMAIL</button>
+                <a :href="btn.link" target="_blank" class="connect-btn">{{ btn.name }}</a>
               </div>
             </div>
           </div>

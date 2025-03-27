@@ -1,5 +1,4 @@
 <script setup lang="ts">
-
 const props = defineProps<{
   type: 'header' | 'mobile-header' | 'footer';
   navClass: string;
@@ -34,9 +33,9 @@ const navItemClass = computed(() => {
           >重要時程</NuxtLink
         >
       </li>
-      <li :class="navItemClass">
+      <!-- <li :class="navItemClass">
         <NuxtLink :to="ROUTE_PATHS.PAST" @click="dialogStore.closeDialog()">參賽回顧</NuxtLink>
-      </li>
+      </li> -->
       <li :class="navItemClass">
         <a :href="tm('past_url')" target="_blank" @click="dialogStore.closeDialog()">歷屆紀錄</a>
       </li>
