@@ -4,6 +4,7 @@ const props = defineProps<{
   focusY: number; // 第幾個 section（從 1 開始）
 }>();
 const runtimeConfig = useRuntimeConfig();
+const { tm } = useI18n();
 
 const sectionNav = ref([
   {
@@ -11,30 +12,35 @@ const sectionNav = ref([
     zhName: '參賽規則',
     icon_url: `${runtimeConfig.app.baseURL}images/icons/icon-rules.svg`,
     is_selected: false,
+    available: tm('rules').available,
   },
   {
     name: 'schedule',
     zhName: '重要時程',
     icon_url: `${runtimeConfig.app.baseURL}images/icons/icon-schedule.svg`,
     is_selected: false,
+    available: tm('schedule').available,
   },
   {
     name: 'news',
     zhName: '最新消息',
     icon_url: `${runtimeConfig.app.baseURL}images/icons/icon-news.svg`,
     is_selected: false,
+    available: tm('news').available,
   },
   {
     name: 'past',
     zhName: '參賽回顧',
     icon_url: `${runtimeConfig.app.baseURL}images/icons/icon-past.svg`,
     is_selected: false,
+    available: tm('past').available,
   },
   {
     name: 'sponsor',
     zhName: '贊助單位',
     icon_url: `${runtimeConfig.app.baseURL}images/icons/icon-sponsor.svg`,
     is_selected: false,
+    available: tm('sponsor').available,
   },
 ]);
 
@@ -78,6 +84,7 @@ onMounted(() => {
     <span class="text-white font-fusion-pixel text-xl mr-4">{{ props.activeNavName }}</span>
     <div v-for="(item, index) in sectionNav" :key="index" class="flex items-center">
       <a
+        v-if="item.available"
         v-kb-focus="{
           id: `section-${index + 1}-${focusY}`,
           x: index + 1, // 顯示順序就是 x 軸
