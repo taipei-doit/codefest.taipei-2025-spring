@@ -3,7 +3,7 @@ import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/vue';
 import WinningTeamDialog from '~/components/WinningTeamDialog.vue';
 import type { PastVideo, PastWinningTeam } from '~/interfaces/past.interface';
 
-const { tm } = useI18n();
+const { t, tm } = useI18n();
 const dialogStore = useDialogStore();
 const { activeDialog } = storeToRefs(dialogStore);
 const runtimeConfig = useRuntimeConfig();
@@ -52,38 +52,66 @@ const videoList = computed<PastVideo[]>(() => {
                 :class="{ 'rotate-180': open }"
               />
             </DisclosureButton>
-            <DisclosurePanel class="lg:p-12 p-6">
-              <div class="grid lg:grid-cols-3 grid-cols-1 gap-8">
-                <div v-for="(group, index) in winningTeamList" :key="index">
-                  <div :key="group.id">
-                    <a
-                      href="javascript:void(0)"
-                      @click="
-                        activeWinningTeam = group;
-                        dialogStore.openDialog('winningTeam');
-                      "
-                    >
-                      <div class="video-box relative">
-                        <img
-                          :src="runtimeConfig.app.baseURL + group.thumbnail"
-                          class="w-full h-full object-cover transition-all duration-300 group-hover:brightness-75"
-                          alt=""
-                        />
-                      </div>
-                      <div class="lg:block flex items-center mt-2 lg:text-lg text-base text-white">
-                        <p class="mr-2 lg:mr-0">{{ group.ranking }}</p>
-                        <p class="flex justify-between items-center">
-                          <span>{{ group.team_name }}</span>
+            <DisclosurePanel>
+              <div class="lg:p-12 p-6 border-b border-white">
+                <div class="grid lg:grid-cols-3 grid-cols-1 gap-8">
+                  <div v-for="(group, index) in winningTeamList" :key="index">
+                    <div :key="group.id">
+                      <a
+                        href="javascript:void(0)"
+                        @click="
+                          activeWinningTeam = group;
+                          dialogStore.openDialog('winningTeam');
+                        "
+                      >
+                        <div class="video-box relative">
                           <img
-                            src="@/assets/images/icons/white-right-arrow.svg"
-                            width="24"
-                            class="lg:inline-block hidden"
-                            alt="white-right-arrow"
+                            :src="runtimeConfig.app.baseURL + group.thumbnail"
+                            class="w-full h-full object-cover transition-all duration-300 group-hover:brightness-75"
+                            alt=""
                           />
-                        </p>
-                      </div>
-                    </a>
+                        </div>
+                        <div
+                          class="lg:block flex items-center mt-2 lg:text-lg text-base text-white"
+                        >
+                          <p class="mr-2 lg:mr-0">{{ group.ranking }}</p>
+                          <p class="flex justify-between items-center">
+                            <span>{{ group.team_name }}</span>
+                            <img
+                              src="@/assets/images/icons/white-right-arrow.svg"
+                              width="24"
+                              class="lg:inline-block hidden"
+                              alt="white-right-arrow"
+                            />
+                          </p>
+                        </div>
+                      </a>
+                    </div>
                   </div>
+                </div>
+              </div>
+              <div
+                v-if="t('more_winning_team_photos_url')"
+                class="flex flex-col lg:flex-row justify-between items-center p-4 m-1"
+              >
+                <!-- 文字區塊 (lg 以上才顯示) -->
+                <div class="hidden lg:block flex-1">
+                  <p class="font-px437 text-white typing-container mr-2">
+                    View More Photos：View →
+                  </p>
+                </div>
+
+                <!-- 按鈕區塊 -->
+                <div
+                  class="w-full lg:w-auto flex flex-nowrap justify-center lg:justify-end space-x-8"
+                >
+                  <a
+                    :href="t('more_winning_team_photos_url')"
+                    target="_blank"
+                    class="icon-btn icon-btn--arrow w-1/2 lg:w-auto lg:min-w-60"
+                  >
+                    <span> 更多照片回顧 </span>
+                  </a>
                 </div>
               </div>
             </DisclosurePanel>
@@ -104,37 +132,63 @@ const videoList = computed<PastVideo[]>(() => {
                 :class="{ 'rotate-180': open }"
               />
             </DisclosureButton>
-            <DisclosurePanel class="lg:p-12 p-6">
-              <div class="grid lg:grid-cols-3 grid-cols-1 gap-8">
-                <div v-for="(group, index) in videoList" :key="index">
-                  <div :key="group.id">
-                    <a :href="group.video_url" target="_blank">
-                      <div class="video-box relative">
-                        <img
-                          :src="runtimeConfig.app.baseURL + group.thumbnail"
-                          class="w-full h-full object-cover transition-all duration-300 group-hover:brightness-75"
-                          alt=""
-                        />
-                        <!-- 播放按鈕 -->
-                        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                          <img src="@/assets/images/icons/play.png" width="40" alt="play_btn" />
-                        </div>
-                      </div>
-                      <div
-                        class="flex justify-between items-center mt-2 lg:text-lg text-base text-white"
-                      >
-                        <span>{{ group.title }}</span>
-                        <span>
+            <DisclosurePanel>
+              <div class="lg:p-12 p-6 border-b border-white">
+                <div class="grid lg:grid-cols-3 grid-cols-1 gap-8">
+                  <div v-for="(group, index) in videoList" :key="index">
+                    <div :key="group.id">
+                      <a :href="group.video_url" target="_blank">
+                        <div class="video-box relative">
                           <img
-                            src="@/assets/images/icons/white-right-arrow.svg"
-                            width="24"
-                            class="lg:inline-block hidden"
-                            alt="white-right-arrow"
+                            :src="runtimeConfig.app.baseURL + group.thumbnail"
+                            class="w-full h-full object-cover transition-all duration-300 group-hover:brightness-75"
+                            alt=""
                           />
-                        </span>
-                      </div>
-                    </a>
+                          <!-- 播放按鈕 -->
+                          <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+                            <img src="@/assets/images/icons/play.png" width="40" alt="play_btn" />
+                          </div>
+                        </div>
+                        <div
+                          class="flex justify-between items-center mt-2 lg:text-lg text-base text-white"
+                        >
+                          <span>{{ group.title }}</span>
+                          <span>
+                            <img
+                              src="@/assets/images/icons/white-right-arrow.svg"
+                              width="24"
+                              class="lg:inline-block hidden"
+                              alt="white-right-arrow"
+                            />
+                          </span>
+                        </div>
+                      </a>
+                    </div>
                   </div>
+                </div>
+              </div>
+              <div
+                v-if="t('more_videos_url')"
+                class="flex flex-col lg:flex-row justify-between items-center p-4 m-1"
+              >
+                <!-- 文字區塊 (lg 以上才顯示) -->
+                <div class="hidden lg:block flex-1">
+                  <p class="font-px437 text-white typing-container mr-2">
+                    View More Videos：View →
+                  </p>
+                </div>
+
+                <!-- 按鈕區塊 -->
+                <div
+                  class="w-full lg:w-auto flex flex-nowrap justify-center lg:justify-end space-x-8"
+                >
+                  <a
+                    :href="t('more_videos_url')"
+                    target="_blank"
+                    class="icon-btn icon-btn--arrow w-1/2 lg:w-auto lg:min-w-60"
+                  >
+                    <span> 更多影片回顧 </span>
+                  </a>
                 </div>
               </div>
             </DisclosurePanel>
