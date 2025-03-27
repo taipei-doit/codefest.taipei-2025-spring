@@ -1,4 +1,12 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const { tm } = useI18n();
+
+/** 聯絡資訊 */
+const connectBtns = computed(() => {
+  const data = tm('connect.buttons');
+  return Array.isArray(data) ? data : Object.values(data); // 轉換 Object 為 Array
+});
+</script>
 
 <template>
   <footer class="bg-black p-5 pt-0 font-fusion-pixel">
@@ -13,9 +21,27 @@
               <span class="text-center lg:text-left lg:mb-4">新北市政府資訊中心</span>
               <span class="text-center lg:text-left lg:mb-4">臺北市政府資訊局</span>
             </div>
-            <div class="lg:block hidden mt-auto">
-              <a href="" class="lg:block mb-2">政府網站資料開放宣告</a>
-              <a href="" class="lg:block">隱私權及資訊安全政策</a>
+            <div class="lg:block hidden mt-auto text-center">
+              <a
+                v-kb-focus="{
+                  id: `footer-1-50`,
+                  x: 1,
+                  y: 50,
+                }"
+                href=""
+                class="lg:block mb-2"
+                >政府網站資料開放宣告</a
+              >
+              <a
+                v-kb-focus="{
+                  id: `footer-1-51`,
+                  x: 1,
+                  y: 51,
+                }"
+                href=""
+                class="lg:block"
+                >隱私權及資訊安全政策</a
+              >
             </div>
           </div>
           <div class="lg:col-span-3 p-4 flex flex-col border border-r-white">
@@ -29,21 +55,18 @@
           <div class="lg:col-span-1 p-4 border border-r-white">
             <p class="mb-3 font-px437">Connect with us......</p>
             <div class="grid lg:grid-flow-row grid-flow-col lg:grid-cols-1 grid-rows-2">
-              <div class="flex items-center mb-3">
+              <div
+                v-for="(btn, index) in connectBtns"
+                :key="index"
+                v-kb-focus="{
+                  id: `footer-6-${index + 53}`,
+                  x: 6,
+                  y: index + 53,
+                }"
+                class="flex items-center mb-3"
+              >
                 <img src="@/assets/images/icons/arrow_icon.svg" class="mr-2" alt="" />
-                <button class="connect-btn font-px437">GITHUB</button>
-              </div>
-              <div class="flex items-center mb-3">
-                <img src="@/assets/images/icons/arrow_icon.svg" class="mr-2" alt="" />
-                <button class="connect-btn font-px437">YOUTUBE</button>
-              </div>
-              <div class="flex items-center mb-3">
-                <img src="@/assets/images/icons/arrow_icon.svg" class="mr-2" alt="" />
-                <button class="connect-btn font-px437">LINE</button>
-              </div>
-              <div class="flex items-center mb-3">
-                <img src="@/assets/images/icons/arrow_icon.svg" class="mr-2" alt="" />
-                <button class="connect-btn font-px437">EMAIL</button>
+                <button class="connect-btn font-px437">{{ btn.name }}</button>
               </div>
             </div>
           </div>
@@ -59,6 +82,6 @@
 
 <style scoped lang="postcss">
 .connect-btn {
-  @apply px-6 py-2 border border-white text-white;
+  @apply px-6 py-2 border border-white text-white uppercase;
 }
 </style>

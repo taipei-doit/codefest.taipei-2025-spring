@@ -173,8 +173,9 @@ const calculateDistance = () => {
             </p>
             <div class="flex justify-center">
               <button
-                @click="dialogStore.openDialog('apply')"
+                v-kb-focus="{ id: 'index-button-1-2', x: 1, y: 2 }"
                 class="icon-btn icon-btn--arrow min-w-60"
+                @click="dialogStore.openDialog('apply')"
               >
                 <span> 立即報名 </span>
               </button>
@@ -187,7 +188,7 @@ const calculateDistance = () => {
     <SectionDecoration class="lg:hidden" />
     <!-- 第2幀 - 參賽規則 -->
     <div class="lg:flex justify-end hidden">
-      <SectionNav active-nav-name="rules" />
+      <SectionNav active-nav-name="rules" :focus-y="3" />
     </div>
     <section id="rules" class="2xl:p-0 p-5">
       <div class="border border-white relative">
@@ -241,6 +242,11 @@ const calculateDistance = () => {
                 <button
                   v-for="(btn, index) in tm('rules.buttons')"
                   :key="index"
+                  v-kb-focus="{
+                    id: `index-rules-${index + 1}-4`,
+                    x: index + 1, // 顯示順序就是 x 軸
+                    y: 4,
+                  }"
                   class="connect-btn mr-4 font-px437"
                 >
                   {{ btn.name }}
@@ -261,14 +267,24 @@ const calculateDistance = () => {
             <!-- 按鈕區塊 -->
             <div class="w-full lg:w-auto flex flex-nowrap justify-center lg:justify-end space-x-8">
               <NuxtLink
+                v-kb-focus="{
+                  id: `index-rules-button-1-5`,
+                  x: 1, // 顯示順序就是 x 軸
+                  y: 5,
+                }"
                 :to="ROUTE_PATHS.RULES"
                 class="icon-btn icon-btn--arrow w-1/2 lg:w-auto lg:min-w-60 text-center block"
               >
                 <span> 瞭解詳情 </span>
               </NuxtLink>
               <button
-                @click="dialogStore.openDialog('apply')"
+                v-kb-focus="{
+                  id: `index-rules-button-2-5`,
+                  x: 2, // 顯示順序就是 x 軸
+                  y: 5,
+                }"
                 class="icon-btn icon-btn--arrow w-1/2 lg:w-auto lg:min-w-60"
+                @click="dialogStore.openDialog('apply')"
               >
                 <span> 立即報名 </span>
               </button>
@@ -284,6 +300,11 @@ const calculateDistance = () => {
             <template v-for="(item, index) in judgeList" :key="index">
               <Disclosure v-slot="{ open }" :default-open="true">
                 <DisclosureButton
+                  v-kb-focus="{
+                    id: `index-rules-judge-1-${index + 6}`,
+                    x: 1, // 顯示順序就是 x 軸
+                    y: index + 6,
+                  }"
                   class="w-full flex items-center justify-between p-2 border border-t-white border-b-white"
                 >
                   <p class="text-white text-center font-fusion-pixel mx-auto">
@@ -361,7 +382,7 @@ const calculateDistance = () => {
     <SectionDecoration direction="right" />
     <!-- 第3幀 - 重要時程 -->
     <div class="lg:flex justify-start hidden">
-      <SectionNav active-nav-name="schedule" />
+      <SectionNav active-nav-name="schedule" :focus-y="8" />
     </div>
     <section id="schedule" class="2xl:p-0 p-5">
       <div class="border border-white relative">
@@ -384,6 +405,11 @@ const calculateDistance = () => {
                   <div
                     v-for="(tab, index) in scheduleList"
                     :key="tab.id"
+                    v-kb-focus="{
+                      id: `index-schedule-tab-1-${9 + index}`,
+                      x: 1, // 顯示順序就是 x 軸
+                      y: 9 + index,
+                    }"
                     class="schedule-tab relative p-6 border border-white text-xl text-center cursor-pointer mb-4 hover:bg-primary-50 hover:text-primary-500"
                     :class="
                       activeSchedule.id === tab.id
@@ -455,6 +481,11 @@ const calculateDistance = () => {
                     <!-- 外部連結 -->
                     <a
                       v-if="activeSchedule.button.type === 'outside_link'"
+                      v-kb-focus="{
+                        id: `index-schedule-button-1-${9 + scheduleList.findIndex(tab => tab.id === activeSchedule.id)}`,
+                        x: 2, // 顯示順序就是 x 軸
+                        y: 9 + scheduleList.findIndex(tab => tab.id === activeSchedule.id),
+                      }"
                       :href="activeSchedule.button.link"
                       target="_blank"
                       rel="noopener noreferrer"
@@ -466,6 +497,11 @@ const calculateDistance = () => {
                     <!-- Nuxt 內部跳轉 -->
                     <NuxtLink
                       v-else-if="activeSchedule.button.type === 'route'"
+                      v-kb-focus="{
+                        id: `index-schedule-button-1-${9 + scheduleList.findIndex(tab => tab.id === activeSchedule.id)}`,
+                        x: 2, // 顯示順序就是 x 軸
+                        y: 9 + scheduleList.findIndex(tab => tab.id === activeSchedule.id),
+                      }"
                       :to="activeSchedule.button.link"
                       class="icon-btn icon-btn--arrow min-w-60"
                     >
@@ -475,8 +511,13 @@ const calculateDistance = () => {
                     <!-- 開啟 Dialog -->
                     <button
                       v-else-if="activeSchedule.button.type === 'dialog'"
-                      @click="dialogStore.openDialog(activeSchedule.button.link)"
+                      v-kb-focus="{
+                        id: `index-schedule-button-1-${9 + scheduleList.findIndex(tab => tab.id === activeSchedule.id)}`,
+                        x: 2, // 顯示順序就是 x 軸
+                        y: 9 + scheduleList.findIndex(tab => tab.id === activeSchedule.id),
+                      }"
                       class="icon-btn icon-btn--arrow min-w-60"
+                      @click="dialogStore.openDialog(activeSchedule.button.link)"
                     >
                       <span>{{ activeSchedule.button.text }}</span>
                     </button>
@@ -617,7 +658,7 @@ const calculateDistance = () => {
     <!-- 第4幀 - 最新消息 -->
     <template v-if="newsList.length">
       <div class="lg:flex justify-end hidden">
-        <SectionNav active-nav-name="news" />
+        <SectionNav active-nav-name="news" :focus-y="20" />
       </div>
       <section id="news" class="2xl:p-0 p-5">
         <div class="grid grid-cols-5">
@@ -629,8 +670,13 @@ const calculateDistance = () => {
                 <div class="lg:px-10 lg:py-14 p-4 pt-10 border border-b-white">
                   <div class="space-y-6 text-white h-[347px] pr-4 overflow-auto">
                     <a
-                      v-for="news in newsList"
-                      :key="news.id"
+                      v-for="(news, index) in newsList"
+                      :key="index"
+                      v-kb-focus="{
+                        id: `index-news-1-${21 + index}`,
+                        x: 1, // 顯示順序就是 x 軸
+                        y: 21 + index,
+                      }"
                       href="javascript:void(0)"
                       class="block border border-white p-4 transition hover:bg-primary-50 hover:text-primary-500"
                       @click="
@@ -663,7 +709,7 @@ const calculateDistance = () => {
     </template>
     <!-- 第5幀 - 參賽回顧 -->
     <div class="lg:flex justify-start hidden">
-      <SectionNav active-nav-name="past" />
+      <SectionNav active-nav-name="past" :focus-y="30" />
     </div>
     <section id="past" class="2xl:p-0 p-5">
       <div class="border border-white relative">
@@ -688,7 +734,16 @@ const calculateDistance = () => {
               >
                 <SwiperSlide v-for="(group, index) in videoList" :key="index">
                   <div :key="group.id">
-                    <a :href="group.video_url" target="_blank">
+                    <a
+                      v-kb-focus="{
+                        id: `index-video-${index + 1}-31`,
+                        x: index + 1, // 顯示順序就是 x 軸
+                        y: 31,
+                      }"
+                      :href="group.video_url"
+                      target="_blank"
+                      class="m-1 inline-block"
+                    >
                       <div class="video-box relative">
                         <img
                           :src="group.thumbnail"
@@ -745,7 +800,14 @@ const calculateDistance = () => {
           <div v-if="pastTotalPages > 1" class="hidden lg:block py-4 px-10 border border-b-white">
             <!-- 分頁控制 -->
             <div class="flex justify-end items-center space-x-2 text-white font-px437">
-              <button class="past-swiper-button-prev">
+              <button
+                v-kb-focus="{
+                  id: `index-video-1-32`,
+                  x: 1,
+                  y: 32,
+                }"
+                class="past-swiper-button-prev"
+              >
                 <img
                   src="@/assets/images/icons/white-down-arrow.svg"
                   alt="arrow"
@@ -754,7 +816,14 @@ const calculateDistance = () => {
                 />
               </button>
               <span>&nbsp;{{ pastCurrentPage }} / {{ pastTotalPages }}&nbsp;</span>
-              <button class="past-swiper-button-next">
+              <button
+                v-kb-focus="{
+                  id: `index-video-2-32`,
+                  x: 2,
+                  y: 32,
+                }"
+                class="past-swiper-button-next"
+              >
                 <img
                   src="@/assets/images/icons/white-down-arrow.svg"
                   alt="arrow"
@@ -772,7 +841,15 @@ const calculateDistance = () => {
 
             <!-- 按鈕區塊 -->
             <div class="w-full lg:w-auto flex flex-nowrap justify-center lg:justify-end space-x-8">
-              <NuxtLink :to="ROUTE_PATHS.PAST" class="icon-btn icon-btn--arrow min-w-60">
+              <NuxtLink
+                v-kb-focus="{
+                  id: `index-video-1-33`,
+                  x: 1,
+                  y: 33,
+                }"
+                :to="ROUTE_PATHS.PAST"
+                class="icon-btn icon-btn--arrow min-w-60"
+              >
                 <span> 查看更多 </span>
               </NuxtLink>
             </div>
@@ -783,7 +860,7 @@ const calculateDistance = () => {
     <SectionDecoration />
     <!-- 第6幀 - 贊助單位 -->
     <div class="lg:flex justify-end hidden">
-      <SectionNav active-nav-name="sponsor" />
+      <SectionNav active-nav-name="sponsor" :focus-y="40" />
     </div>
     <section id="sponsor" class="2xl:p-0 p-5">
       <div class="border border-white relative">

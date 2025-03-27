@@ -41,6 +41,12 @@ button {
     outline: none;
 }
 
+.is-focused {
+    outline: 4px solid theme("colors.primary.100");
+    box-shadow: 0 0 6px theme("colors.primary.100");
+    transition: all 0.2s ease;
+}
+
 .container {
     max-width: 1440px;
 }

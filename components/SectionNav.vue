@@ -1,6 +1,7 @@
 <script setup lang="ts">
 const props = defineProps<{
-  activeNavName: unknown;
+  activeNavName: string;
+  focusY: number; // 第幾個 section（從 1 開始）
 }>();
 const runtimeConfig = useRuntimeConfig();
 
@@ -76,7 +77,16 @@ onMounted(() => {
   <div class="flex items-end p-4">
     <span class="text-white font-fusion-pixel text-xl mr-4">{{ props.activeNavName }}</span>
     <div v-for="(item, index) in sectionNav" :key="index" class="flex items-center">
-      <a href="javascript:void(0)" class="mr-1 transition-all" @click="scrollToSection(item.name)">
+      <a
+        v-kb-focus="{
+          id: `section-${index + 1}-${focusY}`,
+          x: index + 1, // 顯示順序就是 x 軸
+          y: focusY, // 傳進來或 props 傳入：目前是第幾個 section
+        }"
+        href="javascript:void(0)"
+        class="mr-1 transition-all"
+        @click="scrollToSection(item.name)"
+      >
         <img
           :src="item.icon_url"
           class="transition-transform duration-300"

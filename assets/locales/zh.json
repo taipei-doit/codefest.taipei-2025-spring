@@ -435,6 +435,26 @@
             }
         ]
     },
+    "connect": {
+        "buttons": [
+            {
+                "name": "Github",
+                "link": ""
+            },
+            {
+                "name": "YouTube",
+                "link": ""
+            },
+            {
+                "name": "Line",
+                "link": ""
+            },
+            {
+                "name": "Email",
+                "link": ""
+            }
+        ]
+    },
     "apply_url": "https://www.surveycake.com/s/mVlKa",
     "past_url": "https://codefest.taipei/"
 }

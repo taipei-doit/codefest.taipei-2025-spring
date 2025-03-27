@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { ref } from 'vue';
 import { useDialogStore } from '~/stores/dialogStore';
 
 const dialogStore = useDialogStore();
@@ -10,7 +9,12 @@ const { activeDialog } = storeToRefs(dialogStore);
   <header class="bg-black p-5 pb-0">
     <div class="container mx-auto border border-white h-full flex flex-col">
       <div class="m-1 border border-white flex-1 flex justify-between items-center lg:px-10">
-        <NuxtLink to="/" class="px-4 flex space-x-2">
+        <NuxtLink
+          v-kb-focus="{ id: 'header-logo-1-1', x: 1, y: 1 }"
+          to="/"
+          class="px-4 flex space-x-2"
+          tabindex="0"
+        >
           <img src="/images/logos/logo-icon-ntpc.svg" class="lg:w-[40px] w-[30px]" alt="" />
           <img src="/images/logos/logo-icon-tpe.svg" class="lg:w-[40px] w-[30px]" alt="" />
         </NuxtLink>
