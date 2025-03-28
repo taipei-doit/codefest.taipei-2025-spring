@@ -104,7 +104,7 @@ const videoList = computed<PastVideo[]>(() => {
                 </div>
               </div>
               <div
-                v-if="t('more_winning_team_photos_url')"
+                v-if="t('past.winning_teams.more_winning_team_photos_url')"
                 class="flex flex-col lg:flex-row justify-between items-center p-4 m-1"
               >
                 <!-- 文字區塊 (lg 以上才顯示) -->
@@ -194,7 +194,7 @@ const videoList = computed<PastVideo[]>(() => {
                 </div>
               </div>
               <div
-                v-if="t('more_videos_url')"
+                v-if="t('past.videos.more_videos_url')"
                 class="flex flex-col lg:flex-row justify-between items-center p-4 m-1"
               >
                 <!-- 文字區塊 (lg 以上才顯示) -->

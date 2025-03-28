@@ -186,7 +186,7 @@ const calculateDistance = () => {
     </section>
     <SectionDecoration class="lg:block hidden" />
     <SectionDecoration class="lg:hidden" />
-    <!-- 第2幀 - 參賽規則 -->
+    <!-- 第2幀 - 競賽規則 -->
     <template v-if="tm('rules').available">
       <div class="lg:flex justify-end hidden">
         <SectionNav active-nav-name="rules" :focus-y="3" />
@@ -239,8 +239,8 @@ const calculateDistance = () => {
                   </p>
                   <p class="whitespace-pre-wrap">{{ tm('rules.content') }}</p>
                 </div>
-                <div class="flex lg:justify-start justify-between">
-                  <button
+                <div class="flex lg:justify-start justify-between space-x-4">
+                  <a
                     v-for="(btn, index) in tm('rules.buttons')"
                     :key="index"
                     v-kb-focus="{
@@ -248,10 +248,12 @@ const calculateDistance = () => {
                       x: index + 1,
                       y: 4,
                     }"
-                    class="connect-btn mr-4 font-px437"
+                    :href="btn.link"
+                    target="_blank"
+                    class="connect-btn font-px437"
                   >
                     {{ btn.name }}
-                  </button>
+                  </a>
                 </div>
               </div>
             </div>
@@ -535,10 +537,9 @@ const calculateDistance = () => {
                     </template>
                   </div>
                   <div class="p-4 w-full overflow-auto">
-                    <div v-show="activeSchedule.id === 'apply'">報名期間</div>
-                    <div v-show="activeSchedule.id === 'online'">線上說明會</div>
+                    <div v-show="activeSchedule.id === 'workshop'">敬請期待！</div>
                     <table
-                      v-show="activeSchedule.id === 'workshop'"
+                      v-show="activeSchedule.id === 'online' || activeSchedule.id === 'competition'"
                       class="w-full min-w-max border-collapse text-white"
                     >
                       <thead>
@@ -554,13 +555,12 @@ const calculateDistance = () => {
                       </thead>
                       <tbody>
                         <tr v-for="(item, index) in activeSchedule.schedule" :key="index">
-                          <td class="p-2">{{ item.time }}</td>
-                          <td class="p-2">{{ item.name }}</td>
-                          <td class="p-2">{{ item.presenter }}</td>
+                          <td class="p-2 whitespace-pre-wrap">{{ item.col1 }}</td>
+                          <td class="p-2 whitespace-pre-wrap">{{ item.col2 }}</td>
+                          <td class="p-2 whitespace-pre-wrap">{{ item.col3 }}</td>
                         </tr>
                       </tbody>
                     </table>
-                    <div v-show="activeSchedule.id === 'competition'">競賽日</div>
                   </div>
                 </div>
               </div>
@@ -628,10 +628,9 @@ const calculateDistance = () => {
                       </template>
                     </div>
                     <div class="p-4 w-full overflow-auto">
-                      <div v-show="tab.id === 'apply'">報名期間</div>
-                      <div v-show="tab.id === 'online'">線上說明會</div>
+                      <div v-show="tab.id === 'workshop'">敬請期待！</div>
                       <table
-                        v-show="tab.id === 'workshop'"
+                        v-show="tab.id === 'online' || tab.id === 'competition'"
                         class="w-full min-w-max border-collapse text-white"
                       >
                         <thead>
@@ -647,13 +646,12 @@ const calculateDistance = () => {
                         </thead>
                         <tbody>
                           <tr v-for="(item, itemIndex) in tab.schedule" :key="itemIndex">
-                            <td class="p-2">{{ item.time }}</td>
-                            <td class="p-2">{{ item.name }}</td>
-                            <td class="p-2">{{ item.presenter }}</td>
+                            <td class="p-2">{{ item.col1 }}</td>
+                            <td class="p-2">{{ item.col2 }}</td>
+                            <td class="p-2">{{ item.col3 }}</td>
                           </tr>
                         </tbody>
                       </table>
-                      <div v-show="tab.id === 'competition'">競賽日</div>
                     </div>
                     <p class="custom-dashed dashed-top p-4 text-center scroll-arrow">
                       向右滑看更多資訊
@@ -680,7 +678,7 @@ const calculateDistance = () => {
                 <p class="section-title font-fusion-pixel">最新消息</p>
 
                 <div class="lg:px-10 lg:py-14 p-4 pt-10 border border-b-white">
-                  <div class="space-y-6 text-white h-[347px] pr-4 overflow-auto">
+                  <div class="space-y-6 text-white max-h-[347px] pr-4 overflow-auto">
                     <a
                       v-for="(news, index) in newsList"
                       :key="index"

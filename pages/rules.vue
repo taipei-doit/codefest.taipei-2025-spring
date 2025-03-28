@@ -5,7 +5,7 @@ const route = useRoute();
 const tabList = [
   {
     id: 'rules',
-    name: '參賽規則',
+    name: '競賽規則',
     path: `${ROUTE_PATHS.RULES}`,
     available: tm('rules').available,
   },

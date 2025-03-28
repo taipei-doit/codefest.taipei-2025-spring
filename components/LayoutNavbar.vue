@@ -33,7 +33,7 @@ const navItemClass = computed(() => {
           }"
           :to="ROUTE_PATHS.RULES"
           @click="dialogStore.closeDialog()"
-          >參賽規則</NuxtLink
+          >競賽規則</NuxtLink
         >
       </li>
       <li :class="navItemClass">
@@ -49,7 +49,7 @@ const navItemClass = computed(() => {
           >重要時程</NuxtLink
         >
       </li>
-      <li :class="navItemClass">
+      <!-- <li :class="navItemClass">
         <NuxtLink
           v-kb-focus="{
             id: `${props.type}-nav-4-${props.type === 'header' ? 1 : 52}`,
@@ -61,7 +61,7 @@ const navItemClass = computed(() => {
           @click="dialogStore.closeDialog()"
           >參賽回顧</NuxtLink
         >
-      </li>
+      </li> -->
       <li :class="navItemClass">
         <a
           v-kb-focus="{

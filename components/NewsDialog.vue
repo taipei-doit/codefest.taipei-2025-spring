@@ -18,9 +18,7 @@ const emit = defineEmits(['close']);
     <!-- 外層容器：滿版 + padding -->
     <div class="fixed inset-0 w-screen h-screen p-4">
       <!-- DialogPanel：最大寬 862px + 高度撐滿 -->
-      <DialogPanel
-        class="bg-white w-full h-full max-w-[862px] mx-auto flex flex-col relative"
-      >
+      <DialogPanel class="bg-white w-full h-full max-w-[862px] mx-auto flex flex-col relative">
         <!-- 關閉按鈕固定右上 -->
         <button class="absolute top-4 right-4 z-10" @click="emit('close')">
           <img src="@/assets/images/icons/btn-close.svg" alt="關閉" />
@@ -35,7 +33,9 @@ const emit = defineEmits(['close']);
         </div>
 
         <!-- 可捲動內容區 -->
-        <DialogDescription class="flex-1 overflow-y-auto px-6 pb-6 text-lg leading-8">
+        <DialogDescription
+          class="flex-1 overflow-y-auto px-6 pb-6 text-lg leading-8 whitespace-pre-wrap"
+        >
           <img v-if="activeNews?.image_url" :src="activeNews.image_url" alt="" class="mb-4" />
           {{ activeNews?.content }}
           <!-- 占位 padding (可選) -->
