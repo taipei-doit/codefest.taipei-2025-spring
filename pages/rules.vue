@@ -61,7 +61,7 @@ onMounted(() => {
       <div class="border border-white relative">
         <div class="m-1 border border-white">
           <p class="section-title font-fusion-pixel">
-            {{ tm('rules.section_title') }}
+            {{ activeTab.name }}
           </p>
           <div
             class="lg:flex block justify-center items-center font-fusion-pixel text-white lg:p-10 px-2 py-6 text-center border border-b-white"

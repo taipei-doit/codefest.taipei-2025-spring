@@ -95,7 +95,7 @@
             ]
         },
         "prospectus": {
-            "title": "簡章概要",
+            "title": "規則概要",
             "image_url": "",
             "contents": [
                 {
@@ -185,7 +185,7 @@
                     {
                         "col1": "17:35-17:50",
                         "col2": "獲獎團隊分享",
-                        "col3": "2024第二名獲獎團隊\nWeeeee Chill 陳宇修"
+                        "col3": "2024第二名獲獎團隊\nWeeeee Chill"
                     },
                     {
                         "col1": "17:50-18:00",

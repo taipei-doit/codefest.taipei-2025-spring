@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const { tm } = useI18n();
 
-/** 簡章概要 - 內容 */
+/** 規則概要 - 內容 */
 const prospectusContents = computed(() => {
   const data = tm('rules.prospectus.contents');
   return Array.isArray(data) ? data : Object.values(data); // 轉換 Object 為 Array
@@ -58,7 +58,7 @@ const prospectusContents = computed(() => {
           }"
           class="icon-btn icon-btn--download w-1/2 lg:w-auto lg:min-w-60"
         >
-          <span> 下載簡章 </span>
+          <span> 下載規則 </span>
         </button>
       </div>
     </div>

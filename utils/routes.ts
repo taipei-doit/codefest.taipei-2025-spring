@@ -3,6 +3,10 @@ export const ROUTE_PATHS = {
   RULES: '/rules',
   /** 重要時程 */
   SCHEDULE: '/schedule',
+  /** 本屆評審 */
+  JUDGE: '/judge',
+  /** FAQ */
+  FAQ: '/faq',
   /** 參賽回顧 */
   PAST: '/past',
 };
