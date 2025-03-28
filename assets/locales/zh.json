@@ -6,7 +6,7 @@
     "rules": {
         "available": true,
         "section_title": "競賽規則",
-        "description": "\"The power of open source is the power of the people.\"\n— Philippe Kahn（軟體企業家、開源運動支持者）\n（開源的力量就是人民的力量。）",
+        "description": "\"The power of open source is the power of the people.\"\n— Philippe Kahn\n（開源的力量就是人民的力量）",
         "content_title": "概念",
         "content": "在智慧城市與數據驅動時代，創新技術成為推動城市發展與提升市政服務的關鍵。2025這一屆獨特的雙北黑客松將帶領我們探索如何運用開源技術與數據可視化，挑戰傳統思維，實現跨縣市合作，共同創造出更具競爭力的智慧解決方案。\n透過結合創新設計與先進技術，我們期望進一步優化市政服務，推動雙北邁向智慧城市的未來。如有任何疑問，歡迎隨時聯絡我們！\n心動了嗎？ 趕快報名！",
         "buttons": [
@@ -279,7 +279,7 @@
                 ],
                 "schedule": [
                     {
-                        "col1": "5/31(六)",
+                        "col1": "05.31(六)",
                         "col2": "9:00~9:30",
                         "col3": "報到"
                     },
@@ -294,7 +294,7 @@
                         "col3": "Hacking及Coding診療室"
                     },
                     {
-                        "col1": "6/1(日)",
+                        "col1": "06.01(日)",
                         "col2": "0:00~11:00",
                         "col3": "Hacking及Coding診療室"
                     },
