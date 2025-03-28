@@ -33,6 +33,11 @@ const navItemClass = computed(() => {
           >重要時程</NuxtLink
         >
       </li>
+      <li :class="navItemClass">
+        <NuxtLink :to="`${ROUTE_PATHS.RULES}${ROUTE_PATHS.FAQ}`" @click="dialogStore.closeDialog()"
+          >FAQ</NuxtLink
+        >
+      </li>
       <!-- <li :class="navItemClass">
         <NuxtLink :to="ROUTE_PATHS.PAST" @click="dialogStore.closeDialog()">參賽回顧</NuxtLink>
       </li> -->
