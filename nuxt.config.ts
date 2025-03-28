@@ -5,6 +5,9 @@ export default defineNuxtConfig({
 
   app: {
     baseURL: '/2025spring/',
+    head: {
+      title: '2025雙北程式設計節',
+    },
   },
   modules: [
     '@nuxt/eslint',
