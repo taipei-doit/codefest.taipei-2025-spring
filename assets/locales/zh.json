@@ -149,7 +149,7 @@
             {
                 "id": "online",
                 "schedule_name": "線上說明會 04.07",
-                "schedule_sub_name": "114年4月7日",
+                "schedule_sub_name": "2025年04月07日 星期一",
                 "button": {
                     "text": "",
                     "link": "",
@@ -160,7 +160,7 @@
                         "name": "時間"
                     },
                     {
-                        "name": "4/7 議程(線上辦理)"
+                        "name": "議程(線上辦理)"
                     },
                     {
                         "name": "主講人"
@@ -197,7 +197,7 @@
             {
                 "id": "workshop",
                 "schedule_name": "工作坊 05.18",
-                "schedule_sub_name": "114年5月18日",
+                "schedule_sub_name": "2025年05月18日 星期日",
                 "button": {
                     "text": "",
                     "link": "",
@@ -260,7 +260,7 @@
             {
                 "id": "competition",
                 "schedule_name": "競賽日 05.31 - 06.01",
-                "schedule_sub_name": "114年5月31日~114年6月1日",
+                "schedule_sub_name": "2025年05月31日 星期六 ~ 2025年06月01日 星期日",
                 "button": {
                     "text": "",
                     "link": "",
@@ -291,16 +291,16 @@
                     {
                         "col1": "",
                         "col2": "10:00~24:00",
-                        "col3": "競賽開始：Hacking及教練加油站 "
+                        "col3": "Hacking及Coding診療室"
                     },
                     {
                         "col1": "6/1(日)",
-                        "col2": "0:00~9:30",
-                        "col3": "競賽開始：Hacking及教練加油站 "
+                        "col2": "0:00~11:00",
+                        "col3": "Hacking及Coding診療室"
                     },
                     {
                         "col1": "",
-                        "col2": "9:30~13:10",
+                        "col2": "11:00-13:10",
                         "col3": "初選"
                     },
                     {
@@ -565,6 +565,19 @@
             {
                 "name": "Email",
                 "link": "mailto:codefesttaipei@gov.taipei"
+            }
+        ]
+    },
+    "policy": {
+        "available": false,
+        "list": [
+            {
+                "name": "政府網站資料開放宣告",
+                "link": ""
+            },
+            {
+                "name": "隱私權及資訊安全政策",
+                "link": ""
             }
         ]
     },

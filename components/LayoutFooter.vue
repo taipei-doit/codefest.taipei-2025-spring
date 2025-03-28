@@ -21,9 +21,16 @@ const contactBtns = computed(() => {
               <span class="text-center lg:text-left lg:mb-4">新北市政府資訊中心</span>
               <span class="text-center lg:text-left lg:mb-4">臺北市政府資訊局</span>
             </div>
-            <div class="lg:block hidden mt-auto">
-              <a href="" class="lg:block mb-2">政府網站資料開放宣告</a>
-              <a href="" class="lg:block">隱私權及資訊安全政策</a>
+            <div v-if="tm('policy').available" class="lg:block hidden mt-auto">
+              <a
+                v-for="(item, index) in tm('policy.list')"
+                :key="index"
+                :href="item.link"
+                class="lg:block mb-2"
+                target="_blank"
+              >
+                {{ item.name }}
+              </a>
             </div>
           </div>
           <div class="lg:col-span-3 p-4 flex flex-col border border-r-white">
@@ -43,9 +50,16 @@ const contactBtns = computed(() => {
               </div>
             </div>
           </div>
-          <div class="lg:hidden block p-4 mt-auto">
-            <a href="" class="block text-center mb-2">政府網站資料開放宣告</a>
-            <a href="" class="block text-center">隱私權及資訊安全政策</a>
+          <div v-if="tm('policy').available" class="lg:hidden block p-4 mt-auto">
+            <a
+              v-for="(item, index) in tm('policy.list')"
+              :key="index"
+              :href="item.link"
+              class="block text-center mb-2"
+              target="_blank"
+            >
+              {{ item.name }}
+            </a>
           </div>
         </div>
       </div>
