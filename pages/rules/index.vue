@@ -52,17 +52,14 @@ const prospectusContents = computed(() => {
       <div class="w-full lg:w-auto flex flex-nowrap justify-center lg:justify-end space-x-8">
         <button
           v-kb-focus="{
-            id: `rules-button-2-2`,
+            id: `rules-button-2-20`,
             x: 2,
-            y: 2,
+            y: 20,
           }"
           class="icon-btn icon-btn--download w-1/2 lg:w-auto lg:min-w-60"
         >
           <span> 下載簡章 </span>
         </button>
-        <!-- <button class="icon-btn icon-btn--arrow w-1/2 lg:w-auto lg:min-w-60">
-          <span> 查看詳情 </span>
-        </button> -->
       </div>
     </div>
     <div class="lg:p-10 p-4 border-b border-white">

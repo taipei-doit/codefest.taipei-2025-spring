@@ -43,8 +43,10 @@ button {
 
 .is-focused {
     outline: 4px solid theme("colors.primary.100");
-    box-shadow: 0 0 6px theme("colors.primary.100");
-    transition: all 0.2s ease;
+}
+
+.is-focused-border {
+    border: 4px solid theme("colors.primary.100");
 }
 
 .container {

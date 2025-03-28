@@ -82,8 +82,8 @@ onMounted(() => {
 <template>
   <div class="flex items-end p-4">
     <span class="text-white font-fusion-pixel text-xl mr-4">{{ props.activeNavName }}</span>
-    <div v-for="(item, index) in sectionNav" :key="index" class="flex items-center">
-      <template v-if="item.available">
+    <template v-for="(item, index) in sectionNav" :key="index">
+      <div v-if="item.available" class="flex items-center">
         <a
           v-kb-focus="{
             id: `section-${index + 1}-${focusY}`,
@@ -101,7 +101,7 @@ onMounted(() => {
             :alt="item.zhName"
           />
         </a>
-      </template>
-    </div>
+      </div>
+    </template>
   </div>
 </template>

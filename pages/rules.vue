@@ -75,24 +75,23 @@ onMounted(() => {
               <div class="flex">
                 <div class="relative flex flex-col">
                   <template v-for="(tab, index) in tabList" :key="tab.id">
-                    <template v-if="tab.available">
-                      <NuxtLink
-                        v-kb-focus="{
-                          id: `rules-tab-1-${index + 2}`,
-                          x: 1,
-                          y: index + 2,
-                        }"
-                        :to="tab.path"
-                        class="tab-item relative min-w-[220px] w-full p-6 border border-white text-xl text-center cursor-pointer font-fusion-pixel mb-4"
-                        :class="
-                          activeTab?.id === tab.id
-                            ? 'bg-primary-50 text-primary-500 border-0 shadow-[4px_4px_0px_black]'
-                            : 'text-white'
-                        "
-                      >
-                        {{ tab.name }}
-                      </NuxtLink>
-                    </template>
+                    <NuxtLink
+                      v-if="tab.available"
+                      v-kb-focus="{
+                        id: `rules-tab-1-${(index + 2) * 10}`,
+                        x: 1,
+                        y: (index + 2) * 10,
+                      }"
+                      :to="tab.path"
+                      class="tab-item relative min-w-[220px] w-full p-6 border border-white text-xl text-center cursor-pointer font-fusion-pixel mb-4"
+                      :class="
+                        activeTab?.id === tab.id
+                          ? 'bg-primary-50 text-primary-500 border-0 shadow-[4px_4px_0px_black]'
+                          : 'text-white'
+                      "
+                    >
+                      {{ tab.name }}
+                    </NuxtLink>
                   </template>
                 </div>
               </div>

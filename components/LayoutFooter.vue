@@ -21,11 +21,11 @@ const contactBtns = computed(() => {
               <span class="text-center lg:text-left lg:mb-4">新北市政府資訊中心</span>
               <span class="text-center lg:text-left lg:mb-4">臺北市政府資訊局</span>
             </div>
-            <div v-if="tm('policy').available" class="lg:block hidden mt-auto">
+            <div v-if="tm('policy').available" class="lg:block hidden mt-auto text-center">
               <a
                 v-for="(item, index) in tm('policy.list')"
                 :key="index"
-                v-kb-focus="{ id: 'footer-1-${index + 50}', x: 1, y: index + 50 }"
+                v-kb-focus="{ id: `footer-1-${index + 200}`, x: 1, y: index + 200 }"
                 :href="item.link"
                 class="lg:block mb-2"
                 target="_blank"
@@ -49,16 +49,15 @@ const contactBtns = computed(() => {
                 <img src="@/assets/images/icons/arrow_icon.svg" class="mr-2" alt="" />
                 <a
                   v-kb-focus="{
-                    id: `footer-6-${index + 56}`,
-                    x: 1,
-                    y: index + 56,
-                    z: 3,
+                    id: `footer-6-${index + 203}`,
+                    x: 6,
+                    y: index + 203,
                   }"
                   :href="btn.link"
                   target="_blank"
-                  class="connect-btn"
-                  >{{ btn.name }}</a
                 >
+                  <span class="connect-btn">{{ btn.name }}</span>
+                </a>
               </div>
             </div>
           </div>
@@ -81,6 +80,6 @@ const contactBtns = computed(() => {
 
 <style scoped lang="postcss">
 .connect-btn {
-  @apply px-6 py-2 border border-white text-white uppercase;
+  @apply inline-block px-6 py-2 border border-white text-white uppercase;
 }
 </style>

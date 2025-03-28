@@ -26,10 +26,9 @@ const navItemClass = computed(() => {
       <li :class="navItemClass">
         <NuxtLink
           v-kb-focus="{
-            id: `${props.type}-nav-2-${props.type === 'header' ? 1 : 52}`,
+            id: `${props.type}-nav-2-${props.type === 'header' ? 1 : 202}`,
             x: 2,
-            y: props.type === 'header' ? 1 : 52,
-            z: 2,
+            y: props.type === 'header' ? 1 : 202,
           }"
           :to="ROUTE_PATHS.RULES"
           @click="dialogStore.closeDialog()"
@@ -39,10 +38,9 @@ const navItemClass = computed(() => {
       <li :class="navItemClass">
         <NuxtLink
           v-kb-focus="{
-            id: `${props.type}-nav-3-${props.type === 'header' ? 1 : 52}`,
+            id: `${props.type}-nav-3-${props.type === 'header' ? 1 : 202}`,
             x: 3,
-            y: props.type === 'header' ? 1 : 52,
-            z: 2,
+            y: props.type === 'header' ? 1 : 202,
           }"
           :to="`${ROUTE_PATHS.RULES}${ROUTE_PATHS.SCHEDULE}`"
           @click="dialogStore.closeDialog()"
@@ -52,10 +50,9 @@ const navItemClass = computed(() => {
       <!-- <li :class="navItemClass">
         <NuxtLink
           v-kb-focus="{
-            id: `${props.type}-nav-4-${props.type === 'header' ? 1 : 52}`,
+            id: `${props.type}-nav-4-${props.type === 'header' ? 1 : 202}`,
             x: 4,
-            y: props.type === 'header' ? 1 : 52,
-            z: 2,
+            y: props.type === 'header' ? 1 : 202,
           }"
           :to="ROUTE_PATHS.PAST"
           @click="dialogStore.closeDialog()"
@@ -65,10 +62,9 @@ const navItemClass = computed(() => {
       <li :class="navItemClass">
         <a
           v-kb-focus="{
-            id: `${props.type}-nav-5-${props.type === 'header' ? 1 : 52}`,
+            id: `${props.type}-nav-5-${props.type === 'header' ? 1 : 202}`,
             x: 5,
-            y: props.type === 'header' ? 1 : 52,
-            z: 2,
+            y: props.type === 'header' ? 1 : 202,
           }"
           :href="tm('past_url')"
           target="_blank"

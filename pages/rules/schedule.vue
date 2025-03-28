@@ -22,11 +22,11 @@ const scheduleList = computed(() => {
     >
       <DisclosureButton
         v-kb-focus="{
-          id: `rules-disclosure-2-${index + 3}`,
+          id: `rules-disclosure-2-${index + 30}`,
           x: 2,
-          y: index + 3,
+          y: index + 30,
         }"
-        class="w-full flex items-center justify-between p-6 border border-t-white border-b-white"
+        class="w-full flex items-center justify-between p-6 border border-t-white border-b-white focus-border-item"
         :class="{ 'bg-primary-50 lg:bg-primary-500': open }"
       >
         <p

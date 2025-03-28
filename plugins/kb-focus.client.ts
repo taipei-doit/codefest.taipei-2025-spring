@@ -1,18 +1,45 @@
 import { defineNuxtPlugin } from '#app';
 
 let currentId: string | null = null;
+let hasFocused = false;
 const registry: Map<string, { el: HTMLElement; id: string; x: number; y: number }> = new Map();
 
+// 聚焦元素，套用樣式
 function focusElement(id: string | null) {
   if (!id || !registry.has(id)) return;
   const { el } = registry.get(id)!;
+
   el.focus();
-  registry.forEach(({ el }) => el.classList.remove('is-focused'));
-  el.classList.add('is-focused');
+  el.scrollIntoView({
+    behavior: 'smooth',
+    block: 'center',
+    inline: 'nearest',
+  });
+
+  registry.forEach(({ el }) => {
+    el.classList.remove('is-focused', 'is-focused-border');
+  });
+
+  if (el.classList.contains('focus-border-item')) {
+    el.classList.add('is-focused-border');
+  } else {
+    el.classList.add('is-focused');
+  }
+
   currentId = id;
 }
 
-function moveFocus(dir: 'up' | 'down' | 'left' | 'right') {
+// moveFocus：Index 頁邏輯
+function moveFocusIndex(dir: 'up' | 'down' | 'left' | 'right') {
+  if (!currentId && !hasFocused && registry.size > 0) {
+    const firstEntry = registry.values().next().value;
+    if (firstEntry) {
+      focusElement(firstEntry.id);
+      hasFocused = true;
+      return;
+    }
+  }
+
   if (!currentId) return;
   const current = registry.get(currentId);
   if (!current) return;
@@ -22,8 +49,7 @@ function moveFocus(dir: 'up' | 'down' | 'left' | 'right') {
     .map(([id, entry]) => {
       const dx = entry.x - current.x;
       const dy = entry.y - current.y;
-      const dist = dx * dx + dy * dy;
-      return { id, entry, dx, dy, dist };
+      return { id, entry, dx, dy };
     })
     .filter(({ dx, dy, entry }) => {
       switch (dir) {
@@ -40,7 +66,7 @@ function moveFocus(dir: 'up' | 'down' | 'left' | 'right') {
 
   if (candidates.length === 0) return;
 
-  // 上下鍵：優先找 y 軸最近，然後再比較 x 差距
+  // 上下優先 Y 軸距離，再 X；左右只比 X
   if (dir === 'up' || dir === 'down') {
     candidates.sort((a, b) => {
       const dyDiff = Math.abs(a.entry.y - current.y) - Math.abs(b.entry.y - current.y);
@@ -48,15 +74,106 @@ function moveFocus(dir: 'up' | 'down' | 'left' | 'right') {
       return Math.abs(a.entry.x - current.x) - Math.abs(b.entry.x - current.x);
     });
   } else {
-    // 左右鍵：只在同一 y 軸，找 x 軸最近的
     candidates.sort((a, b) => Math.abs(a.entry.x - current.x) - Math.abs(b.entry.x - current.x));
   }
 
-  const best = candidates[0];
-  if (best) focusElement(best.id);
+  focusElement(candidates[0]?.id);
+}
+
+// moveFocus：Rules 頁邏輯（優先同軸）
+function moveFocusRules(dir: 'up' | 'down' | 'left' | 'right') {
+  if (!currentId && !hasFocused && registry.size > 0) {
+    const firstEntry = registry.values().next().value;
+    if (firstEntry) {
+      focusElement(firstEntry.id);
+      hasFocused = true;
+      return;
+    }
+  }
+
+  if (!currentId) return;
+  const current = registry.get(currentId);
+  if (!current) return;
+
+  const candidates = [...registry.entries()]
+    .filter(([id]) => id !== currentId)
+    .map(([id, entry]) => {
+      const dx = entry.x - current.x;
+      const dy = entry.y - current.y;
+      return { id, entry, dx, dy };
+    })
+    .filter(({ dx, dy }) => {
+      switch (dir) {
+        case 'up':
+          return dy < 0;
+        case 'down':
+          return dy > 0;
+        case 'left':
+          return dx < 0;
+        case 'right':
+          return dx > 0;
+      }
+    });
+
+  if (candidates.length === 0) return;
+
+  candidates.sort((a, b) => {
+    if (dir === 'up' || dir === 'down') {
+      const aAligned = a.dx === 0 ? 0 : 1;
+      const bAligned = b.dx === 0 ? 0 : 1;
+      if (aAligned !== bAligned) return aAligned - bAligned;
+      const aY = Math.abs(a.dy);
+      const bY = Math.abs(b.dy);
+      if (aY !== bY) return aY - bY;
+      return Math.abs(a.dx) - Math.abs(b.dx);
+    } else {
+      const aAligned = a.dy === 0 ? 0 : 1;
+      const bAligned = b.dy === 0 ? 0 : 1;
+      if (aAligned !== bAligned) return aAligned - bAligned;
+      const aX = Math.abs(a.dx);
+      const bX = Math.abs(b.dx);
+      if (aX !== bX) return aX - bX;
+      return Math.abs(a.dy) - Math.abs(b.dy);
+    }
+  });
+
+  focusElement(candidates[0]?.id);
+}
+
+// 初始預設 moveFocus
+let moveFocus = moveFocusIndex;
+
+// 元件註冊函式
+function setupKbFocus(el: HTMLElement, value: any) {
+  if (!value || typeof value !== 'object' || !value.id || value.x == null || value.y == null)
+    return;
+
+  const { id, x, y } = value;
+
+  requestAnimationFrame(() => {
+    el.setAttribute('tabindex', '0');
+    el.setAttribute('data-kb-id', id);
+    registry.set(id, { el, id, x, y });
+
+    el.addEventListener('focus', () => {
+      focusElement(id);
+    });
+  });
 }
 
 export default defineNuxtPlugin(nuxtApp => {
+  const router = useRouter();
+
+  // 根據路由切換 focus 行為
+  router.afterEach(to => {
+    if (to.path.startsWith('/rules')) {
+      moveFocus = moveFocusRules;
+    } else {
+      moveFocus = moveFocusIndex;
+    }
+  });
+
+  // 鍵盤事件
   window.addEventListener('keydown', e => {
     switch (e.key) {
       case 'ArrowUp':
@@ -77,40 +194,27 @@ export default defineNuxtPlugin(nuxtApp => {
         break;
       case 'Enter':
         if (currentId) {
-          const entry = registry.get(currentId);
-          entry?.el?.click();
+          registry.get(currentId)?.el?.click();
         }
         break;
       case 'F1':
         e.preventDefault();
         document.body.classList.toggle('scanlines');
         break;
+      case 'Backspace':
+        e.preventDefault();
+        router.back();
+        break;
     }
   });
 
+  // 自訂 directive：v-kb-focus
   nuxtApp.vueApp.directive('kb-focus', {
     mounted(el, binding) {
-      const value = binding.value;
-      if (!value || typeof value !== 'object' || !value.id || value.x == null || value.y == null)
-        return;
-
-      const { id, x, y } = value;
-
-      requestAnimationFrame(() => {
-        el.setAttribute('tabindex', '0');
-        el.setAttribute('data-kb-id', id);
-        registry.set(id, { el, id, x, y });
-
-        if (registry.size === 1) {
-          focusElement(id);
-        }
-
-        el.addEventListener('focus', () => {
-          registry.forEach(({ el }) => el.classList.remove('is-focused'));
-          el.classList.add('is-focused');
-          currentId = id;
-        });
-      });
+      setupKbFocus(el, binding.value);
+    },
+    updated(el, binding) {
+      setupKbFocus(el, binding.value);
     },
     unmounted(el) {
       const id = el.getAttribute('data-kb-id');

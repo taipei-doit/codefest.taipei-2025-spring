@@ -62,6 +62,10 @@ const pastSlidesPerPage = 3;
 
 const pastTotalPages = computed(() => Math.ceil(videoList.value.length / pastSlidesPerPage));
 
+const currentScheduleIndex = computed(() =>
+  scheduleList.value.findIndex(tab => tab.id === activeSchedule.value.id)
+);
+
 // 監聽 Swiper 變更時，更新 `pastCurrentPage`
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const onPastSlideChange = (event: any) => {
@@ -495,9 +499,9 @@ const calculateDistance = () => {
                       <a
                         v-if="activeSchedule.button.type === 'outside_link'"
                         v-kb-focus="{
-                          id: `index-schedule-button-1-${9 + scheduleList.findIndex(tab => tab.id === activeSchedule.id)}`,
+                          id: `index-schedule-button-2-${9 + currentScheduleIndex}`,
                           x: 2,
-                          y: 9 + scheduleList.findIndex(tab => tab.id === activeSchedule.id),
+                          y: 9 + currentScheduleIndex,
                         }"
                         :href="activeSchedule.button.link"
                         target="_blank"
@@ -511,9 +515,9 @@ const calculateDistance = () => {
                       <NuxtLink
                         v-else-if="activeSchedule.button.type === 'route'"
                         v-kb-focus="{
-                          id: `index-schedule-button-1-${9 + scheduleList.findIndex(tab => tab.id === activeSchedule.id)}`,
+                          id: `index-schedule-button-1-${9 + currentScheduleIndex}`,
                           x: 2,
-                          y: 9 + scheduleList.findIndex(tab => tab.id === activeSchedule.id),
+                          y: 9 + currentScheduleIndex,
                         }"
                         :to="activeSchedule.button.link"
                         class="icon-btn icon-btn--arrow min-w-60"
@@ -525,9 +529,9 @@ const calculateDistance = () => {
                       <button
                         v-else-if="activeSchedule.button.type === 'dialog'"
                         v-kb-focus="{
-                          id: `index-schedule-button-1-${9 + scheduleList.findIndex(tab => tab.id === activeSchedule.id)}`,
+                          id: `index-schedule-button-1-${9 + currentScheduleIndex}`,
                           x: 2,
-                          y: 9 + scheduleList.findIndex(tab => tab.id === activeSchedule.id),
+                          y: 9 + currentScheduleIndex,
                         }"
                         class="icon-btn icon-btn--arrow min-w-60"
                         @click="dialogStore.openDialog(activeSchedule.button.link)"
@@ -678,7 +682,7 @@ const calculateDistance = () => {
                 <p class="section-title font-fusion-pixel">最新消息</p>
 
                 <div class="lg:px-10 lg:py-14 p-4 pt-10 border border-b-white">
-                  <div class="space-y-6 text-white max-h-[347px] pr-4 overflow-auto">
+                  <div class="space-y-6 text-white max-h-[347px] lg:pr-4 overflow-auto">
                     <a
                       v-for="(news, index) in newsList"
                       :key="index"
@@ -688,7 +692,7 @@ const calculateDistance = () => {
                         y: 21 + index,
                       }"
                       href="javascript:void(0)"
-                      class="block border border-white p-4 transition hover:bg-primary-50 hover:text-primary-500"
+                      class="block border border-white p-4 transition hover:bg-primary-50 hover:text-primary-500 m-1"
                       @click="
                         activeNews = news;
                         dialogStore.openDialog('news');

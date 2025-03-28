@@ -15,7 +15,7 @@ const showApplyBtn = computed(() => route.path.startsWith(ROUTE_PATHS.RULES));
 
 <template>
   <div
-    class="controlbar container mx-auto flex 2xl:px-0 p-5 border-t border-b border-white lg:border-none bg-primary-300 lg:bg-primary-500 z-50"
+    class="controlbar container mx-auto flex 2xl:px-0 p-5 border-t border-b border-white lg:border-none bg-primary-300 lg:bg-primary-500 z-50 space-x-2"
     :class="[
       props.isAboveFooter ? '' : 'fixed bottom-0 left-0 right-0',
       showApplyBtn ? '' : 'lg:block hidden',
@@ -36,11 +36,11 @@ const showApplyBtn = computed(() => route.path.startsWith(ROUTE_PATHS.RULES));
     <button
       v-if="showApplyBtn"
       v-kb-focus="{
-        id: `rules-apply-1-6`,
+        id: `rules-apply-1-60`,
         x: 1,
-        y: 6,
+        y: 60,
       }"
-      class="icon-btn icon-btn--arrow w-auto min-w-60 lg:ml-4 mx-auto"
+      class="icon-btn icon-btn--arrow w-auto min-w-60 mx-auto"
       @click="dialogStore.openDialog('apply')"
     >
       <span> 立即報名 </span>

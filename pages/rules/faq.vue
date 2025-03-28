@@ -25,9 +25,9 @@ const activeTab = ref(0);
         v-for="(item, index) in faqList"
         :key="index"
         v-kb-focus="{
-          id: `rules-faq-${index + 2}-5`,
+          id: `rules-faq-${index + 2}-50`,
           x: index + 2,
-          y: 5,
+          y: 50,
         }"
         class="w-1/2 cursor-pointer transition-colors text-center p-5 border border-white"
         :class="
@@ -45,9 +45,9 @@ const activeTab = ref(0);
       <Disclosure v-slot="{ open }" :default-open="index === 0">
         <DisclosureButton
           v-kb-focus="{
-            id: `rules-faq-${activeTab + 2}-${index + 6}`,
+            id: `rules-faq-${activeTab + 2}-${index + 51}`,
             x: activeTab + 2,
-            y: index + 6,
+            y: index + 51,
           }"
           class="w-full min-h-16 flex items-center justify-between lg:px-10 p-3 pr-8 border border-t-white border-b-white lg:last:mb-40"
           :class="{ 'bg-primary-300': open }"

@@ -75,7 +75,7 @@ $scan-opacity: 0.75;
 
 .scanlines {
   position: relative;
-  overflow: hidden; // only to animate the unique scanline
+  // overflow: hidden; // only to animate the unique scanline
 
   &:before,
   &:after {
