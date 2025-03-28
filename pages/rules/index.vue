@@ -50,16 +50,18 @@ const prospectusContents = computed(() => {
         </p>
       </div>
       <div class="w-full lg:w-auto flex flex-nowrap justify-center lg:justify-end space-x-8">
-        <button
+        <a
           v-kb-focus="{
             id: `rules-button-2-20`,
             x: 2,
             y: 20,
           }"
+          href="https://firebasestorage.googleapis.com/v0/b/tuic-taipei-hackathon.firebasestorage.app/o/2025%E9%9B%99%E5%8C%97%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88%E7%AF%80%E5%9F%8E%E5%B8%82%E5%84%80%E8%A1%A8%E6%9D%BF%E5%A4%A7%E9%BB%91%E5%AE%A2%E6%9D%BE_%E7%AB%B6%E8%B3%BD%E8%A6%8F%E5%89%87.pdf?alt=media&token=b798ca4f-fa39-4a63-8fdd-72edc6b8a8b6"
+          target="_blank"
           class="icon-btn icon-btn--download w-1/2 lg:w-auto lg:min-w-60"
         >
           <span> 下載規則 </span>
-        </button>
+        </a>
       </div>
     </div>
     <div class="lg:p-10 p-4 border-b border-white">
