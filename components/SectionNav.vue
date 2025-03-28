@@ -44,6 +44,8 @@ const sectionNav = ref([
   },
 ]);
 
+const availableItems = computed(() => sectionNav.value.filter(item => item.available));
+
 const updateSelectedNav = (activeName: string) => {
   // **找到選中的項目**
   const selectedIndex = sectionNav.value.findIndex(nav => nav.name === activeName);
@@ -82,8 +84,8 @@ onMounted(() => {
 <template>
   <div class="flex items-end p-4">
     <span class="text-white font-fusion-pixel text-xl mr-4">{{ props.activeNavName }}</span>
-    <template v-for="(item, index) in sectionNav" :key="index">
-      <div v-if="item.available" class="flex items-center">
+    <template v-for="(item, index) in availableItems" :key="index">
+      <div class="flex items-center">
         <a
           v-kb-focus="{
             id: `section-${index + 1}-${focusY}`,
