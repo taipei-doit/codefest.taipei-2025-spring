@@ -185,7 +185,7 @@ const calculateDistance = () => {
     </section>
     <SectionDecoration class="lg:block hidden" />
     <SectionDecoration class="lg:hidden" />
-    <!-- 第2幀 - 參賽規則 -->
+    <!-- 第2幀 - 競賽規則 -->
     <template v-if="tm('rules').available">
       <div class="lg:flex justify-end hidden">
         <SectionNav active-nav-name="rules" />

@@ -24,7 +24,7 @@ const navItemClass = computed(() => {
   <nav>
     <ul :class="navClass">
       <li :class="navItemClass">
-        <NuxtLink :to="ROUTE_PATHS.RULES" @click="dialogStore.closeDialog()">參賽規則</NuxtLink>
+        <NuxtLink :to="ROUTE_PATHS.RULES" @click="dialogStore.closeDialog()">競賽規則</NuxtLink>
       </li>
       <li :class="navItemClass">
         <NuxtLink

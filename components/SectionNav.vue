@@ -8,7 +8,7 @@ const { tm } = useI18n();
 const sectionNav = ref([
   {
     name: 'rules',
-    zhName: '參賽規則',
+    zhName: '競賽規則',
     icon_url: `${runtimeConfig.app.baseURL}images/icons/icon-rules.svg`,
     is_selected: false,
     available: tm('rules').available,

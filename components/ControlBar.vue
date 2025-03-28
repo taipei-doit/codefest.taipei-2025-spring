@@ -9,7 +9,7 @@ const dialogStore = useDialogStore();
 
 const route = useRoute();
 
-// 只有在參賽規則頁時顯示報名按鈕
+// 只有在競賽規則頁時顯示報名按鈕
 const showApplyBtn = computed(() => route.path.startsWith(ROUTE_PATHS.RULES));
 </script>
 
