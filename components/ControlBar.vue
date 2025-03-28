@@ -42,6 +42,7 @@ const showApplyBtn = computed(() => route.path.startsWith(ROUTE_PATHS.RULES));
       }"
       class="icon-btn icon-btn--arrow w-auto min-w-60 mx-auto"
       @click="dialogStore.openDialog('apply')"
+      @keydown.enter.prevent="dialogStore.openDialog('apply')"
     >
       <span> 立即報名 </span>
     </button>

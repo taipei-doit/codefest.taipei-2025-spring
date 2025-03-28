@@ -48,15 +48,22 @@ const navItemClass = computed(() => {
         >
       </li>
       <li :class="navItemClass">
-        <NuxtLink :to="`${ROUTE_PATHS.RULES}${ROUTE_PATHS.FAQ}`" @click="dialogStore.closeDialog()"
+        <NuxtLink
+          v-kb-focus="{
+            id: `${props.type}-nav-4-${props.type === 'header' ? 1 : 202}`,
+            x: 4,
+            y: props.type === 'header' ? 1 : 202,
+          }"
+          :to="`${ROUTE_PATHS.RULES}${ROUTE_PATHS.FAQ}`"
+          @click="dialogStore.closeDialog()"
           >FAQ</NuxtLink
         >
       </li>
       <!-- <li :class="navItemClass">
         <NuxtLink
           v-kb-focus="{
-            id: `${props.type}-nav-4-${props.type === 'header' ? 1 : 202}`,
-            x: 4,
+            id: `${props.type}-nav-5-${props.type === 'header' ? 1 : 202}`,
+            x: 5,
             y: props.type === 'header' ? 1 : 202,
           }"
           :to="ROUTE_PATHS.PAST"
@@ -67,8 +74,8 @@ const navItemClass = computed(() => {
       <li :class="navItemClass">
         <a
           v-kb-focus="{
-            id: `${props.type}-nav-5-${props.type === 'header' ? 1 : 202}`,
-            x: 5,
+            id: `${props.type}-nav-6-${props.type === 'header' ? 1 : 202}`,
+            x: 6,
             y: props.type === 'header' ? 1 : 202,
           }"
           :href="tm('past_url')"

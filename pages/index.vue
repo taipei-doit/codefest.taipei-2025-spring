@@ -180,6 +180,7 @@ const calculateDistance = () => {
                 v-kb-focus="{ id: 'index-button-1-2', x: 1, y: 2 }"
                 class="icon-btn icon-btn--arrow min-w-60"
                 @click="dialogStore.openDialog('apply')"
+                @keydown.enter.prevent="dialogStore.openDialog('apply')"
               >
                 <span> 立即報名 </span>
               </button>
@@ -294,6 +295,7 @@ const calculateDistance = () => {
                   }"
                   class="icon-btn icon-btn--arrow w-1/2 lg:w-auto lg:min-w-60"
                   @click="dialogStore.openDialog('apply')"
+                  @keydown.enter.prevent="dialogStore.openDialog('apply')"
                 >
                   <span> 立即報名 </span>
                 </button>
@@ -694,6 +696,10 @@ const calculateDistance = () => {
                       href="javascript:void(0)"
                       class="block border border-white p-4 transition hover:bg-primary-50 hover:text-primary-500 m-1"
                       @click="
+                        activeNews = news;
+                        dialogStore.openDialog('news');
+                      "
+                      @keydown.enter.prevent="
                         activeNews = news;
                         dialogStore.openDialog('news');
                       "
