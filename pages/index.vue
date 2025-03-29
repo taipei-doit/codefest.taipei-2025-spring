@@ -39,6 +39,8 @@ const newsList = computed<News[]>(() => {
   const data = tm('news.list');
   return Array.isArray(data) ? data : Object.values(data); // 轉換 Object 為 Array
 });
+/** 目前顯示的最新消息 */
+const availableNews = computed(() => newsList.value.filter(item => item.available));
 /** 選中的最新消息 */
 const activeNews = ref<News | null>(null);
 
@@ -686,7 +688,7 @@ const calculateDistance = () => {
                 <div class="lg:px-10 lg:py-14 p-4 pt-10 border border-b-white">
                   <div class="space-y-6 text-white max-h-[347px] lg:pr-4 overflow-auto">
                     <a
-                      v-for="(news, index) in newsList"
+                      v-for="(news, index) in availableNews"
                       :key="index"
                       v-kb-focus="{
                         id: `index-news-1-${21 + index}`,
