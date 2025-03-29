@@ -526,63 +526,47 @@
                 "list": [
                     {
                         "title": "什麼是臺北城市儀表板？",
-                        "content": "臺北城市儀表板是臺北市政府資訊局開發的城市級資料視覺化平臺(<a href='https://citydashboard.taipei/' target='_blank' style='text-decoration: underline; color: #0000EE;'>https://citydashboard.taipei/</a>)。儀表板使用資料組件形式呈現市政相關開放資料，供使用者探索資料的統計、空間、時間三個維度。臺北城市儀表板是臺北市開源的大型專案，所有原始碼均可以於臺北市政府資訊局GitHub取得（<a href='https://github.com/taipei-doit/Taipei-City-Dashboard' target='_blank' style='text-decoration: underline; color: #0000EE;'>https://github.com/taipei-doit/Taipei-City-Dashboard</a>）。"
+                        "content": "臺北城市儀表板是臺北市政府資訊局開發的城市級資料視覺化平台（<a href='https://citydashboard.taipei/' target='_blank' style='text-decoration: underline; color: #0000EE;'>https://citydashboard.taipei/</a>），以組件形式呈現市政開放資料，涵蓋統計、空間、時間三維度。作為開源專案，原始碼可於GitHub獲取（<a href='https://github.com/taipei-doit/Taipei-City-Dashboard' target='_blank' style='text-decoration: underline; color: #0000EE;'>https://github.com/taipei-doit/Taipei-City-Dashboard</a>）。"
                     },
                     {
-                        "title": "請問臺北城市儀表板使用了那些主要開發技術？",
-                        "content": "臺北城市儀表板前端採用 Vue 3 開發。視覺化部分使用 Apexcharts 呈現圖表，Mapbox 建構互動地圖。開發環境建議使用 Windows 或 macOS，後端採用 Go 語言，並透過Docker容器化部署，相關內容請參閱詳細技術文件說明(<a href='https://tuic.gov.taipei/documentation/front-end/prerequisites' target='_blank' style='text-decoration: underline; color: #0000EE;'>https://tuic.gov.taipei/documentation/front-end/prerequisites</a>)。"
+                        "title": "主要開發技術有哪些？",
+                        "content": "前端採用Vue 3，視覺化使用Apexcharts（圖表）與Mapbox（地圖），後端使用Go語言並透過Docker部署。建議開發環境為Windows或macOS，詳見技術文件說明（<a href='https://tuic.gov.taipei/documentation/front-end/prerequisites' target='_blank' style='text-decoration: underline; color: #0000EE;'>https://tuic.gov.taipei/documentation/front-end/prerequisites</a>）。"
                     },
                     {
-                        "title": "請問這次黑客松要開發什麼？",
-                        "content": "這次黑客松由臺北市政府與新北市政府共同舉辦，以「雙北儀表板」為主題，請團隊開發出雙北共融儀表板的組件或功能，提出創新構想並開發前端、後端或資料端的新功能。例如優化使用者介面、強化資料整合能力、擴充視覺化模組等。具體開發方向與技術細節，請參閱競賽規則，主辦單位也會於工作坊中進行詳細說明，協助各團隊掌握開發重點與評選方向。"
+                        "title": "這次黑客松要開發什麼？",
+                        "content": "以「雙北共融儀表板」為主題，開發新北市與臺北市共融的組件或功能，例如優化介面、強化資料整合或擴充視覺化模組。具體方向與技術細節見競賽規則，工作坊將進一步說明。"
                     },
                     {
-                        "title": "請問有什麼資源可以用來準備本次比賽？",
-                        "content": "臺北城市儀表板（<a href='https://citydashboard.taipei/' target='_blank' style='text-decoration: underline; color: #0000EE;'>https://citydashboard.taipei/</a>）、臺北城市儀表板技術文件（<a href='https://tuic.gov.taipei/documentation/' target='_blank' style='text-decoration: underline; color: #0000EE;'>https://tuic.gov.taipei/documentation/</a>）、臺北資料大平臺（<a href='https://data.taipei/' target='_blank' style='text-decoration: underline; color: #0000EE;'>https://data.taipei/</a>）、臺北市資訊局 GitHub（<a href='https://github.com/taipei-doit/Taipei-City-Dashboard' target='_blank' style='text-decoration: underline; color: #0000EE;'>https://github.com/taipei-doit/Taipei-City-Dashboard</a>）、新北市政府資料開放平臺（<a href='https://data.ntpc.gov.tw/' target='_blank' style='text-decoration: underline; color: #0000EE;'>https://data.ntpc.gov.tw/</a>）都是建議參賽隊伍可以事先熟悉參考的平臺。另外，主辦單位也錄製了儀表板開發建置線上課程，也推薦參賽隊伍前往雙北程式設計節 YouTube 頻道（<a href='https://www.youtube.com/@Code-FestTaipei' target='_blank' style='text-decoration: underline; color: #0000EE;'>https://www.youtube.com/@Code-FestTaipei</a>）收看。"
+                        "title": "有哪些資源可用來準備？",
+                        "content": "可參考臺北城市儀表板（<a href='https://citydashboard.taipei/' target='_blank' style='text-decoration: underline; color: #0000EE;'>https://citydashboard.taipei/</a>）、臺北城市儀表板技術文件（<a href='https://tuic.gov.taipei/documentation/' target='_blank' style='text-decoration: underline; color: #0000EE;'>https://tuic.gov.taipei/documentation/</a>）、臺北資料大平台（<a href='https://data.taipei/' target='_blank' style='text-decoration: underline; color: #0000EE;'>https://data.taipei/</a>）、新北資料開放平台（<a href='https://data.ntpc.gov.tw/' target='_blank' style='text-decoration: underline; color: #0000EE;'>https://data.ntpc.gov.tw/</a>）、臺北市資訊局GitHub（<a href='https://github.com/taipei-doit/Taipei-City-Dashboard' target='_blank' style='text-decoration: underline; color: #0000EE;'>https://github.com/taipei-doit/Taipei-City-Dashboard</a>），以及官方YouTube頻道課程「城市儀表板開發建置指南」（<a href='https://www.youtube.com/@Code-FestTaipei' target='_blank' style='text-decoration: underline; color: #0000EE;'>https://www.youtube.com/@Code-FestTaipei</a>）。"
                     },
                     {
-                        "title": "請問什麼是組件？",
-                        "content": "組件是構成臺北城市儀表板的資料視覺化元件，所有組件都包含可以以圖表呈現的統計資料，大多組件亦包含用來渲染地圖的空間資料，而部分組件更包含歷史資料，展示資料集隨時間的變動。"
+                        "title": "什麼是組件？資料格式有規範嗎？",
+                        "content": "組件是儀表板的視覺化元件，包含統計資料（圖表）、空間資料（地圖）及部分歷史資料。資料格式請遵循前端技術文件「Chart Data圖表資料樣式」（<a href='https://tuic.gov.taipei/documentation/front-end/chart-data' target='_blank' style='text-decoration: underline; color: #0000EE;'>https://tuic.gov.taipei/documentation/front-end/chart-data</a>）、「Map Data空間資料樣式」（<a href='https://tuic.gov.taipei/documentation/front-end/map-data' target='_blank' style='text-decoration: underline; color: #0000EE;'>https://tuic.gov.taipei/documentation/front-end/map-data</a>）及後端「Component Data APIs組件資料API」（<a href='https://tuic.gov.taipei/documentation/back-end/component-data-apis' target='_blank' style='text-decoration: underline; color: #0000EE;'>https://tuic.gov.taipei/documentation/back-end/component-data-apis</a>）。"
                     },
                     {
-                        "title": "資料格式有沒有規範？",
-                        "content": "有的。請參閱臺北城市儀表板前端技術文件「Chart Data 圖表資料樣式」(<a href='https://tuic.gov.taipei/documentation/front-end/chart-data' target='_blank' style='text-decoration: underline; color: #0000EE;'>https://tuic.gov.taipei/documentation/front-end/chart-data</a>)、「Map Data 空間資料樣式」(<a href='https://tuic.gov.taipei/documentation/front-end/map-data' target='_blank' style='text-decoration: underline; color: #0000EE;'>https://tuic.gov.taipei/documentation/front-end/map-data</a>)；後端技術文件「Component Data APIs組件資料API」(<a href='https://tuic.gov.taipei/documentation/back-end/component-data-apis' target='_blank' style='text-decoration: underline; color: #0000EE;'>https://tuic.gov.taipei/documentation/back-end/component-data-apis</a>)相關說明。"
+                        "title": "市政資料從哪裡找？要自行清理嗎？",
+                        "content": "資料主要來自臺北資料大平台（<a href='https://data.taipei/' target='_blank' style='text-decoration: underline; color: #0000EE;'>https://data.taipei/</a>）、新北資料開放平台（<a href='https://data.ntpc.gov.tw/' target='_blank' style='text-decoration: underline; color: #0000EE;'>https://data.ntpc.gov.tw/</a>）及其他政府開放平台，儀表板現有資料也可使用。參賽者需自行搜尋與清理資料，詳見技術文件「Data Sources and Cleaning」（<a href='https://tuic.gov.taipei/documentation/front-end/data-sources-and-cleaning' target='_blank' style='text-decoration: underline; color: #0000EE;'>https://tuic.gov.taipei/documentation/front-end/data-sources-and-cleaning</a>）。資料搜查與清洗是競賽重點。"
                     },
                     {
-                        "title": "請問哪裡可以找到市政資料？",
-                        "content": "本次比賽的資料來源原則上均應來自臺北資料大平臺 (<a href='https://data.taipei/' target='_blank' style='text-decoration: underline; color: #0000EE;'>https://data.taipei/</a>)、新北市政府資料開放平臺(<a href='https://data.ntpc.gov.tw/' target='_blank' style='text-decoration: underline; color: #0000EE;'>https://data.ntpc.gov.tw/</a>)及其他政府開放資料平臺，目前臺北城市儀表板中已包含的統計與空間資料亦可以自由利用，詳細說明請參閱臺北城市儀表板前端技術文件「Data Sources and Cleaning 資料來源與清洗」(<a href='https://tuic.gov.taipei/documentation/front-end/data-sources-and-cleaning' target='_blank' style='text-decoration: underline; color: #0000EE;'>https://tuic.gov.taipei/documentation/front-end/data-sources-and-cleaning</a>)文章。"
+                        "title": "開發功能有限制嗎？程式撰寫與GitHub貢獻流程有沒有規範？",
+                        "content": "只要符合主題即可開發，但須遵循臺北城市儀表板技術文件「Contribution Guide 協作指南」(<a href='https://tuic.gov.taipei/documentation/front-end/contribution-overview' target='_blank' style='text-decoration: underline; color: #0000EE;'>https://tuic.gov.taipei/documentation/front-end/contribution-overview</a>)規範，若大幅改動框架影響整併，評審將酌情扣分，細節於2025年5月18日工作坊說明。"
                     },
                     {
-                        "title": "請問需要自行尋找並清理資料嗎？",
-                        "content": "需要，資料搜查與清洗亦為本次競賽的重點。"
+                        "title": "如何使用GitHub程式碼開發？",
+                        "content": "需fork臺北城市儀表板GitHub程式庫（<a href='https://github.com/taipei-doit/Taipei-City-Dashboard' target='_blank' style='text-decoration: underline; color: #0000EE;'>https://github.com/taipei-doit/Taipei-City-Dashboard</a>），於本地端開發，資料以臺北（<a href='https://data.taipei/' target='_blank' style='text-decoration: underline; color: #0000EE;'>https://data.taipei/</a>）及新北（<a href='https://data.ntpc.gov.tw/' target='_blank' style='text-decoration: underline; color: #0000EE;'>https://data.ntpc.gov.tw/</a>）為主。詳見競賽規則與5月18日工作坊說明。"
                     },
                     {
-                        "title": "有限制不能開發什麼功能或是一定要開發什麼功能嗎？",
-                        "content": "只要是符合競賽主題的功能均可以開發，惟仍須遵循臺北城市儀表板貢獻指南中的程式撰寫規範，以確保競賽後整併的可行性。如因顯著改動儀表板框架致使整併困難，評審將酌量扣分。詳細內容將於工作坊時說明。"
+                        "title": "黑客松競賽評審的 Demo 展示有什麼規範？",
+                        "content": "初選與決選均由參賽者需自帶電腦於本地端 localhost展示成果為主，以專注開發並減少部署環境影響。"
                     },
                     {
-                        "title": "程式撰寫與GitHub貢獻流程有沒有規範？",
-                        "content": "請參閱臺北城市儀表板技術文件「Contribution Guide 協作指南」(<a href='https://tuic.gov.taipei/documentation/' target='_blank' style='text-decoration: underline; color: #0000EE;'>https://tuic.gov.taipei/documentation/</a>)。"
+                        "title": "如果獲獎，後續協作如何進行？",
+                        "content": "得獎隊伍將於2週內收到協作項目通知郵件，需在2個月內針對競賽期間開發的作品完成清理、除錯與調整（不含新功能），以利獎金核發。詳情請參閱活動須知。"
                     },
                     {
-                        "title": "如何取用Github的開源程式碼進行開發？",
-                        "content": "所有開發均應先fork臺北城市儀表板的GitHub程式庫(<a href='https://github.com/taipei-doit/Taipei-City-Dashboard' target='_blank' style='text-decoration: underline; color: #0000EE;'>https://github.com/taipei-doit/Taipei-City-Dashboard</a>)，並於參賽隊伍的本地端完成，資料來源則以臺北市資料大平臺(<a href='https://data.taipei/' target='_blank' style='text-decoration: underline; color: #0000EE;'>https://data.taipei/</a>)、新北市政府資料開放平臺(<a href='https://data.ntpc.gov.tw/' target='_blank' style='text-decoration: underline; color: #0000EE;'>https://data.ntpc.gov.tw/</a>)為主；相關細節請參閱競賽規則，將會於工作坊中做更具體說明。"
-                    },
-                    {
-                        "title": "黑客松開發完成後要怎麼 demo 給評審看？",
-                        "content": "Demo 均由參賽者自行攜帶電腦展示，為讓參賽團隊可專注於本次競賽開發重點並減少不同部署環境影響，開發成果原則以本地端 localhost 展示為主。"
-                    },
-                    {
-                        "title": "如果獲獎，後續協作將會怎麼進行？",
-                        "content": "我們將於2週內寄信通知您的團隊我們希望與您們協作的項目，屆時，需於2個月內完成協作整併，以利獎金核發。協作項目僅限得獎隊伍於競賽期間開發的作品，主辦單位只會請得獎隊伍針對自己作品進行簡易清理、除錯、調整，並不會要求得獎隊伍開發新功能。詳情請參考活動須知。"
-                    },
-                    {
-                        "title": "技術文件都是英文的，請問有中文版嗎？",
-                        "content": "有的，請點擊頁面右上方的翻譯按鈕即可以切換成中文版。"
-                    },
-                    {
-                        "title": "如果我還有技術問題，請問要怎麼發問？",
-                        "content": "您可以寄信至比賽的官方信箱，或是於5月18日的工作坊發問。工作坊當日會完整說明開發流程與相關注意事項，因此請務必派員參與。"
+                        "title": "技術文件有中文版嗎？相關問題諮詢？",
+                        "content": "技術文件可於頁面右上方切換中文版。如有疑問，可寄信至官方信箱（<a href='mailto:codefesttaipei@gov.taipei' target='_blank' style='text-decoration: underline; color: #0000EE;'>codefesttaipei@gov.taipei</a>）或於5月18日工作坊提問。"
                     }
                 ]
             }
