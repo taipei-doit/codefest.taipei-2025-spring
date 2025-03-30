@@ -4,7 +4,7 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
 
   app: {
-    baseURL: '/2025spring/',
+    baseURL: '/2025-spring/',
     head: {
       title: '2025雙北程式設計節',
     },

@@ -24,7 +24,7 @@ jobs:
           token: ${{ secrets.DEPLOYMENT_REPO_TOKEN }}
 
       - name: Copy build files
-        run: cp -r public/prod/* codefest-deployment/public/2025spring/
+        run: cp -r public/prod/* codefest-deployment/public/2025-spring/
 
       - name: Commit and push changes
         run: |
