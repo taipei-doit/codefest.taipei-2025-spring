@@ -154,16 +154,27 @@ const showPopup = (activeNews?: News) => {
         <div
           class="lg:border-0 m-1 border border-white text-white flex-1 flex items-center justify-center text-center bg-tp"
         >
-          <div class="p-10 flex flex-col justify-around h-full max-h-[500px]">
+          <!-- desktop noise -->
+          <img
+            class="lg:block hidden hero-banner-noise hero-banner-noise--1"
+            src="@/assets/images/hero-banner-noise1.svg"
+            alt="noise"
+          />
+          <img
+            class="lg:block hidden hero-banner-noise hero-banner-noise--3"
+            src="@/assets/images/hero-banner-noise3.svg"
+            alt="noise"
+          />
+          <div class="p-10 flex flex-col justify-around h-full max-h-[500px] relative">
             <!-- desktop noise -->
             <img
-              class="md:block hidden hero-banner-noise"
-              src="@/assets/images/hero-banner-noise.svg"
+              class="lg:block hidden hero-banner-noise hero-banner-noise--2"
+              src="@/assets/images/hero-banner-noise2.svg"
               alt="noise"
             />
             <!-- mobile noise -->
             <img
-              class="md:hidden block hero-banner-noise"
+              class="lg:hidden block hero-banner-noise"
               src="@/assets/images/hero-banner-noise-mobile.svg"
               alt="noise"
             />
@@ -1036,11 +1047,21 @@ const showPopup = (activeNews?: News) => {
 }
 
 .hero-banner-noise {
-  @apply absolute left-16 top-16 max-w-[90%] w-full;
+  @apply absolute;
+  &--1 {
+    @apply left-16 top-14;
+  }
+  &--2 {
+    @apply left-6 top-[36%];
+  }
+  &--3 {
+    @apply right-16 top-20;
+  }
+
   animation: move-noise 1s infinite steps(1);
 
   @media (max-width: 1024px) {
-    @apply left-4 top-[18%];
+    @apply left-4 top-[8%];
   }
 }
 
