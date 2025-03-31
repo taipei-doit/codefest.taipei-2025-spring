@@ -17,23 +17,15 @@ export default defineNuxtConfig({
       })(window,document,'script','dataLayer','GTM-MQCC8H3V');`,
           type: 'text/javascript',
         },
-        {
-          src: 'https://www.googletagmanager.com/gtag/js?id=G-JEE61HPK3M',
-          async: true,
-        },
-        {
-          type: 'text/javascript',
-          children: `
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-JEE61HPK3M');
-          `,
-        },
       ],
       __dangerouslyDisableSanitizersByTagID: {
         'gtm-script': ['innerHTML'],
       },
+    },
+  },
+  runtimeConfig: {
+    public: {
+      gtmId: process.env.NUXT_PUBLIC_GTM_ID,
     },
   },
   modules: [
