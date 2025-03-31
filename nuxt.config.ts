@@ -17,6 +17,19 @@ export default defineNuxtConfig({
       })(window,document,'script','dataLayer','${process.env.NUXT_PUBLIC_GTM_ID}');`,
           type: 'text/javascript',
         },
+        {
+          src: `https://www.googletagmanager.com/gtag/js?id=${process.env.NUXT_PUBLIC_GA_ID}`,
+          async: true,
+        },
+        {
+          type: 'text/javascript',
+          children: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${process.env.NUXT_PUBLIC_GA_ID}');
+          `,
+        },
       ],
       __dangerouslyDisableSanitizersByTagID: {
         'gtm-script': ['innerHTML'],

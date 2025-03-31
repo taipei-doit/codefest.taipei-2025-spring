@@ -136,8 +136,7 @@ const calculateDistance = () => {
 const showPopup = (activeNews?: News) => {
   if (activeNews?.id === 2) {
     if (window.dataLayer) {
-      console.log('popup_view', window.dataLayer);
-
+      // console.log('popup_view', window.dataLayer);
       window.dataLayer.push({
         event: 'popup_view',
         popup_name: 'newsletter_modal',

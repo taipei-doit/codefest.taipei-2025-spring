@@ -37,7 +37,7 @@ const { activeDialog } = storeToRefs(dialogStore);
       <Transition name="fade">
         <div v-if="activeDialog === 'mobileMenu'" class="modal-open">
           <div
-            class="fixed top-0 bottom-0 left-0 right-0 z-30 w-full overflow-y-auto bg-black bg-opacity-80 flex flex-col p-4 transition-all duration-500"
+            class="fixed top-0 bottom-0 left-0 right-0 z-50 w-full overflow-y-auto bg-black bg-opacity-80 flex flex-col p-4 transition-all duration-500"
           >
             <div class="border border-white flex-1 flex flex-col">
               <div class="flex-1 m-1 border border-white py-10 text-center">
