@@ -689,9 +689,9 @@ const showPopup = (activeNews?: News) => {
                         </thead>
                         <tbody>
                           <tr v-for="(item, itemIndex) in tab.schedule" :key="itemIndex">
-                            <td class="p-2">{{ item.col1 }}</td>
-                            <td class="p-2">{{ item.col2 }}</td>
-                            <td class="p-2">{{ item.col3 }}</td>
+                            <td class="p-2 whitespace-pre-wrap">{{ item.col1 }}</td>
+                            <td class="p-2 whitespace-pre-wrap">{{ item.col2 }}</td>
+                            <td class="p-2 whitespace-pre-wrap">{{ item.col3 }}</td>
                           </tr>
                         </tbody>
                       </table>
