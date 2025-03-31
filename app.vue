@@ -49,7 +49,3 @@ onUnmounted(() => {
   <!-- 報名表單 -->
   <ApplyDialog :is-open="activeDialog === 'apply'" @close="dialogStore.closeDialog()" />
 </template>
-
-<style lang="postcss">
-@import '@/assets/retro-effect.scss';
-</style>
