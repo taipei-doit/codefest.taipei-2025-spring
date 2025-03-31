@@ -586,9 +586,11 @@
         ]
     },
     "contact": {
-        "address": "110204 臺北市信義區市府路1號",
+        "address_ntpc": "220242 新北市板橋區中山路一段161號",
+        "address_tpe": "110204 臺北市信義區市府路1號",
         "line_id": "@552qhvcr",
         "office_hours": "週一至週五 09:00-17:00",
+        "email": "codefesttaipei@gov.taipei",
         "phone": "02-77097801 #7584",
         "buttons": [
             {
