@@ -13,10 +13,22 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Install dependencies and build
-        run: npm install && npm run generate
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
 
-      - name: Deploy to Deployment Repo
+      - name: Install dependencies
+        run: npm install
+
+      - name: Inject .env for Nuxt
+        run: |
+          echo "NUXT_PUBLIC_GTM_ID=${{ secrets.NUXT_PUBLIC_GTM_ID }}" >> .env
+
+      - name: Build static site (Nuxt generate)
+        run: npm run generate
+
+      - name: Checkout deployment repo
         uses: actions/checkout@v3
         with:
           repository: Koafaith/codefest-deployment
