@@ -474,7 +474,7 @@
                     },
                     {
                         "title": "如何報名與截止時間？",
-                        "content": "從網站首頁（https://codefest.taipei/ ）點擊「報名按鈕」，填寫參賽資料，於2025年4月30日（星期二）23:59前提交，並收到系統確認信即完成。報名期間如資料異動（如隊員更換），請主動來信修正。"
+                        "content": "從網站首頁（<a href='https://codefest.taipei/' target='_blank' style='text-decoration: underline; color: #58FEFF;'>https://codefest.taipei/</a>）點擊「報名按鈕」，填寫參賽資料，於2025年4月30日（星期二）23:59前提交，並收到系統確認信即完成。報名期間如資料異動（如隊員更換），請主動來信修正。"
                     },
                     {
                         "title": "隊伍人數與能力要求？",
@@ -494,15 +494,15 @@
                     },
                     {
                         "title": "怎樣算報名成功?",
-                        "content": "報名資料提交後，系統自動發信為資料提交成功；經由主辦單位資格書審，並以email通知書審結果，才算完成報名。"
+                        "content": "報名資料提交後，系統自動發信為資料提交成功；經由主辦單位資格書審，並以email通知是否需補件，補件完成才算完成報名。"
                     },
                     {
                         "title": "送出的報名資料後，想要修改資料?",
-                        "content": "若報名資料有誤、隊員更換等重要資料異動等，請於2025年4月30日（星期二）報名截止前寄信至比賽的官方信箱（codefesttaipei@gov.taipei），依主辦單位指示提供資料更新。"
+                        "content": "若報名資料有誤、隊員更換等重要資料異動等，請於2025年4月30日（星期三）報名截止前寄信至比賽的官方信箱（<a href='mailto:codefesttaipei@gov.taipei' target='_blank' style='text-decoration: underline; color: #58FEFF;'>codefesttaipei@gov.taipei</a>），依主辦單位指示提供資料更新。"
                     },
                     {
-                        "title": "報名費用與報名狀態查詢？",
-                        "content": "免費。報名後將於一周內收到審核結果Email，未收到可聯繫客服電話、LINE@及官方信箱與我們確認。"
+                        "title": "報名費用？",
+                        "content": "免費。"
                     },
                     {
                         "title": "隊伍數量有限制？如何確認參賽？",
@@ -514,7 +514,7 @@
                     },
                     {
                         "title": "請問官方說明會的時間及該如何參與？",
-                        "content": "2025年4月7日（星期一）17:00 線上舉辦，錯過可在官方YouTube頻道（www.youtube.com/@Code-FestTaipei）回看。"
+                        "content": "2025年4月7日（星期一）17:00 線上舉辦，錯過可在官方YouTube頻道（@Code-FestTaipei）回看。"
                     },
                     {
                         "title": "請問工作坊的時間及該如何參與？工作坊一定要參加嗎？",
@@ -563,11 +563,11 @@
                     },
                     {
                         "title": "開發功能有限制嗎？程式撰寫與GitHub貢獻流程有沒有規範？",
-                        "content": "只要符合主題即可開發，但須遵循臺北城市儀表板技術文件「Contribution Guide 協作指南」(<a href='https://tuic.gov.taipei/documentation/front-end/contribution-overview' target='_blank' style='text-decoration: underline; color: #58FEFF;'>https://tuic.gov.taipei/documentation/front-end/contribution-overview</a>)規範，若大幅改動框架影響整併，評審將酌情扣分，細節於2025年5月18日工作坊說明。"
+                        "content": "只要符合主題即可開發，但須遵循臺北城市儀表板技術文件「Contribution Guide 協作指南」(<a href='https://tuic.gov.taipei/documentation/front-end/contribution-overview' target='_blank' style='text-decoration: underline; color: #58FEFF;'>https://tuic.gov.taipei/documentation/front-end/contribution-overview</a>)規範，若大幅改動框架影響整併，評審將酌情扣分，細節於5月18日工作坊說明。"
                     },
                     {
                         "title": "如何使用GitHub程式碼開發？",
-                        "content": "需fork臺北城市儀表板GitHub程式庫（<a href='https://github.com/taipei-doit/Taipei-City-Dashboard' target='_blank' style='text-decoration: underline; color: #58FEFF;'>https://github.com/taipei-doit/Taipei-City-Dashboard</a>），於本地端開發，資料以臺北（<a href='https://data.taipei/' target='_blank' style='text-decoration: underline; color: #58FEFF;'>https://data.taipei/</a>）及新北（<a href='https://data.ntpc.gov.tw/' target='_blank' style='text-decoration: underline; color: #58FEFF;'>https://data.ntpc.gov.tw/</a>）為主。詳見競賽規則與5月18日工作坊說明。"
+                        "content": "需fork臺北城市儀表板GitHub程式庫（<a href='https://github.com/taipei-doit/Taipei-City-Dashboard' target='_blank' style='text-decoration: underline; color: #58FEFF;'>https://github.com/taipei-doit/Taipei-City-Dashboard</a>），於本地端開發，資料以臺北資料大平台（<a href='https://data.taipei/' target='_blank' style='text-decoration: underline; color: #58FEFF;'>https://data.taipei/</a>）、新北資料開放平台（<a href='https://data.ntpc.gov.tw/' target='_blank' style='text-decoration: underline; color: #58FEFF;'>https://data.ntpc.gov.tw/</a>）為主。詳見競賽規則與5月18日工作坊說明。"
                     },
                     {
                         "title": "黑客松競賽評審的 Demo 展示有什麼規範？",
