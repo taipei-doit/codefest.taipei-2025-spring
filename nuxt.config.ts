@@ -7,6 +7,20 @@ export default defineNuxtConfig({
     baseURL: '/2025-spring/',
     head: {
       title: '2025雙北程式設計節',
+      script: [
+        {
+          id: 'gtm-script',
+          innerHTML: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-MQCC8H3V');`,
+          type: 'text/javascript',
+        },
+      ],
+      __dangerouslyDisableSanitizersByTagID: {
+        'gtm-script': ['innerHTML'],
+      },
     },
   },
   modules: [
