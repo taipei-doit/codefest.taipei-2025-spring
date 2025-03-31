@@ -157,13 +157,13 @@ const showPopup = (activeNews?: News) => {
           <div class="p-10 flex flex-col justify-around h-full max-h-[500px]">
             <!-- desktop noise -->
             <img
-              class="md:block hidden img-noise"
+              class="md:block hidden hero-banner-noise"
               src="@/assets/images/hero-banner-noise.svg"
               alt="noise"
             />
             <!-- mobile noise -->
             <img
-              class="md:hidden block img-noise"
+              class="md:hidden block hero-banner-noise"
               src="@/assets/images/hero-banner-noise-mobile.svg"
               alt="noise"
             />
@@ -220,7 +220,7 @@ const showPopup = (activeNews?: News) => {
               <p class="whitespace-pre-wrap">{{ tm('rules.description') }}</p>
             </div>
             <div class="grid lg:grid-cols-5 grid-cols-1 border border-b-white">
-              <div class="lg:col-span-3 lg:p-10 p-4 lg:border lg:border-r-white">
+              <div class="lg:col-span-3 lg:p-16 p-4 lg:border lg:border-r-white">
                 <div class="relative">
                   <!-- desktop 背景圖 -->
                   <img
@@ -247,6 +247,18 @@ const showPopup = (activeNews?: News) => {
                     class="absolute top-[10%] left-[16%] lg:hidden block"
                     :style="{ width: 'calc(100% - 16%)' }"
                     alt="程式儀表板大黑克松宣傳圖"
+                  />
+                  <!-- desktop noise1 -->
+                  <img
+                    class="lg:block hidden rules-noise rules-noise--1"
+                    src="@/assets/images/rules-noise1.svg"
+                    alt="noise"
+                  />
+                  <!-- desktop noise2 -->
+                  <img
+                    class="lg:block hidden rules-noise rules-noise--2"
+                    src="@/assets/images/rules-noise2.svg"
+                    alt="noise"
                   />
                 </div>
               </div>
@@ -736,8 +748,20 @@ const showPopup = (activeNews?: News) => {
               </div>
             </div>
           </div>
-          <div class="lg:col-span-2 p-10 lg:flex hidden items-center justify-center">
+          <div class="relative lg:col-span-2 p-10 lg:flex hidden items-center justify-center">
             <img src="@/assets/images/img-news.png" alt="" />
+            <!-- desktop noise1 -->
+            <img
+              class="lg:block hidden news-noise news-noise--1"
+              src="@/assets/images/news-noise1.svg"
+              alt="noise"
+            />
+            <!-- desktop noise2 -->
+            <img
+              class="lg:block hidden news-noise news-noise--2"
+              src="@/assets/images/news-noise2.svg"
+              alt="noise"
+            />
           </div>
         </div>
       </section>
@@ -1011,24 +1035,48 @@ const showPopup = (activeNews?: News) => {
   }
 }
 
-.img-noise {
-  @apply absolute left-1/2 -translate-x-1/2 top-16 max-w-[90%] w-full;
-  animation: move-img-noise 1s infinite steps(1);
+.hero-banner-noise {
+  @apply absolute left-16 top-16 max-w-[90%] w-full;
+  animation: move-noise 1s infinite steps(1);
 
   @media (max-width: 1024px) {
-    @apply top-1/2 -translate-y-1/2;
+    @apply left-4 top-[18%];
   }
 }
 
-@keyframes move-img-noise {
+.rules-noise {
+  @apply absolute;
+  &--1 {
+    @apply top-1/2 -translate-y-1/2 right-8;
+  }
+
+  &--2 {
+    @apply -bottom-12 right-0;
+  }
+  animation: move-noise 1s infinite steps(1);
+}
+
+.news-noise {
+  @apply absolute;
+  &--1 {
+    @apply top-[24%] right-2;
+  }
+
+  &--2 {
+    @apply bottom-16 left-[24%];
+  }
+  animation: move-noise 1s infinite steps(1);
+}
+
+@keyframes move-noise {
   0% {
-    left: 50%;
+    transform: translateX(0);
   }
   50% {
-    left: calc(50% + 5px);
+    transform: translateX(5px);
   }
   100% {
-    left: 50%;
+    transform: translateX(0);
   }
 }
 
