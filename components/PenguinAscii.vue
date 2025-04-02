@@ -2,17 +2,21 @@
 const scale = ref(1);
 
 const updateScale = () => {
-  setTimeout(() => {
-    const idealWidth = 500; // 設定 scale=0.3 時的參考寬度
-    const imgContainer = document.getElementById('img-news');
-    const penguinContainer = document.getElementById('penguin-container');
-    const containerWidth = imgContainer?.offsetWidth || penguinContainer?.offsetWidth || 600;
-    scale.value = Math.min(0.3, (containerWidth / idealWidth) * 0.3);
-  }, 500);
+  const idealWidth = 500; // 設定 scale=0.3 時的參考寬度
+  const imgContainer = document.getElementById('img-news');
+  const penguinContainer = document.getElementById('penguin-container');
+  const containerWidth = imgContainer?.offsetWidth || penguinContainer?.offsetWidth || 600;
+  scale.value = Math.min(0.3, (containerWidth / idealWidth) * 0.3);
 };
 
 onMounted(() => {
-  updateScale();
+  requestAnimationFrame(() => {
+     // DOM 更新即將開始
+    requestAnimationFrame(() => {
+      // 畫面已經重繪完成
+      updateScale();
+    });
+  });
   window.addEventListener('resize', updateScale);
 });
 
