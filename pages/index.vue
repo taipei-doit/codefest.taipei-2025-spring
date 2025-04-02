@@ -663,8 +663,8 @@ const showPopup = (activeNews?: News) => {
                         <!-- 開啟 Dialog -->
                         <button
                           v-else-if="tab.button.type === 'dialog'"
-                          @click="dialogStore.openDialog(tab.button.link)"
                           class="icon-btn icon-btn--arrow min-w-60"
+                          @click="dialogStore.openDialog(tab.button.link)"
                         >
                           <span>{{ tab.button.text }}</span>
                         </button>
@@ -760,7 +760,11 @@ const showPopup = (activeNews?: News) => {
             </div>
           </div>
           <div class="relative lg:col-span-2 p-10 lg:flex hidden items-center justify-center">
-            <img src="@/assets/images/img-news.png" alt="" />
+            <img src="@/assets/images/img-news.png" id="img-news" alt="" />
+            <div id="penguin-container" class="relative hidden">
+              <img src="@/assets/images/img-news2.png" alt="" />
+              <PenguinAscii />
+            </div>
             <!-- desktop noise1 -->
             <img
               class="lg:block hidden news-noise news-noise--1"
@@ -1216,5 +1220,9 @@ const showPopup = (activeNews?: News) => {
     position: absolute;
     right: 0;
   }
+}
+
+.penguin {
+  display: block;
 }
 </style>

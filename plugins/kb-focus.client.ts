@@ -200,6 +200,11 @@ export default defineNuxtPlugin(nuxtApp => {
       case 'F1':
         e.preventDefault();
         document.body.classList.toggle('scanlines');
+
+        // 企鵝
+        const imgNews = document.getElementById('img-news');
+        imgNews?.classList.toggle('hidden');
+        document.getElementById('penguin-container')?.classList.toggle('penguin');        
         break;
       case 'Backspace':
         e.preventDefault();
