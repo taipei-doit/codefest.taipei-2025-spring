@@ -10,13 +10,9 @@ const updateScale = () => {
 };
 
 onMounted(() => {
-  requestAnimationFrame(() => {
-     // DOM 更新即將開始
-    requestAnimationFrame(() => {
-      // 畫面已經重繪完成
-      updateScale();
-    });
-  });
+  setTimeout(() => {
+    updateScale();
+  }, 1000);
   window.addEventListener('resize', updateScale);
 });
 
