@@ -4,17 +4,11 @@ const scale = ref(1);
 const updateScale = () => {
   setTimeout(() => {
     const idealWidth = 500; // 設定 scale=0.3 時的參考寬度
-
     const imgContainer = document.getElementById('img-news');
     const penguinContainer = document.getElementById('penguin-container');
     const containerWidth = imgContainer?.offsetWidth || penguinContainer?.offsetWidth || 600;
-
-    console.log(imgContainer?.offsetWidth);
-    console.log(containerWidth);
-
     scale.value = Math.min(0.3, (containerWidth / idealWidth) * 0.3);
-    console.log(scale.value);
-  });
+  }, 500);
 };
 
 onMounted(() => {
