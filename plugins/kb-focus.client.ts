@@ -1,5 +1,11 @@
 import { defineNuxtPlugin } from '#app';
 
+interface KbFocusData {
+  id: string;
+  x: number;
+  y: number;
+}
+
 let currentId: string | null = null;
 let hasFocused = false;
 const registry: Map<string, { el: HTMLElement; id: string; x: number; y: number }> = new Map();
@@ -144,7 +150,7 @@ function moveFocusRules(dir: 'up' | 'down' | 'left' | 'right') {
 let moveFocus = moveFocusIndex;
 
 // 元件註冊函式
-function setupKbFocus(el: HTMLElement, value: any) {
+function setupKbFocus(el: HTMLElement, value: KbFocusData) {
   if (!value || typeof value !== 'object' || !value.id || value.x == null || value.y == null)
     return;
 
@@ -197,15 +203,16 @@ export default defineNuxtPlugin(nuxtApp => {
           registry.get(currentId)?.el?.click();
         }
         break;
-      case 'F1':
+      case 'F1': {
         e.preventDefault();
         document.body.classList.toggle('scanlines');
 
         // 企鵝
         const imgNews = document.getElementById('img-news');
         imgNews?.classList.toggle('hidden');
-        document.getElementById('penguin-container')?.classList.toggle('penguin');        
+        document.getElementById('penguin-container')?.classList.toggle('penguin');
         break;
+      }
       case 'Backspace':
         e.preventDefault();
         router.back();

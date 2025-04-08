@@ -31,12 +31,27 @@ npm run dev
 ### 專案打包
 
 ```bash
-npm run build
+npm run generate
 ```
 
 ### 專案部署
 
 專案使用 CI/CD 自動部署，只需將程式碼推送至 main 分支，即可觸發自動部署流程。
+
+## 開發規範與工具
+
+### 格式與 Lint
+
+- **ESLint**：程式碼檢查
+- **Prettier**：程式碼格式化
+- **Stylelint**：樣式檢查
+
+### 檢查指令
+
+```bash
+npm run lint:js     # JavaScript / TypeScript / Vue 檢查
+npm run lint:style  # SCSS / Style 檢查
+```
 
 ## 修改檔案方式
 

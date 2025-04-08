@@ -70,7 +70,8 @@ const prospectusContents = computed(() => {
       </p>
       <div v-for="(content, index) in prospectusContents" :key="index" class="mb-8">
         <p>{{ content.sub_title }}</p>
-        <p class="whitespace-pre-wrap" v-html="content.sub_content"></p>
+        <!-- eslint-disable vue/no-v-html -->
+        <p class="whitespace-pre-wrap" v-html="$sanitize(content.sub_content)"></p>
       </div>
       <div class="overflow-x-auto">
         <img

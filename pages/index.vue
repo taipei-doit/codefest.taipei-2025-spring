@@ -10,6 +10,7 @@ import type { JudgeList } from '~/interfaces/judge.interface';
 import type { PastVideo } from '~/interfaces/past.interface';
 import type { Sponsor } from '~/interfaces/sponsor.interface';
 import { useDialogStore } from '~/stores/dialogStore';
+import { ROUTE_PATHS } from '~/constants/routes';
 
 const dialogStore = useDialogStore();
 const { activeDialog } = storeToRefs(dialogStore);
@@ -760,7 +761,7 @@ const showPopup = (activeNews?: News) => {
             </div>
           </div>
           <div class="relative lg:col-span-2 p-10 lg:flex hidden items-center justify-center">
-            <img src="@/assets/images/img-news.png" id="img-news" alt="" />
+            <img id="img-news" src="@/assets/images/img-news.png" alt="" />
             <div id="penguin-container" class="relative hidden">
               <img src="@/assets/images/img-news2.png" alt="" />
               <PenguinAscii />

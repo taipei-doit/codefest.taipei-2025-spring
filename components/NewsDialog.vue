@@ -11,7 +11,7 @@ const emit = defineEmits(['close']);
 </script>
 
 <template>
-  <Dialog :open="isOpen" @close="emit('close')" class="relative z-50">
+  <Dialog :open="isOpen" class="relative z-50" @close="emit('close')">
     <!-- 遮罩 -->
     <div class="fixed inset-0 bg-black/85" aria-hidden="true" />
 
@@ -37,7 +37,8 @@ const emit = defineEmits(['close']);
           class="flex-1 overflow-y-auto px-6 pb-6 text-lg leading-8 whitespace-pre-wrap"
         >
           <img v-if="activeNews?.image_url" :src="activeNews.image_url" alt="" class="mb-4" />
-          <div v-html="activeNews?.content"></div>
+          <!-- eslint-disable vue/no-v-html -->
+          <div v-html="$sanitize(activeNews!.content)"></div>
           <!-- 占位 padding (可選) -->
           <div class="h-6"></div>
         </DialogDescription>

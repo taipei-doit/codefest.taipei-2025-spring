@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { ROUTE_PATHS } from '~/constants/routes';
+
 const { tm } = useI18n();
 const route = useRoute();
 

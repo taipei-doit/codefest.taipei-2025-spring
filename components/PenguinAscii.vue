@@ -23,13 +23,7 @@ onBeforeUnmount(() => {
 <template>
   <div
     class="inline-block align-top whitespace-pre font-mono font-bold text-base leading-none absolute top-[10%] left-5"
-    style="
-      background: black;
-      display: table-cell;
-      padding: 1rem;
-      display: inline-block;
-      transform-origin: top left;
-    "
+    style="background: black; padding: 1rem; display: inline-block; transform-origin: top left"
     :style="{ transform: `scale(${scale})`, transformOrigin: 'top left' }"
   >
     <pre style="all: unset; display: inline-block">

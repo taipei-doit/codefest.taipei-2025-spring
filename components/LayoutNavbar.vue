@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { ROUTE_PATHS } from '~/constants/routes';
+
 const props = defineProps<{
   type: 'header' | 'mobile-header' | 'footer';
   navClass: string;

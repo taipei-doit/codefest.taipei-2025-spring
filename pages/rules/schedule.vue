@@ -77,8 +77,8 @@ const scheduleList = computed(() => {
               <!-- 開啟 Dialog -->
               <button
                 v-else-if="tab.button.type === 'dialog'"
-                @click="dialogStore.openDialog(tab.button.link)"
                 class="icon-btn icon-btn--arrow min-w-60"
+                @click="dialogStore.openDialog(tab.button.link)"
               >
                 <span>{{ tab.button.text }}</span>
               </button>

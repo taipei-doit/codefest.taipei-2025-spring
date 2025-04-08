@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { Dialog, DialogPanel, DialogTitle, DialogDescription } from '@headlessui/vue';
 import type { PastWinningTeam } from '~/interfaces/past.interface';
-import { Swiper, SwiperSlide } from 'swiper/vue';
+import { SwiperSlide } from 'swiper/vue';
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/free-mode';
@@ -9,6 +9,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/thumbs';
 // import required modules
 import { FreeMode, Navigation, Thumbs } from 'swiper/modules';
+import type Swiper from 'swiper';
 
 const props = defineProps<{
   isOpen: boolean;
@@ -17,9 +18,9 @@ const props = defineProps<{
 
 const emit = defineEmits(['close']);
 
-const thumbsSwiper = ref(null);
+const thumbsSwiper = ref<Swiper | null>(null);
 
-const setThumbsSwiper = (swiper: any) => {
+const setThumbsSwiper = (swiper: Swiper) => {
   thumbsSwiper.value = swiper;
 };
 </script>

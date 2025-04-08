@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/vue';
-
 const { tm } = useI18n();
 
 /** FAQ */
@@ -68,9 +67,10 @@ const activeTab = ref(0);
           />
         </DisclosureButton>
         <DisclosurePanel>
+          <!-- eslint-disable vue/no-v-html -->
           <div
             class="relative w-full py-4 lg:px-10 px-3 border-b border-white bg-primary-300"
-            v-html="item.content"
+            v-html="$sanitize(item.content)"
           ></div>
         </DisclosurePanel>
       </Disclosure>

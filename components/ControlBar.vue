@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { ROUTE_PATHS } from '~/constants/routes';
 import { useDialogStore } from '~/stores/dialogStore';
 
 const props = defineProps<{
