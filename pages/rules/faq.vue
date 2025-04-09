@@ -67,11 +67,9 @@ const activeTab = ref(0);
           />
         </DisclosureButton>
         <DisclosurePanel>
-          <!-- eslint-disable vue/no-v-html -->
-          <div
-            class="relative w-full py-4 lg:px-10 px-3 border-b border-white bg-primary-300"
-            v-html="$sanitize(item.content)"
-          ></div>
+          <div class="relative w-full py-4 lg:px-10 px-3 border-b border-white bg-primary-300">
+            <AtomSaveHtml :html="item.content" />
+          </div>
         </DisclosurePanel>
       </Disclosure>
     </template>

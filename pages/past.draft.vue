@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/vue';
-import WinningTeamDialog from '~/components/WinningTeamDialog.vue';
 import type { PastVideo, PastWinningTeam } from '~/interfaces/past.interface';
 
 const { t, tm } = useI18n();
@@ -118,13 +117,12 @@ const videoList = computed<PastVideo[]>(() => {
                 <div
                   class="w-full lg:w-auto flex flex-nowrap justify-center lg:justify-end space-x-8"
                 >
-                  <a
+                  <AtomButton
                     :href="t('more_winning_team_photos_url')"
-                    target="_blank"
-                    class="icon-btn icon-btn--arrow w-1/2 lg:w-auto lg:min-w-60"
+                    class="w-1/2 lg:w-auto lg:min-w-60"
                   >
-                    <span> 更多照片回顧 </span>
-                  </a>
+                    更多照片回顧
+                  </AtomButton>
                 </div>
               </div>
             </DisclosurePanel>
@@ -208,13 +206,12 @@ const videoList = computed<PastVideo[]>(() => {
                 <div
                   class="w-full lg:w-auto flex flex-nowrap justify-center lg:justify-end space-x-8"
                 >
-                  <a
-                    :href="t('more_videos_url')"
-                    target="_blank"
-                    class="icon-btn icon-btn--arrow w-1/2 lg:w-auto lg:min-w-60"
+                  <AtomButton
+                    :href="t('past.videos.more_videos_url')"
+                    class="w-1/2 lg:w-auto lg:min-w-60"
                   >
-                    <span> 更多影片回顧 </span>
-                  </a>
+                    更多影片回顧
+                  </AtomButton>
                 </div>
               </div>
             </DisclosurePanel>
@@ -223,7 +220,7 @@ const videoList = computed<PastVideo[]>(() => {
       </div>
     </section>
 
-    <WinningTeamDialog
+    <OrganismWinningTeamDialog
       :is-open="activeDialog === 'winningTeam'"
       :active-winning-team="activeWinningTeam"
       @close="

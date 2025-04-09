@@ -78,39 +78,6 @@ button {
     --dashed-color: black;
 }
 
-/* 按鈕 */
-.icon-btn {
-    @apply relative;
-    @apply border border-white max-w-full;
-    &::after {
-        position: absolute;
-        right: 20px;
-        top: 50%;
-        transform: translateY(-50%);
-        display: block;
-        width: 24px;
-        height: 24px;
-    }
-    &--arrow::after {
-        content: url("/assets/images/icons/primary-right-arrow.svg");
-    }
-
-    &--download::after {
-        content: url("/assets/images/icons/primary-download.svg");
-    }
-
-    span {
-        @apply flex items-center justify-center h-[63px];
-        @apply m-1 py-2 bg-white font-fusion-pixel text-primary-500;
-    }
-
-    @media (max-width: 1024px) {
-        &::after {
-            right: 12px;
-        }
-    }
-}
-
 .judge .swiper {
     padding-bottom: 50px;
 

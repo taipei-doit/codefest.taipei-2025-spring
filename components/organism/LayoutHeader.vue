@@ -19,7 +19,7 @@ const { activeDialog } = storeToRefs(dialogStore);
           <img src="/images/logos/logo-icon-tpe.svg" class="lg:w-[40px] w-[30px]" alt="" />
         </NuxtLink>
         <!-- web -->
-        <LayoutNavbar
+        <OrganismLayoutNavbar
           class="hidden lg:block"
           type="header"
           nav-class="flex text-white font-fusion-pixel"
@@ -49,7 +49,7 @@ const { activeDialog } = storeToRefs(dialogStore);
                   <img src="/images/logos/logo-icon-ntpc.svg" width="40" alt="" />
                   <img src="/images/logos/logo-icon-tpe.svg" width="40" alt="" />
                 </NuxtLink>
-                <LayoutNavbar
+                <OrganismLayoutNavbar
                   type="mobile-header"
                   nav-class="text-white font-fusion-pixel text-center"
                 />

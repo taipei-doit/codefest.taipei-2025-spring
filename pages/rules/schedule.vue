@@ -54,34 +54,20 @@ const scheduleList = computed(() => {
             </p>
             <!-- 按鈕（根據類型顯示）-->
             <template v-if="tab.button?.text">
-              <!-- 外部連結 -->
-              <a
-                v-if="tab.button.type === 'outside_link'"
-                :href="tab.button.link"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="icon-btn icon-btn--arrow min-w-60"
+              <AtomButton
+                class="min-w-60"
+                :href="tab.button.type === 'outside_link' ? tab.button.link : undefined"
+                :to="tab.button.type === 'route' ? tab.button.link : undefined"
+                @click="
+                  () => {
+                    if (tab.button.type === 'dialog') {
+                      dialogStore.openDialog(tab.button.link);
+                    }
+                  }
+                "
               >
-                <span>{{ tab.button.text }}</span>
-              </a>
-
-              <!-- Nuxt 內部跳轉 -->
-              <NuxtLink
-                v-else-if="tab.button.type === 'route'"
-                :to="tab.button.link"
-                class="icon-btn icon-btn--arrow min-w-60"
-              >
-                <span>{{ tab.button.text }}</span>
-              </NuxtLink>
-
-              <!-- 開啟 Dialog -->
-              <button
-                v-else-if="tab.button.type === 'dialog'"
-                class="icon-btn icon-btn--arrow min-w-60"
-                @click="dialogStore.openDialog(tab.button.link)"
-              >
-                <span>{{ tab.button.text }}</span>
-              </button>
+                {{ tab.button.text }}
+              </AtomButton>
             </template>
           </div>
           <div class="p-4 w-full overflow-auto">

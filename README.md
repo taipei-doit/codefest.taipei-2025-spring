@@ -55,3 +55,14 @@ npm run lint:style  # SCSS / Style 檢查
 
 ## 修改檔案方式
 
+## 專案結構
+
+components 元件管理採用 [Atomic Design](https://bradfrost.com/blog/post/atomic-web-design/)。
+
+- atom: 不可分割元件，通常為 base 類型元件，ex: `button`, `input`。
+- molecule: 由 atom 元件組成，具有單一功能性，ex: search bar (`input` + `button`)。
+- organism: 由 atom 與 molecule 元件組成，多功能性的元件，ex: header。
+
+元件命名規則採 UpperCamelCase，引用元件時需帶上分類 prefix，ex: \<AtomButton />。
+
+結構規則採用 Nuxt3 結構 [Diectory Structure](https://nuxt.com/docs/guide/directory-structure/nuxt)。

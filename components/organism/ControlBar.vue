@@ -34,29 +34,26 @@ const showApplyBtn = computed(() => route.path.startsWith(ROUTE_PATHS.RULES));
         </div>
       </div>
     </div>
-    <button
+    <AtomButton
       v-if="showApplyBtn"
       v-kb-focus="{
         id: `rules-apply-1-60`,
         x: 1,
         y: 60,
       }"
-      class="icon-btn icon-btn--arrow w-auto min-w-60 mx-auto"
+      class="w-auto min-w-60 mx-auto btn-lg-span"
       @click="dialogStore.openDialog('apply')"
       @keydown.enter.prevent="dialogStore.openDialog('apply')"
     >
-      <span> 立即報名 </span>
-    </button>
+      立即報名
+    </AtomButton>
   </div>
 </template>
 
-<style scoped lang="postcss">
+<style lang="postcss">
 @media (min-width: 1024px) {
-  .icon-btn {
-    min-width: 263px;
-    span {
-      height: 96px;
-    }
+  .btn-lg-span span {
+    height: 96px;
   }
 }
 </style>

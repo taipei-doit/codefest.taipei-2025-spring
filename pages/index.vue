@@ -202,25 +202,24 @@ const showPopup = (activeNews?: News) => {
               }}</span>
             </p>
             <div class="flex justify-center">
-              <button
+              <AtomButton
                 v-kb-focus="{ id: 'index-button-1-2', x: 1, y: 2 }"
-                class="icon-btn icon-btn--arrow min-w-60"
+                class="min-w-60"
                 @click="dialogStore.openDialog('apply')"
                 @keydown.enter.prevent="dialogStore.openDialog('apply')"
+                >立即報名</AtomButton
               >
-                <span> 立即報名 </span>
-              </button>
             </div>
           </div>
         </div>
       </div>
     </section>
-    <SectionDecoration class="lg:block hidden" />
-    <SectionDecoration class="lg:hidden" />
+    <AtomSectionDecoration class="lg:block hidden" />
+    <AtomSectionDecoration class="lg:hidden" />
     <!-- 第2幀 - 競賽規則 -->
     <template v-if="tm('rules').available">
       <div class="lg:flex justify-end hidden">
-        <SectionNav active-nav-name="rules" :focus-y="3" />
+        <MoleculeSectionNav active-nav-name="rules" :focus-y="3" />
       </div>
       <section id="rules" class="2xl:p-0 p-5">
         <div class="border border-white relative">
@@ -314,29 +313,29 @@ const showPopup = (activeNews?: News) => {
               <div
                 class="w-full lg:w-auto flex flex-nowrap justify-center lg:justify-end space-x-8"
               >
-                <NuxtLink
+                <AtomButton
                   v-kb-focus="{
                     id: `index-rules-button-1-5`,
                     x: 1,
                     y: 5,
                   }"
                   :to="ROUTE_PATHS.RULES"
-                  class="icon-btn icon-btn--arrow w-1/2 lg:w-auto lg:min-w-60 text-center block"
+                  class="w-1/2 lg:w-auto lg:min-w-60 text-center block"
                 >
-                  <span> 瞭解詳情 </span>
-                </NuxtLink>
-                <button
+                  瞭解詳情
+                </AtomButton>
+                <AtomButton
                   v-kb-focus="{
                     id: `index-rules-button-2-5`,
                     x: 2,
                     y: 5,
                   }"
-                  class="icon-btn icon-btn--arrow w-1/2 lg:w-auto lg:min-w-60"
+                  class="w-1/2 lg:w-auto lg:min-w-60"
                   @click="dialogStore.openDialog('apply')"
                   @keydown.enter.prevent="dialogStore.openDialog('apply')"
                 >
-                  <span> 立即報名 </span>
-                </button>
+                  立即報名
+                </AtomButton>
               </div>
             </div>
 
@@ -434,12 +433,12 @@ const showPopup = (activeNews?: News) => {
           </div>
         </div>
       </section>
-      <SectionDecoration direction="right" />
+      <AtomSectionDecoration direction="right" />
     </template>
     <!-- 第3幀 - 重要時程 -->
     <template v-if="tm('schedule').available">
       <div class="lg:flex justify-start hidden">
-        <SectionNav active-nav-name="schedule" :focus-y="8" />
+        <MoleculeSectionNav active-nav-name="schedule" :focus-y="8" />
       </div>
       <section id="schedule" class="2xl:p-0 p-5">
         <div class="border border-white relative">
@@ -451,7 +450,7 @@ const showPopup = (activeNews?: News) => {
               class="lg:flex block justify-center items-center font-fusion-pixel text-white lg:p-10 px-2 py-4 pt-6 text-center border border-b-white"
             >
               <p class="mb-4 lg:mb-0">報名截止倒數</p>
-              <CountDown :target-date="new Date(tm('schedule.count_down'))" />
+              <MoleculeCountDown :target-date="new Date(tm('schedule.count_down'))" />
             </div>
             <!-- desktop -->
             <div class="hidden p-4 lg:grid lg:grid-cols-7">
@@ -533,51 +532,36 @@ const showPopup = (activeNews?: News) => {
                     class="flex justify-between items-center p-4 border border-b-white min-h-[83px]"
                   >
                     <p class="text-xl">{{ activeSchedule.schedule_sub_name }}</p>
+
                     <!-- 按鈕（根據類型顯示）-->
                     <template v-if="activeSchedule.button?.text">
-                      <!-- 外部連結 -->
-                      <a
-                        v-if="activeSchedule.button.type === 'outside_link'"
+                      <AtomButton
                         v-kb-focus="{
-                          id: `index-schedule-button-2-${9 + currentScheduleIndex}`,
+                          id: `index-schedule-button-${activeSchedule.button.type}-${9 + currentScheduleIndex}`,
                           x: 2,
                           y: 9 + currentScheduleIndex,
                         }"
-                        :href="activeSchedule.button.link"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="icon-btn icon-btn--arrow min-w-60"
+                        class="min-w-60"
+                        :href="
+                          activeSchedule.button.type === 'outside_link'
+                            ? activeSchedule.button.link
+                            : undefined
+                        "
+                        :to="
+                          activeSchedule.button.type === 'route'
+                            ? activeSchedule.button.link
+                            : undefined
+                        "
+                        @click="
+                          () => {
+                            if (activeSchedule.button.type === 'dialog') {
+                              dialogStore.openDialog(activeSchedule.button.link);
+                            }
+                          }
+                        "
                       >
-                        <span>{{ activeSchedule.button.text }}</span>
-                      </a>
-
-                      <!-- Nuxt 內部跳轉 -->
-                      <NuxtLink
-                        v-else-if="activeSchedule.button.type === 'route'"
-                        v-kb-focus="{
-                          id: `index-schedule-button-1-${9 + currentScheduleIndex}`,
-                          x: 2,
-                          y: 9 + currentScheduleIndex,
-                        }"
-                        :to="activeSchedule.button.link"
-                        class="icon-btn icon-btn--arrow min-w-60"
-                      >
-                        <span>{{ activeSchedule.button.text }}</span>
-                      </NuxtLink>
-
-                      <!-- 開啟 Dialog -->
-                      <button
-                        v-else-if="activeSchedule.button.type === 'dialog'"
-                        v-kb-focus="{
-                          id: `index-schedule-button-1-${9 + currentScheduleIndex}`,
-                          x: 2,
-                          y: 9 + currentScheduleIndex,
-                        }"
-                        class="icon-btn icon-btn--arrow min-w-60"
-                        @click="dialogStore.openDialog(activeSchedule.button.link)"
-                      >
-                        <span>{{ activeSchedule.button.text }}</span>
-                      </button>
+                        {{ activeSchedule.button.text }}
+                      </AtomButton>
                     </template>
                   </div>
                   <div class="p-4 w-full overflow-auto">
@@ -641,34 +625,20 @@ const showPopup = (activeNews?: News) => {
                       </p>
                       <!-- 按鈕（根據類型顯示）-->
                       <template v-if="tab.button?.text">
-                        <!-- 外部連結 -->
-                        <a
-                          v-if="tab.button.type === 'outside_link'"
-                          :href="tab.button.link"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          class="icon-btn icon-btn--arrow min-w-60"
+                        <AtomButton
+                          class="min-w-60"
+                          :href="tab.button.type === 'outside_link' ? tab.button.link : undefined"
+                          :to="tab.button.type === 'route' ? tab.button.link : undefined"
+                          @click="
+                            () => {
+                              if (tab.button.type === 'dialog') {
+                                dialogStore.openDialog(tab.button.link);
+                              }
+                            }
+                          "
                         >
-                          <span>{{ tab.button.text }}</span>
-                        </a>
-
-                        <!-- Nuxt 內部跳轉 -->
-                        <NuxtLink
-                          v-else-if="tab.button.type === 'route'"
-                          :to="tab.button.link"
-                          class="icon-btn icon-btn--arrow min-w-60"
-                        >
-                          <span>{{ tab.button.text }}</span>
-                        </NuxtLink>
-
-                        <!-- 開啟 Dialog -->
-                        <button
-                          v-else-if="tab.button.type === 'dialog'"
-                          class="icon-btn icon-btn--arrow min-w-60"
-                          @click="dialogStore.openDialog(tab.button.link)"
-                        >
-                          <span>{{ tab.button.text }}</span>
-                        </button>
+                          {{ tab.button.text }}
+                        </AtomButton>
                       </template>
                     </div>
                     <div class="p-4 w-full overflow-auto">
@@ -707,12 +677,12 @@ const showPopup = (activeNews?: News) => {
           </div>
         </div>
       </section>
-      <SectionDecoration />
+      <AtomSectionDecoration />
     </template>
     <!-- 第4幀 - 最新消息 -->
     <template v-if="tm('news').available">
       <div class="lg:flex justify-end hidden">
-        <SectionNav active-nav-name="news" :focus-y="20" />
+        <MoleculeSectionNav active-nav-name="news" :focus-y="20" />
       </div>
       <section id="news" class="2xl:p-0 p-5">
         <div class="grid grid-cols-5">
@@ -764,7 +734,7 @@ const showPopup = (activeNews?: News) => {
             <img id="img-news" src="@/assets/images/img-news.png" alt="" />
             <div id="penguin-container" class="relative hidden">
               <img src="@/assets/images/img-news2.png" alt="" />
-              <PenguinAscii />
+              <AtomPenguinAscii />
             </div>
             <!-- desktop noise1 -->
             <img
@@ -781,12 +751,12 @@ const showPopup = (activeNews?: News) => {
           </div>
         </div>
       </section>
-      <SectionDecoration direction="right" />
+      <AtomSectionDecoration direction="right" />
     </template>
     <!-- 第5幀 - 參賽回顧 -->
     <template v-if="tm('past').available">
       <div class="lg:flex justify-start hidden">
-        <SectionNav active-nav-name="past" :focus-y="30" />
+        <MoleculeSectionNav active-nav-name="past" :focus-y="30" />
       </div>
       <section id="past" class="2xl:p-0 p-5">
         <div class="border border-white relative">
@@ -920,28 +890,28 @@ const showPopup = (activeNews?: News) => {
               <div
                 class="w-full lg:w-auto flex flex-nowrap justify-center lg:justify-end space-x-8"
               >
-                <NuxtLink
+                <AtomButton
                   v-kb-focus="{
                     id: `index-video-1-33`,
                     x: 1,
                     y: 33,
                   }"
                   :to="ROUTE_PATHS.PAST"
-                  class="icon-btn icon-btn--arrow min-w-60"
+                  class="min-w-60"
                 >
-                  <span> 查看更多 </span>
-                </NuxtLink>
+                  查看更多
+                </AtomButton>
               </div>
             </div>
           </div>
         </div>
       </section>
-      <SectionDecoration />
+      <AtomSectionDecoration />
     </template>
     <!-- 第6幀 - 贊助單位 -->
     <template v-if="tm('sponsor').available">
       <div class="lg:flex justify-end hidden">
-        <SectionNav active-nav-name="sponsor" :focus-y="40" />
+        <MoleculeSectionNav active-nav-name="sponsor" :focus-y="40" />
       </div>
       <section id="sponsor" class="2xl:p-0 p-5">
         <div class="border border-white relative">
@@ -993,7 +963,7 @@ const showPopup = (activeNews?: News) => {
         </div>
       </section>
     </template>
-    <NewsDialog
+    <OrganismNewsDialog
       :is-open="activeDialog === 'news'"
       :active-news="activeNews"
       @close="

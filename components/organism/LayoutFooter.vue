@@ -35,7 +35,7 @@ const contactBtns = computed(() => {
             </div>
           </div>
           <div class="lg:col-span-3 p-4 flex flex-col border border-r-white">
-            <LayoutNavbar type="footer" nav-class="lg:flex mb-6 lg:mb-0 text-white" />
+            <OrganismLayoutNavbar type="footer" nav-class="lg:flex mb-6 lg:mb-0 text-white" />
             <div class="mt-auto">
               <p>{{ tm('contact.address_ntpc') }}</p>
               <p>{{ tm('contact.address_tpe') }}</p>
