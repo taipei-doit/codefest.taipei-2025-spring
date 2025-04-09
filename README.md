@@ -36,7 +36,7 @@ npm run generate
 
 ### 專案部署
 
-專案使用 CI/CD 自動部署，只需將程式碼推送至 main 分支，即可觸發自動部署流程。
+專案使用 CI/CD 自動部署，請發起 Pull Request，待審核通過並成功合併至 main 分支後，即會自動觸發部署流程。
 
 ## 開發規範與工具
 
@@ -52,8 +52,6 @@ npm run generate
 npm run lint:js     # JavaScript / TypeScript / Vue 檢查
 npm run lint:style  # SCSS / Style 檢查
 ```
-
-## 修改檔案方式
 
 ## 專案結構
 
