@@ -48,7 +48,7 @@ const contactBtns = computed(() => {
             <p class="mb-3">Connect with us......</p>
             <div class="grid lg:grid-flow-row grid-flow-col lg:grid-cols-1 grid-rows-2">
               <div v-for="(btn, index) in contactBtns" :key="index" class="flex items-center mb-3">
-                <img src="@/assets/images/icons/arrow_icon.svg" class="mr-2" alt="" />
+                <img src="@/assets/images/icons/white-arrow-down-right.svg" class="mr-2" alt="" />
                 <a
                   v-kb-focus="{
                     id: `footer-6-${index + 203}`,
