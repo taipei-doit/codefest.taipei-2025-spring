@@ -8,7 +8,7 @@ export default defineNuxtConfig({
     baseURL: '/2025-spring/',
     head: {
       title: '2025雙北程式設計節',
-      link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+      link: [{ rel: 'icon', type: 'image/x-icon', href: 'favicon.ico' }],
       script: [
         {
           id: 'gtm-script',
