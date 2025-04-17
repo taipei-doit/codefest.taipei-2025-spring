@@ -12,9 +12,9 @@ export default defineNuxtConfig({
         { name: 'robots', content: 'index,follow' },
         { 'http-equiv': 'cache-control', content: 'no-cache' },
         { 'http-equiv': 'expires', content: '0' },
-        { 'http-equiv': 'pragma', content: 'no-cache' }
+        { 'http-equiv': 'pragma', content: 'no-cache' },
       ],
-      link: [{ rel: 'icon', type: 'image/x-icon', href: 'favicon.ico' }],
+      link: [{ rel: 'icon', type: 'image/x-icon', href: '/2025-spring/favicon.ico' }],
       script: [
         {
           id: 'gtm-script',
