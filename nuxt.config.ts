@@ -8,6 +8,12 @@ export default defineNuxtConfig({
     baseURL: '/2025-spring/',
     head: {
       title: '2025雙北程式設計節',
+      meta: [
+        { name: 'robots', content: 'index,follow' },
+        { 'http-equiv': 'cache-control', content: 'no-cache' },
+        { 'http-equiv': 'expires', content: '0' },
+        { 'http-equiv': 'pragma', content: 'no-cache' }
+      ],
       link: [{ rel: 'icon', type: 'image/x-icon', href: 'favicon.ico' }],
       script: [
         {
