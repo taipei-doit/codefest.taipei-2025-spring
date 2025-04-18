@@ -13,26 +13,12 @@ export default defineNuxtConfig({
         { 'http-equiv': 'cache-control', content: 'no-cache' },
         { 'http-equiv': 'expires', content: '0' },
         { 'http-equiv': 'pragma', content: 'no-cache' },
-        { 'http-equiv': 'X-Frame-Options', content: 'SAMEORIGIN' },
         { 'http-equiv': 'X-Content-Type-Options', content: 'nosniff' },
         { 'http-equiv': 'Referrer-Policy', content: 'strict-origin-when-cross-origin' },
         {
           'http-equiv': 'Content-Security-Policy',
-          content: `
-            default-src 'self';
-            script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://*.surveycake.com;
-            style-src 'self' 'unsafe-inline';
-            img-src 'self' data: https:;
-            connect-src 'self' https://www.google-analytics.com https://*.surveycake.com;
-            frame-src 'self' https://*.surveycake.com;
-            object-src 'none';
-            base-uri 'self';
-            form-action 'self' https://*.surveycake.com;
-            frame-ancestors 'self';
-            upgrade-insecure-requests;
-          `
-            .replace(/\s+/g, '')
-            .trim(),
+          content:
+            "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://*.surveycake.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://www.google-analytics.com https://*.surveycake.com; frame-src 'self' https://*.surveycake.com https://www.googletagmanager.com; object-src 'none'; base-uri 'self'; form-action 'self' https://*.surveycake.com; upgrade-insecure-requests;",
         },
       ],
       link: [{ rel: 'icon', type: 'image/x-icon', href: '/2025-spring/favicon.ico' }],
