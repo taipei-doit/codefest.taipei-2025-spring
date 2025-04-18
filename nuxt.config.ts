@@ -15,16 +15,16 @@ export default defineNuxtConfig({
         { 'http-equiv': 'pragma', content: 'no-cache' },
         { 'http-equiv': 'X-Content-Type-Options', content: 'nosniff' },
         { 'http-equiv': 'Referrer-Policy', content: 'strict-origin-when-cross-origin' },
+        // {
+        //   'http-equiv': 'Content-Security-Policy',
+        //   content:
+        //     "default-src 'self'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://www.surveycake.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://www.google-analytics.com https://www.surveycake.com; frame-src 'self' https://www.surveycake.com https://www.googletagmanager.com; object-src 'none'; base-uri 'self'; form-action 'self' https://www.surveycake.com; upgrade-insecure-requests;",
+        // },
       ],
       link: [{ rel: 'icon', type: 'image/x-icon', href: '/2025-spring/favicon.ico' }],
       script: [
         {
-          id: 'gtm-script',
-          innerHTML: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-      })(window,document,'script','dataLayer','${process.env.NUXT_PUBLIC_GTM_ID}');`,
+          src: '/js/gtm.js',
           type: 'text/javascript',
         },
         {
@@ -33,13 +33,8 @@ export default defineNuxtConfig({
           crossorigin: 'anonymous',
         },
         {
+          src: '/js/ga.js',
           type: 'text/javascript',
-          innerHTML: `
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', '${process.env.NUXT_PUBLIC_GA_ID}');
-          `,
         },
       ],
     },
