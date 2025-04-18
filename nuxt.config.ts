@@ -15,6 +15,7 @@ export default defineNuxtConfig({
         { 'http-equiv': 'pragma', content: 'no-cache' },
         { 'http-equiv': 'X-Frame-Options', content: 'SAMEORIGIN' },
         { 'http-equiv': 'X-Content-Type-Options', content: 'nosniff' },
+        { 'http-equiv': 'Referrer-Policy', content: 'strict-origin-when-cross-origin' },
         {
           'http-equiv': 'Content-Security-Policy',
           content: `
@@ -30,7 +31,7 @@ export default defineNuxtConfig({
             frame-ancestors 'self';
             upgrade-insecure-requests;
           `
-            .replace(/\s+/g, ' ')
+            .replace(/\s+/g, '')
             .trim(),
         },
       ],
@@ -60,9 +61,6 @@ export default defineNuxtConfig({
           `,
         },
       ],
-      __dangerouslyDisableSanitizersByTagID: {
-        'gtm-script': ['innerHTML'],
-      },
     },
   },
   runtimeConfig: {
