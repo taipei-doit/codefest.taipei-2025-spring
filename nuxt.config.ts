@@ -15,12 +15,6 @@ export default defineNuxtConfig({
         { 'http-equiv': 'pragma', content: 'no-cache' },
         { 'http-equiv': 'X-Content-Type-Options', content: 'nosniff' },
         { 'http-equiv': 'Referrer-Policy', content: 'strict-origin-when-cross-origin' },
-        { 'http-equiv': 'X-Frame-Options', content: 'SAMEORIGIN' },
-        {
-          'http-equiv': 'Content-Security-Policy',
-          content:
-            "default-src 'self'; script-src 'self' 'nonce-${nonce}' https://www.googletagmanager.com https://www.google-analytics.com https://www.surveycake.com; style-src 'self' 'nonce-${nonce}'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://www.google-analytics.com https://www.surveycake.com; frame-src 'self' https://www.surveycake.com https://www.googletagmanager.com; frame-ancestors 'self'; object-src 'none'; base-uri 'self'; form-action 'self' https://www.surveycake.com; upgrade-insecure-requests;",
-        },
       ],
       link: [{ rel: 'icon', type: 'image/x-icon', href: '/2025-spring/favicon.ico' }],
       script: [
@@ -37,7 +31,6 @@ export default defineNuxtConfig({
           src: `https://www.googletagmanager.com/gtag/js?id=${process.env.NUXT_PUBLIC_GA_ID}`,
           async: true,
           crossorigin: 'anonymous',
-          integrity: 'sha384-${process.env.NUXT_PUBLIC_GA_INTEGRITY}',
         },
         {
           type: 'text/javascript',
