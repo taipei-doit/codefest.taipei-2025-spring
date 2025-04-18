@@ -24,7 +24,7 @@ export default defineNuxtConfig({
       link: [{ rel: 'icon', type: 'image/x-icon', href: '/2025-spring/favicon.ico' }],
       script: [
         {
-          src: '/js/gtm.js',
+          src: '/2025-spring/js/gtm.js',
           type: 'text/javascript',
         },
         {
@@ -33,7 +33,7 @@ export default defineNuxtConfig({
           crossorigin: 'anonymous',
         },
         {
-          src: '/js/ga.js',
+          src: '/2025-spring/js/ga.js',
           type: 'text/javascript',
         },
       ],
