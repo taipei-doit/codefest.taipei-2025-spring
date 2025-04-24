@@ -3,7 +3,7 @@ name: Deploy Project to Staging
 on:
   push:
     branches:
-      - main
+      - demo
 
 jobs:
   build_and_deploy:
