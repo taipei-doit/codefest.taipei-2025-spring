@@ -40,7 +40,9 @@ export default {
         500: '#55FE55',
       },
       gray: {
+        200: '#B2B2B2',
         500: '#A8A8A8',
+        700: '#7D7D7D',
       },
       danger: '#AA0000',
       white: '#FFFFFF',

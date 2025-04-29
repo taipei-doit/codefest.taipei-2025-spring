@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ROUTE_PATHS } from '~/constants/routes';
 import { useDialogStore } from '~/stores/dialogStore';
+const { tm } = useI18n();
 
 const props = defineProps<{
   isAboveFooter: boolean;
@@ -12,6 +13,11 @@ const route = useRoute();
 
 // 只有在競賽規則頁時顯示報名按鈕
 const showApplyBtn = computed(() => route.path.startsWith(ROUTE_PATHS.RULES));
+
+const isRegistrationClosed = computed(() => {
+  const deadline = new Date(tm('schedule.count_down'));
+  return new Date() > deadline;
+});
 </script>
 
 <template>
@@ -41,11 +47,13 @@ const showApplyBtn = computed(() => route.path.startsWith(ROUTE_PATHS.RULES));
         x: 1,
         y: 60,
       }"
+      :icon-type="isRegistrationClosed ? null : 'arrow'"
+      :disabled="isRegistrationClosed"
       class="w-auto min-w-60 mx-auto btn-lg-span"
       @click="dialogStore.openDialog('apply')"
       @keydown.enter.prevent="dialogStore.openDialog('apply')"
     >
-      立即報名
+      {{ isRegistrationClosed ? '報名截止' : '立即報名' }}
     </AtomButton>
   </div>
 </template>

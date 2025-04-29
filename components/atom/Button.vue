@@ -3,7 +3,7 @@ import { NuxtLink } from '#components';
 
 const props = defineProps<{
   // 按鈕 icon
-  iconType?: 'arrow' | 'download'; // 預設箭頭
+  iconType?: 'arrow' | 'download' | null; // 預設箭頭
   // NuxtLink
   to?: string | Record<string, any>;
   // button
@@ -12,6 +12,8 @@ const props = defineProps<{
   href?: string;
   target?: string;
   rel?: string;
+  // 是否禁用
+  disabled?: boolean;
 }>();
 
 const tag = computed(() => {
@@ -30,9 +32,10 @@ const tag = computed(() => {
       target: target || (href ? '_blank' : undefined),
       rel: rel || (href ? 'noopener noreferrer' : undefined),
       type: !to && !href ? type || 'button' : undefined,
+      disabled: disabled,
     }"
     class="icon-btn font-fusion-pixel"
-    :class="[iconType ? `icon-btn--${iconType}` : 'icon-btn--arrow']"
+    :class="[iconType ? `icon-btn--${iconType}` : '']"
   >
     <span>
       <slot />
@@ -64,6 +67,13 @@ const tag = computed(() => {
   span {
     @apply flex items-center justify-center h-[63px];
     @apply m-1 py-2 bg-white text-primary-500;
+  }
+
+  &:disabled {
+    @apply cursor-not-allowed border-gray-200;
+    span {
+      @apply bg-gray-200 text-gray-700;
+    }
   }
 
   @media (max-width: 1024px) {

@@ -119,6 +119,7 @@ const videoList = computed<PastVideo[]>(() => {
                 >
                   <AtomButton
                     :href="t('more_winning_team_photos_url')"
+                    :icon-type="'arrow'"
                     class="w-1/2 lg:w-auto lg:min-w-60"
                   >
                     更多照片回顧
@@ -208,6 +209,7 @@ const videoList = computed<PastVideo[]>(() => {
                 >
                   <AtomButton
                     :href="t('past.videos.more_videos_url')"
+                    :icon-type="'arrow'"
                     class="w-1/2 lg:w-auto lg:min-w-60"
                   >
                     更多影片回顧

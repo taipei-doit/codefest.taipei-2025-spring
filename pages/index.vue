@@ -91,6 +91,11 @@ const tabToContentDistance = ref(0);
 // 存放高度
 const tabHeight = ref(0);
 
+const isRegistrationClosed = computed(() => {
+  const deadline = new Date(tm('schedule.count_down'));
+  return new Date() > deadline;
+});
+
 onMounted(() => {
   calculateBannerHeight();
   calculateDistance();
@@ -205,10 +210,13 @@ const showPopup = (activeNews?: News) => {
               <AtomButton
                 v-kb-focus="{ id: 'index-button-1-2', x: 1, y: 2 }"
                 class="min-w-60"
+                :icon-type="isRegistrationClosed ? null : 'arrow'"
+                :disabled="isRegistrationClosed"
                 @click="dialogStore.openDialog('apply')"
                 @keydown.enter.prevent="dialogStore.openDialog('apply')"
-                >立即報名</AtomButton
               >
+                {{ isRegistrationClosed ? '報名截止' : '立即報名' }}
+              </AtomButton>
             </div>
           </div>
         </div>
@@ -320,6 +328,7 @@ const showPopup = (activeNews?: News) => {
                     y: 5,
                   }"
                   :to="ROUTE_PATHS.RULES"
+                  :icon-type="'arrow'"
                   class="w-1/2 lg:w-auto lg:min-w-60 text-center block"
                 >
                   瞭解詳情
@@ -330,11 +339,13 @@ const showPopup = (activeNews?: News) => {
                     x: 2,
                     y: 5,
                   }"
+                  :icon-type="isRegistrationClosed ? null : 'arrow'"
+                  :disabled="isRegistrationClosed"
                   class="w-1/2 lg:w-auto lg:min-w-60"
                   @click="dialogStore.openDialog('apply')"
                   @keydown.enter.prevent="dialogStore.openDialog('apply')"
                 >
-                  立即報名
+                  {{ isRegistrationClosed ? '報名截止' : '立即報名' }}
                 </AtomButton>
               </div>
             </div>
@@ -897,6 +908,7 @@ const showPopup = (activeNews?: News) => {
                     y: 33,
                   }"
                   :to="ROUTE_PATHS.PAST"
+                  :icon-type="'arrow'"
                   class="min-w-60"
                 >
                   查看更多
