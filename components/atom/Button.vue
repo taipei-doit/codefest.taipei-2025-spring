@@ -5,7 +5,7 @@ const props = defineProps<{
   // 按鈕 icon
   iconType?: 'arrow' | 'download' | null; // 預設箭頭
   // NuxtLink
-  to?: string | Record<string, any>;
+  to?: string | Record<string, string | number | boolean>;
   // button
   type?: 'button' | 'submit' | 'reset';
   // a
