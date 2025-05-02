@@ -2,6 +2,10 @@
 
 > 這是一個基於 **Nuxt 3.16.0** 的前端專案，使用 Vue 3、Pinia、Tailwind CSS，並支援 i18n。
 
+## License
+
+This project is licensed under the GNU General Public License v3.0 - see the [LICENSE](./LICENSE) file for details.
+
 ## 系統需求
 
 請確保你的環境符合以下要求：
