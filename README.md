@@ -109,7 +109,8 @@ components 元件管理採用 [Atomic Design](https://bradfrost.com/blog/post/at
 | | prospectus | 競賽規則概要 | 參考 [Prospectus](#Prospectus) |
 | schedule | available | 控制重要時程區塊是否顯示 | true |
 | | section_title | 時程區塊標題 | "重要時程" |
-| | count_down | 倒數計時目標日期 | "2025-04-30 23:59:59" |
+| | apppy_count_down | 報名截止倒數計時目標日期 | "2025-04-30 23:59:59" |
+| | count_down | 競賽倒數計時目標日期 | "2025-05-31 10:00:00" |
 | | list | 時程列表 | 參考 [ScheduleList](#ScheduleList) |
 | news | available | 控制最新消息區塊是否顯示 | true |
 | | section_title | 最新消息區塊標題 | "最新消息" |

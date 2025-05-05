@@ -90,7 +90,8 @@
     "schedule": {
         "available": true,
         "section_title": "重要時程",
-        "count_down": "2025-04-30 23:59:59",
+        "apply_count_down": "2025-04-30 23:59:59",
+        "count_down": "2025-05-31 10:00:00",
         "list": [
             {
                 "id": "online",

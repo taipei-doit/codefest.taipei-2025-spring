@@ -15,7 +15,7 @@ const route = useRoute();
 const showApplyBtn = computed(() => route.path.startsWith(ROUTE_PATHS.RULES));
 
 const isRegistrationClosed = computed(() => {
-  const deadline = new Date(tm('schedule.count_down'));
+  const deadline = new Date(tm('schedule.apply_count_down'));
   return new Date() > deadline;
 });
 </script>

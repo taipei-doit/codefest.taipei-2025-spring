@@ -68,7 +68,7 @@ onMounted(() => {
           <div
             class="lg:flex block justify-center items-center font-fusion-pixel text-white lg:p-10 px-2 py-6 text-center border border-b-white"
           >
-            <p class="mb-4 lg:mb-0">報名截止倒數</p>
+            <p class="mb-4 lg:mb-0">競賽倒數</p>
             <MoleculeCountDown :target-date="new Date(tm('schedule.count_down'))" />
           </div>
           <div class="lg:flex block">
