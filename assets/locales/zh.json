@@ -279,6 +279,14 @@
         "section_title": "最新消息",
         "list": [
             {
+                "id": 6,
+                "date": "2025.05.08",
+                "title": "入圍工作坊名單出爐了！",
+                "image_url": "",
+                "content": "<img src='images/news/news-6-1.png' alt='名單1'><br><br><img src='images/news/news-6-2.png' alt='名單2'><br><br><img src='images/news/news-6-3.png' alt='名單3'>",
+                "available": true
+            },
+            {
                 "id": 5,
                 "date": "2025.05.08",
                 "title": "🔔【最新消息】AI 使用規範正式說明",
