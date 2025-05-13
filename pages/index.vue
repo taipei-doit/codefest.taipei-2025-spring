@@ -576,9 +576,12 @@ const showPopup = (activeNews?: News) => {
                     </template>
                   </div>
                   <div class="p-4 w-full overflow-auto">
-                    <div v-show="activeSchedule.id === 'workshop'">敬請期待！</div>
                     <table
-                      v-show="activeSchedule.id === 'online' || activeSchedule.id === 'competition'"
+                      v-show="
+                        activeSchedule.id === 'online' ||
+                        activeSchedule.id === 'workshop' ||
+                        activeSchedule.id === 'competition'
+                      "
                       class="w-full min-w-max border-collapse text-white"
                     >
                       <thead>
@@ -653,9 +656,10 @@ const showPopup = (activeNews?: News) => {
                       </template>
                     </div>
                     <div class="p-4 w-full overflow-auto">
-                      <div v-show="tab.id === 'workshop'">敬請期待！</div>
                       <table
-                        v-show="tab.id === 'online' || tab.id === 'competition'"
+                        v-show="
+                          tab.id === 'online' || tab.id === 'workshop' || tab.id === 'competition'
+                        "
                         class="w-full min-w-max border-collapse text-white"
                       >
                         <thead>
