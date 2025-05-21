@@ -33,7 +33,7 @@ const scheduleList = computed(() => {
   return Array.isArray(data) ? data : Object.values(data); // 轉換 Object 為 Array
 });
 /** 選中的重要時程 */
-const activeSchedule = ref(scheduleList.value[0]);
+const activeSchedule = ref(scheduleList.value[2]);
 
 /** 最新消息列表 */
 const newsList = computed<News[]>(() => {
@@ -199,9 +199,7 @@ const showPopup = (activeNews?: News) => {
               大黑克松
             </p> -->
             <p class="lg:flex items-center font-fusion-pixel">
-              <span class="lg:mr-4 lg:text-base text-sm lg:inline block lg:mb-0 mb-2"
-                >報名期間</span
-              >
+              <span class="lg:mr-4 lg:text-base text-sm lg:inline block lg:mb-0 mb-2">競賽日</span>
               <span class="lg:text-4xl text-2xl lg:inline block">{{
                 tm('hero_banner.apply_date')
               }}</span>
