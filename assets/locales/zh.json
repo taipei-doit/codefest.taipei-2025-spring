@@ -1,7 +1,16 @@
 {
     "hero_banner": {
         "section_title": "2025雙北程式設計節",
-        "apply_date": "5/31 Sat - 6/1 Sun"
+        "content": [
+            {
+                "label": "競賽日",
+                "value": "5/31 Sat - 6/1 Sun"
+            },
+            {
+                "label": "競賽地點",
+                "value": "新北市政府大樓"
+            }
+        ]
     },
     "rules": {
         "available": true,
@@ -196,7 +205,7 @@
             {
                 "id": "competition",
                 "schedule_name": "競賽日 05.31 - 06.01",
-                "schedule_sub_name": "2025年05月31日 星期六 ~ 2025年06月01日 星期日",
+                "schedule_sub_name": "2025年05月31日 星期六 ~ 2025年06月01日 星期日\n新北市政府大樓（新北市板橋區中山路一段 161 號）",
                 "button": {
                     "text": "",
                     "link": "",
@@ -217,7 +226,7 @@
                     {
                         "col1": "05.31(六)",
                         "col2": "9:00~9:30",
-                        "col3": "報到"
+                        "col3": "報到(詳Email)"
                     },
                     {
                         "col1": "",

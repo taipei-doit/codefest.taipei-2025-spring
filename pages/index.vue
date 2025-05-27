@@ -21,6 +21,12 @@ const runtimeConfig = useRuntimeConfig();
 const headerHeight = ref(0);
 const bannerHeight = ref('100vh');
 
+/** banner content 列表 */
+const bannerContentList = computed<{ label: string; value: string }[]>(() => {
+  const data = tm('hero_banner.content');
+  return Array.isArray(data) ? data : Object.values(data); // 轉換 Object 為 Array
+});
+
 /** 評審列表 */
 const judgeList = computed<JudgeList[]>(() => {
   const data = tm('rules.judges');
@@ -198,11 +204,15 @@ const showPopup = (activeNews?: News) => {
               <br />
               大黑克松
             </p> -->
-            <p class="lg:flex items-center font-fusion-pixel">
-              <span class="lg:mr-4 lg:text-base text-sm lg:inline block lg:mb-0 mb-2">競賽日</span>
-              <span class="lg:text-4xl text-2xl lg:inline block">{{
-                tm('hero_banner.apply_date')
+            <p
+              v-for="item in bannerContentList"
+              :key="item.label"
+              class="lg:flex items-center font-fusion-pixel"
+            >
+              <span class="lg:mr-4 lg:text-base text-sm lg:inline block lg:mb-0 mb-2">{{
+                item.label
               }}</span>
+              <span class="lg:text-4xl text-2xl lg:inline block">{{ item.value }}</span>
             </p>
             <div class="flex justify-center">
               <AtomButton
@@ -540,7 +550,9 @@ const showPopup = (activeNews?: News) => {
                   <div
                     class="flex justify-between items-center p-4 border border-b-white min-h-[83px]"
                   >
-                    <p class="text-xl">{{ activeSchedule.schedule_sub_name }}</p>
+                    <p class="text-xl whitespace-pre-wrap">
+                      {{ activeSchedule.schedule_sub_name }}
+                    </p>
 
                     <!-- 按鈕（根據類型顯示）-->
                     <template v-if="activeSchedule.button?.text">
@@ -632,7 +644,7 @@ const showPopup = (activeNews?: News) => {
                   <!-- 右側內容區 -->
                   <div class="flex-1 text-white">
                     <div class="flex flex-col text-center p-4 border border-b-white">
-                      <p class="text-xl mb-2">
+                      <p class="text-xl mb-2 whitespace-pre-wrap">
                         {{ tab.schedule_sub_name }}
                       </p>
                       <!-- 按鈕（根據類型顯示）-->

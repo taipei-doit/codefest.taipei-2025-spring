@@ -98,7 +98,7 @@ components 元件管理採用 [Atomic Design](https://bradfrost.com/blog/post/at
 | 參數 | 子參數 | 說明 | 範例 |
 |------|--------|------|------|
 | hero_banner | section_title | 首頁大標題文字 | "2025雙北程式設計節" |
-| | apply_date | 報名期間文字 | "3/31 Mon - 4/30 Wed" |
+| | content | 競賽資訊列表 | [{"label": "競賽日", "value": "5/31 Sat - 6/1 Sun"}, {"label": "競賽地點", "value": "新北市政府大樓"}] |
 | rules | available | 控制競賽規則區塊是否顯示 | true |
 | | section_title | 競賽規則區塊標題 | "競賽規則" |
 | | description | 競賽規則說明文字或標語 | "The power of ..." |
