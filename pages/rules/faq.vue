@@ -1,3 +1,4 @@
+ts
 <script setup lang="ts">
 import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/vue';
 const { tm } = useI18n();
@@ -5,7 +6,7 @@ const { tm } = useI18n();
 /** FAQ */
 const faqList = computed(() => {
   const data = tm('faq.list');
-  return Array.isArray(data) ? data : Object.values(data); // 轉換 Object 為 Array
+  return Array.isArray(data) ? data : (Object.values(data) as any[]); // 轉換 Object 為 Array
 });
 
 const activeTab = ref(0);
