@@ -1,8 +1,16 @@
+ts
 <script setup lang="ts">
+import { ComputedRef } from 'vue';
+
 const { tm } = useI18n();
 
 /** 聯絡資訊 */
-const contactBtns = computed(() => {
+interface ContactButton {
+  name: string;
+  link: string;
+}
+
+const contactBtns: ComputedRef<ContactButton[]> = computed(() => {
   const data = tm('contact.buttons');
   return Array.isArray(data) ? data : Object.values(data); // 轉換 Object 為 Array
 });
