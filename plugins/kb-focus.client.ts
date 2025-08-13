@@ -1,3 +1,4 @@
+ts
 import { defineNuxtPlugin } from '#app';
 
 interface KbFocusData {
@@ -35,8 +36,12 @@ function focusElement(id: string | null) {
   currentId = id;
 }
 
-// moveFocus：Index 頁邏輯
-function moveFocusIndex(dir: 'up' | 'down' | 'left' | 'right') {
+// 通用移動焦點邏輯
+function moveFocusCommon(
+  dir: 'up' | 'down' | 'left' | 'right',
+  sortFn: (a: { id: string; entry: { el: HTMLElement; id: string; x: number; y: number }; dx: number; dy: number }, b: { id: string; entry: { el: HTMLElement; id: string; x: number; y: number }; dx: number; dy: number }) => number,
+  filterFn?: (dx: number, dy: number, entry: { el: HTMLElement; id: string; x: number; y: number }) => boolean,
+) {
   if (!currentId && !hasFocused && registry.size > 0) {
     const firstEntry = registry.values().next().value;
     if (firstEntry) {
@@ -58,57 +63,10 @@ function moveFocusIndex(dir: 'up' | 'down' | 'left' | 'right') {
       return { id, entry, dx, dy };
     })
     .filter(({ dx, dy, entry }) => {
-      switch (dir) {
-        case 'up':
-          return dy < 0;
-        case 'down':
-          return dy > 0;
-        case 'left':
-          return dx < 0 && entry.y === current.y;
-        case 'right':
-          return dx > 0 && entry.y === current.y;
+      if (filterFn) {
+        return filterFn(dx, dy, entry);
       }
-    });
 
-  if (candidates.length === 0) return;
-
-  // 上下優先 Y 軸距離，再 X；左右只比 X
-  if (dir === 'up' || dir === 'down') {
-    candidates.sort((a, b) => {
-      const dyDiff = Math.abs(a.entry.y - current.y) - Math.abs(b.entry.y - current.y);
-      if (dyDiff !== 0) return dyDiff;
-      return Math.abs(a.entry.x - current.x) - Math.abs(b.entry.x - current.x);
-    });
-  } else {
-    candidates.sort((a, b) => Math.abs(a.entry.x - current.x) - Math.abs(b.entry.x - current.x));
-  }
-
-  focusElement(candidates[0]?.id);
-}
-
-// moveFocus：Rules 頁邏輯（優先同軸）
-function moveFocusRules(dir: 'up' | 'down' | 'left' | 'right') {
-  if (!currentId && !hasFocused && registry.size > 0) {
-    const firstEntry = registry.values().next().value;
-    if (firstEntry) {
-      focusElement(firstEntry.id);
-      hasFocused = true;
-      return;
-    }
-  }
-
-  if (!currentId) return;
-  const current = registry.get(currentId);
-  if (!current) return;
-
-  const candidates = [...registry.entries()]
-    .filter(([id]) => id !== currentId)
-    .map(([id, entry]) => {
-      const dx = entry.x - current.x;
-      const dy = entry.y - current.y;
-      return { id, entry, dx, dy };
-    })
-    .filter(({ dx, dy }) => {
       switch (dir) {
         case 'up':
           return dy < 0;
@@ -118,32 +76,66 @@ function moveFocusRules(dir: 'up' | 'down' | 'left' | 'right') {
           return dx < 0;
         case 'right':
           return dx > 0;
+        default:
+          return false;
       }
     });
 
   if (candidates.length === 0) return;
 
-  candidates.sort((a, b) => {
-    if (dir === 'up' || dir === 'down') {
-      const aAligned = a.dx === 0 ? 0 : 1;
-      const bAligned = b.dx === 0 ? 0 : 1;
-      if (aAligned !== bAligned) return aAligned - bAligned;
-      const aY = Math.abs(a.dy);
-      const bY = Math.abs(b.dy);
-      if (aY !== bY) return aY - bY;
-      return Math.abs(a.dx) - Math.abs(b.dx);
-    } else {
-      const aAligned = a.dy === 0 ? 0 : 1;
-      const bAligned = b.dy === 0 ? 0 : 1;
-      if (aAligned !== bAligned) return aAligned - bAligned;
-      const aX = Math.abs(a.dx);
-      const bX = Math.abs(b.dx);
-      if (aX !== bX) return aX - bX;
-      return Math.abs(a.dy) - Math.abs(b.dy);
-    }
-  });
+  candidates.sort(sortFn);
 
   focusElement(candidates[0]?.id);
+}
+
+// moveFocus：Index 頁邏輯
+function moveFocusIndex(dir: 'up' | 'down' | 'left' | 'right') {
+  moveFocusCommon(
+    dir,
+    (a, b) => {
+      if (dir === 'up' || dir === 'down') {
+        const dyDiff = Math.abs(a.entry.y - current!.y) - Math.abs(b.entry.y - current!.y);
+        if (dyDiff !== 0) return dyDiff;
+        return Math.abs(a.entry.x - current!.x) - Math.abs(b.entry.x - current!.x);
+      } else {
+        return Math.abs(a.entry.x - current!.x) - Math.abs(b.entry.x - current!.x);
+      }
+    },
+    (dx, dy, entry) => {
+      if (dir === 'left') {
+        return dx < 0 && entry.y === registry.get(currentId)!.y;
+      } else if (dir === 'right') {
+        return dx > 0 && entry.y === registry.get(currentId)!.y;
+      }
+      return true;
+    },
+  );
+}
+
+// moveFocus：Rules 頁邏輯（優先同軸）
+function moveFocusRules(dir: 'up' | 'down' | 'left' | 'right') {
+  moveFocusCommon(
+    dir,
+    (a, b) => {
+      if (dir === 'up' || dir === 'down') {
+        const aAligned = a.dx === 0 ? 0 : 1;
+        const bAligned = b.dx === 0 ? 0 : 1;
+        if (aAligned !== bAligned) return aAligned - bAligned;
+        const aY = Math.abs(a.dy);
+        const bY = Math.abs(b.dy);
+        if (aY !== bY) return aY - bY;
+        return Math.abs(a.dx) - Math.abs(b.dx);
+      } else {
+        const aAligned = a.dy === 0 ? 0 : 1;
+        const bAligned = b.dy === 0 ? 0 : 1;
+        if (aAligned !== bAligned) return aAligned - bAligned;
+        const aX = Math.abs(a.dx);
+        const bX = Math.abs(b.dx);
+        if (aX !== bX) return aX - bX;
+        return Math.abs(a.dy) - Math.abs(b.dy);
+      }
+    },
+  );
 }
 
 // 初始預設 moveFocus
