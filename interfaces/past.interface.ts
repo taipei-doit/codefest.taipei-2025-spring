@@ -1,3 +1,4 @@
+typescript
 /**
  * 獲獎團隊
  */
@@ -17,7 +18,7 @@ export interface PastWinningTeam {
     content: string;
   }[];
   /** 多圖連結 */
-  image_list: string[];
+  imageUrls: string[];
 }
 
 /**
@@ -30,7 +31,7 @@ export interface PastPhoto {
   /** 回顧縮圖 */
   thumbnail: string;
   /** 多圖連結 */
-  image_list: string[];
+  imageUrls: string[];
   /** 更多照片連結 */
   more_photos_url: string;
 }
