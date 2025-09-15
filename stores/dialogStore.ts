@@ -1,13 +1,12 @@
+ts
 import { defineStore } from 'pinia';
-import { ref, watch } from 'vue';
+import { ref, computed } from 'vue';
 
 export const useDialogStore = defineStore('dialogStore', () => {
   const activeDialog = ref<null | 'apply' | 'news' | 'mobileMenu' | 'winningTeam' | 'photo'>(null);
 
   // 控制 body scroll
-  watch(activeDialog, val => {
-    document.body.style.overflow = val ? 'hidden' : '';
-  });
+  const isDialogOpen = computed(() => activeDialog.value !== null);
 
   const openDialog = (name: typeof activeDialog.value) => {
     activeDialog.value = name;
@@ -19,6 +18,7 @@ export const useDialogStore = defineStore('dialogStore', () => {
 
   return {
     activeDialog,
+    isDialogOpen,
     openDialog,
     closeDialog,
   };
