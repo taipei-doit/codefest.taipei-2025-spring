@@ -9,4 +9,4 @@ export const ROUTE_PATHS = {
   FAQ: '/faq',
   /** 參賽回顧 */
   PAST: '/past',
-};
+} as const;
