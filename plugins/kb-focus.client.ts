@@ -1,3 +1,4 @@
+dart
 import { defineNuxtPlugin } from '#app';
 
 interface KbFocusData {
@@ -35,15 +36,23 @@ function focusElement(id: string | null) {
   currentId = id;
 }
 
-// moveFocus：Index 頁邏輯
-function moveFocusIndex(dir: 'up' | 'down' | 'left' | 'right') {
-  if (!currentId && !hasFocused && registry.size > 0) {
+// 聚焦第一個元素
+function focusFirstElement() {
+  if (!hasFocused && registry.size > 0) {
     const firstEntry = registry.values().next().value;
     if (firstEntry) {
       focusElement(firstEntry.id);
       hasFocused = true;
-      return;
+      return true;
     }
+  }
+  return false;
+}
+
+// moveFocus：Index 頁邏輯
+function moveFocusIndex(dir: 'up' | 'down' | 'left' | 'right') {
+  if (!currentId && focusFirstElement()) {
+    return;
   }
 
   if (!currentId) return;
@@ -88,13 +97,8 @@ function moveFocusIndex(dir: 'up' | 'down' | 'left' | 'right') {
 
 // moveFocus：Rules 頁邏輯（優先同軸）
 function moveFocusRules(dir: 'up' | 'down' | 'left' | 'right') {
-  if (!currentId && !hasFocused && registry.size > 0) {
-    const firstEntry = registry.values().next().value;
-    if (firstEntry) {
-      focusElement(firstEntry.id);
-      hasFocused = true;
-      return;
-    }
+  if (!currentId && focusFirstElement()) {
+    return;
   }
 
   if (!currentId) return;
