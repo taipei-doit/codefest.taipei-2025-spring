@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { Dialog, DialogPanel, DialogTitle, DialogDescription } from '@headlessui/vue';
+import ConfirmDialog from '@/components/ConfirmDialog.vue'; // 假設 ConfirmDialog.vue 位於 components 資料夾中
+
 defineProps<{
   isOpen: boolean;
 }>();
@@ -14,9 +16,13 @@ const openConfirm = () => {
   showConfirm.value = true;
 };
 
-const confirmClose = () => {
+const handleConfirmCancel = () => {
   showConfirm.value = false;
-  emit('close');
+};
+
+const handleConfirmConfirm = () => {
+  showConfirm.value = false; // 關閉確認對話框
+  emit('close'); // 觸發主對話框的關閉事件
 };
 </script>
 
@@ -55,42 +61,19 @@ const confirmClose = () => {
             ></iframe>
           </div>
         </DialogDescription>
+
         <!-- ConfirmOverlay -->
-        <div
-          v-if="showConfirm"
-          class="fixed inset-0 z-50 flex items-center justify-center bg-black/85 px-4"
-        >
-          <div class="relative bg-white w-full max-w-sm p-6 shadow-xl">
-            <!-- 關閉按鈕 -->
-            <button class="absolute top-4 right-4 z-10" @click="showConfirm = false">
-              <img src="@/assets/images/icons/btn-close.svg" alt="關閉" />
-            </button>
-            <!-- 標題 -->
-            <p
-              class="text-primary-500 text-xl text-center font-fusion-pixel py-4 mb-4 custom-dashed dashed-black"
-            >
-              提示
-            </p>
-            <!-- 內容 -->
-            <p class="text-center text-base py-4">請確認是否已送出報名表單，資料將不會儲存。</p>
-            <!-- 按鈕 -->
-            <div class="flex justify-center gap-4 mt-6 font-fusion-pixel">
-              <button
-                class="px-4 py-2 border-2 border-primary-500 hover:bg-gray-400 text-primary-500"
-                @click="showConfirm = false"
-              >
-                取消
-              </button>
-              <button
-                class="px-4 py-2 bg-primary-500 hover:bg-primary-600 text-white"
-                @click="confirmClose"
-              >
-                確認
-              </button>
-            </div>
-          </div>
-        </div>
+        <ConfirmDialog
+          :is-open="showConfirm"
+          @cancel="handleConfirmCancel"
+          @confirm="handleConfirmConfirm"
+          title="提示"
+          message="請確認是否已送出報名表單，資料將不會儲存。"
+          cancel-button-text="取消"
+          confirm-button-text="確認"
+        />
       </DialogPanel>
     </div>
   </Dialog>
 </template>
+```
