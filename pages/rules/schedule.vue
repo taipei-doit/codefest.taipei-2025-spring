@@ -16,7 +16,7 @@ const scheduleList = computed(() => {
   <div>
     <Disclosure
       v-for="(tab, index) in scheduleList"
-      :key="index"
+      :key="tab.id" <!-- 將 :key="index" 改為 :key="tab.id" 以使用穩定且唯一的 ID -->
       v-slot="{ open }"
       :default-open="index === 2"
     >
