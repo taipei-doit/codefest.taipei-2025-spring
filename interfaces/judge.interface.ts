@@ -1,3 +1,7 @@
+```typescript
+/**
+ * 評審列表的分組資訊，例如：初審評審、複審評審等。
+ */
 export interface JudgeList {
   name: string;
   list: Judge[];
@@ -17,3 +21,4 @@ export interface Judge {
   /** 職稱 */
   position: string;
 }
+```
