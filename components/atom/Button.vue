@@ -21,19 +21,30 @@ const tag = computed(() => {
   if (props.to) return NuxtLink;
   return 'button';
 });
+
+const componentAttrs = computed(() => {
+  const attrs: Record<string, any> = {
+    disabled: props.disabled,
+  };
+
+  if (props.to) {
+    attrs.to = props.to;
+  } else if (props.href) {
+    attrs.href = props.href;
+    attrs.target = props.target || '_blank';
+    attrs.rel = props.rel || 'noopener noreferrer';
+  } else {
+    // If it's a button (neither to nor href is set)
+    attrs.type = props.type || 'button';
+  }
+  return attrs;
+});
 </script>
 
 <template>
   <component
     :is="tag"
-    v-bind="{
-      to,
-      href,
-      target: target || (href ? '_blank' : undefined),
-      rel: rel || (href ? 'noopener noreferrer' : undefined),
-      type: !to && !href ? type || 'button' : undefined,
-      disabled: disabled,
-    }"
+    v-bind="componentAttrs"
     class="icon-btn font-fusion-pixel"
     :class="[iconType ? `icon-btn--${iconType}` : '']"
   >
