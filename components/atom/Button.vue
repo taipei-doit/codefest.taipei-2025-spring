@@ -21,6 +21,20 @@ const tag = computed(() => {
   if (props.to) return NuxtLink;
   return 'button';
 });
+
+/**
+ * 根據 iconType 屬性決定要套用的 CSS class。
+ * - 如果 iconType 設為 null，則不顯示 icon。
+ * - 如果 iconType 未提供 (undefined)，則預設為 'arrow'。
+ * - 如果 iconType 為 'arrow' 或 'download'，則顯示對應 icon。
+ */
+const iconClass = computed(() => {
+  if (props.iconType === null) {
+    return ''; // Explicitly null means no icon
+  }
+  const type = props.iconType || 'arrow'; // Default to 'arrow' if undefined
+  return `icon-btn--${type}`;
+});
 </script>
 
 <template>
@@ -35,7 +49,7 @@ const tag = computed(() => {
       disabled: disabled,
     }"
     class="icon-btn font-fusion-pixel"
-    :class="[iconType ? `icon-btn--${iconType}` : '']"
+    :class="iconClass"
   >
     <span>
       <slot />
