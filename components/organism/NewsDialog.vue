@@ -2,12 +2,15 @@
 import { Dialog, DialogPanel, DialogTitle, DialogDescription } from '@headlessui/vue';
 import type { News } from '~/interfaces/news.interface';
 
-defineProps<{
+const props = defineProps<{
   isOpen: boolean;
   activeNews?: News | null;
 }>();
 
 const emit = defineEmits(['close']);
+
+const isLatestNews = computed(() => props.activeNews?.tag === 'news');
+const tagLabel = computed(() => isLatestNews.value ? '最新消息' : '媒體報導');
 </script>
 
 <template>
@@ -30,9 +33,9 @@ const emit = defineEmits(['close']);
             <span class="mr-2">{{ activeNews?.date }}</span>
             <div
               class="text-sm bg-secondary-500 text-white px-2 py-1 shadow-md"
-              :class="{ 'bg-primary-50 text-primary-500': activeNews?.tag === 'news' }"
+              :class="{ 'bg-primary-50 text-primary-500': isLatestNews }"
             >
-              <span>{{ activeNews?.tag === 'news' ? '最新消息' : '媒體報導' }}</span>
+              <span>{{ tagLabel }}</span>
             </div>
           </div>
           <DialogTitle class="text-primary-500 text-2xl pb-4 mb-4 custom-dashed dashed-black">
