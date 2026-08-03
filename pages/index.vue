@@ -50,7 +50,6 @@ const newsList = computed<News[]>(() => {
 const availableNews = computed(() => {
   let filtered = newsList.value.filter((item: News) => item.available);
 
-  // 關鍵字搜尋
   if (newsKeyword.value) {
     const keyword = newsKeyword.value.toLowerCase();
     filtered = filtered.filter(
@@ -59,27 +58,25 @@ const availableNews = computed(() => {
     );
   }
 
-  // 時間篩選
-  if (newsTimeFilter.value !== 'all') {
-    const now = new Date();
-    const filterDate = new Date();
-    switch (newsTimeFilter.value) {
-      case 'week':
-        filterDate.setDate(now.getDate() - 7);
-        break;
-      case 'month':
-        filterDate.setMonth(now.getMonth() - 1);
-        break;
-      case 'year':
-        filterDate.setFullYear(now.getFullYear() - 1);
-        break;
-    }
-    filtered = filtered.filter(
-      (item: News) => new Date(item.date).getTime() >= filterDate.getTime()
-    );
+  if (newsTimeFilter.value === 'all') {
+    filtered.sort((a: News, b: News) => {
+      const dateA = new Date(a.date).getTime();
+      const dateB = new Date(b.date).getTime();
+      return newsSort.value === 'newest' ? dateB - dateA : dateA - dateB;
+    });
+    return filtered;
   }
 
-  // 排序
+  const now = new Date();
+  const filterDate = new Date();
+  if (newsTimeFilter.value === 'week') filterDate.setDate(now.getDate() - 7);
+  if (newsTimeFilter.value === 'month') filterDate.setMonth(now.getMonth() - 1);
+  if (newsTimeFilter.value === 'year') filterDate.setFullYear(now.getFullYear() - 1);
+
+  filtered = filtered.filter(
+    (item: News) => new Date(item.date).getTime() >= filterDate.getTime()
+  );
+
   filtered.sort((a: News, b: News) => {
     const dateA = new Date(a.date).getTime();
     const dateB = new Date(b.date).getTime();
@@ -253,33 +250,6 @@ const newsKeyword = ref('');
               class="mx-auto"
               alt="城市儀表板大黑客松"
             />
-            <!-- <p class="text-7xl">
-              城市儀表板
-              <br />
-              大黑客松
-            </p> -->
-            <!-- <p
-              v-for="item in bannerContentList"
-              :key="item.label"
-              class="lg:flex items-center font-fusion-pixel"
-            >
-              <span class="lg:mr-4 lg:text-base text-sm lg:inline block lg:mb-0 mb-2">{{
-                item.label
-              }}</span>
-              <span class="lg:text-4xl text-2xl lg:inline block">{{ item.value }}</span>
-            </p> -->
-            <!-- <div class="flex justify-center">
-              <AtomButton
-                v-kb-focus="{ id: 'index-button-1-2', x: 1, y: 2 }"
-                class="min-w-60"
-                :icon-type="isRegistrationClosed ? null : 'arrow'"
-                :disabled="isRegistrationClosed"
-                @click="dialogStore.openDialog('apply')"
-                @keydown.enter.prevent="dialogStore.openDialog('apply')"
-              >
-                {{ isRegistrationClosed ? '報名截止' : '立即報名' }}
-              </AtomButton>
-            </div> -->
           </div>
         </div>
       </div>
@@ -333,10 +303,6 @@ const newsKeyword = ref('');
                             class="w-full h-full object-cover transition-all duration-300 group-hover:brightness-75"
                             alt=""
                           />
-                          <!-- 播放按鈕 -->
-                          <!-- <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                            <img src="@/assets/images/icons/play.png" width="40" alt="play_btn" />
-                          </div> -->
                         </div>
                         <div class="flex justify-between items-center mt-2 text-lg text-white">
                           <span>{{ group.ranking }} | {{ group.team_name }}</span>
@@ -373,14 +339,6 @@ const newsKeyword = ref('');
                         class="w-full h-full object-cover transition-all duration-300 group-hover:brightness-75"
                         alt=""
                       />
-                      <!-- 播放按鈕 -->
-                      <!-- <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                        <div
-                          class="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-[0_0_6px]"
-                        >
-                          <span class="text-black text-4xl font-bold">▶</span>
-                        </div>
-                      </div> -->
                     </div>
                     <div class="flex justify-between items-center mt-2 text-lg text-white">
                       <span>{{ group.ranking }} | {{ group.team_name }}</span>
@@ -564,20 +522,6 @@ const newsKeyword = ref('');
                 >
                   瞭解詳情
                 </AtomButton>
-                <!-- <AtomButton
-                  v-kb-focus="{
-                    id: `index-rules-button-2-5`,
-                    x: 2,
-                    y: 5,
-                  }"
-                  :icon-type="isRegistrationClosed ? null : 'arrow'"
-                  :disabled="isRegistrationClosed"
-                  class="w-1/2 lg:w-auto lg:min-w-60"
-                  @click="dialogStore.openDialog('apply')"
-                  @keydown.enter.prevent="dialogStore.openDialog('apply')"
-                >
-                  {{ isRegistrationClosed ? '報名截止' : '立即報名' }}
-                </AtomButton> -->
               </div>
             </div>
 
@@ -688,12 +632,6 @@ const newsKeyword = ref('');
             <p class="section-title font-fusion-pixel">
               {{ tm('schedule.section_title') }}
             </p>
-            <!-- <div
-              class="lg:flex block justify-center items-center font-fusion-pixel text-white lg:p-10 px-2 py-4 pt-6 text-center border border-b-white"
-            >
-              <p class="mb-4 lg:mb-0">競賽倒數</p>
-              <MoleculeCountDown :target-date="new Date(tm('schedule.count_down'))" />
-            </div> -->
             <!-- desktop -->
             <div class="hidden lg:p-10 px-2 py-4 lg:grid lg:grid-cols-7">
               <div class="col-span-2">
