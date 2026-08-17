@@ -7,10 +7,8 @@ const props = defineProps<{
 }>();
 
 const dialogStore = useDialogStore();
-
 const { tm } = useI18n();
 
-// 計算不同類型的 nav-item class
 const navItemClass = computed(() => {
   const typeMap: Record<string, string> = {
     header: 'header-nav-item',
@@ -19,6 +17,15 @@ const navItemClass = computed(() => {
   };
   return typeMap[props.type] || '';
 });
+
+const isHeader = computed(() => props.type === 'header');
+const focusY = computed(() => isHeader.value ? 1 : 202);
+
+const getFocusProps = (x: number) => ({
+  id: `${props.type}-nav${x}-${focusY.value}`,
+  x,
+  y: focusY.value,
+});
 </script>
 
 <template>
@@ -26,11 +33,7 @@ const navItemClass = computed(() => {
     <ul :class="navClass">
       <li :class="navItemClass">
         <NuxtLink
-          v-kb-focus="{
-            id: `${type}-nav2-${type === 'header' ? 1 : 202}`,
-            x: 2,
-            y: type === 'header' ? 1 : 202,
-          }"
+          v-kb-focus="getFocusProps(2)"
           :to="ROUTE_PATHS.RULES"
           @click="dialogStore.closeDialog()"
           >競賽規則</NuxtLink
@@ -38,11 +41,7 @@ const navItemClass = computed(() => {
       </li>
       <li :class="navItemClass">
         <NuxtLink
-          v-kb-focus="{
-            id: `${type}-nav3-${type === 'header' ? 1 : 202}`,
-            x: 3,
-            y: type === 'header' ? 1 : 202,
-          }"
+          v-kb-focus="getFocusProps(3)"
           :to="`${ROUTE_PATHS.RULES}${ROUTE_PATHS.SCHEDULE}`"
           @click="dialogStore.closeDialog()"
           >重要時程</NuxtLink
@@ -50,11 +49,7 @@ const navItemClass = computed(() => {
       </li>
       <li :class="navItemClass">
         <NuxtLink
-          v-kb-focus="{
-            id: `${type}-nav4-${type === 'header' ? 1 : 202}`,
-            x: 4,
-            y: type === 'header' ? 1 : 202,
-          }"
+          v-kb-focus="getFocusProps(4)"
           :to="`${ROUTE_PATHS.RULES}${ROUTE_PATHS.FAQ}`"
           @click="dialogStore.closeDialog()"
           >FAQ</NuxtLink
@@ -62,11 +57,7 @@ const navItemClass = computed(() => {
       </li>
       <li :class="navItemClass">
         <NuxtLink
-          v-kb-focus="{
-            id: `${type}-nav5-${type === 'header' ? 1 : 202}`,
-            x: 5,
-            y: type === 'header' ? 1 : 202,
-          }"
+          v-kb-focus="getFocusProps(5)"
           :to="ROUTE_PATHS.PAST"
           @click="dialogStore.closeDialog()"
           >參賽回顧</NuxtLink
@@ -74,11 +65,7 @@ const navItemClass = computed(() => {
       </li>
       <li :class="navItemClass">
         <a
-          v-kb-focus="{
-            id: `${type}-nav6-${type === 'header' ? 1 : 202}`,
-            x: 6,
-            y: type === 'header' ? 1 : 202,
-          }"
+          v-kb-focus="getFocusProps(6)"
           :href="tm('past_url')"
           target="_blank"
           @click="dialogStore.closeDialog()"
