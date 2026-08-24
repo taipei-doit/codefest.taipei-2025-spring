@@ -1,7 +1,1 @@
-import zh from '@/assets/locales/zh.json';
-
-export default defineI18nConfig(() => ({
-  legacy: false,
-  locale: 'zh',
-  messages: { zh },
-}));
+import zh from '@/assets/locales/zh.json'; const i18nConfig = { legacy: false, locale: 'zh', messages: { zh } }; export default defineI18nConfig(() => i18nConfig);
