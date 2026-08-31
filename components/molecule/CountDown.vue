@@ -3,11 +3,7 @@ const props = defineProps<{
   targetDate: Date;
 }>();
 
-/**
- * 倒數目標時間
- * Ex：2025-06-01 00:00:00
- */
-const targetDate = props.targetDate.getTime();
+const targetTime = props.targetDate.getTime();
 
 const timeLeft = ref<{
   days: string;
@@ -16,23 +12,26 @@ const timeLeft = ref<{
   seconds: string;
 } | null>(null);
 
-/** 每秒更新倒數時間 */
 const interval = ref<ReturnType<typeof setInterval> | null>(null);
+
+const MS_PER_SECOND = 1000;
+const MS_PER_MINUTE = MS_PER_SECOND * 60;
+const MS_PER_HOUR = MS_PER_MINUTE * 60;
+const MS_PER_DAY = MS_PER_HOUR * 24;
 
 /**
  * 計算剩餘時間
  */
-const getTimeLeft = (date: Date) => {
-  const now = date.getTime();
-  const diff = targetDate - now;
+const getTimeLeft = (now: Date) => {
+  const diff = targetTime - now.getTime();
 
   if (diff <= 0) return { days: '00', hours: '00', minutes: '00', seconds: '00' };
 
   return {
-    days: formatNumber(diff / (1000 * 60 * 60 * 24)),
-    hours: formatNumber((diff / (1000 * 60 * 60)) % 24),
-    minutes: formatNumber((diff / (1000 * 60)) % 60),
-    seconds: formatNumber((diff / 1000) % 60),
+    days: formatNumber(diff / MS_PER_DAY),
+    hours: formatNumber((diff / MS_PER_HOUR) % 24),
+    minutes: formatNumber((diff / MS_PER_MINUTE) % 60),
+    seconds: formatNumber((diff / MS_PER_SECOND) % 60),
   };
 };
 
@@ -42,14 +41,14 @@ const formatNumber = (num: number) => {
 };
 
 onMounted(() => {
+  timeLeft.value = getTimeLeft(new Date());
   interval.value = setInterval(() => {
-    const date = new Date();
-    timeLeft.value = getTimeLeft(date);
+    timeLeft.value = getTimeLeft(new Date());
   }, 1000);
 });
 
 onUnmounted(() => {
-  clearInterval(interval.value!);
+  if (interval.value) clearInterval(interval.value);
 });
 </script>
 
@@ -57,7 +56,7 @@ onUnmounted(() => {
   <p>
     <!-- 天數 -->
     <span class="mx-1">
-      <span v-for="char in timeLeft?.days" :key="'days' + char" class="countdown-box">
+      <span v-for="(char, index) in timeLeft?.days" :key="'days' + index" class="countdown-box">
         {{ char }}
       </span>
     </span>
@@ -65,7 +64,7 @@ onUnmounted(() => {
 
     <!-- 小時 -->
     <span class="mx-1">
-      <span v-for="char in timeLeft?.hours" :key="'hours' + char" class="countdown-box">
+      <span v-for="(char, index) in timeLeft?.hours" :key="'hours' + index" class="countdown-box">
         {{ char }}
       </span>
     </span>
@@ -73,7 +72,7 @@ onUnmounted(() => {
 
     <!-- 分鐘 -->
     <span class="mx-1">
-      <span v-for="char in timeLeft?.minutes" :key="'minutes' + char" class="countdown-box">
+      <span v-for="(char, index) in timeLeft?.minutes" :key="'minutes' + index" class="countdown-box">
         {{ char }}
       </span>
     </span>
@@ -81,7 +80,7 @@ onUnmounted(() => {
 
     <!-- 秒數 -->
     <span class="mx-1">
-      <span v-for="char in timeLeft?.seconds" :key="'seconds' + char" class="countdown-box">
+      <span v-for="(char, index) in timeLeft?.seconds" :key="'seconds' + index" class="countdown-box">
         {{ char }}
       </span>
     </span>
