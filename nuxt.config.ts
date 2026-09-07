@@ -28,11 +28,6 @@ export default defineNuxtConfig({
         { 'http-equiv': 'pragma', content: 'no-cache' },
         { 'http-equiv': 'X-Content-Type-Options', content: 'nosniff' },
         { 'http-equiv': 'Referrer-Policy', content: 'strict-origin-when-cross-origin' },
-        // {
-        //   'http-equiv': 'Content-Security-Policy',
-        //   content:
-        //     "default-src 'self'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://www.surveycake.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://www.google-analytics.com https://www.surveycake.com; frame-src 'self' https://www.surveycake.com https://www.googletagmanager.com; object-src 'none'; base-uri 'self'; form-action 'self' https://www.surveycake.com; upgrade-insecure-requests;",
-        // },
       ],
       link: [{ rel: 'icon', type: 'image/x-icon', href: '/2025-spring/favicon.ico' }],
       script: [
@@ -65,8 +60,8 @@ export default defineNuxtConfig({
     '@nuxtjs/i18n',
   ],
   tailwindcss: {
-    cssPath: '~/assets/main.scss', // 修正為字符串
-    configPath: 'tailwind.config.js', // 確保這裡的文件名正確
+    cssPath: '~/assets/main.scss',
+    configPath: 'tailwind.config.js',
     exposeConfig: {
       level: 2,
     },
