@@ -1,3 +1,6 @@
+/**
+ * 對話框名稱常數定義
+ */
 export const DIALOG_NAMES = {
   /** 報名對話框 */
   APPLY: 'apply',
@@ -11,4 +14,7 @@ export const DIALOG_NAMES = {
   PHOTO: 'photo',
 } as const;
 
+/**
+ * 對話框名稱的型別 Union
+ */
 export type DialogName = (typeof DIALOG_NAMES)[keyof typeof DIALOG_NAMES];
