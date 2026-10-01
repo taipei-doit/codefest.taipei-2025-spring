@@ -20,12 +20,11 @@ const deadlineDate = computed(() => new Date(tm('schedule.apply_count_down')));
 
 // 判斷報名是否已截止
 const isRegistrationClosed = computed(() => {
-  const deadlineString = tm('schedule.apply_count_down');
-  const deadline = new Date(deadlineString);
+  const deadline = deadlineDate.value;
 
   // 如果從 i18n 取得的日期字串無效，則視為未設定截止日 (即尚未截止)，並發出警告
   if (isNaN(deadline.getTime())) {
-    console.warn(`Invalid deadline date string from i18n: "${deadlineString}". Assuming registration is not closed.`);
+    console.warn(`Invalid deadline date string from i18n: "${tm('schedule.apply_count_down')}". Assuming registration is not closed.`);
     return false;
   }
 
