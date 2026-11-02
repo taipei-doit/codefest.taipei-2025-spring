@@ -1,12 +1,15 @@
 <script setup lang="ts">
 import { Dialog, DialogPanel, DialogTitle, DialogDescription } from '@headlessui/vue';
+
 defineProps<{
   isOpen: boolean;
 }>();
 
 const { tm } = useI18n();
 
-const emit = defineEmits(['close']);
+const emit = defineEmits<{
+  (e: 'close'): void;
+}>();
 
 const showConfirm = ref(false);
 
@@ -14,8 +17,12 @@ const openConfirm = () => {
   showConfirm.value = true;
 };
 
-const confirmClose = () => {
+const closeConfirm = () => {
   showConfirm.value = false;
+};
+
+const confirmClose = () => {
+  closeConfirm();
   emit('close');
 };
 </script>
@@ -62,7 +69,7 @@ const confirmClose = () => {
         >
           <div class="relative bg-white w-full max-w-sm p-6 shadow-xl">
             <!-- 關閉按鈕 -->
-            <button class="absolute top-4 right-4 z-10" @click="showConfirm = false">
+            <button class="absolute top-4 right-4 z-10" @click="closeConfirm">
               <img src="@/assets/images/icons/btn-close.svg" alt="關閉" />
             </button>
             <!-- 標題 -->
@@ -77,7 +84,7 @@ const confirmClose = () => {
             <div class="flex justify-center gap-4 mt-6 font-fusion-pixel">
               <button
                 class="px-4 py-2 border-2 border-primary-500 hover:bg-gray-400 text-primary-500"
-                @click="showConfirm = false"
+                @click="closeConfirm"
               >
                 取消
               </button>
