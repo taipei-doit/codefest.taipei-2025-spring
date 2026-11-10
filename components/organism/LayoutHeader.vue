@@ -1,9 +1,13 @@
 <script setup lang="ts">
+import { computed } from 'vue';
 import { useDialogStore } from '~/stores/dialogStore';
 import { DIALOG_NAMES } from '~/constants/dialogs';
 
 const dialogStore = useDialogStore();
 const { activeDialog } = storeToRefs(dialogStore);
+
+// 封裝行動版選單是否開啟的狀態判定
+const isMobileMenuOpen = computed(() => activeDialog.value === DIALOG_NAMES.MOBILE_MENU);
 </script>
 
 <template>
@@ -36,7 +40,7 @@ const { activeDialog } = storeToRefs(dialogStore);
       </div>
       <!-- moblie nav modal -->
       <Transition name="fade">
-        <div v-if="activeDialog === DIALOG_NAMES.MOBILE_MENU" class="modal-open">
+        <div v-if="isMobileMenuOpen" class="modal-open">
           <div
             class="fixed top-0 bottom-0 left-0 right-0 z-50 w-full overflow-y-auto bg-black bg-opacity-80 flex flex-col p-4 transition-all duration-500"
           >
