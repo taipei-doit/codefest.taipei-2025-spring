@@ -9,7 +9,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/thumbs';
 // import required modules
 import { FreeMode, Navigation, Thumbs } from 'swiper/modules';
-import { ref, watch, computed } from 'vue'; // 引入 computed
+import { ref, watch, computed } from 'vue';
 const runtimeConfig = useRuntimeConfig();
 
 const props = defineProps<{
@@ -22,12 +22,12 @@ const emit = defineEmits(['close']);
 const thumbsSwiper = ref<Swiper | null>(null);
 
 const setThumbsSwiper = (swiper: Swiper) => {
-  // 移除不必要的 try-catch 區塊，直接賦值給 ref 通常不會拋出錯誤
   thumbsSwiper.value = swiper;
 };
 
-// 抽取判斷是否有多於一張圖片的邏輯到 computed property
-const hasMultipleImages = computed(() => (props.activeWinningTeam?.image_list?.length ?? 0) > 1);
+// 抽取圖片列表計算邏輯，提升 readability 並保護空值存取
+const imageList = computed(() => props.activeWinningTeam?.image_list ?? []);
+const hasMultipleImages = computed(() => imageList.value.length > 1);
 
 // Reset swiper state when dialog closes
 watch(
@@ -63,7 +63,7 @@ watch(
                 <p class="text-2xl">{{ props.activeWinningTeam?.team_name }}</p>
               </DialogTitle>
               <!-- 單圖模式 -->
-              <div v-if="!props.activeWinningTeam?.image_list.length" class="aspect-video">
+              <div v-if="!imageList.length" class="aspect-video">
                 <img
                   :src="runtimeConfig.app.baseURL + props.activeWinningTeam?.thumbnail"
                   class="w-full h-full object-cover lg:mb-0 mb-6"
@@ -85,7 +85,7 @@ watch(
                     class="mb-4"
                   >
                     <SwiperSlide
-                      v-for="(item, index) in props.activeWinningTeam?.image_list"
+                      v-for="(item, index) in imageList"
                       :key="index"
                     >
                       <div class="aspect-video">
@@ -133,7 +133,7 @@ watch(
                   @swiper="setThumbsSwiper"
                 >
                   <SwiperSlide
-                    v-for="(item, index) in props.activeWinningTeam?.image_list"
+                    v-for="(item, index) in imageList"
                     :key="index"
                     class="thumb-slide"
                   >
