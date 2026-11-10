@@ -15,6 +15,7 @@ const runtimeConfig = useRuntimeConfig();
  */
 function getI18nList<T>(path: string): T[] {
   const data = tm(path);
+  if (!data) return [];
   // 由於 tm(path) 返回值可能是 Record<string, T> 或 T[]，這裡進行類型斷言以符合 T[]
   return Array.isArray(data) ? (data as T[]) : (Object.values(data) as T[]);
 }
