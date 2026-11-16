@@ -1,21 +1,30 @@
 <script setup lang="ts">
 import { Dialog, DialogPanel, DialogTitle, DialogDescription } from '@headlessui/vue';
+
 defineProps<{
   isOpen: boolean;
 }>();
 
+const emit = defineEmits<{
+  (e: 'close'): void;
+}>();
+
 const { tm } = useI18n();
 
-const emit = defineEmits(['close']);
-
 const showConfirm = ref(false);
+
+const applyUrl = computed(() => tm('apply_url'));
 
 const openConfirm = () => {
   showConfirm.value = true;
 };
 
-const confirmClose = () => {
+const closeConfirm = () => {
   showConfirm.value = false;
+};
+
+const confirmClose = () => {
+  closeConfirm();
   emit('close');
 };
 </script>
@@ -47,7 +56,7 @@ const confirmClose = () => {
         <DialogDescription class="flex-1 overflow-y-auto px-4 pb-6">
           <div class="w-full aspect-[9/16] max-h-full">
             <iframe
-              :src="tm('apply_url')"
+              :src="applyUrl"
               class="w-full h-full border-none"
               frameborder="0"
               allowfullscreen
@@ -62,7 +71,7 @@ const confirmClose = () => {
         >
           <div class="relative bg-white w-full max-w-sm p-6 shadow-xl">
             <!-- 關閉按鈕 -->
-            <button class="absolute top-4 right-4 z-10" @click="showConfirm = false">
+            <button class="absolute top-4 right-4 z-10" @click="closeConfirm">
               <img src="@/assets/images/icons/btn-close.svg" alt="關閉" />
             </button>
             <!-- 標題 -->
@@ -77,7 +86,7 @@ const confirmClose = () => {
             <div class="flex justify-center gap-4 mt-6 font-fusion-pixel">
               <button
                 class="px-4 py-2 border-2 border-primary-500 hover:bg-gray-400 text-primary-500"
-                @click="showConfirm = false"
+                @click="closeConfirm"
               >
                 取消
               </button>
