@@ -4,6 +4,7 @@ export enum NewsTag {
 }
 
 export interface News {
+  /** 消息唯一識別碼 */
   id: number;
   /** 發布日期 */
   date: string;
